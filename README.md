@@ -11,3 +11,4 @@ Git or GitHub for Desktop (To push pull the Git)
 
 ### Team Members
 Kevin Lin <Lin_Kevin_1995@hotmail.com>
+Kenza Boulisfane <kenza.boulisfane@gmail.com>
