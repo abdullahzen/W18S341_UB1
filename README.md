@@ -14,3 +14,4 @@ Kevin Lin <Lin_Kevin_1995@hotmail.com>
 Abdulla Alhaj Zin <hajzen@gmail.com>
 Kenza Boulisfane <kenza.boulisfane@gmail.com>
 Dhruv Bhalodi <bhalodi.dhruv@gmail.com>
+Hicham Daou <hicham_daou@hotmail.com>
