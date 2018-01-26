@@ -11,5 +11,6 @@ Git or GitHub for Desktop (To push pull the Git)
 
 ### Team Members
 Kevin Lin <Lin_Kevin_1995@hotmail.com>
-Dhruv Bhalodi <bhalodi.dhruv@gmail.com>
 Abdulla Alhaj Zin <hajzen@gmail.com>
+Kenza Boulisfane <kenza.boulisfane@gmail.com>
+Dhruv Bhalodi <bhalodi.dhruv@gmail.com>
