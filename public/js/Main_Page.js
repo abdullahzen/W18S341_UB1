@@ -9,6 +9,7 @@ $(document).ready(function(){
 		}
     });
 	
+	
 	$(".comment_button").click(function(){
 		if($('#comments_section').css('display') == 'none'){
         $("#comments_section").css('display','block');
