@@ -30,26 +30,26 @@
                         </svg>
                         <span class="slds-assistive-text">Close</span>
                      </button>
-                     <h2 class="slds-text-heading_medium slds-hyphenate" id="modal-heading-01">Please Enter Registartion Details</h2>
+                     <h2 class="slds-text-heading_medium slds-hyphenate" id="modal-heading-01">Member Login</h2>
                   </header>
                   <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
                      <div class="slds-form slds-form_stacked">
                         <div class="slds-form-element">
                            <label class="slds-form-element__label" for="input-id-01">Username</label>
                            <div class="slds-form-element__control">
-                              <input class="slds-input" id="input-id-01" placeholder="Please enter the Username..." type="text">
+                              <input class="slds-input" id="input-id-01" placeholder="Enter username..." type="text">
                            </div>
                         </div>
                         <div class="slds-form-element">
                            <label class="slds-form-element__label" for="input-id-01">Password</label>
                            <div class="slds-form-element__control">
-                              <input class="slds-input" id="input-id-01" placeholder="Please enter the Password..." type="text">
+                              <input class="slds-input" id="input-id-01" placeholder="Enter password..." type="text">
                            </div>
                         </div>
                      </div>
                   </div>
                   <footer class="slds-modal__footer">
-                     <button class="slds-button slds-button_brand">Submit</button>
+                     <button class="slds-button slds-button_brand">Log me in</button>
                   </footer>
                </div>
             </section>

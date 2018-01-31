@@ -27,32 +27,32 @@
                         </svg>
                         <span class="slds-assistive-text">Close</span>
                      </button>
-                     <h2 class="slds-text-heading_medium slds-hyphenate" id="modal-heading-01">Please Enter Registartion Details</h2>
+                     <h2 class="slds-text-heading_medium slds-hyphenate" id="modal-heading-01">Registartion Details</h2>
                   </header>
                   <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
                      <div class="slds-form slds-form_stacked">
                         <div class="slds-form-element">
                            <label class="slds-form-element__label" for="input-id-01">Username</label>
                            <div class="slds-form-element__control">
-                              <input class="slds-input" id="input-id-01" placeholder="Enter the Username you would want to use for login..." type="text">
+                              <input class="slds-input" id="input-id-01" placeholder="Enter username..." type="text">
                            </div>
                         </div>
                         <div class="slds-form-element">
                            <label class="slds-form-element__label" for="input-id-01">E-mail</label>
                            <div class="slds-form-element__control">
-                              <input class="slds-input" id="input-id-01" placeholder="Enter the E-mail you would want to use for registration..." type="text">
+                              <input class="slds-input" id="input-id-01" placeholder="Enter e-mail..." type="text">
                            </div>
                         </div>
                         <div class="slds-form-element">
                            <label class="slds-form-element__label" for="input-id-01">Password</label>
                            <div class="slds-form-element__control">
-                              <input class="slds-input" id="input-id-01" placeholder="Enter the Password..." type="text">
+                              <input class="slds-input" id="input-id-01" placeholder="Enter password..." type="text">
                            </div>
                         </div>
                         <div class="slds-form-element">
-                           <label class="slds-form-element__label" for="input-id-01">Password Confirmation</label>
+                           <label class="slds-form-element__label" for="input-id-01">Confirm Password</label>
                            <div class="slds-form-element__control">
-                              <input class="slds-input" id="input-id-01" placeholder="Please confirm the password..." type="text">
+                              <input class="slds-input" id="input-id-01" placeholder="Re-enter password..." type="text">
                            </div>
                         </div>
                         <fieldset class="slds-form-element">
