@@ -14,6 +14,7 @@
       <link rel="icon" type="image/x-icon">
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
       <script src="../../public/js/Main_Page.js"></script>
+      @include('headerFooter')
    </head>
    <body>
       <div class="slds-scope">
