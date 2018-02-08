@@ -3,17 +3,17 @@
 <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <link class="user" href="../../public/css/zen-componentsCompatible.css" rel="stylesheet" type="text/css">
-      <link class="user" href="../../public/css/elements.css" rel="stylesheet" type="text/css">
-      <link class="user" href="../../public/css/common.css" rel="stylesheet" type="text/css">
-      <link class="user" href="../../public/css/dStandard.css" rel="stylesheet" type="text/css">
-      <link class="user" href="../../public/css/extended.css" rel="stylesheet" type="text/css">
-      <link class="user" href="../../public/css/setup.css" rel="stylesheet" type="text/css">
-      <link class="user" href="../../public/css/salesforce-lightning-design-system-vf.min.css" rel="stylesheet" type="text/css">
-	  <link class="user" href="../../public/css/Main_Page.css" rel="stylesheet" type="text/css">
+      <link class="user" href="{{URL::asset('css/zen-componentsCompatible.css')}}" rel="stylesheet" type="text/css">
+      <link class="user" href="{{URL::asset('css/elements.css')}}" rel="stylesheet" type="text/css">
+      <link class="user" href="{{URL::asset('css/common.css')}}" rel="stylesheet" type="text/css">
+      <link class="user" href="{{URL::asset('css/dStandard.css')}}" rel="stylesheet" type="text/css">
+      <link class="user" href="{{URL::asset('css/extended.css')}}" rel="stylesheet" type="text/css">
+      <link class="user" href="{{URL::asset('css/setup.css')}}" rel="stylesheet" type="text/css">
+      <link class="user" href="{{URL::asset('css/salesforce-lightning-design-system-vf.min.css')}}" rel="stylesheet" type="text/css">
+	  <link class="user" href="{{URL::asset('css/Main_Page.css')}}" rel="stylesheet" type="text/css">
       <link rel="icon" type="image/x-icon">
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-      <script src="../../public/js/Main_Page.js"></script>
+	  <script src="{{URL::asset('https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')}}"></script>
+      <script src="{{URL::asset('js/Main_Page.js')}}"></script>
       @include('headerFooter')
    </head>
    <body>
@@ -26,7 +26,7 @@
                   <header class="slds-modal__header">
                      <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
                         <svg aria-hidden="true" class="slds-button__icon slds-button__icon_large">
-                           <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+                           <use xlink:href="../assets/icons/utility-sprite/svg/symbols.svg#close" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
                         </svg>
                         <span class="slds-assistive-text">Close</span>
                      </button>
