@@ -49,7 +49,7 @@
                      </div>
                   </div>
                   <footer class="slds-modal__footer">
-                     <button class="slds-button slds-button_brand">Log me in</button>
+                     <button class="slds-button slds-button_brand">Log in</button>
                   </footer>
                </div>
             </section>
