@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
 }
@@ -9,7 +5,7 @@ body {
 /* Create two equal columns that floats next to each other */
 .column1 {
     float: left;
-    width: 70%;
+    width: 98%;
     padding: 10px;
     height: 300px; /* Should be removed. Only for demonstration */
 }
@@ -21,6 +17,18 @@ body {
     height: 300px; /* Should be removed. Only for demonstration */
 }
 
+.questions {
+    float: right;
+    width: 78%;
+    padding: 10px;
+	height: 700px;
+}
+
+.section {
+    float: left;
+    width: 30%;
+    padding: 10px;
+}
 
 /* Clear floats after the columns */
 .row:after {

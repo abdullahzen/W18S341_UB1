@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0053)https://c.na73.visual.force.com/apex/W_341_Login_Page -->
 <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,16 +9,14 @@
       <link class="user" href="{{URL::asset('css/extended.css')}}" rel="stylesheet" type="text/css">
       <link class="user" href="{{URL::asset('css/setup.css')}}" rel="stylesheet" type="text/css">
       <link class="user" href="{{URL::asset('css/salesforce-lightning-design-system-vf.min.css')}}" rel="stylesheet" type="text/css">
-	  <link class="user" href="{{URL::asset('css/Main_Page.css')}}" rel="stylesheet" type="text/css">
+      <link class="user" href="{{URL::asset('css/Main_Page.css')}}" rel="stylesheet" type="text/css">
       <link rel="icon" type="image/x-icon">
-	  <script src="{{URL::asset('https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')}}"></script>
+      <script src="{{URL::asset('https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')}}"></script>
       <script src="{{URL::asset('js/Main_Page.js')}}"></script>
       @include('headerFooter')
    </head>
    <body>
       <div class="slds-scope">
-	  
-	  
          <div class="demo-only" style="height: 640px;">
             <section aria-describedby="modal-content-id-1" aria-labelledby="modal-heading-01" aria-modal="true" class="slds-modal slds-fade-in-open" role="dialog" tabindex="-1">
                <div class="slds-modal__container">
@@ -45,6 +42,18 @@
                            <div class="slds-form-element__control">
                               <input class="slds-input" id="input-id-01" placeholder="Enter password..." type="text">
                            </div>
+                        </div>
+                        <br/>
+                        <div class="slds-form-element">
+                           <label class="slds-checkbox_toggle slds-grid">
+                           <span class="slds-form-element__label slds-m-bottom_none">Remember Me</span>
+                           <input type="checkbox" name="checkbox" aria-describedby="toggle-desc" value="on" />
+                           <span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
+                           <span class="slds-checkbox_faux"></span>
+                           <span class="slds-checkbox_on">Enabled</span>
+                           <span class="slds-checkbox_off">Disabled</span>
+                           </span>
+                           </label>
                         </div>
                      </div>
                   </div>

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0060)https://c.na73.visual.force.com/apex/W_341_Registration_Page -->
 <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
