@@ -10,9 +10,9 @@
       <link class="user" href="{{URL::asset('css/setup.css')}}" rel="stylesheet" type="text/css">
       <link class="user" href="{{URL::asset('css/salesforce-lightning-design-system-vf.min.css')}}" rel="stylesheet" type="text/css">
       <script src="{{URL::asset('https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')}}"></script>
-      <link class="user" href="{{URL::asset('css/Main_Page.css')}}" rel="stylesheet" type="text/css">
+      <link class="user" href="{{URL::asset('css/mainpage.css')}}" rel="stylesheet" type="text/css">
       <link rel="icon" type="image/x-icon">
-      @include('headerFooter')
+      @include('includes.headerFooter')
    </head>
    <body>
       <br/>
