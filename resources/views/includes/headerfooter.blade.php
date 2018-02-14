@@ -48,9 +48,11 @@
                            </li>
                            <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
                               <div class="slds-button-group" role="group">
-                                 <button class="slds-button slds-button_neutral" onclick="location.href='http://127.0.0.1:8000/'">Home</button>
-                                 <button class="slds-button slds-button_neutral" onclick="location.href='http://127.0.0.1:8000/register'">Register</button>
-                                 <button class="slds-button slds-button_neutral" onclick="location.href='http://127.0.0.1:8000/login'">Login</button>
+                                 <button class="slds-button slds-button_neutral" onclick="location.href='./'">Home</button>
+                                 @if(!session()->has('id'))
+                                    <button class="slds-button slds-button_neutral">Register</button>
+                                    <button class="slds-button slds-button_neutral">Login</button>
+                                 @endif
                               </div>
                            </li>
                         </ul>
