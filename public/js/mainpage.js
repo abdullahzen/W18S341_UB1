@@ -1,3 +1,34 @@
+var login = document.getElementById("loginButton");
+var loginModal = document.getElementById('loginModal');
+
+var register = document.getElementById("registerButton");
+var registerModal = document.getElementById('registerModal');
+
+var modalCloseButton = document.getElementById("modalCloseButton");
+
+login.onclick = function() {
+    loginModal.style.display = "block";
+}
+
+register.onclick = function() {
+    registerModal.style.display = "block";
+}
+
+modalCloseButton.onclick = function() {
+    loginModal.style.display = "none";
+    //registerModal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == loginModal) {
+        loginModal.style.display = "none";
+    }
+
+    if (event.target == registerModal) {
+        registerModal.style.display = "none";
+    }
+}
+
 $(document).ready(function () {
     $("#Notifications").click(function () {
         if ($('#notifications-container').css('display') == 'none') {
@@ -93,15 +124,4 @@ function showPhp() {
 
 function showpostquestion() {
     $("#postquestion").css('display', 'block');
-}
-
-var login = document.getElementById("loginModalButton");
-var register = document.getElementById("registerModalButton");
-
-login.onclick = function() {
-    modal.style.display = "loginModal";
-}
-
-register.onclick = function() {
-    modal.style.display = "registerModal";
 }

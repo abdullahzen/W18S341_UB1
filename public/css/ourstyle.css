@@ -1,4 +1,8 @@
 /* Modal forms */
+.modal {
+    display: none;
+}
+
 .form-style-base{
     top:0px;
     z-index: 999;
