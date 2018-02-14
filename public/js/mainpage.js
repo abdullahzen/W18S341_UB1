@@ -6,6 +6,7 @@ $(document).ready(function () {
     var registerModal = document.getElementById('registerModal');
 
     var span = document.getElementsByClassName("close")[0];
+    var spanR = document.getElementsByClassName("closeR")[0];
 
     login.onclick = function() {
         loginModal.style.display = "block";
@@ -20,8 +21,13 @@ $(document).ready(function () {
         registerModal.style.display = "none";
     }
 
+    spanR.onclick = function() {
+        registerModal.style.display = "none";
+    }
+
+    // Fix this if you want
     window.onclick = function(event) {
-        if (event.target == loginModal) {
+        if (event.target == modal) {
             loginModal.style.display = "none";
         }
 

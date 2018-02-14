@@ -949,5 +949,6 @@
 </div>
 </body>
 
-<!-- LOGIN MODAL -->
+{{--Modal Inclusion--}}
 @include('modals.login')
+@include('modals.register')
