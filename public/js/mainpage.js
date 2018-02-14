@@ -1,35 +1,35 @@
-var login = document.getElementById("loginButton");
-var loginModal = document.getElementById('loginModal');
+$(document).ready(function () {
+    var login = document.getElementById("loginButton");
+    var loginModal = document.getElementById('loginModal');
 
-var register = document.getElementById("registerButton");
-var registerModal = document.getElementById('registerModal');
+    var register = document.getElementById("registerButton");
+    var registerModal = document.getElementById('registerModal');
 
-var modalCloseButton = document.getElementById("modalCloseButton");
+    var span = document.getElementsByClassName("close")[0];
 
-login.onclick = function() {
-    loginModal.style.display = "block";
-}
-
-register.onclick = function() {
-    registerModal.style.display = "block";
-}
-
-modalCloseButton.onclick = function() {
-    loginModal.style.display = "none";
-    //registerModal.style.display = "none";
-}
-
-window.onclick = function(event) {
-    if (event.target == loginModal) {
-        loginModal.style.display = "none";
+    login.onclick = function() {
+        loginModal.style.display = "block";
     }
 
-    if (event.target == registerModal) {
+    register.onclick = function() {
+        registerModal.style.display = "block";
+    }
+
+    span.onclick = function() {
+        loginModal.style.display = "none";
         registerModal.style.display = "none";
     }
-}
 
-$(document).ready(function () {
+    window.onclick = function(event) {
+        if (event.target == loginModal) {
+            loginModal.style.display = "none";
+        }
+
+        if (event.target == registerModal) {
+            registerModal.style.display = "none";
+        }
+    }
+
     $("#Notifications").click(function () {
         if ($('#notifications-container').css('display') == 'none') {
             $("#notifications-container").css('display', 'block');

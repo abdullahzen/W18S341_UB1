@@ -13,13 +13,7 @@
                          class="slds-modal slds-fade-in-open" role="dialog" tabindex="-1">
                     <div class="slds-modal__container">
                         <header class="slds-modal__header">
-                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
-                                <svg aria-hidden="true" class="slds-button__icon slds-button__icon_large">
-                                    <use xlink:href="../assets/icons/utility-sprite/svg/symbols.svg#close"
-                                         xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-                                </svg>
-                                <span class="slds-assistive-text">Close</span>
-                            </button>
+                            <span class="close">&times;</span>
                             <h2 class="slds-text-heading_medium slds-hyphenate" id="modal-heading-01">Member Login</h2>
                         </header>
                         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
