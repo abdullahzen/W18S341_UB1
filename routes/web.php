@@ -11,14 +11,17 @@
 |
 */
 
+//GET
+
 Route::get('/', function () {
-    return view('homePage');
+    return view('pages.homepage');
 });
 
-Route::get('/login', function () {
-    return view('login');
+Route::get('/logout', function() {
+    session()->flush();
+    return view('pages.homepage');
 });
 
-Route::get('/register', function () {
-    return view('register');
-});
+//POST
+
+Route::get('/login', 'ClientController@authenticate');

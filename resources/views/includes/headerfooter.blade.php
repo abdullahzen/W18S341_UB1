@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <link class="user" href="{{URL::asset('css/zen-componentsCompatible.css')}}" rel="stylesheet" type="text/css">
-      <link class="user" href="{{URL::asset('css/elements.css')}}" rel="stylesheet" type="text/css">
-      <link class="user" href="{{URL::asset('css/common.css')}}" rel="stylesheet" type="text/css">
-      <link class="user" href="{{URL::asset('css/dStandard.css')}}" rel="stylesheet" type="text/css">
-      <link class="user" href="{{URL::asset('css/extended.css')}}" rel="stylesheet" type="text/css">
-      <link class="user" href="{{URL::asset('css/setup.css')}}" rel="stylesheet" type="text/css">
-      <link class="user" href="{{URL::asset('css/salesforce-lightning-design-system-vf.min.css')}}" rel="stylesheet" type="text/css">
-      <script src="{{URL::asset('https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')}}"></script>
-      <script src="{{URL::asset('js/Main_Page.js')}}"></script>
-      <link class="user" href="{{URL::asset('css/Main_Page.css')}}" rel="stylesheet" type="text/css">
-      <link rel="icon" type="image/x-icon">
-   </head>
+   @include('includes.head')
    <body>
       <div class="slds-scope">
          <div class="demo-only" style="height: 0.001rem;">
@@ -48,9 +33,11 @@
                            </li>
                            <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
                               <div class="slds-button-group" role="group">
-                                 <button class="slds-button slds-button_neutral" onclick="location.href='http://127.0.0.1:8000/'">Home</button>
-                                 <button class="slds-button slds-button_neutral" onclick="location.href='http://127.0.0.1:8000/register'">Register</button>
-                                 <button class="slds-button slds-button_neutral" onclick="location.href='http://127.0.0.1:8000/login'">Login</button>
+                                 <button class="slds-button slds-button_neutral" onclick="location.href='./'">Home</button>
+                                 @if(!session()->has('id'))
+                                    <button class="slds-button slds-button_neutral" id="registerButton">Register</button>
+                                    <button class="slds-button slds-button_neutral" id="loginButton">Login</button>
+                                 @endif
                               </div>
                            </li>
                         </ul>
@@ -69,6 +56,7 @@
                            </div>
                         </div>
                      </div>
+                     @if(session()->has('id'))
                      <ul class="slds-global-header__item slds-grid slds-grid_vertical-align-center">
                         <li class="slds-grid">
                            <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon-favorites" aria-pressed="false" title="Toggle Favorites">
@@ -119,20 +107,23 @@
                            </button>
                         </li>
                         <li class="slds-dropdown-trigger slds-dropdown-trigger_click slds-m-left_x-small">
-                           <button class="slds-button" title="person name" aria-haspopup="true">
+                           <button class="slds-button" aria-haspopup="true">
                            <span class="slds-avatar slds-avatar_circle slds-avatar_medium">
                            <img alt="Person name" src="/assets/images/avatar2.jpg" title="User avatar" />
                            </span>
                            </button>
                         </li>
+                         {{session()->get('username')}}
                         <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
-                           <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon" title="Logout" id="Logout">
-                           <img src="../assets/icons/utility/logout_60.png" alt="Smiley face" height="17" width="17">
-                           <span class="slds-assistive-text">Logout</span>
-                           </button>
+                            <a href="./logout">
+                               <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon" title="Logout" id="logout">
+                               <img src="../assets/icons/utility/logout_60.png" alt="Smiley face" height="17" width="17">
+                               <span class="slds-assistive-text">Logout</span>
+                               </button>
+                            </a>
                         </li>
-                     </ul>
-                  </div>
+                        </ul>
+                     </div>
                   <section class="slds-popover slds-popover_large slds-nubbin_top-right" role="dialog" aria-label="Notifications" id="notifications-container"  aria-describedby="notifications-container" style="position: absolute; right: 5.125rem; display: none;">
                      <div  class="slds-popover__body slds-p-around_none">
                         <ul>
@@ -232,6 +223,7 @@
                         </ul>
                      </div>
                   </section>
+                    @endif
                </header>
             </div>
          </div>
