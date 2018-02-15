@@ -4,7 +4,8 @@
 }
 
 .form-style-base{
-    top:0px;display
+    top:0px;
+    display: none;
     z-index: 999;
     opacity: 0;
 }
@@ -54,7 +55,7 @@
     font-weight: bold;
 }
 
-.closep:hover,
+.closeP:hover,
 .closeP:focus {
     color: black;
     text-decoration: none;

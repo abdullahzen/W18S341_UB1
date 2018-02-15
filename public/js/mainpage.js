@@ -21,7 +21,7 @@ $(document).ready(function () {
         registerModal.style.display = "block";
     }
 
-    post.onClick = function(){
+    post.onclick = function(){
         postModal.style.display = "block";
     }
 
