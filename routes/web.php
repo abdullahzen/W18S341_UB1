@@ -26,5 +26,5 @@ Route::get('/logout', function() {
 
 Route::get('/login', 'ClientController@authenticate');
 
-Route::get('/register', 'RegisterController@create');
+Route::get('/register', 'ClientController@register');
 
