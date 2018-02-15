@@ -1,6 +1,6 @@
 <div id="registerModal" class="modal">
     <div class="modal-content">
-        <form action="./register" id="registrationForm">
+        <form action="./register" id="registrationForm" method="GET">
             <div class="slds-scope">
                 <div class="demo-only" style="height: 640px;">
                     <section aria-describedby="modal-content-id-1" aria-labelledby="modal-heading-01" aria-modal="true" class="slds-modal slds-fade-in-open" role="dialog" tabindex="-1">
@@ -29,7 +29,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Password confirmation</label>
-                                            <input type="password" class="form-control input-md" placeholder="Password_confirmation" name="passwordConfirmation" id="passwordConfirmation"/>
+                                            <input type="password" class="form-control input-md" placeholder="Re-type Password" name="passwordConfirmation" id="passwordConfirmation"/>
                                             {{--<span class="pull-right"><a href="#">Forgot Password?</a></span>--}}
                                         </div>
                                         <div class="form-group">

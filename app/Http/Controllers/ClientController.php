@@ -8,7 +8,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ClientRequest;
 use Hash;
 use Illuminate\Http\Request;
 use DB;
@@ -22,13 +21,12 @@ class ClientController extends Controller {
                     ->where('username', $username)
                     ->first();
 //CHECK RAW PW FOR TESTING PURPOSE
-        if(!empty($user) && $pw == $user->password) {
-        /*if(!empty($user) && Hash::check($pw, $user->password)) {*/
-            $this->createSession($user);
-        } else {
-            abort(400, "Invalid username or password.");
-        }
-
+/*        if(!empty($user) && $pw == $user->password) {*/
+            if (!empty($user) && Hash::check($pw, $user->password)) {
+                $this->createSession($user);
+            } else {
+                abort(400, "Invalid username or password.");
+            }
         return view('pages.homepage');
     }
 
@@ -59,8 +57,9 @@ class ClientController extends Controller {
 
     public function insertRegisterToDB($username, $email, $password)
     {
+        $solve = '0';
         return DB::table('user')->insert(
-            array("username" => $username, "email" => $email, "password" => $password)
+            array("username" => $username, "email" => $email, "password" => $password, "is_Solver" => $solve)
         );
     }
 

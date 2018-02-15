@@ -1,8 +1,7 @@
 $(function(){
-    $("#submitButton").click(function (e) {
-        e.preventDefault();
+    $("#submitButton").click(function () {
         /*$(". ").hide();*/
-        var request = $.get('/register', $('#registrationForm').serialize());
+        var request = $.get('./register', $('#registrationForm').serialize());
         request.done(function () {
             window.location = '/';
         });
