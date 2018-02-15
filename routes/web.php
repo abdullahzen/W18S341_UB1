@@ -24,4 +24,9 @@ Route::get('/logout', function() {
 
 //POST
 
-//Route::post('/login', 'ClientController@authenticate');
+Route::post('/login', 'ClientController@authenticate');
+Auth::routes();
+
+Auth::routes();
+
+Route::get('/testauth', 'HomeController@index')->name('home');

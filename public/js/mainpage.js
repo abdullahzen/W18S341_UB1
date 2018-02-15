@@ -27,7 +27,7 @@ $(document).ready(function () {
 
     // Fix this if you want
     window.onclick = function(event) {
-        if (event.target == modal) {
+        if (event.target == loginModal) {
             loginModal.style.display = "none";
         }
 

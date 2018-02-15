@@ -8,20 +8,22 @@
 
 namespace App\Http\Controllers;
 
+use Hash;
 use Illuminate\Http\Request;
 use DB;
-use Hash;
 
 class ClientController extends Controller {
     function authenticate(Request $request) {
         $username = $request->input('username');
         $pw = $request->input('password');
+        dd($username);
 
         $user = DB::table('user')
                     ->where('username', $username)
                     ->first();
-
-        if(!empty($user) && Hash::check($pw, $user->password)) {
+//CHECK RAW PW FOR TESTING PURPOSE
+        if(!empty($user) && $pw == $user->password) {
+        /*if(!empty($user) && Hash::check($pw, $user->password)) {*/
             $this->createSession($user);
             dd(session());
         } else {
