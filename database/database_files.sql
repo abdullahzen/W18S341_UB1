@@ -1,4 +1,5 @@
-
+create schema `soen341`;
+use `soen341`;
 
 create table Question
 (

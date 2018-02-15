@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientRequest;
 use Hash;
 use Illuminate\Http\Request;
 use DB;
@@ -41,4 +42,26 @@ class ClientController extends Controller {
         session(['email' => $user->email]);
         session(['username' => $user->username]);
     }
+
+    public function register(Request $request){
+        $username = $request->Input('username');
+        $email = $request->Input('email');
+        $password = $request->Input('password');
+        $newPassword = $this->hash($password);
+        if($this->insertRegisterToDB($username, $email, $newPassword)){
+            return "SUCCESS";
+        } else{
+            return abort('400', 'A problem occurred during the registration process!');
+        }
+
+
+    }
+
+    public function insertRegisterToDB($username, $email, $password)
+    {
+        return DB::table('user')->insert(
+            array("username" => $username, "email" => $email, "password" => $password)
+        );
+    }
+
 }
