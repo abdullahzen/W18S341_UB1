@@ -2,11 +2,16 @@ $(document).ready(function () {
     var login = document.getElementById("loginButton");
     var loginModal = document.getElementById('loginModal');
 
+    var post = document.getElementById("newpostButton");
+    var postModal = document.getElementById('postModal');
+
     var register = document.getElementById("registerButton");
     var registerModal = document.getElementById('registerModal');
 
     var span = document.getElementsByClassName("close")[0];
     var spanR = document.getElementsByClassName("closeR")[0];
+    var spanP = document.getElementsByClassName("closeP")[0];
+
 
     login.onclick = function() {
         loginModal.style.display = "block";
@@ -16,14 +21,23 @@ $(document).ready(function () {
         registerModal.style.display = "block";
     }
 
+    post.onClick = function(){
+        postModal.style.display = "block";
+    }
+
     span.onclick = function() {
         loginModal.style.display = "none";
-        registerModal.style.display = "none";
     }
 
     spanR.onclick = function() {
         registerModal.style.display = "none";
     }
+
+    spanP.onclick = function() {
+        postModal.style.display = "none";
+    }
+
+
 
     // Fix this if you want
     window.onclick = function(event) {

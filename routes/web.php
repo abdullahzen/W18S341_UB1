@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('pages.homepage');
 });
 
+Route::get('/post', function () {
+    return view('modals.newquestion');
+});
+
 Route::get('/logout', function() {
     session()->flush();
     return view('pages.homepage');

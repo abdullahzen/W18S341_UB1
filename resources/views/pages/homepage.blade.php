@@ -7,6 +7,7 @@
 <div class="row">
     <div class="column1">
         <div class="slds-scope">
+            {{--@if(session()->has('id'))
             <article class="slds-card" style="width:50%">
                 <div class="slds-card__header slds-grid">
                     <header class="slds-media slds-media_center slds-has-flexi-truncate">
@@ -28,8 +29,9 @@
                             </h2>
                         </div>
                     </header>
+
                     <div class="slds-no-flex">
-                        <button class="slds-button slds-button_neutral" onclick="showpostquestion();">New</button>
+                        <button class="slds-button slds-button_neutral" id="newpostButton">Post</button>
                     </div>
                 </div>
                 <div class="slds-card__body slds-card__body_inner">
@@ -164,7 +166,7 @@
                                     </div>
                                 </div>
                                 </br>
-                                <!-- File Button -->
+                                --}}{{--<!-- File Button -->
                                 <div class="form-group">
                                     <div class="slds-form-element">
                                         <span class="slds-form-element__label" id="file-selector-primary-label">Attachment</span>
@@ -192,7 +194,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                </br>
+                                </br>--}}{{--
                                 <!-- Button (Double) -->
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="button1id"></label>
@@ -200,9 +202,9 @@
                                         <button id="button1id" name="button1id" class="slds-button slds-button_brand">
                                             Post
                                         </button>
-                                        <button id="button2id" name="button2id"
+                                        --}}{{--<button id="button2id" name="button2id"
                                                 class="slds-button slds-button_destructive">Reset
-                                        </button>
+                                        </button>--}}{{--
                                     </div>
                                 </div>
                             </fieldset>
@@ -211,6 +213,7 @@
                 </div>
                 <footer class="slds-card__footer"></footer>
             </article>
+            @endif--}}
 
 
             <br/>
@@ -952,3 +955,4 @@
 {{--Modal Inclusion--}}
 @include('modals.login')
 @include('modals.register')
+@include('modals.newquestion')
