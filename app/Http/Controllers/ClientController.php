@@ -13,10 +13,9 @@ use Illuminate\Http\Request;
 use DB;
 
 class ClientController extends Controller {
-    function authenticate(Request $request) {
+    public function authenticate(Request $request) {
         $username = $request->input('username');
         $pw = $request->input('password');
-        dd($username);
 
         $user = DB::table('user')
                     ->where('username', $username)
@@ -25,21 +24,20 @@ class ClientController extends Controller {
         if(!empty($user) && $pw == $user->password) {
         /*if(!empty($user) && Hash::check($pw, $user->password)) {*/
             $this->createSession($user);
-            dd(session());
         } else {
             abort(400, "Invalid username or password.");
         }
 
-        return null;
+        return view('pages.homepage');
     }
 
     public function hash($password) {
         return Hash::make($password);
     }
 
-    function createSession($user) {
+    public function createSession($user) {
         session()->flush();
-        session(['id' => $user->id]);
+        session(['id' => $user->user_ID]);
         session(['email' => $user->email]);
         session(['username' => $user->username]);
     }
