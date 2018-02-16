@@ -26,6 +26,11 @@ Route::get('/logout', function() {
     return view('pages.homepage');
 });
 
+Route::get('/userProfile', function() {
+    session()->flush();
+    return view('pages.userProfile');
+});
+
 //POST
 
 Route::get('/login', 'ClientController@authenticate');
