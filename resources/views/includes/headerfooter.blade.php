@@ -10,7 +10,7 @@
                         <ul class="slds-global-header__item slds-grid slds-grid_vertical-align-center">
                            <li class="slds-grid">
                               <div class="slds-context-bar__icon-action">
-                                 <button class="slds-button slds-icon-waffle_container slds-context-bar__button" title="Description of the icon when needed">
+                                 <button class="slds-button slds-icon-waffle_container slds-context-bar__button" title="Description of the icon when needed" onclick="displaycategories();">
                                  <span class="slds-icon-waffle">
                                  <span class="slds-r1"></span>
                                  <span class="slds-r2"></span>
@@ -28,16 +28,19 @@
                            </li>
                            <li class="slds-grid">
                               <div class="slds-global-header__logo">
-                                 <img src="../assets/images/logo.svg" alt="Smiley face" height="30" width="30">
+                                 <img src="../assets/images/logo_new.svg" alt="Smiley face" height="80" width="80">
                               </div>
                            </li>
                            <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
                               <div class="slds-button-group" role="group">
-                                 <button class="slds-button slds-button_neutral" onclick="location.href='./'">Home</button>
-                                 @if(!session()->has('id'))
+                                 <button class="slds-button slds-button_neutral" onclick="location.href='..'">Home</button>
+
+                                  @if(session()->has('username'))
+                                    <button class="slds-button slds-button_neutral" onclick="window.location.href='../post'">New Post</button>
+                                  @else
                                     <button class="slds-button slds-button_neutral" id="registerButton">Register</button>
                                     <button class="slds-button slds-button_neutral" id="loginButton">Login</button>
-                                 @endif
+                                  @endif
                               </div>
                            </li>
                         </ul>
@@ -45,7 +48,7 @@
                      <div class="slds-global-header__item">
                         <div class="slds-global-header__logo"></div>
                      </div>
-                     <div class="slds-global-header__item slds-global-header__item_search">
+                     <div class="slds-global-header__item slds-global-header__item_search" style="margin-right: 33%;">
                         <div aria-expanded="false" aria-haspopup="listbox" class="slds-form-element slds-lookup" role="combobox">
                            <label class="slds-assistive-text" for="global-search-01">Search Salesforce</label>
                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left-right">
@@ -91,7 +94,7 @@
                            </button>
                         </li>
                         <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
-                           <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon" title="Setup">
+                           <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon" id="userProfileButton" title="Setup">
                               <svg class="slds-button__icon slds-global-header__icon" aria-hidden="true">
                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#setup" />
                               </svg>
@@ -232,7 +235,7 @@
                <ul class="slds-global-header__item slds-grid slds-grid_vertical-align-center">
                   <li class="slds-grid">
                      <div class="slds-global-header__logo">
-                        <img src="../assets/images/logo.svg" alt="Smiley face" height="30" width="30">
+                        <img src="../assets/images/logo_new.svg" alt="Smiley face" height="80" width="80">
                      </div>
                   </li>
                   <li class="slds-dropdown-trigger slds-dropdown-trigger_click">

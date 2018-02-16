@@ -1,10 +1,11 @@
 /* Modal forms */
 .modal {
-    display: none;
+    display : none;
 }
 
 .form-style-base{
     top:0px;
+    display: none;
     z-index: 999;
     opacity: 0;
 }
@@ -42,6 +43,20 @@
 
 .closeR:hover,
 .closeR:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.closeP {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeP:hover,
+.closeP:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

@@ -22,13 +22,14 @@ class ClientController extends Controller {
         $user = DB::table('user')
                     ->where('username', $username)
                     ->first();
-            //CHECK RAW PW FOR TESTING PURPOSE
-            /*if(!empty($user) && $pw == $user->password) {*/
-            if (!empty($user) && Hash::check($pw, $user->password)) {
-                $this->createSession($user);
-            } else {
-                abort(400, "Invalid username or password.");
-            }
+
+		//CHECK RAW PW FOR TESTING PURPOSE
+        /*if(!empty($user) && $pw == $user->password) {*/
+        if(!empty($user) && Hash::check($pw, $user->password)) {
+            $this->createSession($user);
+        } else {
+            abort(400, "Invalid username or password.");
+        }
         return view('pages.homepage');
     }
 
@@ -42,8 +43,25 @@ class ClientController extends Controller {
         session(['id' => $user->user_ID]);
         session(['email' => $user->email]);
         session(['username' => $user->username]);
+        ClientControllerHelper::$middleware2 = ['username' => $user->username];
     }
 
+    public function postQuestion(Request $request) {
+        $question = $request->input('title');
+        $answer_ID = 0;
+        $answer = $request->input('question');
+        $category = $request->input('category');
+        $user_ID = session()->get('id');
+
+        if(DB::table('question')->insert(
+            array("question" => $question, "answer_ID" => $answer_ID, "answer" => $answer, "category" => $category, "user_ID" => $user_ID)
+        )) {
+            return view('pages.homepage');
+        } else {
+            return abort('400');
+        }
+    }
+  
     public function register(Request $request){
         $username = $request->Input('username');
         $email = $request->Input('email');
@@ -54,8 +72,6 @@ class ClientController extends Controller {
         } else{
             return abort('400', 'A problem occurred during the registration process!');
         }
-
-
     }
 
     public function insertRegisterToDB($username, $email, $password) {

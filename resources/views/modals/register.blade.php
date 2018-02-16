@@ -10,33 +10,49 @@
                                 <h2 class="slds-text-heading_medium slds-hyphenate" id="modal-heading-01">Registration Details</h2>
                             </header>
                             <div class="modal-body">
-                                <div class="container-fluid">
-                                    <center>
-                                        {{--<div id="loginError"></div>--}}
-                                        <div class="form-group">
-                                            <label>Username</label>
-                                            <input type="text" class="form-control input-md" placeholder="Username" name="username" id="username"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="text" class="form-control input-md" placeholder="Email" name="email" id="email"/>
-                                            {{--<span class="pull-right"><a href="#">Forgot Password?</a></span>--}}
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" class="form-control input-md" placeholder="Password" name="password" id="password"/>
-                                            {{--<span class="pull-right"><a href="#">Forgot Password?</a></span>--}}
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Password confirmation</label>
-                                            <input type="password" class="form-control input-md" placeholder="Re-type Password" name="passwordConfirmation" id="passwordConfirmation"/>
-                                            {{--<span class="pull-right"><a href="#">Forgot Password?</a></span>--}}
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="submit" id="submitButton" class="btn btn-block btn-md btn-primary" value="Submit"/>
-                                        </div>
-                                    </center>
+                                {{--<div id="loginError"></div>--}}
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-01">Username</label>
+                                    <div class="slds-form-element__control">
+                                        <input class="slds-input" name="username" id="username" placeholder="Enter a username..."
+                                               type="text">
+                                    </div>
                                 </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-02">E-mail</label>
+                                    <div class="slds-form-element__control">
+                                        <input class="slds-input" name="email" id="email" placeholder="Enter e-mail..."
+                                               type="text">
+                                    </div>
+                                </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-03">Password</label>
+                                    <div class="slds-form-element__control">
+                                        <input class="slds-input" name="password" id="password" placeholder="Enter password..."
+                                               type="password">
+                                    </div>
+                                </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-04">Confirm Password</label>
+                                    <div class="slds-form-element__control">
+                                        <input class="slds-input" name="passwordConfirmation" id="passwordConfirmation" placeholder="Re-enter password..."
+                                               type="password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" id="submitButton" class="btn btn-block btn-md btn-primary" value="Submit"/>
+                                </div>
+                                {{--<fieldset class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                      <span class="slds-checkbox">
+                                      <input id="checkbox-48" name="default" type="checkbox" value="on">
+                                      <label class="slds-checkbox__label" for="checkbox-48">
+                                      <span class="slds-checkbox_faux"></span>
+                                      <span class="slds-form-element__label">I agree to terms and conditions</span>
+                                      </label>
+                                      </span>
+                                    </div>
+                                </fieldset>--}}
                             </div>
                             <footer class="slds-modal__footer">
                                 {{--<button class="slds-button slds-button_brand" id="loginButton">Log in</button>--}}
