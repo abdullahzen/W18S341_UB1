@@ -38,7 +38,7 @@ class ClientController extends Controller {
         session()->flush();
         session(['id' => $user->user_ID]);
         session(['email' => $user->email]);
-        session(['username' => $user->username]);
+        session(['username' => $user->username]); 
         ClientControllerHelper::$middleware2 = ['username' => $user->username];
     }
 
