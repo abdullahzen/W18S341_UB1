@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use DB;
 
 class ClientController extends Controller {
+
+    //Login Stuff
     public function authenticate(Request $request) {
         $username = $request->input('username');
         $pw = $request->input('password');
@@ -20,8 +22,8 @@ class ClientController extends Controller {
         $user = DB::table('user')
                     ->where('username', $username)
                     ->first();
-//CHECK RAW PW FOR TESTING PURPOSE
-/*        if(!empty($user) && $pw == $user->password) {*/
+            //CHECK RAW PW FOR TESTING PURPOSE
+            /*if(!empty($user) && $pw == $user->password) {*/
             if (!empty($user) && Hash::check($pw, $user->password)) {
                 $this->createSession($user);
             } else {
@@ -34,6 +36,7 @@ class ClientController extends Controller {
         return Hash::make($password);
     }
 
+    //Register Stuff
     public function createSession($user) {
         session()->flush();
         session(['id' => $user->user_ID]);
@@ -47,7 +50,7 @@ class ClientController extends Controller {
         $password = $request->Input('password');
         $newPassword = $this->hash($password);
         if($this->insertRegisterToDB($username, $email, $newPassword)){
-            return "SUCCESS";
+            return view('pages.homepage');
         } else{
             return abort('400', 'A problem occurred during the registration process!');
         }
@@ -55,12 +58,41 @@ class ClientController extends Controller {
 
     }
 
-    public function insertRegisterToDB($username, $email, $password)
-    {
+    public function insertRegisterToDB($username, $email, $password) {
         $solve = '0';
         return DB::table('user')->insert(
             array("username" => $username, "email" => $email, "password" => $password, "is_Solver" => $solve)
         );
     }
 
+    //Display homepage stuff
+
+
+    public function getHomepage() {
+        //Get posts stuff
+        $java = $this->getPostsByCategoryQuery(1);
+        $js = $this->getPostsByCategoryQuery(1);
+        $php = $this->getPostsByCategoryQuery(2);
+        $c = $this->getPostsByCategoryQuery(3);
+
+        return view('pages.homepage', ['java' => $java, 'js' => $js, 'php' => $php, 'c' => $c]);
+    }
+
+    public function getPostsByCategoryQuery($category) {
+        $post = DB::select('
+            SELECT 
+                q.question_ID, 
+                q.question,
+                q.answer_ID,
+                q.answer,
+                q.category,
+                q.user_ID as userID,
+                u.username
+            FROM question q
+            INNER JOIN user u
+                ON q.user_ID = u.user_ID AND q.category = ' . $category
+        );
+
+        return $post;
+    }
 }

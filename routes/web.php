@@ -13,11 +13,11 @@
 
 //GET
 
-Route::get('/', function () {
-    return view('pages.homepage');
-});
+Route::get('/', array(
+    'uses' => 'ClientController@getHomepage'
+));
 
-Route::get('/logout', function() {
+Route::post('/logout', function() {
     session()->flush();
     return view('pages.homepage');
 });

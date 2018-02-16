@@ -1,5 +1,6 @@
 @include('includes.head')
 @include('includes.headerfooter')
+{{dd($java)}}
 <body>
 <br/>
 <br/>
