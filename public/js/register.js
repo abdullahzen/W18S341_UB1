@@ -5,7 +5,7 @@ $(function(){
         request.done(function () {
             window.location = '/';
         });
-        alert('I failed');
+        
         request.fail(function (jqXHR) {
             var data = $.parseJSON(jqXHR.responseText);
             var err = data.message;
