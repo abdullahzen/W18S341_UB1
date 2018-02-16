@@ -34,7 +34,10 @@
                            <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
                               <div class="slds-button-group" role="group">
                                  <button class="slds-button slds-button_neutral" onclick="location.href='./'">Home</button>
+
+                                  @if(session()->has('username'))
                                     <button class="slds-button slds-button_neutral" id="newpostButton">New Post</button>
+                                  @endif
                                     <button class="slds-button slds-button_neutral" id="registerButton">Register</button>
                                     <button class="slds-button slds-button_neutral" id="loginButton">Login</button>
                               </div>
