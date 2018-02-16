@@ -28,7 +28,7 @@
                            </li>
                            <li class="slds-grid">
                               <div class="slds-global-header__logo">
-                                 <img src="../assets/images/logo.svg" alt="Smiley face" height="30" width="30">
+                                 <img src="../assets/images/logo_new.svg" alt="Smiley face" height="80" width="80">
                               </div>
                            </li>
                            <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
@@ -235,7 +235,7 @@
                <ul class="slds-global-header__item slds-grid slds-grid_vertical-align-center">
                   <li class="slds-grid">
                      <div class="slds-global-header__logo">
-                        <img src="../assets/images/logo.svg" alt="Smiley face" height="30" width="30">
+                        <img src="../assets/images/logo_new.svg" alt="Smiley face" height="80" width="80">
                      </div>
                   </li>
                   <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
