@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('pages.homepage');
 });
 
+Route::get('/post', function () {
+    return view('pages.newquestion');
+});
+
 Route::get('/logout', function() {
     session()->flush();
     return view('pages.homepage');
@@ -25,6 +29,5 @@ Route::get('/logout', function() {
 //POST
 
 Route::get('/login', 'ClientController@authenticate');
-
+Route::get('/post/do', 'ClientController@postQuestion');
 Route::get('/register', 'ClientController@register');
-
