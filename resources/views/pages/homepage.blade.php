@@ -955,4 +955,3 @@
 {{--Modal Inclusion--}}
 @include('modals.login')
 @include('modals.register')
-@include('modals.newquestion')

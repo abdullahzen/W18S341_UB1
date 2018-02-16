@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/post', function () {
-    return view('modals.newquestion');
+    return view('pages.newquestion');
 });
 
 Route::get('/logout', function() {
@@ -29,3 +29,4 @@ Route::get('/logout', function() {
 //POST
 
 Route::get('/login', 'ClientController@authenticate');
+Route::get('/post/do', 'ClientController@postQuestion');
