@@ -37,6 +37,38 @@
                                         </div>
                                     </center>
                                 </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-02">E-mail</label>
+                                    <div class="slds-form-element__control">
+                                        <input class="slds-input" id="input-id-01" placeholder="Enter e-mail..."
+                                               type="text">
+                                    </div>
+                                </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-03">Password</label>
+                                    <div class="slds-form-element__control">
+                                        <input class="slds-input" id="input-id-01" placeholder="Enter password..."
+                                               type="text">
+                                    </div>
+                                </div>
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="input-id-04">Confirm Password</label>
+                                    <div class="slds-form-element__control">
+                                        <input class="slds-input" id="input-id-01" placeholder="Re-enter password..."
+                                               type="text">
+                                    </div>
+                                </div>
+                                {{--<fieldset class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                      <span class="slds-checkbox">
+                                      <input id="checkbox-48" name="default" type="checkbox" value="on">
+                                      <label class="slds-checkbox__label" for="checkbox-48">
+                                      <span class="slds-checkbox_faux"></span>
+                                      <span class="slds-form-element__label">I agree to terms and conditions</span>
+                                      </label>
+                                      </span>
+                                    </div>
+                                </fieldset>--}}
                             </div>
                             <footer class="slds-modal__footer">
                                 {{--<button class="slds-button slds-button_brand" id="loginButton">Log in</button>--}}

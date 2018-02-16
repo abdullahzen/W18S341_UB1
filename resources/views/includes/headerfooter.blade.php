@@ -10,7 +10,7 @@
                         <ul class="slds-global-header__item slds-grid slds-grid_vertical-align-center">
                            <li class="slds-grid">
                               <div class="slds-context-bar__icon-action">
-                                 <button class="slds-button slds-icon-waffle_container slds-context-bar__button" title="Description of the icon when needed">
+                                 <button class="slds-button slds-icon-waffle_container slds-context-bar__button" title="Description of the icon when needed" onclick="displaycategories();">
                                  <span class="slds-icon-waffle">
                                  <span class="slds-r1"></span>
                                  <span class="slds-r2"></span>
@@ -48,7 +48,7 @@
                      <div class="slds-global-header__item">
                         <div class="slds-global-header__logo"></div>
                      </div>
-                     <div class="slds-global-header__item slds-global-header__item_search">
+                     <div class="slds-global-header__item slds-global-header__item_search" style="margin-right: 33%;">
                         <div aria-expanded="false" aria-haspopup="listbox" class="slds-form-element slds-lookup" role="combobox">
                            <label class="slds-assistive-text" for="global-search-01">Search Salesforce</label>
                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left-right">

@@ -163,3 +163,10 @@ function showPhp() {
 function showpostquestion() {
     $("#postquestion").css('display', 'block');
 }
+
+
+function displaycategories() {
+    $("#categories").css('display', 'block');
+	showJava();
+	$("#postquestions").css('width', '77%');
+}
