@@ -1,4 +1,5 @@
-
+create schema `soen341`;
+use `soen341`;
 
 create table Question
 (
@@ -25,7 +26,7 @@ create table User
 		primary key,
 	username varchar(25) not null,
 	email varchar(100) not null,
-	password varchar(25) not null,
+	password varchar(1000) not null,
 	create_time timestamp default CURRENT_TIMESTAMP not null,
 	is_Solver tinyint(1) not null,
 	constraint user_ID_UNIQUE

@@ -25,3 +25,6 @@ Route::get('/logout', function() {
 //POST
 
 Route::get('/login', 'ClientController@authenticate');
+
+Route::get('/register', 'ClientController@register');
+
