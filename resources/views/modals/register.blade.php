@@ -26,21 +26,21 @@
                                     </div>
                                 </div>
                                 <div class="slds-form-element">
-                                    <label class="slds-form-element__label" for="input-id-01">E-mail</label>
+                                    <label class="slds-form-element__label" for="input-id-02">E-mail</label>
                                     <div class="slds-form-element__control">
                                         <input class="slds-input" id="input-id-01" placeholder="Enter e-mail..."
                                                type="text">
                                     </div>
                                 </div>
                                 <div class="slds-form-element">
-                                    <label class="slds-form-element__label" for="input-id-01">Password</label>
+                                    <label class="slds-form-element__label" for="input-id-03">Password</label>
                                     <div class="slds-form-element__control">
                                         <input class="slds-input" id="input-id-01" placeholder="Enter password..."
                                                type="text">
                                     </div>
                                 </div>
                                 <div class="slds-form-element">
-                                    <label class="slds-form-element__label" for="input-id-01">Confirm Password</label>
+                                    <label class="slds-form-element__label" for="input-id-04">Confirm Password</label>
                                     <div class="slds-form-element__control">
                                         <input class="slds-input" id="input-id-01" placeholder="Re-enter password..."
                                                type="text">

@@ -19,9 +19,9 @@ body {
 
 .questions {
     float: right;
-    width: 78%;
+        width: 1085px;
     padding: 10px;
-	height: 700px;
+	height: 800px;
 }
 
 .section {
