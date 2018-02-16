@@ -22,10 +22,10 @@ Route::get('/post', function () {
     return view('pages.newquestion');
 });
 
-Route::get('/logout', function() {
-    session()->flush();
-    return view('pages.homepage');
-});
+Route::get('/logout', array(
+    session()->flush(),
+    'uses' => 'ClientController@getHomepage'
+));
 
 Route::get('/userProfile', function() {
     session()->flush();

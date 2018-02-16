@@ -30,7 +30,7 @@ class ClientController extends Controller {
         } else {
             abort(400, "Invalid username or password.");
         }
-        return view('pages.homepage');
+        return ClientController::getHomepage();
     }
 
     public function hash($password) {
@@ -56,7 +56,7 @@ class ClientController extends Controller {
         if(DB::table('question')->insert(
             array("question" => $question, "answer_ID" => $answer_ID, "answer" => $answer, "category" => $category, "user_ID" => $user_ID)
         )) {
-            return view('pages.homepage');
+            return ClientController::getHomepage();
         } else {
             return abort('400');
         }
@@ -106,8 +106,9 @@ class ClientController extends Controller {
                 u.username
             FROM question q
             INNER JOIN user u
-                ON q.user_ID = u.user_ID AND q.category = ' . $category
-        );
+                ON q.user_ID = u.user_ID AND q.category = ' . $category . '
+            ORDER BY q.question_ID DESC
+        ');
 
         return $post;
     }

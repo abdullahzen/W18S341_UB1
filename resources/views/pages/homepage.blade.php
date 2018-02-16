@@ -1,9 +1,8 @@
 @include('includes.head')
 @include('includes.headerfooter')
-{{dd($java)}}
 <body>
   <div class="slds-scope">
-			<div>
+			{{--<div>
             <article id="postquestions" class="slds-card" style="        width: 98%;float: right;margin-right: 12px;margin-top: 10px;">
                <div class="slds-card__header slds-grid">
                   <header class="slds-media slds-media_center slds-has-flexi-truncate">
@@ -208,9 +207,8 @@
                </div>
                <footer class="slds-card__footer"></footer>
             </article>
-			</div>
-      <br/>
-      <br/>
+			</div>--}}
+            {{--LEFT MENU--}}
 			<div>
             <div class="demo-only section" id="categories" style="width: 296px; background-color: rgb(250, 250, 251);    margin-top: -33px; display: none;">
                <nav class="slds-nav-vertical slds-nav-vertical_shade" aria-label="Sub page">
@@ -241,9 +239,10 @@
                   </div>
                </nav>
             </div>
+            {{--CATEGORY 1: JAVA--}}
             <div id="Java" class="questions" style="display : none;">
-			
-			<div class="slds-card">
+			{{--TOP QUESTION--}}
+			{{--<div class="slds-card">
 				 <div class="slds-page-header">
                      <div class="slds-media">
                         <div class="slds-media__figure">
@@ -276,10 +275,9 @@
                   </ul>
                  
 				  </div>
-				 <br/>
-				
+				 <br/>--}}
+				{{--ALL QUESTIONS--}}
                <article class="slds-card">
-                  
                   <div class="slds-page-header">
                      <div class="slds-media">
                         <div class="slds-media__figure">
@@ -300,10 +298,12 @@
                         </div>
                      </div>
                   </div>
+                  {{--POSTS--}}
                   <div class="slds-card__header slds-grid">
                      <div class="slds-feed">
                         <ul class="slds-feed__list">
                            <li class="slds-feed__item">
+                              @foreach ($java as $data)
                               <article class="slds-post">
                                  <header class="slds-post__header slds-media">
                                     <div class="slds-media__figure">
@@ -315,55 +315,48 @@
                                     </div>
                                     <div class="slds-media__body">
                                        <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
-                                          <p><a href="javascript:void(0);" title="Jason Rodgers">Jason
-                                             Rogers</a> — <a href="javascript:void(0);"
-                                                title="Design Systems">Design Systems</a>
+                                          <p><a href="javascript:void(0);">{{$data->username}}</a> —
+                                             <a href="javascript:void(0);">{{$data->question}}</a>
                                           </p>
-                                          <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
-                                             aria-haspopup="true" title="More Options">
+                                          <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small" aria-haspopup="true" title="More Options">
                                              <svg class="slds-button__icon" aria-hidden="true">
-                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                   xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"/>
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"/>
                                              </svg>
                                              <span class="slds-assistive-text">More Options</span>
                                           </button>
                                        </div>
                                        <p class="slds-text-body_small"><a href="javascript:void(0);"
                                           title="Click for single-item view of this post"
-                                          class="slds-text-link_reset">5 days
-                                          Ago</a>
+                                          class="slds-text-link_reset">999 days Ago</a>
                                        </p>
                                     </div>
                                  </header>
                                  <div class="slds-post__content slds-text-longform">
-                                    <p>Hey there! <a href="javascript:void(0);" title="Jenna Davis">@Jenna
-                                       Davis</a>, I've inherited a project I'm working on and I'm updating
-                                       some jquery animations (very little practice with jquery).
-                                       I have a div I need to add and remove the style attribute from. Here is
-                                       the div:
+                                    <p>
+                                       {{$data->answer}}
                                     </p>
                                  </div>
                                  <footer class="slds-post__footer">
                                     <ul class="slds-post__footer-actions-list slds-list_horizontal">
                                        <li class="slds-col slds-item slds-m-right_medium">
-                                          <button title="Upvote this item"
-                                             class="slds-button_reset slds-post__footer-action"
-                                             aria-pressed="false">
+                                          <button title="Upvote this item" class="slds-button_reset slds-post__footer-action" aria-pressed="false">
+                                             999
                                              <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle"
                                                 aria-hidden="true">
-                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                   xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#share_mobile"/>
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#share_mobile"/>
                                              </svg>
                                              Upvote
                                           </button>
                                        </li>
                                     </ul>
                                     <ul class="slds-post__footer-meta-list slds-list_horizontal slds-has-dividers_right slds-text-title">
-                                       <li class="slds-item">2 answers</li>
-                                       <li class="slds-item">259 views</li>
+                                       <li class="slds-item">999 answers</li>
+                                       <li class="slds-item">999 views</li>
                                     </ul>
                                  </footer>
                               </article>
+                              @endforeach
+                              {{--COMMENT--}}
                               <div class="slds-feed__item-comments">
                                  <ul>
                                     <li>
@@ -409,51 +402,9 @@
                                           </div>
                                        </article>
                                     </li>
-                                    <li>
-                                       <article class="slds-comment slds-media slds-hint-parent">
-                                          <div class="slds-media__figure">
-                                             <a href="javascript:void(0);"
-                                                class="slds-avatar slds-avatar_circle slds-avatar_medium">
-                                             <img alt="Jenna Davis" src="/assets/images/avatar2.jpg"
-                                                title="Jenna Davis avatar"/>
-                                             </a>
-                                          </div>
-                                          <div class="slds-media__body">
-                                             <header class="slds-media slds-media_center">
-                                                <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
-                                                   <p class="slds-truncate" title="Jenna Davis"><a
-                                                      href="javascript:void(0);">Jenna Davis</a>
-                                                   </p>
-                                                   <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
-                                                      aria-haspopup="true" title="More Options">
-                                                      <svg class="slds-button__icon" aria-hidden="true">
-                                                         <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"/>
-                                                      </svg>
-                                                      <span class="slds-assistive-text">More Options</span>
-                                                   </button>
-                                                </div>
-                                             </header>
-                                             <div class="slds-comment__content slds-text-longform">Lorem
-                                                ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                             </div>
-                                             <footer>
-                                                <ul class="slds-list_horizontal slds-has-dividers_right slds-text-body_small">
-                                                   <li class="slds-item">
-                                                      <button class="slds-button_reset slds-text-color_weak"
-                                                         title="Upvote this item"
-                                                         aria-pressed="false">Upvote
-                                                      </button>
-                                                   </li>
-                                                   <li class="slds-item">16hr Ago</li>
-                                                </ul>
-                                             </footer>
-                                          </div>
-                                       </article>
-                                    </li>
                                  </ul>
-                                 <div class="slds-media slds-comment slds-hint-parent">
+                                 {{--ADD COMMENT--}}
+                                 {{--<div class="slds-media slds-comment slds-hint-parent">
                                     <div class="slds-media__figure">
                                        <a class="slds-avatar slds-avatar_circle slds-avatar_medium"
                                           href="javascript:void(0);">
@@ -495,7 +446,7 @@
                                           </div>
                                        </div>
                                     </div>
-                                 </div>
+                                 </div>--}}
                               </div>
                            </li>
                         </ul>
@@ -503,6 +454,7 @@
                   </div>
                </article>
             </div>
+               {{--SECTION 2--}}
             <div id="Javascript" class="questions" style="display : none;">
 				<div class="slds-card">
 				 <div class="slds-page-header">
