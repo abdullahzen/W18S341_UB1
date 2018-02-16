@@ -30,3 +30,4 @@ Route::get('/logout', function() {
 
 Route::get('/login', 'ClientController@authenticate');
 Route::get('/post/do', 'ClientController@postQuestion');
+Route::get('/register', 'ClientController@register');
