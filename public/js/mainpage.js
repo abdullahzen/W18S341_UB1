@@ -8,17 +8,30 @@ $(document).ready(function () {
     var register = document.getElementById("registerButton");
     var registerModal = document.getElementById('registerModal');
 
+    var userProfile = document.getElementById("userProfileButton");
+    var userProfileModal = document.getElementById("userProfileModal");
+
     var span = document.getElementsByClassName("close")[0];
     var spanR = document.getElementsByClassName("closeR")[0];
     //var spanP = document.getElementsByClassName("closeP")[0];
+    var spanU = document.getElementsByClassName("closeU")[0];
 
-
-    login.onclick = function() {
-        loginModal.style.display = "block";
+    if(login != null) {
+        login.onclick = function () {
+            loginModal.style.display = "block";
+        }
     }
 
-    register.onclick = function() {
-        registerModal.style.display = "block";
+    if(register != null){
+        register.onclick = function() {
+            registerModal.style.display = "block";
+        }
+    }
+
+    if(userProfile != null) {
+        userProfile.onclick = function () {
+            userProfileModal.style.display = "block";
+        }
     }
 
     /*post.onclick = function(){
@@ -37,7 +50,9 @@ $(document).ready(function () {
         postModal.style.display = "none";
     }*/
 
-
+    spanU.onclick = function () {
+        userProfileModal.style.display = "none";
+    }
 
     // Fix this if you want
     window.onclick = function(event) {
@@ -47,6 +62,9 @@ $(document).ready(function () {
 
         if (event.target == registerModal) {
             registerModal.style.display = "none";
+        }
+        if (event.target == userProfileModal) {
+            userProfileModal.style.display = "none";
         }
     }
 

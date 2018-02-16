@@ -94,7 +94,7 @@
                            </button>
                         </li>
                         <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
-                           <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon" title="Setup">
+                           <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon" id="userProfileButton" title="Setup">
                               <svg class="slds-button__icon slds-global-header__icon" aria-hidden="true">
                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#setup" />
                               </svg>

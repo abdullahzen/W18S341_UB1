@@ -1,4 +1,3 @@
-
 <div id="userProfileModal" class="modal">
     <div class="modal-content">
         <body>
@@ -77,4 +76,3 @@
 <link rel="icon" type="image/x-icon">
 <script src="{{URL::asset('https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')}}"></script>
 <script src="{{URL::asset('js/mainpage.js')}}"></script>
-<script src="{{ URL::asset('js/register.js') }}" type="text/javascript"></script>

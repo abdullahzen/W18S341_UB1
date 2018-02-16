@@ -39,6 +39,7 @@ class ClientController extends Controller {
         session(['id' => $user->user_ID]);
         session(['email' => $user->email]);
         session(['username' => $user->username]);
+        ClientControllerHelper::$middleware2 = ['username' => $user->username];
     }
 
     public function postQuestion(Request $request) {
@@ -67,8 +68,6 @@ class ClientController extends Controller {
         } else{
             return abort('400', 'A problem occurred during the registration process!');
         }
-
-
     }
 
     public function insertRegisterToDB($username, $email, $password)
