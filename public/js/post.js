@@ -1,8 +1,7 @@
 $(function(){
-    $("#loginButton").click(function (e) {
-        e.preventDefault();
+    $("#newpostButton").click(function () {
         /*$(". ").hide();*/
-        var request = $.get('/login', $('#loginForm').serialize());
+        var request = $.post('./post/do', $('#postForm').serialize());
         request.done(function () {
             window.location = '/';
         });
@@ -13,7 +12,7 @@ $(function(){
 
             var errMsg = '<div class=\"col-md-12 showErr\">' + err + '</div>';
 
-            $("#loginError").empty().append(errMsg);
+            $("#postError").empty().append(errMsg);
         });
     });
 });

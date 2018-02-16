@@ -21,12 +21,12 @@ class ClientController extends Controller {
                     ->where('username', $username)
                     ->first();
 //CHECK RAW PW FOR TESTING PURPOSE
-/*        if(!empty($user) && $pw == $user->password) {*/
-            if (!empty($user) && Hash::check($pw, $user->password)) {
-                $this->createSession($user);
-            } else {
-                abort(400, "Invalid username or password.");
-            }
+        /*if(!empty($user) && $pw == $user->password) {*/
+        if(!empty($user) && Hash::check($pw, $user->password)) {
+            $this->createSession($user);
+        } else {
+            abort(400, "Invalid username or password.");
+        }
         return view('pages.homepage');
     }
 
@@ -41,6 +41,22 @@ class ClientController extends Controller {
         session(['username' => $user->username]);
     }
 
+    public function postQuestion(Request $request) {
+        $question = $request->input('title');
+        $answer_ID = 0;
+        $answer = $request->input('question');
+        $category = $request->input('category');
+        $user_ID = session()->get('id');
+
+        if(DB::table('question')->insert(
+            array("question" => $question, "answer_ID" => $answer_ID, "answer" => $answer, "category" => $category, "user_ID" => $user_ID)
+        )) {
+            return view('pages.homepage');
+        } else {
+            return abort('400');
+        }
+    }
+  
     public function register(Request $request){
         $username = $request->Input('username');
         $email = $request->Input('email');
@@ -62,5 +78,4 @@ class ClientController extends Controller {
             array("username" => $username, "email" => $email, "password" => $password, "is_Solver" => $solve)
         );
     }
-
 }
