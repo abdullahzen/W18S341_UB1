@@ -24,7 +24,10 @@ class ClientControllerHelper extends Controller {
                 $username = $value;
             }
 
-            $result = DB::select('select ' . $arg . ' from user where user.username = \'' . $username . '\'')[0];
+            $result = DB::select('select ' . $arg . ' from user where user.username = \'' . $username . '\'');
+
+            if(!empty($result))
+                $result = $result[0];
 
             foreach ($result as $key => $value){
                 $arg = $value;
