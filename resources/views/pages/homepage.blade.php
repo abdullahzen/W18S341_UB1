@@ -1,9 +1,7 @@
 @include('includes.head')
 @include('includes.headerfooter')
 <body>
-  
-  
-         <div class="slds-scope">
+  <div class="slds-scope">
 			<div>
             <article id="postquestions" class="slds-card" style="        width: 98%;float: right;margin-right: 12px;margin-top: 10px;">
                <div class="slds-card__header slds-grid">
@@ -210,8 +208,8 @@
                <footer class="slds-card__footer"></footer>
             </article>
 			</div>
-            <br/>
-            <br/>
+      <br/>
+      <br/>
 			<div>
             <div class="demo-only section" id="categories" style="width: 296px; background-color: rgb(250, 250, 251);    margin-top: -33px; display: none;">
                <nav class="slds-nav-vertical slds-nav-vertical_shade" aria-label="Sub page">
@@ -1092,3 +1090,4 @@
 {{--Modal Inclusion--}}
 @include('modals.login')
 @include('modals.register')
+@include('modals.userProfile')

@@ -33,11 +33,14 @@
                            </li>
                            <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
                               <div class="slds-button-group" role="group">
-                                 <button class="slds-button slds-button_neutral" onclick="location.href='./'">Home</button>
-                                 @if(!session()->has('id'))
+                                 <button class="slds-button slds-button_neutral" onclick="location.href='..'">Home</button>
+
+                                  @if(session()->has('username'))
+                                    <button class="slds-button slds-button_neutral" onclick="window.location.href='../post'">New Post</button>
+                                  @else
                                     <button class="slds-button slds-button_neutral" id="registerButton">Register</button>
                                     <button class="slds-button slds-button_neutral" id="loginButton">Login</button>
-                                 @endif
+                                  @endif
                               </div>
                            </li>
                         </ul>
@@ -91,7 +94,7 @@
                            </button>
                         </li>
                         <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
-                           <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon" title="Setup">
+                           <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon" id="userProfileButton" title="Setup">
                               <svg class="slds-button__icon slds-global-header__icon" aria-hidden="true">
                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#setup" />
                               </svg>

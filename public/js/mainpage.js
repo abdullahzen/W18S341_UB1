@@ -2,27 +2,56 @@ $(document).ready(function () {
     var login = document.getElementById("loginButton");
     var loginModal = document.getElementById('loginModal');
 
+    /*var post = document.getElementById("newpostButton");
+    var postModal = document.getElementById('postModal');*/
+
     var register = document.getElementById("registerButton");
     var registerModal = document.getElementById('registerModal');
 
+    var userProfile = document.getElementById("userProfileButton");
+    var userProfileModal = document.getElementById("userProfileModal");
+
     var span = document.getElementsByClassName("close")[0];
     var spanR = document.getElementsByClassName("closeR")[0];
+    //var spanP = document.getElementsByClassName("closeP")[0];
+    var spanU = document.getElementsByClassName("closeU")[0];
 
-    login.onclick = function() {
-        loginModal.style.display = "block";
+    if(login != null) {
+        login.onclick = function () {
+            loginModal.style.display = "block";
+        }
     }
 
-    register.onclick = function() {
-        registerModal.style.display = "block";
+    if(register != null){
+        register.onclick = function() {
+            registerModal.style.display = "block";
+        }
     }
+
+    if(userProfile != null) {
+        userProfile.onclick = function () {
+            userProfileModal.style.display = "block";
+        }
+    }
+
+    /*post.onclick = function(){
+        postModal.style.display = "block";
+    }*/
 
     span.onclick = function() {
         loginModal.style.display = "none";
-        registerModal.style.display = "none";
     }
 
     spanR.onclick = function() {
         registerModal.style.display = "none";
+    }
+
+    /*spanP.onclick = function() {
+        postModal.style.display = "none";
+    }*/
+
+    spanU.onclick = function () {
+        userProfileModal.style.display = "none";
     }
 
     // Fix this if you want
@@ -33,6 +62,9 @@ $(document).ready(function () {
 
         if (event.target == registerModal) {
             registerModal.style.display = "none";
+        }
+        if (event.target == userProfileModal) {
+            userProfileModal.style.display = "none";
         }
     }
 
