@@ -30,7 +30,8 @@ class ClientController extends Controller {
         } else {
             abort(400, "Invalid username or password.");
         }
-        return ClientController::getHomepage();
+        return redirect('/');
+        //return ClientController::getHomepage();
     }
 
     public function hash($password) {
@@ -57,6 +58,7 @@ class ClientController extends Controller {
             array("question" => $question, "answer_ID" => $answer_ID, "answer" => $answer, "category" => $category, "user_ID" => $user_ID)
         )) {
             return ClientController::getHomepage();
+            //should return to the post section with it's post modal.
         } else {
             return abort('400');
         }
@@ -68,7 +70,7 @@ class ClientController extends Controller {
         $password = $request->Input('password');
         $newPassword = $this->hash($password);
         if($this->insertRegisterToDB($username, $email, $newPassword)){
-            return view('pages.homepage');
+            return redirect('/');
         } else{
             return abort('400', 'A problem occurred during the registration process!');
         }
@@ -87,9 +89,9 @@ class ClientController extends Controller {
     public function getHomepage() {
         //Get posts stuff
         $java = $this->getPostsByCategoryQuery(1);
-        $js = $this->getPostsByCategoryQuery(1);
-        $php = $this->getPostsByCategoryQuery(2);
-        $c = $this->getPostsByCategoryQuery(3);
+        $js = $this->getPostsByCategoryQuery(2);
+        $php = $this->getPostsByCategoryQuery(3);
+        $c = $this->getPostsByCategoryQuery(4);
 
         return view('pages.homepage', ['java' => $java, 'js' => $js, 'php' => $php, 'c' => $c]);
     }

@@ -315,8 +315,10 @@
                                     </div>
                                     <div class="slds-media__body">
                                        <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
-                                          <p><a href="javascript:void(0);">{{$data->username}}</a> —
+                                          <p>
                                              <a href="javascript:void(0);">{{$data->question}}</a>
+                                             <br />
+                                             <a href="javascript:void(0);">{{$data->username}}</a>
                                           </p>
                                           <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small" aria-haspopup="true" title="More Options">
                                              <svg class="slds-button__icon" aria-hidden="true">
@@ -355,6 +357,7 @@
                                     </ul>
                                  </footer>
                               </article>
+                              <br />
                               @endforeach
                               {{--COMMENT--}}
                               <div class="slds-feed__item-comments">
