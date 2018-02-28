@@ -33,6 +33,11 @@ Route::get('/userProfile', function() {
     return view('pages.userProfile');
 });
 
+Route::get('/post/{id}', array(
+    'uses' => 'ClientController@getFullPostById'
+    //'uses' => 'ClientController@getHomepage'
+));
+
 //POST
 
 Route::post('/login', 'ClientController@authenticate');

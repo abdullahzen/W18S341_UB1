@@ -57,7 +57,7 @@ class ClientController extends Controller {
         if(DB::table('question')->insert(
             array("question" => $question, "answer_ID" => $answer_ID, "answer" => $answer, "category" => $category, "user_ID" => $user_ID)
         )) {
-            return ClientController::getHomepage();
+            return redirect('/');
             //should return to the post section with it's post modal.
         } else {
             return abort('400');
@@ -113,5 +113,24 @@ class ClientController extends Controller {
         ');
 
         return $post;
+    }
+
+    public function getFullPostById($id) {
+        $post = DB::select('
+            SELECT 
+                q.question_ID, 
+                q.question,
+                q.answer_ID,
+                q.answer,
+                q.category,
+                q.user_ID as userID,
+                u.username
+            FROM question q
+            INNER JOIN user u
+                ON q.user_ID = u.user_ID AND q.question_ID = ' . $id . '
+            ORDER BY q.question_ID DESC
+        ');
+
+        return view('pages.post', ['post' => $post[0]]);
     }
 }

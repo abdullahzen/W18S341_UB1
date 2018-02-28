@@ -16,6 +16,10 @@ $(document).ready(function () {
     //var spanP = document.getElementsByClassName("closeP")[0];
     var spanU = document.getElementsByClassName("closeU")[0];
 
+    $("#categories").css('display', 'block');
+    showJava();
+    $("#postquestions").css('width', '77%');
+
     if(login != null) {
         login.onclick = function () {
             loginModal.style.display = "block";
