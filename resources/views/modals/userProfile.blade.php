@@ -32,13 +32,13 @@
                                                 title="First Label"><strong>Username:</strong>
                                             </dt>
                                             <dd class="slds-p-top_xx-large slds-text-align_left slds-text-heading_small slds-item_detail slds-truncate"
-                                                title="Description for first label">{{\App\Http\Controllers\ClientControllerHelper::getFromDB('username')}}
+                                                title="Description for first label">{{\App\Http\Controllers\ClientControllerHelper::getUserDataFromDB('username')}}
                                             </dd>
                                             <dt class="slds-text-align_center slds-text-heading_small slds-item_label slds-text-color_weak slds-truncate"
                                                 title="Second Label"><strong>Email:</strong>
                                             </dt>
                                             <dd class="slds-text-align_left slds-text-heading_small slds-item_detail slds-truncate"
-                                                title="Description for second label">{{\App\Http\Controllers\ClientControllerHelper::getFromDB('email')}}
+                                                title="Description for second label">{{\App\Http\Controllers\ClientControllerHelper::getUserDataFromDB('email')}}
                                             </dd>
                                             <dt class="slds-text-align_center slds-text-heading_small slds-item_label slds-text-color_weak slds-truncate"
                                                 title="Second Label"><strong>Password:</strong>
