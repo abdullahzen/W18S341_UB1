@@ -71,9 +71,9 @@ class ClientController extends Controller {
 
     public function insertRegisterToDB($username, $email, $password)
     {
-        $solve = '0';
+        /*$solve = '0';*/
         return DB::table('user')->insert(
-            array("username" => $username, "email" => $email, "password" => $password, "is_Solver" => $solve)
+            array("username" => $username, "email" => $email, "password" => $password /*"is_Solver" => $solve*/)
         );
     }
 }
