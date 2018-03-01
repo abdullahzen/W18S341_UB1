@@ -25,10 +25,10 @@
                             <div class="form-group">
                                 <label>Category</label>
                                 <select name="category">
-                                    <option class="form-control" value="1">Java</option>
-                                    <option class="form-control" value="2">JavaScript</option>
-                                    <option class="form-control" value="3">Php</option>
-                                    <option class="form-control" value="4">C</option>
+                                    <option class="form-control" value="Java">Java</option>
+                                    <option class="form-control" value="JavaScript">JavaScript</option>
+                                    <option class="form-control" value="Php">Php</option>
+                                    <option class="form-control" value="C">C</option>
                                 </select>
                             </div>
 
