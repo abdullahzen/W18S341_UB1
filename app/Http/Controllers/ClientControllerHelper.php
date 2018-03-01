@@ -19,7 +19,7 @@ class ClientControllerHelper extends Controller {
         if (session()->has('username')){
             $username = session()->get('username');
 
-            $result = DB::select('select ' . $arg . ' from User where User.username = \'' . $username . '\'');
+            $result = DB::select('select ' . $arg . ' from user where User.username = \'' . $username . '\'');
 
             if(!empty($result))
                 $result = $result[0];
@@ -37,7 +37,7 @@ class ClientControllerHelper extends Controller {
         if (session()->has('username')){
             $username = session()->get('username');
 
-            $result = DB::select('select ' . $arg . ' from Question q inner join User u on q.user_ID = u.user_ID where u.username = \'' . $username . '\'');
+            $result = DB::select('select ' . $arg . ' from question q inner join User u on q.user_ID = u.user_ID where u.username = \'' . $username . '\'');
 
             if(!empty($result))
                 $result = $result[0];
