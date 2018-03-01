@@ -19,7 +19,7 @@ class ClientControllerHelper extends Controller {
         if (session()->has('username')){
             $username = session()->get('username');
 
-            $result = DB::select('select ' . $arg . ' from user where User.username = \'' . $username . '\'');
+            $result = DB::select('select ' . $arg . ' from user where user.username = \'' . $username . '\'');
 
             if(!empty($result))
                 $result = $result[0];
