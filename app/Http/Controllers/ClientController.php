@@ -17,7 +17,7 @@ class ClientController extends Controller {
         $username = $request->input('username');
         $pw = $request->input('password');
 
-        $user = DB::table('User')
+        $user = DB::table('user')
                     ->where('username', $username)
                     ->first();
 //CHECK RAW PW FOR TESTING PURPOSE
@@ -48,7 +48,7 @@ class ClientController extends Controller {
         $category = $request->input('category');
         $user_ID = session()->get('id');
 
-        if(DB::table('Question')->insert(
+        if(DB::table('question')->insert(
             array("question" => $question, "answer_ID" => $answer_ID, "answer" => $answer, "category" => $category, "user_ID1" => $user_ID)
         )) {
             return view('pages.homepage');
@@ -72,7 +72,7 @@ class ClientController extends Controller {
     public function insertRegisterToDB($username, $email, $password)
     {
         $solve = '0';
-        return DB::table('User')->insert(
+        return DB::table('user')->insert(
             array("username" => $username, "email" => $email, "password" => $password, "is_Solver" => $solve)
         );
     }
