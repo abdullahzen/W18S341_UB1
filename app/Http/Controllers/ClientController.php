@@ -39,7 +39,6 @@ class ClientController extends Controller {
         session(['id' => $user->user_ID]);
         session(['email' => $user->email]);
         session(['username' => $user->username]);
-        ClientControllerHelper::$middleware2 = ['username' => $user->username];
     }
 
     public function postQuestion(Request $request) {
@@ -50,7 +49,7 @@ class ClientController extends Controller {
         $user_ID = session()->get('id');
 
         if(DB::table('question')->insert(
-            array("question" => $question, "answer_ID" => $answer_ID, "answer" => $answer, "category" => $category, "user_ID" => $user_ID)
+            array("question" => $question, "answer_ID" => $answer_ID, "answer" => $answer, "category" => $category, "user_ID1" => $user_ID)
         )) {
             return view('pages.homepage');
         } else {
@@ -72,9 +71,9 @@ class ClientController extends Controller {
 
     public function insertRegisterToDB($username, $email, $password)
     {
-        $solve = '0';
+        /*$solve = '0';*/
         return DB::table('user')->insert(
-            array("username" => $username, "email" => $email, "password" => $password, "is_Solver" => $solve)
+            array("username" => $username, "email" => $email, "password" => $password /*"is_Solver" => $solve*/)
         );
     }
 }
