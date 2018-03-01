@@ -117,13 +117,13 @@ CREATE TABLE `Question` (
   `question_ID` int(10) NOT NULL AUTO_INCREMENT,
   `question` varchar(250) NOT NULL,
   `user_ID1` int(10) NOT NULL,
-  `category1` varchar(20) DEFAULT NULL,
+  `category_ID1` int(10) NOT NULL,
   PRIMARY KEY (`question_ID`),
   UNIQUE KEY `question_ID_UNIQUE` (`question_ID`),
   UNIQUE KEY `user_ID_UNIQUE` (`user_ID1`),
-  UNIQUE KEY `category_UNIQUE` (`category1`),
+  UNIQUE KEY `category_UNIQUE` (`category_ID1`),
   KEY `user_ID_idx` (`user_ID1`),
-  CONSTRAINT `category1` FOREIGN KEY (`category1`) REFERENCES `Category` (`category`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `category_ID1` FOREIGN KEY (`category_ID1`) REFERENCES `Category` (`category_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `user_ID1` FOREIGN KEY (`user_ID1`) REFERENCES `User` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -151,6 +151,7 @@ CREATE TABLE `User` (
   `email` varchar(50) NOT NULL,
   `rank` int(4) DEFAULT '1',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `is_Solver` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`user_ID`),
   UNIQUE KEY `user_ID_UNIQUE` (`user_ID`),
   UNIQUE KEY `username_UNIQUE` (`username`),
@@ -176,3 +177,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Dump completed on 2018-03-01 10:54:31
