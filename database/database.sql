@@ -34,8 +34,6 @@ CREATE TABLE `Answer` (
   `is_bestanswer` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`answer_ID`),
   UNIQUE KEY `answer_ID_UNIQUE` (`answer_ID`),
-  UNIQUE KEY `user_ID_UNIQUE` (`user_ID2`),
-  UNIQUE KEY `question_ID_UNIQUE` (`question_ID1`),
   KEY `user_ID_idx` (`user_ID2`),
   CONSTRAINT `question_ID1` FOREIGN KEY (`question_ID1`) REFERENCES `Question` (`question_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `user_ID2` FOREIGN KEY (`user_ID2`) REFERENCES `User` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -90,8 +88,6 @@ CREATE TABLE `Favourite` (
   `favourite` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`favourite_ID`),
   UNIQUE KEY `favourite_ID_UNIQUE` (`favourite_ID`),
-  UNIQUE KEY `user_ID3_UNIQUE` (`user_ID3`),
-  UNIQUE KEY `question_ID2_UNIQUE` (`question_ID2`),
   CONSTRAINT `question_ID2` FOREIGN KEY (`question_ID2`) REFERENCES `Question` (`question_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `user_ID3` FOREIGN KEY (`user_ID3`) REFERENCES `User` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
@@ -120,8 +116,6 @@ CREATE TABLE `Question` (
   `category_ID1` int(10) NOT NULL,
   PRIMARY KEY (`question_ID`),
   UNIQUE KEY `question_ID_UNIQUE` (`question_ID`),
-  UNIQUE KEY `user_ID_UNIQUE` (`user_ID1`),
-  UNIQUE KEY `category_UNIQUE` (`category_ID1`),
   KEY `user_ID_idx` (`user_ID1`),
   CONSTRAINT `category_ID1` FOREIGN KEY (`category_ID1`) REFERENCES `Category` (`category_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `user_ID1` FOREIGN KEY (`user_ID1`) REFERENCES `User` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION

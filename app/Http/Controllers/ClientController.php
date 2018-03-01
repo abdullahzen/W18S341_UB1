@@ -43,13 +43,26 @@ class ClientController extends Controller {
 
     public function postQuestion(Request $request) {
         $question = $request->input('title');
-        $answer_ID = 0;
-        $answer = $request->input('question');
         $category = $request->input('category');
         $user_ID = session()->get('id');
 
+        $result = DB::select('select category from category');
+        $exists = false;
+
+        foreach ($result as $key => $value){
+            if ($category == $value->category){
+                $exists = true;
+            }
+        }
+
+        if (!$exists){
+            DB::table('category')->insert(array("category" => $category));
+        }
+
+        $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;
+
         if(DB::table('question')->insert(
-            array("question" => $question, "answer_ID" => $answer_ID, "answer" => $answer, "category" => $category, "user_ID1" => $user_ID)
+            array("question" => $question, "category_ID1" => $category_ID, "user_ID1" => $user_ID)
         )) {
             return view('pages.homepage');
         } else {
