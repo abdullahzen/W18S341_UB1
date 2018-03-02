@@ -28,8 +28,7 @@
             <?php
             $i = 0;
             foreach($js as $data) {
-                echo '<li class="slds-item"><a href="./post/{{$data->question_ID}}">' . $data->title . '</a></li>';
-                $i++;
+                echo '<li class="slds-item"><a href="./post/' . $data->question_ID . '">' . $data->title . '</a></li>';                $i++;
                 if ($i == 3)
                     break;
             }
@@ -69,8 +68,7 @@
                                     <div class="slds-media__figure">
                                         <a href="javascript:void(0);"
                                            class="slds-avatar slds-avatar_circle slds-avatar_large">
-                                            <img alt="Jason Rodgers" src="/assets/images/avatar1.jpg"
-                                                 title="Jason Rodgers avatar"/>
+                                            <img src="/assets/images/avatar1.jpg" />
                                         </a>
                                     </div>
                                     <div class="slds-media__body">
@@ -91,7 +89,7 @@
                                         </div>
                                         <p class="slds-text-body_small"><a href="javascript:void(0);"
                                                                            title="Click for single-item view of this post"
-                                                                           class="slds-text-link_reset">999 days Ago</a>
+                                                                           class="slds-text-link_reset">{{$data->create_time}}</a>
                                         </p>
                                     </div>
                                 </header>
@@ -117,8 +115,8 @@
                                         </li>
                                     </ul>
                                     <ul class="slds-post__footer-meta-list slds-list_horizontal slds-has-dividers_right slds-text-title">
-                                        <li class="slds-item">999 answers</li>
-                                        <li class="slds-item">999 views</li>
+                                        <li class="slds-item">{{$data->comments}} answers</li>
+                                        <li class="slds-item">{{$data->views}} views</li>
                                     </ul>
                                 </footer>
                             </article>

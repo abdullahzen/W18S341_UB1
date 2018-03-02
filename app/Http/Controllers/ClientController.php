@@ -108,6 +108,10 @@ class ClientController extends Controller {
                 q.content,
                 q.category_ID1,
                 q.user_ID1 as userID,
+                q.create_time,
+                q.upvotes,
+                q.comments,
+                q.views,
                 u.username
             FROM question q
             INNER JOIN user u
