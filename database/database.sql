@@ -33,7 +33,6 @@ CREATE TABLE `Answer` (
   `is_hidden` tinyint(4) NOT NULL DEFAULT '0',
   `is_bestanswer` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`answer_ID`),
-  UNIQUE KEY `answer_ID_UNIQUE` (`answer_ID`),
   KEY `user_ID_idx` (`user_ID2`),
   CONSTRAINT `question_ID1` FOREIGN KEY (`question_ID1`) REFERENCES `Question` (`question_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `user_ID2` FOREIGN KEY (`user_ID2`) REFERENCES `User` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -60,7 +59,6 @@ CREATE TABLE `Category` (
   `category_ID` int(10) NOT NULL AUTO_INCREMENT,
   `category` varchar(20) NOT NULL,
   PRIMARY KEY (`category_ID`),
-  UNIQUE KEY `category_ID_UNIQUE` (`category_ID`),
   UNIQUE KEY `category_UNIQUE` (`category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -87,7 +85,6 @@ CREATE TABLE `Favourite` (
   `question_ID2` int(10) NOT NULL,
   `favourite` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`favourite_ID`),
-  UNIQUE KEY `favourite_ID_UNIQUE` (`favourite_ID`),
   CONSTRAINT `question_ID2` FOREIGN KEY (`question_ID2`) REFERENCES `Question` (`question_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `user_ID3` FOREIGN KEY (`user_ID3`) REFERENCES `User` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
@@ -115,7 +112,6 @@ CREATE TABLE `Question` (
   `user_ID1` int(10) NOT NULL,
   `category_ID1` int(10) NOT NULL,
   PRIMARY KEY (`question_ID`),
-  UNIQUE KEY `question_ID_UNIQUE` (`question_ID`),
   KEY `user_ID_idx` (`user_ID1`),
   CONSTRAINT `category_ID1` FOREIGN KEY (`category_ID1`) REFERENCES `Category` (`category_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `user_ID1` FOREIGN KEY (`user_ID1`) REFERENCES `User` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
