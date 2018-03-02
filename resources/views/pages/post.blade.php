@@ -3,7 +3,6 @@
 <body>
 <div class="slds-scope">
     <div>
-        {{--CATEGORY 1: JAVA--}}
         <div id="post" class="questions" style="">
             <article class="slds-card">
                 <div class="slds-page-header">
@@ -23,12 +22,13 @@
                             <p class="slds-text-body_small slds-line-height_reset">
                                 Category
                                 <?php
-                                    switch($post->category) {
+                                    //Update this
+                                    switch($post->category_ID1) {
                                         case 1:
                                             echo 'Java';
                                             break;
                                         case 2:
-                                            echo 'Javascrip';
+                                            echo 'Javascript';
                                             break;
                                         case 3:
                                             echo 'PHP';
@@ -72,7 +72,7 @@
                                                 </div>
                                                 <p class="slds-text-body_small"><a href="javascript:void(0);"
                                                                                    title="Click for single-item view of this post"
-                                                                                   class="slds-text-link_reset">999 days Ago</a>
+                                                                                   class="slds-text-link_reset">{{$post->create_time}}</a>
                                                 </p>
                                             </div>
                                         </header>
@@ -85,7 +85,7 @@
                                             <ul class="slds-post__footer-actions-list slds-list_horizontal">
                                                 <li class="slds-col slds-item slds-m-right_medium">
                                                     <button title="Upvote this item" class="slds-button_reset slds-post__footer-action" aria-pressed="false">
-                                                        999
+                                                        {{$post->upvotes}}
                                                         <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle"
                                                              aria-hidden="true">
                                                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#share_mobile"/>
@@ -95,18 +95,18 @@
                                                 </li>
                                             </ul>
                                             <ul class="slds-post__footer-meta-list slds-list_horizontal slds-has-dividers_right slds-text-title">
-                                                <li class="slds-item">999 answers</li>
-                                                <li class="slds-item">999 views</li>
+                                                <li class="slds-item">{{$post->comments}} answers</li>
+                                                <li class="slds-item">{{$post->views}} views</li>
                                             </ul>
                                         </footer>
                                     </article>
                                     <br />
                                 {{--COMMENT--}}
                                 <div class="slds-feed__item-comments">
-                                    <div class="slds-p-horizontal_medium slds-p-vertical_x-small slds-grid">
+                                    {{--<div class="slds-p-horizontal_medium slds-p-vertical_x-small slds-grid">
                                         <button class="slds-button_reset slds-text-link">More answers</button>
                                         <span class="slds-text-body_small slds-col_bump-left">1 of 8</span>
-                                    </div>
+                                    </div>--}}
                                     <ul>
                                         <li>
                                             <article class="slds-comment slds-media slds-hint-parent">
@@ -120,8 +120,10 @@
                                                 <div class="slds-media__body">
                                                     <header class="slds-media slds-media_center">
                                                         <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
-                                                            <p class="slds-truncate" title="Jenna Davis"><a
-                                                                        href="javascript:void(0);">Jenna Davis</a>
+                                                            <p class="slds-truncate">
+                                                                <a href="javascript:void(0);">
+                                                                    USERNAME
+                                                                </a>
                                                             </p>
                                                             <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
                                                                     aria-haspopup="true" title="More Options">
@@ -133,9 +135,8 @@
                                                             </button>
                                                         </div>
                                                     </header>
-                                                    <div class="slds-comment__content slds-text-longform">Lorem
-                                                        ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                    <div class="slds-comment__content slds-text-longform">
+                                                        COMMENT
                                                     </div>
                                                     <footer>
                                                         <ul class="slds-list_horizontal slds-has-dividers_right slds-text-body_small">
@@ -162,13 +163,11 @@
                                         </div>
                                         <div class="slds-media__body">
                                             <div class="slds-publisher slds-publisher_comment slds-is-active slds-has-focus">
-                                                <label for="comment-text-input-01" class="slds-assistive-text">Write
-                                                    a answer</label>
-                                                <textarea id="comment-text-input-01"
-                                                          class="slds-publisher__input slds-input_bare slds-text-longform"
-                                                          placeholder="Write a answers..."></textarea>
+                                                <label for="comment-text-input-01" class="slds-assistive-text">Write a answer</label>
+                                                <textarea id="comment-text-input-01" class="slds-publisher__input slds-input_bare slds-text-longform" placeholder="Write a answers..."></textarea>
                                                 <div class="slds-publisher__actions slds-grid slds-grid_align-spread">
                                                     <ul class="slds-grid">
+                                                        {{--ICONS LEFT SIDE OF ANSWER BUTTON--}}
                                                         <li>
                                                             <button class="slds-button slds-button_icon slds-button_icon-container"
                                                                     title="Add User">
@@ -190,7 +189,7 @@
                                                             </button>
                                                         </li>
                                                     </ul>
-                                                    <button class="slds-button slds-button_brand">Answer</button>
+                                                    <button class="slds-button slds-button_brand">Post</button>
                                                 </div>
                                             </div>
                                         </div>
