@@ -35,8 +35,8 @@
 
                             <div class="form-group">
                                 <label>Question</label>
-                                <input type="text" class="form-control input-md" placeholder="question"
-                                       name="question"/>
+                                <input type="text" class="form-control input-md" placeholder="content"
+                                       name="content"/>
                             </div>
                             <div class="form-group">
                                 <input type="submit" id="newpostButton"

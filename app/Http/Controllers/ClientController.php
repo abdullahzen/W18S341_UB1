@@ -44,7 +44,8 @@ class ClientController extends Controller {
     }
 
     public function postQuestion(Request $request) {
-        $question = $request->input('title');
+        $title = $request->input('title');
+        $content = $request->input('content');
         $category = $request->input('category');
         $user_ID = session()->get('id');
         $result = DB::select('select category from category');
@@ -59,9 +60,9 @@ class ClientController extends Controller {
         }
         $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;
         if(DB::table('question')->insert(
-            array("question" => $question, "category_ID1" => $category_ID, "user_ID1" => $user_ID)
+            array("title" => $title, "content" => $content, "category_ID1" => $category_ID, "user_ID1" => $user_ID)
         )) {
-            return view('pages.homepage');
+            return redirect('/');
         } else {
             return abort('400');
         }
