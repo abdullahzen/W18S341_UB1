@@ -43,3 +43,4 @@ Route::get('/post/{id}', array(
 Route::post('/login', 'ClientController@authenticate');
 Route::post('/post/do', 'ClientController@postQuestion');
 Route::post('/register', 'ClientController@register');
+Route::post('/editQuestion/do', 'ClientController@editQuestion');
