@@ -47,7 +47,7 @@ class ClientController extends Controller {
         ClientControllerHelper::$middleware2 = ['username' => $user->username];
     }
 
-    public function postQuestion(Request $request) {
+    /*public function postQuestion(Request $request) {
         $question = $request->input('title');
         $answer_ID = 0;
         $answer = $request->input('question');
@@ -62,7 +62,7 @@ class ClientController extends Controller {
         } else {
             return abort('400');
         }
-    }
+    }*/
   
     public function register(Request $request){
         $username = $request->Input('username');
@@ -100,15 +100,14 @@ class ClientController extends Controller {
         $post = DB::select('
             SELECT 
                 q.question_ID, 
-                q.question,
-                q.answer_ID,
-                q.answer,
-                q.category,
-                q.user_ID as userID,
+                q.title,
+                q.content,
+                q.category_ID1,
+                q.user_ID1 as userID,
                 u.username
             FROM question q
             INNER JOIN user u
-                ON q.user_ID = u.user_ID AND q.category = ' . $category . '
+                ON q.user_ID1 = u.user_ID AND q.category_ID1 = ' . $category . '
             ORDER BY q.question_ID DESC
         ');
 
@@ -119,15 +118,14 @@ class ClientController extends Controller {
         $post = DB::select('
             SELECT 
                 q.question_ID, 
-                q.question,
-                q.answer_ID,
-                q.answer,
-                q.category,
-                q.user_ID as userID,
+                q.title,
+                q.content,
+                q.category_ID1,
+                q.user_ID1 as userID,
                 u.username
             FROM question q
             INNER JOIN user u
-                ON q.user_ID = u.user_ID AND q.question_ID = ' . $id . '
+                ON q.user_ID1 = u.user_ID AND q.question_ID = ' . $id . '
             ORDER BY q.question_ID DESC
         ');
 

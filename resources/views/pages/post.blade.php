@@ -18,7 +18,7 @@
                         </div>
                         <div class="slds-media__body">
                             <h1 class="slds-page-header__title slds-truncate slds-align-middle" title="All Questions">
-                                Title: {{$post->question}}
+                                Title: {{$post->title}}
                             </h1>
                             <p class="slds-text-body_small slds-line-height_reset">
                                 Category
@@ -78,7 +78,7 @@
                                         </header>
                                         <div class="slds-post__content slds-text-longform">
                                             <p>
-                                                {{$post->answer}}
+                                                {{$post->content}}
                                             </p>
                                         </div>
                                         <footer class="slds-post__footer">

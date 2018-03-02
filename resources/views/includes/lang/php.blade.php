@@ -28,7 +28,7 @@ $language = 'PHP';
             <?php
             $i = 0;
             foreach($php as $data) {
-                echo '<li class="slds-item"><a href="./post/{{$data->question_ID}}">' . $data->question . '</a></li>';
+                echo '<li class="slds-item"><a href="./post/{{$data->question_ID}}">' . $data->title . '</a></li>';
                 $i++;
                 if ($i == 3)
                     break;
@@ -76,7 +76,7 @@ $language = 'PHP';
                                     <div class="slds-media__body">
                                         <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
                                             <p>
-                                                <a href="./post/{{$data->question_ID}}">{{$data->question}}</a>
+                                                <a href="./post/{{$data->question_ID}}">{{$data->title}}</a>
                                                 <br/>
                                                 <a href="javascript:void(0);">{{$data->username}}</a>
                                             </p>
@@ -97,7 +97,7 @@ $language = 'PHP';
                                 </header>
                                 <div class="slds-post__content slds-text-longform">
                                     <p>
-                                        {{$data->answer}}
+                                        {{$data->content}}
                                     </p>
                                 </div>
                                 <footer class="slds-post__footer">
