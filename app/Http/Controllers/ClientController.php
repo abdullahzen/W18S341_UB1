@@ -143,4 +143,29 @@ class ClientController extends Controller {
 
         return view('pages.post', ['post' => $post[0]]);
     }
+
+    public function editQuestion(Request $request) {
+        $title = $request->input('title');
+        $content = $request->input('content');
+        $category = $request->input('category');
+        $user_ID = session()->get('id');
+        $result = DB::select('select category from category');
+        $exists = false;
+        foreach ($result as $key => $value){
+            if ($category == $value->category){
+                $exists = true;
+            }
+        }
+        if (!$exists){
+            DB::table('category')->insert(array("category" => $category));
+        }
+        $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;
+        if(DB::table('question')->udpate(
+            array("title" => $title, "content" => $content, "category_ID1" => $category_ID, "user_ID1" => $user_ID)
+        )) {
+            return redirect('/');
+        } else {
+            return abort('400');
+        }
+    }
 }
