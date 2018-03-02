@@ -40,6 +40,7 @@ Route::get('/post/{id}', array(
 
 //POST
 
-Route::post('/login', 'ClientController@authenticate');
-Route::post('/post/do', 'ClientController@postQuestion');
-Route::post('/register', 'ClientController@register');
+Route::get('/login', 'ClientController@authenticate');
+Route::get('/post/do', 'ClientController@postQuestion');
+Route::get('/register', 'ClientController@register');
+Route::get('/post/{id}/newanswer', 'ClientController@postAnswer');

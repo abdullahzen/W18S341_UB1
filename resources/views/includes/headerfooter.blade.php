@@ -118,7 +118,7 @@
                         </li>
                          {{session()->get('username')}}
                         <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
-                            <a href="./logout">
+                            <a href="/logout">
                                <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon" title="Logout" id="logout">
                                <img src="../assets/icons/utility/logout_60.png" alt="Smiley face" height="17" width="17">
                                <span class="slds-assistive-text">Logout</span>

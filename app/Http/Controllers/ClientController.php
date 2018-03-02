@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use bar\baz\source_with_namespace;
 use Hash;
 use Illuminate\Http\Request;
 use DB;
@@ -141,6 +142,44 @@ class ClientController extends Controller {
             ORDER BY q.question_ID DESC
         ');
 
-        return view('pages.post', ['post' => $post[0]]);
+        $answer = DB::select('
+            SELECT 
+                a.answer_ID,
+                a.answer,
+                a.user_ID2,
+                a.question_ID1,
+                a.upvotes,
+                a.is_hidden,
+                a.create_time,
+                u.username
+            FROM answer a
+            INNER JOIN user u
+                ON a.user_ID2 = u.user_ID AND a.question_ID1 = ' . $id . '
+        ');
+
+        return view('pages.post', ['post' => $post[0], 'answer' => $answer]);
+    }
+
+    public function postAnswer(Request $request, $id) {
+        $content = $request->input('content');
+        $userId = session()->get('id');
+        $questionId = $id;
+
+        if($userId == null) {
+            echo "<script type='text/javascript'>alert('Please login before posting an answer.');</script>";
+            return redirect('/');
+        }
+
+        if($this->insertAnswerToDB($content, $userId, $questionId)){
+            return redirect('./post/' . $id . '');
+        } else{
+            return abort('400', 'A problem occurred during the answer posting process!');
+        }
+    }
+
+    public function insertAnswerToDB($answer, $userId, $postId) {
+        return DB::table('answer')->insert(
+            array("answer" => $answer, "user_ID2" => $userId, "question_ID1" => $postId)
+        );
     }
 }
