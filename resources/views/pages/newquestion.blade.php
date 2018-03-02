@@ -13,6 +13,7 @@
         <article id="postquestions" class="slds-card"
                  style="        width: 98%;float: right;margin-right: 12px;margin-top: 10px;">
             <form class="form-horizontal" action="./post/do" method="post" id="postForm">
+                {{ csrf_field() }}
                 <div class="slds-card__header slds-grid">
                     <header class="slds-media slds-media_center slds-has-flexi-truncate">
                         <div class="slds-media__figure">
@@ -61,8 +62,8 @@
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="textarea-id-01">Question</label>
                                 <div class="slds-form-element__control">
-                                       <textarea id="textarea-id-01" style="width:50%" class="slds-textarea"
-                                                 placeholder="Write your question here...."></textarea>
+                                    <input type="text" class="form-control input-md" style="width:50%" class="slds-textarea" placeholder="Write your question here..."
+                                           name="content"/>
                                 </div>
                             </div>
                             </br>
