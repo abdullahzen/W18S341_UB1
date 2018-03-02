@@ -22,23 +22,23 @@
                             <p class="slds-text-body_small slds-line-height_reset">
                                 Category
                                 <?php
-                                    //Update this
-                                    switch($post->category_ID1) {
-                                        case 1:
-                                            echo 'Java';
-                                            break;
-                                        case 2:
-                                            echo 'Javascript';
-                                            break;
-                                        case 3:
-                                            echo 'PHP';
-                                            break;
-                                        case 4:
-                                            echo 'C';
-                                            break;
-                                        default:
-                                            break;
-                                    }
+                                //Update this
+                                switch ($post->category_ID1) {
+                                    case 1:
+                                        echo 'Java';
+                                        break;
+                                    case 2:
+                                        echo 'Javascript';
+                                        break;
+                                    case 3:
+                                        echo 'PHP';
+                                        break;
+                                    case 4:
+                                        echo 'C';
+                                        break;
+                                    default:
+                                        break;
+                                }
                                 ?>
                             </p>
                         </div>
@@ -49,58 +49,104 @@
                     <div class="slds-feed">
                         <ul class="slds-feed__list">
                             <li class="slds-feed__item">
-                                    <article class="slds-post">
-                                        <header class="slds-post__header slds-media">
-                                            <div class="slds-media__figure">
-                                                <a href="javascript:void(0);"
-                                                   class="slds-avatar slds-avatar_circle slds-avatar_large">
-                                                    <img alt="Jason Rodgers" src="/assets/images/avatar1.jpg"
-                                                         title="Jason Rodgers avatar"/>
-                                                </a>
-                                            </div>
-                                            <div class="slds-media__body">
-                                                <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
-                                                    <p>
-                                                       <a href="javascript:void(0);">{{$post->username}}</a>
-                                                    </p>
-                                                    <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small" aria-haspopup="true" title="More Options">
-                                                        <svg class="slds-button__icon" aria-hidden="true">
-                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"/>
+                                <article class="slds-post">
+                                    <header class="slds-post__header slds-media">
+                                        <div class="slds-media__figure">
+                                            <a href="javascript:void(0);"
+                                               class="slds-avatar slds-avatar_circle slds-avatar_large">
+                                                <img alt="Jason Rodgers" src="/assets/images/avatar1.jpg"
+                                                     title="Jason Rodgers avatar"/>
+                                            </a>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+                                                <p>
+                                                    <a href="javascript:void(0);">{{$post->username}}</a>
+                                                </p>
+                                                {{--<button class="slds-button slds-button_icon slds-button_icon-container slds-button_icon-x-small"--}}
+                                                        {{--aria-haspopup="true" title="More-Options" id="More-Options" name="More-Options">--}}
+                                                    {{--<span class="More-Options">--}}
+                                                    {{--<svg class="slds-button__icon" aria-hidden="false">--}}
+                                                        {{--<use xmlns:xlink="http://www.w3.org/1999/xlink"--}}
+                                                             {{--xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"/>--}}
+                                                    {{--</svg>--}}
+                                                        {{--</span>--}}
+                                                    {{--<span class="slds-assistive-text">More Options</span>--}}
+                                                {{--</button>--}}
+                                                <div style="padding: 0.5rem; background-color: rgb(244, 246, 249); padding-left: 9cm;">
+                                                    <button class="slds-button slds-button_icon slds-button_icon-border-filled">
+                                                        <svg class="slds-button__icon_small slds-button__icon"
+                                                             aria-hidden="false">
+                                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"/>
                                                         </svg>
-                                                        <span class="slds-assistive-text">More Options</span>
+                                                        <span class="slds-assistive-text">Edit Question</span>
                                                     </button>
                                                 </div>
-                                                <p class="slds-text-body_small"><a href="javascript:void(0);"
-                                                                                   title="Click for single-item view of this post"
-                                                                                   class="slds-text-link_reset">{{$post->create_time}}</a>
-                                                </p>
+                                                {{--<section class="slds-popover slds-nubbin_top-left slds-dynamic-menu" id="More-Options-Container"--}}
+                                                         {{--role="dialog" aria-label="More-Options"--}}
+                                                         {{--aria-describedby="More-Options-Container"--}}
+                                                         {{--style="position: absolute; left: 0px; top: 55px;">--}}
+                                                    {{--<footer class="slds-popover__footer">--}}
+                                                        {{--<ul>--}}
+                                                            {{--<li>--}}
+                                                                {{--<button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1" id="editQuestionButton">--}}
+                                                                    {{--<svg class="slds-button__icon slds-button__icon_left"--}}
+                                                                         {{--aria-hidden="true">--}}
+                                                                        {{--<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"--}}
+                                                                             {{--xmlns:xlink="http://www.w3.org/1999/xlink"/>--}}
+                                                                    {{--</svg>--}}
+                                                                    {{--Edit--}}
+                                                                {{--</button>--}}
+                                                            {{--</li>--}}
+                                                            {{--<li>--}}
+                                                                {{--<button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1">--}}
+                                                                    {{--<svg class="slds-button__icon slds-button__icon_left"--}}
+                                                                         {{--aria-hidden="true">--}}
+                                                                        {{--<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"--}}
+                                                                             {{--xmlns:xlink="http://www.w3.org/1999/xlink"/>--}}
+                                                                    {{--</svg>--}}
+                                                                    {{--Delete--}}
+                                                                {{--</button>--}}
+                                                            {{--</li>--}}
+                                                        {{--</ul>--}}
+                                                    {{--</footer>--}}
+                                                {{--</section>--}}
                                             </div>
-                                        </header>
-                                        <div class="slds-post__content slds-text-longform">
-                                            <p>
-                                                {{$post->content}}
+                                            <p class="slds-text-body_small"><a href="javascript:void(0);"
+                                                                               title="Click for single-item view of this post"
+                                                                               class="slds-text-link_reset">{{$post->create_time}}</a>
                                             </p>
                                         </div>
-                                        <footer class="slds-post__footer">
-                                            <ul class="slds-post__footer-actions-list slds-list_horizontal">
-                                                <li class="slds-col slds-item slds-m-right_medium">
-                                                    <button title="Upvote this item" class="slds-button_reset slds-post__footer-action" aria-pressed="false">
-                                                        {{$post->upvotes}}
-                                                        <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle"
-                                                             aria-hidden="true">
-                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#share_mobile"/>
-                                                        </svg>
-                                                        Upvote
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                            <ul class="slds-post__footer-meta-list slds-list_horizontal slds-has-dividers_right slds-text-title">
-                                                <li class="slds-item">{{$post->comments}} answers</li>
-                                                <li class="slds-item">{{$post->views}} views</li>
-                                            </ul>
-                                        </footer>
-                                    </article>
-                                    <br />
+                                    </header>
+                                    <div class="slds-post__content slds-text-longform">
+                                        <p>
+                                            {{$post->content}}
+                                        </p>
+                                    </div>
+                                    <footer class="slds-post__footer">
+                                        <ul class="slds-post__footer-actions-list slds-list_horizontal">
+                                            <li class="slds-col slds-item slds-m-right_medium">
+                                                <button title="Upvote this item"
+                                                        class="slds-button_reset slds-post__footer-action"
+                                                        aria-pressed="false">
+                                                    {{$post->upvotes}}
+                                                    <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle"
+                                                         aria-hidden="true">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                             xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#share_mobile"/>
+                                                    </svg>
+                                                    Upvote
+                                                </button>
+                                            </li>
+                                        </ul>
+                                        <ul class="slds-post__footer-meta-list slds-list_horizontal slds-has-dividers_right slds-text-title">
+                                            <li class="slds-item">{{$post->comments}} answers</li>
+                                            <li class="slds-item">{{$post->views}} views</li>
+                                        </ul>
+                                    </footer>
+                                </article>
+                                <br/>
                                 {{--COMMENT--}}
                                 <div class="slds-feed__item-comments">
                                     {{--<div class="slds-p-horizontal_medium slds-p-vertical_x-small slds-grid">
@@ -163,8 +209,11 @@
                                         </div>
                                         <div class="slds-media__body">
                                             <div class="slds-publisher slds-publisher_comment slds-is-active slds-has-focus">
-                                                <label for="comment-text-input-01" class="slds-assistive-text">Write a answer</label>
-                                                <textarea id="comment-text-input-01" class="slds-publisher__input slds-input_bare slds-text-longform" placeholder="Write a answers..."></textarea>
+                                                <label for="comment-text-input-01" class="slds-assistive-text">Write a
+                                                    answer</label>
+                                                <textarea id="comment-text-input-01"
+                                                          class="slds-publisher__input slds-input_bare slds-text-longform"
+                                                          placeholder="Write a answers..."></textarea>
                                                 <div class="slds-publisher__actions slds-grid slds-grid_align-spread">
                                                     <ul class="slds-grid">
                                                         {{--ICONS LEFT SIDE OF ANSWER BUTTON--}}
