@@ -1,7 +1,7 @@
 $(function(){
     $("#newpostButton").click(function () {
-        /*$(". ").hide();*/
-        var request = $.post('./post/do', $('#postForm').serialize());
+        $(". ").hide();
+        var request = $.get('./post/do', $('#postForm').serialize());
         request.done(function () {
             window.location = '/';
         });

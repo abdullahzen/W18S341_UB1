@@ -13,9 +13,10 @@
 
 //GET
 
-Route::get('/', function () {
-    return view('pages.homepage');
-});
+Route::get('/', array(
+    'uses' => 'ClientController@getHomepage'
+));
+
 
 Route::get('/post', function () {
     return view('pages.newquestion');
@@ -23,7 +24,8 @@ Route::get('/post', function () {
 
 Route::get('/logout', function() {
     session()->flush();
-    return view('pages.homepage');
+    /*'uses' => 'ClientController@getHomepage',*/
+    return redirect('/');
 });
 
 Route::get('/userProfile', function() {
@@ -31,8 +33,13 @@ Route::get('/userProfile', function() {
     return view('pages.userProfile');
 });
 
+Route::get('/post/{id}', array(
+    'uses' => 'ClientController@getFullPostById'
+    //'uses' => 'ClientController@getHomepage'
+));
+
 //POST
 
-Route::get('/login', 'ClientController@authenticate');
-Route::get('/post/do', 'ClientController@postQuestion');
-Route::get('/register', 'ClientController@register');
+Route::post('/login', 'ClientController@authenticate');
+Route::post('/post/do', 'ClientController@postQuestion');
+Route::post('/register', 'ClientController@register');
