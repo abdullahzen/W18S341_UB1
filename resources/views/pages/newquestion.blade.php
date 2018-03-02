@@ -37,17 +37,17 @@
                      </div>
                      <div class="slds-card__body slds-card__body_inner">
                         <div class="container" id="postquestion" {{--style="display : none;"--}}>
-                           <form class="form-horizontal">
+                           <form class="form-horizontal" action="./post/do" method="post" id="postForm">
                               <fieldset>
                                           <div class="slds-form-element">
-                                                      <label class="slds-form-element__label" for="textarea-id-01">Language</label>
-                                                      <select name="category">
-                                                          <option class="form-control" value="1">Java</option>
-                                                          <option class="form-control" value="2">JavaScript</option>
-                                                          <option class="form-control" value="3">Php</option>
-                                                          <option class="form-control" value="4">C</option>
-                                                      </select>
-                                                  </div>
+                                              <label class="slds-form-element__label" for="textarea-id-01">Language</label>
+                                              <select name="category">
+                                                  <option class="form-control" value="Java">Java</option>
+                                                  <option class="form-control" value="JavaScript">JavaScript</option>
+                                                  <option class="form-control" value="Php">Php</option>
+                                                  <option class="form-control" value="C">C</option>
+                                              </select>
+                                          </div>
                        
                                  <!-- Textarea -->
                                  <div class="slds-form-element">
@@ -98,9 +98,7 @@
                                  <div class="form-group">
                                     <label class="col-md-4 control-label" for="button1id"></label>
                                     <div class="col-md-8">
-                                       <button id="button1id" name="button1id" class="slds-button slds-button_brand">
-                                       Post question
-                                       </button>
+                                        <input type="submit" id="newpostButton" class="slds-button slds-button_brand" value="Post"/>                                      
                                        <button id="button2id" name="button2id"
                                           class="slds-button slds-button_destructive">Reset
                                        </button>
