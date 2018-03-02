@@ -1,7 +1,7 @@
 <?php
 $language = 'PHP';
 ?>
-<div id="Php" class="questions" style="display : none;">
+<div id="Php" class="questions"style="width : 100%">
     <div class="slds-card">
         <div class="slds-page-header">
             <div class="slds-media">
