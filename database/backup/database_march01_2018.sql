@@ -27,9 +27,10 @@ CREATE TABLE `answer` (
   `answer` varchar(250) NOT NULL,
   `user_ID2` int(10) NOT NULL,
   `question_ID1` int(10) NOT NULL,
-  `upvotes` tinyint(4) NOT NULL DEFAULT '0',
-  `is_hidden` tinyint(4) NOT NULL DEFAULT '0',
-  `is_bestanswer` tinyint(4) NOT NULL DEFAULT '0',
+  `upvotes` tinyint(4) DEFAULT '0',
+  `is_hidden` tinyint(4) DEFAULT '0',
+  `is_bestanswer` tinyint(4) DEFAULT '0',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`answer_ID`),
   KEY `user_ID_idx` (`user_ID2`),
   KEY `question_ID1` (`question_ID1`),
@@ -110,9 +111,17 @@ DROP TABLE IF EXISTS `question`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `question` (
   `question_ID` int(10) NOT NULL AUTO_INCREMENT,
-  `question` varchar(250) NOT NULL,
   `user_ID1` int(10) NOT NULL,
   `category_ID1` int(10) NOT NULL,
+  `best_answer_ID` int(10) DEFAULT '0',
+  `title` varchar(250) NOT NULL,
+  `content` varchar(250) NOT NULL,
+  `upvotes` int(10) DEFAULT '0',
+  `comments` int(10) DEFAULT '0',
+  `favorites` int(10) DEFAULT '0',
+  `views` int(10) DEFAULT '0',
+  `is_hidden` tinyint(4) DEFAULT '0',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`question_ID`),
   KEY `user_ID_idx` (`user_ID1`),
   KEY `category_ID1` (`category_ID1`),
@@ -127,7 +136,7 @@ CREATE TABLE `question` (
 
 LOCK TABLES `question` WRITE;
 /*!40000 ALTER TABLE `question` DISABLE KEYS */;
-INSERT INTO `question` VALUES (1,'Java Test 1',1,1),(2,'Java Test 2',1,1),(3,'JS Test 1',1,2),(4,'PHP Test 1',1,3),(5,'C Test 1',1,4),(6,'Java Test 3',1,1),(7,'Java Test 4',1,1),(8,'JS Test 2',1,2),(9,'JS Test 3',1,2),(10,'JS Test 4',1,2),(11,'PHP Test 2',1,3),(12,'PHP Test 3',1,3),(13,'PHP Test 4',1,3),(14,'C Test 2',1,4),(15,'C Test 3',1,4),(16,'C Test 4',1,4);
+INSERT INTO `question` VALUES (1,1,1,0,'Java Test 1','',0,0,0,0,0,'2018-03-02 02:40:34'),(2,1,1,0,'Java Test 2','',0,0,0,0,0,'2018-03-02 02:40:34'),(3,1,2,0,'JS Test 1','',0,0,0,0,0,'2018-03-02 02:40:34'),(4,1,3,0,'PHP Test 1','',0,0,0,0,0,'2018-03-02 02:40:34'),(5,1,4,0,'C Test 1','',0,0,0,0,0,'2018-03-02 02:40:34'),(6,1,1,0,'Java Test 3','',0,0,0,0,0,'2018-03-02 02:40:34'),(7,1,1,0,'Java Test 4','',0,0,0,0,0,'2018-03-02 02:40:34'),(8,1,2,0,'JS Test 2','',0,0,0,0,0,'2018-03-02 02:40:34'),(9,1,2,0,'JS Test 3','',0,0,0,0,0,'2018-03-02 02:40:34'),(10,1,2,0,'JS Test 4','',0,0,0,0,0,'2018-03-02 02:40:34'),(11,1,3,0,'PHP Test 2','',0,0,0,0,0,'2018-03-02 02:40:34'),(12,1,3,0,'PHP Test 3','',0,0,0,0,0,'2018-03-02 02:40:34'),(13,1,3,0,'PHP Test 4','',0,0,0,0,0,'2018-03-02 02:40:34'),(14,1,4,0,'C Test 2','',0,0,0,0,0,'2018-03-02 02:40:34'),(15,1,4,0,'C Test 3','',0,0,0,0,0,'2018-03-02 02:40:34'),(16,1,4,0,'C Test 4','',0,0,0,0,0,'2018-03-02 02:40:34');
 /*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,11 +149,11 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `user_ID` int(10) NOT NULL AUTO_INCREMENT,
-  `password` varchar(100) NOT NULL,
   `username` varchar(20) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `rank` int(4) DEFAULT '1',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `rank` int(4) DEFAULT '1',
   `is_Solver` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`user_ID`),
   UNIQUE KEY `user_ID_UNIQUE` (`user_ID`),
@@ -159,7 +168,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'$2y$10$.MaT/HTRdOGU68ivMJrBdeozBl585rtSUhbSoxYcG4bXKxvqUZJ9u','admin','admin@soen341.com',1,'2018-03-02 02:10:12',0);
+INSERT INTO `user` VALUES (1,'admin','$2y$10$.MaT/HTRdOGU68ivMJrBdeozBl585rtSUhbSoxYcG4bXKxvqUZJ9u','admin@soen341.com','2018-03-02 02:10:12',1,0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -172,4 +181,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-01 21:16:01
+-- Dump completed on 2018-03-01 21:41:43
