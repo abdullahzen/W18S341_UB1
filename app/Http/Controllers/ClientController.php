@@ -22,8 +22,6 @@ class ClientController extends Controller {
         $user = DB::table('user')
                     ->where('username', $username)
                     ->first();
-
-		//CHECK RAW PW FOR TESTING PURPOSE
         /*if(!empty($user) && $pw == $user->password) {*/
         if(!empty($user) && Hash::check($pw, $user->password)) {
             $this->createSession($user);
@@ -31,7 +29,6 @@ class ClientController extends Controller {
             abort(400, "Invalid username or password.");
         }
         return redirect('/');
-        //return ClientController::getHomepage();
     }
 
     public function hash($password) {
@@ -44,25 +41,31 @@ class ClientController extends Controller {
         session(['id' => $user->user_ID]);
         session(['email' => $user->email]);
         session(['username' => $user->username]);
-        ClientControllerHelper::$middleware2 = ['username' => $user->username];
     }
 
-    /*public function postQuestion(Request $request) {
+    public function postQuestion(Request $request) {
         $question = $request->input('title');
-        $answer_ID = 0;
-        $answer = $request->input('question');
         $category = $request->input('category');
         $user_ID = session()->get('id');
-
+        $result = DB::select('select category from category');
+        $exists = false;
+        foreach ($result as $key => $value){
+            if ($category == $value->category){
+                $exists = true;
+            }
+        }
+        if (!$exists){
+            DB::table('category')->insert(array("category" => $category));
+        }
+        $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;
         if(DB::table('question')->insert(
-            array("question" => $question, "answer_ID" => $answer_ID, "answer" => $answer, "category" => $category, "user_ID" => $user_ID)
+            array("question" => $question, "category_ID1" => $category_ID, "user_ID1" => $user_ID)
         )) {
-            return redirect('/');
-            //should return to the post section with it's post modal.
+            return view('pages.homepage');
         } else {
             return abort('400');
         }
-    }*/
+    }
   
     public function register(Request $request){
         $username = $request->Input('username');
@@ -77,9 +80,9 @@ class ClientController extends Controller {
     }
 
     public function insertRegisterToDB($username, $email, $password) {
-        $solve = '0';
+        /*$solve = '0';*/
         return DB::table('user')->insert(
-            array("username" => $username, "email" => $email, "password" => $password, "is_Solver" => $solve)
+            array("username" => $username, "email" => $email, "password" => $password /*"is_Solver" => $solve*/)
         );
     }
 
