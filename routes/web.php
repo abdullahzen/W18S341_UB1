@@ -24,7 +24,6 @@ Route::get('/post', function () {
 
 Route::get('/logout', function() {
     session()->flush();
-    /*'uses' => 'ClientController@getHomepage',*/
     return redirect('/');
 });
 
@@ -35,8 +34,17 @@ Route::get('/userProfile', function() {
 
 Route::get('/post/{id}', array(
     'uses' => 'ClientController@getFullPostById'
-    //'uses' => 'ClientController@getHomepage'
 ));
+
+Route::get('/post/{id}/favourite', array(
+    'uses' => 'ClientController@favourite'
+));
+
+Route::get('/favourites', array(
+    'uses' => 'ClientController@getFavourites'
+))->middleware('checkLoggedIn');
+
+
 
 //POST
 

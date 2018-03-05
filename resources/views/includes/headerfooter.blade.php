@@ -62,12 +62,14 @@
                      @if(session()->has('id'))
                      <ul class="slds-global-header__item slds-grid slds-grid_vertical-align-center">
                         <li class="slds-grid">
+                           <a href="/favourites">
                            <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon-favorites" aria-pressed="false" title="Toggle Favorites">
                               <svg class="slds-button__icon slds-global-header__icon" aria-hidden="true">
                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#favorite" />
                               </svg>
                               <span class="slds-assistive-text">Toggle Favorite</span>
                            </button>
+                           </a>
                            <span class="slds-dropdown-trigger slds-dropdown-trigger_click">
                               <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon slds-m-left_none" title="View Favorites">
                                  <svg class="slds-button__icon" aria-hidden="true">
