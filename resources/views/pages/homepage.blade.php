@@ -210,7 +210,9 @@
 			</div>--}}
             {{--LEFT MENU--}}
 			<div>
+				
                @include('includes.leftmenu')
+			
                {{--CATEGORY 1: JAVA--}}
                   @include('includes.lang.java')
                {{--CATEGORY 1: JAVASCRIPT--}}
