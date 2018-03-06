@@ -18,13 +18,12 @@ Route::get('/', array(
 ));
 
 
-Route::get('/post', function () {
+Route::get('/newpost', function () {
     return view('pages.newquestion');
 });
 
 Route::get('/logout', function() {
     session()->flush();
-    /*'uses' => 'ClientController@getHomepage',*/
     return redirect('/');
 });
 
@@ -35,11 +34,21 @@ Route::get('/userProfile', function() {
 
 Route::get('/post/{id}', array(
     'uses' => 'ClientController@getFullPostById'
-    //'uses' => 'ClientController@getHomepage'
 ));
+
+Route::get('/post/{id}/favourite', array(
+    'uses' => 'ClientController@favourite'
+));
+
+Route::get('/favourites', array(
+    'uses' => 'ClientController@getFavourites'
+))->middleware('checkLoggedIn');
+
+
 
 //POST
 
-Route::post('/login', 'ClientController@authenticate');
-Route::post('/post/do', 'ClientController@postQuestion');
-Route::post('/register', 'ClientController@register');
+Route::get('/login', 'ClientController@authenticate');
+Route::get('/newpost/do', 'ClientController@postQuestion');
+Route::get('/register', 'ClientController@register');
+Route::get('/post/{id}/newanswer', 'ClientController@postAnswer');

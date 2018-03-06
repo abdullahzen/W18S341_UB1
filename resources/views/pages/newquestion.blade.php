@@ -1,19 +1,12 @@
 @include('includes.head')
 @include('includes.headerfooter')
 {{--REMAKE THE CSS--}}
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 <body>
 <div class="slds-scope">
     <div>
         <article id="postquestions" class="slds-card"
                  style="        width: 98%;float: right;margin-right: 12px;margin-top: 10px;">
-            <form class="form-horizontal" action="./post/do" method="post" id="postForm">
-                {{ csrf_field() }}
+            <form class="form-horizontal" action="/newpost/do" id="postForm">
                 <div class="slds-card__header slds-grid">
                     <header class="slds-media slds-media_center slds-has-flexi-truncate">
                         <div class="slds-media__figure">
@@ -68,7 +61,7 @@
                             </div>
                             </br>
                             <!-- File Button -->
-                            <div class="form-group">
+                            {{--<div class="form-group">
                                 <div class="slds-form-element">
                                     <span class="slds-form-element__label"
                                           id="file-selector-primary-label">Attachment</span>
@@ -96,7 +89,7 @@
                                     </div>
                                 </div>
                             </div>
-                            </br>
+                            </br>--}}
                             <!-- Button (Double) -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="button1id"></label>
