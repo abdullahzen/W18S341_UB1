@@ -21,9 +21,8 @@ $(document).ready(function () {
     var spanU = document.getElementsByClassName("closeU")[0];
     // var spanM = document.getElementsByClassName("More-Options")[0];
 
-    $("#categories").css('display', 'block');
+    
     showJava();
-    $("#postquestions").css('width', '77%');
 
     if(login != null) {
         login.onclick = function () {
@@ -197,7 +196,18 @@ function showpostquestion() {
 
 
 function displaycategories() {
-    $("#categories").css('display', 'block');
-	showJava();
-	$("#postquestions").css('width', '77%');
+   if ($('#categories').css('display') == 'none') {
+		$("#categories").css('display', 'block');
+		$("#Java").css('width', '78%');
+		$("#C").css('width', '78%');
+		$("#Javascript").css('width', '78%');
+		$("#Php").css('width', '78%');
+	}
+	else {
+            $("#categories").css('display', 'none');
+			$("#Java").css('width', '100%');
+			$("#C").css('width', '100%');
+			$("#Javascript").css('width', '100%');
+			$("#Php").css('width', '100%');
+        }
 }

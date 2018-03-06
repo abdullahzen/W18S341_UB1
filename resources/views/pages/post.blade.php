@@ -155,12 +155,12 @@
                                     </div>--}}
                                     <ul>
                                         <li>
+                                            @foreach($answer as $a)
                                             <article class="slds-comment slds-media slds-hint-parent">
                                                 <div class="slds-media__figure">
                                                     <a href="javascript:void(0);"
                                                        class="slds-avatar slds-avatar_circle slds-avatar_medium">
-                                                        <img alt="Jenna Davis" src="/assets/images/avatar2.jpg"
-                                                             title="Jenna Davis avatar"/>
+                                                        <img alt="Jenna Davis" src="/assets/images/avatar2.jpg" title="Jenna Davis avatar"/>
                                                     </a>
                                                 </div>
                                                 <div class="slds-media__body">
@@ -168,7 +168,7 @@
                                                         <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
                                                             <p class="slds-truncate">
                                                                 <a href="javascript:void(0);">
-                                                                    USERNAME
+                                                                    {{$a->username}}
                                                                 </a>
                                                             </p>
                                                             <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
@@ -182,67 +182,71 @@
                                                         </div>
                                                     </header>
                                                     <div class="slds-comment__content slds-text-longform">
-                                                        COMMENT
+                                                        {{$a->answer}}
                                                     </div>
                                                     <footer>
                                                         <ul class="slds-list_horizontal slds-has-dividers_right slds-text-body_small">
                                                             <li class="slds-item">
                                                                 <button class="slds-button_reset slds-text-color_weak"
                                                                         title="Upvote this item"
-                                                                        aria-pressed="false">Upvote
+                                                                        aria-pressed="false">Upvote {{$a->upvotes}}
                                                                 </button>
                                                             </li>
-                                                            <li class="slds-item">16hr Ago</li>
+                                                            <li class="slds-item">{{$a->create_time}}</li>
                                                         </ul>
                                                     </footer>
                                                 </div>
                                             </article>
+                                            @endforeach
                                         </li>
                                     </ul>
-                                    <div class="slds-media slds-comment slds-hint-parent">
-                                        <div class="slds-media__figure">
-                                            <a class="slds-avatar slds-avatar_circle slds-avatar_medium"
-                                               href="javascript:void(0);">
-                                                <img alt="Person name" src="/assets/images/avatar2.jpg"
-                                                     title="User avatar"/>
-                                            </a>
-                                        </div>
-                                        <div class="slds-media__body">
-                                            <div class="slds-publisher slds-publisher_comment slds-is-active slds-has-focus">
-                                                <label for="comment-text-input-01" class="slds-assistive-text">Write a
-                                                    answer</label>
-                                                <textarea id="comment-text-input-01"
-                                                          class="slds-publisher__input slds-input_bare slds-text-longform"
-                                                          placeholder="Write a answers..."></textarea>
-                                                <div class="slds-publisher__actions slds-grid slds-grid_align-spread">
-                                                    <ul class="slds-grid">
-                                                        {{--ICONS LEFT SIDE OF ANSWER BUTTON--}}
-                                                        <li>
-                                                            <button class="slds-button slds-button_icon slds-button_icon-container"
-                                                                    title="Add User">
-                                                                <svg class="slds-button__icon" aria-hidden="true">
-                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                         xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#adduser"/>
-                                                                </svg>
-                                                                <span class="slds-assistive-text">Add User</span>
-                                                            </button>
-                                                        </li>
-                                                        <li>
-                                                            <button class="slds-button slds-button_icon slds-button_icon-container"
-                                                                    title="Attach a file">
-                                                                <svg class="slds-button__icon" aria-hidden="true">
-                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                         xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#attach"/>
-                                                                </svg>
-                                                                <span class="slds-assistive-text">Attach a file</span>
-                                                            </button>
-                                                        </li>
-                                                    </ul>
-                                                    <button class="slds-button slds-button_brand">Post</button>
-                                                </div>
+                                    {{--COMMENTS START HERE--}}
+                                    @if (session()->has('id'))
+                                        <div class="slds-media slds-comment slds-hint-parent">
+                                            <div class="slds-media__figure">
+                                                <a class="slds-avatar slds-avatar_circle slds-avatar_medium"
+                                                   href="javascript:void(0);">
+                                                    <img alt="Person name" src="/assets/images/avatar2.jpg"
+                                                         title="User avatar"/>
+                                                </a>
                                             </div>
+                                                <div class="slds-media__body">
+                                                    {{--ANSWER FIELD--}}
+                                                    <form class="form-horizontal" action="/post/{{$post->question_ID}}/newanswer" method="get" id="answerForm" onKeyup="checkForm()">
+                                                        <div class="slds-publisher slds-publisher_comment slds-is-active slds-has-focus">
+                                                            <label for="comment-text-input-01" class="slds-assistive-text">Write a answer</label>
+                                                            <input type="text" id="content" name="content" class="slds-publisher__input slds-input_bare slds-text-longform" placeholder="Post your answer here"></input>
+                                                            <div class="slds-publisher__actions slds-grid slds-grid_align-spread">
+                                                                <ul class="slds-grid">
+                                                                    {{--ICONS LEFT SIDE OF ANSWER BUTTON--}}
+                                                                    {{--<li>
+                                                                        <button class="slds-button slds-button_icon slds-button_icon-container"
+                                                                                title="Add User">
+                                                                            <svg class="slds-button__icon" aria-hidden="true">
+                                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                     xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#adduser"/>
+                                                                            </svg>
+                                                                            <span class="slds-assistive-text">Add User</span>
+                                                                        </button>
+                                                                    </li>
+                                                                    <li>
+                                                                        <button class="slds-button slds-button_icon slds-button_icon-container"
+                                                                                title="Attach a file">
+                                                                            <svg class="slds-button__icon" aria-hidden="true">
+                                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                     xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#attach"/>
+                                                                            </svg>
+                                                                            <span class="slds-assistive-text">Attach a file</span>
+                                                                        </button>
+                                                                    </li>--}}
+                                                                </ul>
+                                                                <input type="submit" id="newAnswerButton" class="slds-button slds-button_brand" value="Post" disabled />
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 </div>
                             </li>
                         </ul>
@@ -257,3 +261,4 @@
 @include('modals.login')
 @include('modals.register')
 @include('modals.userProfile')
+<script src="{{ URL::asset('js/answer.js') }}" type="text/javascript"></script>

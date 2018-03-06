@@ -1,7 +1,7 @@
 <?php
 $language = 'Java';
 ?>
-<div id="Java" class="questions" style="display : none;">
+<div id="Java" class="questions" style="width : 100%">
     <div class="slds-card">
         <div class="slds-page-header">
             <div class="slds-media">
@@ -138,7 +138,7 @@ $language = 'Java';
                                             <button title="Upvote this item"
                                                     class="slds-button_reset slds-post__footer-action"
                                                     aria-pressed="false">
-                                                999
+                                                {{$data->upvotes}}
                                                 <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle"
                                                      aria-hidden="true">
                                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
