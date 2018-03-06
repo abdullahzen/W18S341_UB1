@@ -36,7 +36,7 @@
                                  <button class="slds-button slds-button_neutral" onclick="location.href='..'">Home</button>
 
                                   @if(session()->has('username'))
-                                    <button class="slds-button slds-button_neutral" onclick="window.location.href='../post'">New Post</button>
+                                    <button class="slds-button slds-button_neutral" onclick="window.location.href='../newpost'">New Post</button>
                                   @else
                                     <button class="slds-button slds-button_neutral" id="registerButton">Register</button>
                                     <button class="slds-button slds-button_neutral" id="loginButton">Login</button>

@@ -18,7 +18,7 @@ Route::get('/', array(
 ));
 
 
-Route::get('/post', function () {
+Route::get('/newpost', function () {
     return view('pages.newquestion');
 });
 
@@ -49,6 +49,6 @@ Route::get('/favourites', array(
 //POST
 
 Route::get('/login', 'ClientController@authenticate');
-Route::get('/post/do', 'ClientController@postQuestion');
+Route::get('/newpost/do', 'ClientController@postQuestion');
 Route::get('/register', 'ClientController@register');
 Route::get('/post/{id}/newanswer', 'ClientController@postAnswer');
