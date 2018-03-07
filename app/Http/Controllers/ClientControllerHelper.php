@@ -52,14 +52,39 @@ class ClientControllerHelper extends Controller {
         return 'N/A';
     }
 
-
-    public static function incrementUpvotes($id) {
-        DB::table('question')->where('question_ID', $id)->increment('upvotes', 1);
-        return redirect('/post/' . $id . '');
+    public static function checkUpvotes($id){
+        $vote = DB::select('
+            SELECT 
+                vote
+            FROM vote v
+            INNER JOIN user u
+            INNER JOIN question q
+                ON v.user_ID4 = u.user_ID AND v.question_ID3 = q.question_ID
+            WHERE u.username = \'' . session()->get('username') . '\' AND v.question_ID3 = \'' . $id . '\'');
+        if ($vote == null){
+            return 'default';
+        } else if ($vote[0]->vote == 1) {
+            return 'warning';
+        } else {
+            return 'light';
+        }
     }
 
-    public static function decrementUpvotes($id) {
-        DB::table('question')->where('question_ID', $id)->increment('upvotes', -1);
-        return redirect('/post/' . $id . '');
+    public static function checkDownvotes($id){
+        $vote = DB::select('
+            SELECT 
+                vote
+            FROM vote v
+            INNER JOIN user u
+            INNER JOIN question q
+                ON v.user_ID4 = u.user_ID AND v.question_ID3 = q.question_ID
+            WHERE u.username = \'' . session()->get('username') . '\' AND v.question_ID3 = \'' . $id . '\'');
+        if ($vote == null){
+            return 'default';
+        } else if ($vote[0]->vote == 0) {
+            return 'error';
+        } else {
+            return 'light';
+        }
     }
 }
