@@ -173,10 +173,10 @@ function displaycategories() {
 		$("#categories").css('display', 'block');
 		$("#favourites").css('display', 'block');
 		
-		$("#Java").css('width', '55%');
-		$("#C").css('width', '55%');
-		$("#Javascript").css('width', '55%');
-		$("#Php").css('width', '55%');
+		$("#Java").css('width', '78%');
+		$("#C").css('width', '78%');
+		$("#Javascript").css('width', '78%');
+		$("#Php").css('width', '78%');
 		$("#Java").css('float', 'left');
 		$("#C").css('float', 'left');
 		$("#Javascript").css('float', 'left');

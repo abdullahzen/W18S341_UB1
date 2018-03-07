@@ -8,6 +8,12 @@
 			<section aria-describedby="modal-content-id-1" aria-labelledby="modal-heading-01" aria-modal="true" class="slds-modal slds-fade-in-open" role="dialog" tabindex="-1" style="    width: 75%;
     padding-left: 360px;
     padding-top: 160px;">
+			<header class="slds-modal__header">
+								 <a href="/">
+                                <span class="close" >&times;</span>
+								</a>
+								<br/>
+                            </header>
             <article class="slds-card">
                 <div class="slds-page-header">
                     <div class="slds-media">
