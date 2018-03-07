@@ -52,3 +52,5 @@ Route::get('/login', 'ClientController@authenticate');
 Route::get('/newpost/do', 'ClientController@postQuestion');
 Route::get('/register', 'ClientController@register');
 Route::get('/post/{id}/newanswer', 'ClientController@postAnswer');
+Route::get('/post/{id}/upvote', 'ClientControllerHelper@incrementUpvotes');
+Route::get('/post/{id}/downvote', 'ClientControllerHelper@decrementUpvotes');

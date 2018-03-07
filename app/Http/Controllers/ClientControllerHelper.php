@@ -14,6 +14,8 @@ use DB;
 
 class ClientControllerHelper extends Controller {
 
+    static $canVote = -1;
+
     public static function getUserDataFromDB($arg)
     {
         if (session()->has('username')){
@@ -48,5 +50,16 @@ class ClientControllerHelper extends Controller {
             return $arg;
         }
         return 'N/A';
+    }
+
+
+    public static function incrementUpvotes($id) {
+        DB::table('question')->where('question_ID', $id)->increment('upvotes', 1);
+        return redirect('/post/' . $id . '');
+    }
+
+    public static function decrementUpvotes($id) {
+        DB::table('question')->where('question_ID', $id)->increment('upvotes', -1);
+        return redirect('/post/' . $id . '');
     }
 }
