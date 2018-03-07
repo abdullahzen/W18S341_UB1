@@ -51,3 +51,5 @@ Route::get('/login', 'ClientController@authenticate');
 Route::get('/post/do', 'ClientController@postQuestion');
 Route::get('/register', 'ClientController@register');
 Route::get('/post/{id}/newanswer', 'ClientController@postAnswer');
+Route::get('/edit', 'ClientController@editQuestion');
+

@@ -228,3 +228,4 @@
 @include('modals.login')
 @include('modals.register')
 @include('modals.userProfile')
+@include('modals.edit')

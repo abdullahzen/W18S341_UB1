@@ -8,9 +8,6 @@ $(document).ready(function () {
     var register = document.getElementById("registerButton");
     var registerModal = document.getElementById('registerModal');
 
-    var editQuestionModal = document.getElementById('editModal');
-    var editQuestion = document.getElementById('editQuestionButton');
-
     var userProfile = document.getElementById("userProfileButton");
     var userProfileModal = document.getElementById("userProfileModal");
     // var moreOptionsContainer = document.getElementById("More-Options-Container");
@@ -21,7 +18,7 @@ $(document).ready(function () {
     var spanU = document.getElementsByClassName("closeU")[0];
     // var spanM = document.getElementsByClassName("More-Options")[0];
 
-    
+
     showJava();
 
     if(login != null) {
@@ -42,11 +39,6 @@ $(document).ready(function () {
         }
     }
 
-    if(editQuestion != null){
-        editQuestion.onclick = function() {
-            editQuestionModal.style.display = "block";
-        }
-    }
 
     /*post.onclick = function(){
         postModal.style.display = "block";
@@ -84,9 +76,6 @@ $(document).ready(function () {
         if (event.target == userProfileModal) {
             userProfileModal.style.display = "none";
         }
-        // if (event.target == moreOptionsContainer){
-        //     moreOptionsContainer.style.display = "block";
-        // }
     }
 
     $("#Notifications").click(function () {
@@ -95,15 +84,6 @@ $(document).ready(function () {
         }
         else {
             $("#notifications-container").css('display', 'none');
-        }
-    });
-
-    $("#More-Options").click(function () {
-        if ($('#More-Options-Container').css('display') == 'none') {
-            $("#More-Options-Container").css('display' , 'block');
-        }
-        else {
-            $("#More-Options-Container").css('display' , 'none');
         }
     });
 
