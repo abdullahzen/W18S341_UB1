@@ -258,4 +258,27 @@ class ClientController extends Controller {
 
         return view('pages.favourites', ['favourites' => $favourites]);
     }
+	
+	public function getSearch($id) {
+        $seachstring = 'Test';
+
+            $post = DB::select('
+            SELECT 
+                q.question_ID, 
+                q.title,
+                q.content,
+                q.category_ID1,
+                q.user_ID1 as userID,
+                q.create_time,
+                q.upvotes,
+                q.comments,
+                q.views,
+                u.username
+            FROM question q
+            INNER JOIN user u
+        ');
+
+        
+        return view('pages.search', ['post' => $post]);
+    }
 }
