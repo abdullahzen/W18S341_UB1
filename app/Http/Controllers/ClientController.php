@@ -125,7 +125,9 @@ class ClientController extends Controller {
     }
 
     public function getFullPostById($id) {
-        $post = DB::select('
+        if ($this->incrementView($id)) {
+            ClientControllerHelper::setQuestionID($id);
+            $post = DB::select('
             SELECT
                 q.question_ID,
                 q.title,
@@ -143,7 +145,7 @@ class ClientController extends Controller {
             ORDER BY q.question_ID DESC
         ');
 
-        $answer = DB::select('
+            $answer = DB::select('
             SELECT
                 a.answer_ID,
                 a.answer,
@@ -157,10 +159,14 @@ class ClientController extends Controller {
             INNER JOIN user u
                 ON a.user_ID2 = u.user_ID AND a.question_ID1 = ' . $id . '
         ');
+            return view('pages.post', ['post' => $post[0], 'answer' => $answer]);
+        } else {
+            return abort('400', 'A problem has occurred!');
+        }
+    }
 
-        ClientControllerHelper::setQuestionID($id);
-
-        return view('pages.post', ['post' => $post[0], 'answer' => $answer]);
+    public function incrementView($id) {
+        return DB::table('question')->where('question_ID', $id)->increment('views', 1);
     }
 
     public function postAnswer(Request $request, $id) {
