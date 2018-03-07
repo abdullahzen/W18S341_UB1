@@ -72,13 +72,17 @@
                                                 </div>
                                                 <p class="slds-text-body_small"><a href="javascript:void(0);"
                                                                                    title="Click for single-item view of this post"
-                                                                                   class="slds-text-link_reset">{{$post->create_time}}</a>
+                                                                                   class="slds-text-link_reset">
+                                                        <?php
+                                                            echo \Carbon\Carbon::createFromTimeStamp(strtotime($post->create_time))->toDayDateTimeString()
+                                                        ?>
+                                                    </a>
                                                 </p>
                                             </div>
                                         </header>
                                         <div class="slds-post__content slds-text-longform">
                                             <p>
-                                                {{$post->content}}
+                                                {{ $post->content }}
                                             </p>
                                         </div>
                                         <footer class="slds-post__footer">
@@ -136,7 +140,7 @@
                                                         </div>
                                                     </header>
                                                     <div class="slds-comment__content slds-text-longform">
-                                                        {{$a->answer}}
+                                                        {!! $a->answer !!}
                                                     </div>
                                                     <footer>
                                                         <ul class="slds-list_horizontal slds-has-dividers_right slds-text-body_small">
@@ -146,7 +150,11 @@
                                                                         aria-pressed="false">Upvote {{$a->upvotes}}
                                                                 </button>
                                                             </li>
-                                                            <li class="slds-item">{{$a->create_time}}</li>
+                                                            <li class="slds-item">
+                                                                <?php
+                                                                echo \Carbon\Carbon::createFromTimeStamp(strtotime($a->create_time))->toDayDateTimeString()
+                                                                ?>
+                                                            </li>
                                                         </ul>
                                                     </footer>
                                                 </div>
