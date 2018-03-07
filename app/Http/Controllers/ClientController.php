@@ -275,11 +275,7 @@ class ClientController extends Controller {
 
         if(DB::table('question')->where('question_ID', $id)->update(
             array('title' => $title, 'content' => $content, 'category_ID1' => $category_ID)
-        ))
-        {
-            return redirect('/post/' . $id . '');
-        } else {
-            return abort('400');
-        }
+        )){}
+        return redirect('/post/' . $id . '');
     }
 }

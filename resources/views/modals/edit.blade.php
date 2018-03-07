@@ -7,7 +7,7 @@
                     <section aria-describedby="modal-content-id-1" aria-labelledby="modal-heading-01" aria-modal="true" class="slds-modal slds-fade-in-open" role="dialog" tabindex="-1">
                         <div class="slds-modal__container">
                             <header class="slds-modal__header">
-                                <span class="closeE">X</span>
+                                <span class="closeE"><button class="slds-button">X</button></span>
                                 <h2 class="slds-text-heading_medium slds-hyphenate" id="modal-heading-01">Edit Details</h2>
                             </header>
                             <div class="modal-body">
