@@ -79,52 +79,12 @@ $language = 'Java';
                                                 <br/>
                                                 <a href="javascript:void(0);">{{$data->username}}</a>
                                             </p>
-                                            <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
-                                                    aria-haspopup="true" title="More-Options" id="More-Options"
-                                                    name="More-Options">
-                                            <span class="More-Options">
-                                            <svg class="slds-button__icon" aria-hidden="false">
-                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                 xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"/>
-                                            </svg>
-                                            </span>
-                                                <span class="slds-assistive-text">More Options</span>
-                                            </button>
 
-                                            <section class="slds-popover slds-nubbin_top-right slds-dynamic-menu"
-                                                     id="More-Options-Container"
-                                                     role="dialog" aria-label="More-Options"
-                                                     aria-describedby="More-Options-Container"
-                                                     style="position: absolute; right: 0px; top: 55px; width: 23%; height: 1.5cm; display: none;">
-                                                <footer class="slds-popover__footer">
-                                                    <ul>
-                                                        <li>
-                                                            <button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1"
-                                                                    id="editQuestionButton">
-                                                                <svg class="slds-button__icon slds-button__icon_left"
-                                                                     aria-hidden="true">
-                                                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"
-                                                                         xmlns:xlink="http://www.w3.org/1999/xlink"/>
-                                                                </svg>
-                                                            </button>
-                                                        </li>
-                                                        <li>
-                                                            <button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1">
-                                                                <svg class="slds-button__icon slds-button__icon_left"
-                                                                     aria-hidden="true">
-                                                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
-                                                                         xmlns:xlink="http://www.w3.org/1999/xlink"/>
-                                                                </svg>
-                                                            </button>
-                                                        </li>
-                                                    </ul>
-                                                </footer>
-                                            </section>
-                                        </div>
                                         <p class="slds-text-body_small"><a href="javascript:void(0);"
                                                                            title="Click for single-item view of this post"
                                                                            class="slds-text-link_reset">{{$data->create_time}}</a>
                                         </p>
+                                        </div>
                                     </div>
                                 </header>
                                 <div class="slds-post__content slds-text-longform">

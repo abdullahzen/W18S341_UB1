@@ -74,14 +74,46 @@
                                                     {{--<span class="slds-assistive-text">More Options</span>--}}
                                                 {{--</button>--}}
                                                 <div style="padding: 0.5rem; background-color: rgb(244, 246, 249); padding-left: 9cm;">
-                                                    <button class="slds-button slds-button_icon slds-button_icon-border-filled">
-                                                        <svg class="slds-button__icon_small slds-button__icon"
-                                                             aria-hidden="false">
-                                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"
-                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"/>
+                                                    <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
+                                                            aria-haspopup="true" title="More-Options" id="More-Options"
+                                                            name="More-Options">
+                                                        <span class="More-Options">
+                                                        <svg class="slds-button__icon" aria-hidden="false">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                             xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"/>
                                                         </svg>
-                                                        <span class="slds-assistive-text">Edit Question</span>
+                                                        </span>
+                                                        <span class="slds-assistive-text">More Options</span>
                                                     </button>
+                                                    <section class="slds-popover slds-nubbin_top-right slds-dynamic-menu"
+                                                             id="More-Options-Container"
+                                                             role="dialog" aria-label="More-Options"
+                                                             aria-describedby="More-Options-Container"
+                                                             style="position: absolute; right: 0px; top: 55px; width: 23%; height: 1.5cm; display: none;">
+                                                        <footer class="slds-popover__footer">
+                                                            <ul>
+                                                                <li>
+                                                                    <button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1"
+                                                                            id="editQuestionButton">
+                                                                        <svg class="slds-button__icon slds-button__icon_left"
+                                                                             aria-hidden="true">
+                                                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+                                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"/>
+                                                                        </svg>
+                                                                    </button>
+                                                                </li>
+                                                                <li>
+                                                                    <button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1">
+                                                                        <svg class="slds-button__icon slds-button__icon_left"
+                                                                             aria-hidden="true">
+                                                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"/>
+                                                                        </svg>
+                                                                    </button>
+                                                                </li>
+                                                            </ul>
+                                                        </footer>
+                                                    </section>
                                                 </div>
                                                 {{--<section class="slds-popover slds-nubbin_top-left slds-dynamic-menu" id="More-Options-Container"--}}
                                                          {{--role="dialog" aria-label="More-Options"--}}
@@ -147,7 +179,7 @@
                                     </footer>
                                 </article>
                                 <br/>
-                                {{--COMMENT--}}
+                                {{--Answers--}}
                                 <div class="slds-feed__item-comments">
                                     {{--<div class="slds-p-horizontal_medium slds-p-vertical_x-small slds-grid">
                                         <button class="slds-button_reset slds-text-link">More answers</button>
@@ -261,4 +293,5 @@
 @include('modals.login')
 @include('modals.register')
 @include('modals.userProfile')
+@include('modals.edit')
 <script src="{{ URL::asset('js/answer.js') }}" type="text/javascript"></script>
