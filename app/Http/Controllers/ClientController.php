@@ -258,4 +258,70 @@ class ClientController extends Controller {
 
         return view('pages.favourites', ['favourites' => $favourites]);
     }
+
+    public function upvote($id) {
+        if (session()->has('username')) {
+            $vote = DB::select('
+            SELECT 
+                vote
+            FROM vote v
+            INNER JOIN user u
+            INNER JOIN question q
+                ON v.user_ID4 = u.user_ID AND v.question_ID3 = q.question_ID
+            WHERE u.username = \'' . session()->get('username') . '\' AND v.question_ID3 = \'' . $id . '\'');
+            $voteId = DB::select('
+                    SELECT 
+                        vote_ID
+                    FROM vote v
+                    INNER JOIN user u
+                    INNER JOIN question q
+                        ON v.user_ID4 = u.user_ID AND v.question_ID3 = q.question_ID
+                    WHERE u.username = \'' . session()->get('username') . '\' AND v.question_ID3 = \'' . $id . '\'');
+            if($vote == null){ //not voted, first vote
+                DB::table('question')->where('question_ID', $id)->increment('upvotes', 1);
+                DB::table('vote')->insert(array('user_ID4' => session()->get('id'), 'question_ID3' => $id, 'vote' => 1));
+            } else if ($vote[0]->vote == 1){ //already upvoted
+                DB::table('question')->where('question_ID', $id)->increment('upvotes', -1);
+                DB::table('vote')->where('vote_ID', $voteId[0]->vote_ID)->delete();
+            } else if ($vote[0]->vote == 0){ // downvoted before
+                DB::table('question')->where('question_ID', $id)->increment('upvotes', 2);
+                DB::table('vote')->where('vote_ID', $voteId[0]->vote_ID)->update(array('vote' => 1));
+            }
+        }
+        return redirect('/post/' . $id . '');
+    }
+
+    public function downvote($id) {
+        if (session()->has('username')) {
+            $vote = DB::select('
+            SELECT 
+                vote
+            FROM vote v
+            INNER JOIN user u
+            INNER JOIN question q
+                ON v.user_ID4 = u.user_ID AND v.question_ID3 = q.question_ID
+            WHERE u.username = \'' . session()->get('username') . '\' AND v.question_ID3 = \'' . $id . '\'');
+            $voteId = DB::select('
+                    SELECT 
+                        vote_ID
+                    FROM vote v
+                    INNER JOIN user u
+                    INNER JOIN question q
+                        ON v.user_ID4 = u.user_ID AND v.question_ID3 = q.question_ID
+                    WHERE u.username = \'' . session()->get('username') . '\' AND v.question_ID3 = \'' . $id . '\'');
+            if($vote == null){ //not voted, first vote
+                DB::table('question')->where('question_ID', $id)->increment('upvotes', -1);
+                DB::table('vote')->insert(array('user_ID4' => session()->get('id'), 'question_ID3' => $id, 'vote' => 0));
+            } else if ($vote[0]->vote == 0){ //already downvoted
+                DB::table('question')->where('question_ID', $id)->increment('upvotes', 1);
+                DB::table('vote')->where('vote_ID', $voteId[0]->vote_ID)->delete();
+            } else if ($vote[0]->vote == 1){ // upvoted before
+                DB::table('question')->where('question_ID', $id)->increment('upvotes', -2);
+                DB::table('vote')->where('vote_ID', $voteId[0]->vote_ID)->update(array('vote' => 0));
+            }
+        }
+        return redirect('/post/' . $id . '');
+    }
+
+
 }
