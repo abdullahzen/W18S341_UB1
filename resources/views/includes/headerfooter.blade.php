@@ -55,7 +55,7 @@
                               <svg class="slds-input__icon slds-input__icon_left" aria-hidden="true">
                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#search" />
                               </svg>
-                              <input type="text" aria-autocomplete="list" aria-controls="global-search-list-01" autocomplete="off" class="slds-input slds-lookup__search-input" id="global-search-01" placeholder="Search" role="textbox" />
+                              <input type="text" aria-autocomplete="list" aria-controls="global-search-list-01" autocomplete="off" class="slds-input slds-lookup__search-input" id="global-search-01" placeholder="Search" role="textbox" onkeypress="javascript:Search('Test',event);"/>
                            </div>
                         </div>
                      </div>

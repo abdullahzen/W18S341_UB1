@@ -191,3 +191,9 @@ function displaycategories() {
 			$("#Php").css('width', '100%');
         }
 }
+
+function Search(searchstring, event) {
+	if (event.keyCode == 13 || event.which == 13){
+    window.open("/search/" + searchstring, "_self");
+	}
+}
