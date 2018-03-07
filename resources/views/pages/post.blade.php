@@ -3,7 +3,7 @@
 <body>
 <div class="slds-scope">
     <div>
-        <div id="post" class="questions" style="">
+        <div id="post" class="questions" style="    width: 100%;">
             <article class="slds-card">
                 <div class="slds-page-header">
                     <div class="slds-media">

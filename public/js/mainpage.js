@@ -171,13 +171,20 @@ function showpostquestion() {
 function displaycategories() {
    if ($('#categories').css('display') == 'none') {
 		$("#categories").css('display', 'block');
-		$("#Java").css('width', '78%');
-		$("#C").css('width', '78%');
-		$("#Javascript").css('width', '78%');
-		$("#Php").css('width', '78%');
+		$("#favourites").css('display', 'block');
+		
+		$("#Java").css('width', '55%');
+		$("#C").css('width', '55%');
+		$("#Javascript").css('width', '55%');
+		$("#Php").css('width', '55%');
+		$("#Java").css('float', 'left');
+		$("#C").css('float', 'left');
+		$("#Javascript").css('float', 'left');
+		$("#Php").css('float', 'left');
 	}
 	else {
             $("#categories").css('display', 'none');
+			$("#favourites").css('display', 'none');
 			$("#Java").css('width', '100%');
 			$("#C").css('width', '100%');
 			$("#Javascript").css('width', '100%');

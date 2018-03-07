@@ -1,9 +1,13 @@
 @include('includes.head')
 @include('includes.headerfooter')
+
 <body>
 <div class="slds-scope">
-    <div>
-        <div id="Java" class="questions">
+    <div <div id="favModal" class="modal" style="display:block; height: 640px;">
+        <div id="Java" class="questions" class="modal-content">
+			<section aria-describedby="modal-content-id-1" aria-labelledby="modal-heading-01" aria-modal="true" class="slds-modal slds-fade-in-open" role="dialog" tabindex="-1" style="    width: 75%;
+    padding-left: 360px;
+    padding-top: 160px;">
             <article class="slds-card">
                 <div class="slds-page-header">
                     <div class="slds-media">
@@ -95,6 +99,8 @@
                 @endforeach
                 <br/>
             </article>
+			</section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
         </div>
     </div>
 </div>
