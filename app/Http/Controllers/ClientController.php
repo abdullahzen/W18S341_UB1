@@ -280,7 +280,7 @@ class ClientController extends Controller {
         $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;
 
         if(DB::table('question')->where('question_ID', $id)->update(
-            array('title' => $title, 'content' => $content, 'category_ID1' => $category_ID)
+            array('title' => $title == null ? ' ' : $title, 'content' => $content == null ? ' ' : $content , 'category_ID1' => $category_ID == null ? '1' : $category_ID)
         )){}
         return redirect('/post/' . $id . '');
     }
