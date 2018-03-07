@@ -105,18 +105,18 @@ LOCK TABLES `favourite` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `vote`
+-- Table structure for table `questionvote`
 --
 
-DROP TABLE IF EXISTS `vote`;
+DROP TABLE IF EXISTS `questionvote`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `vote` (
+CREATE TABLE `questionvote` (
   `vote_ID` int(10) NOT NULL AUTO_INCREMENT,
   `user_ID4` int(10) NOT NULL,
-  `question_ID3` int(10) NOT NULL,
+  `question_ID3` int(10) NOT NULL DEFAULT '0',
   `vote` tinyint(4) NOT NULL,
-  PRIMARY KEY (`vote_ID`),
+  PRIMARY KEY (`questionvote_ID`),
   KEY `question_ID3` (`question_ID3`),
   KEY `user_ID4` (`user_ID4`),
   CONSTRAINT `question_ID3` FOREIGN KEY (`question_ID3`) REFERENCES `question` (`question_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -125,13 +125,43 @@ CREATE TABLE `vote` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `vote`
+-- Dumping data for table `questionvote`
 --
 
-LOCK TABLES `vote` WRITE;
-/*!40000 ALTER TABLE `vote` DISABLE KEYS */;
-/*!40000 ALTER TABLE `vote` ENABLE KEYS */;
+LOCK TABLES `questionvote` WRITE;
+/*!40000 ALTER TABLE `questionvote` DISABLE KEYS */;
+/*!40000 ALTER TABLE `questionvote` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `answervote`
+--
+
+DROP TABLE IF EXISTS `answervote`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `answervote` (
+  `vote_ID` int(10) NOT NULL AUTO_INCREMENT,
+  `user_ID5` int(10) NOT NULL,
+  `answer_ID1` int(10) NOT NULL DEFAULT '0',
+  `vote` tinyint(4) NOT NULL,
+  PRIMARY KEY (`answervote_ID`),
+  KEY `user_ID5` (`user_ID5`),
+  KEY `answer_ID1` (`answer_ID1`),
+  CONSTRAINT `answer_ID1` FOREIGN KEY (`answer_ID1`) REFERENCES `answer` (`answer_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `user_ID5` FOREIGN KEY (`user_ID5`) REFERENCES `user` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `answervote`
+--
+
+LOCK TABLES `answervote` WRITE;
+/*!40000 ALTER TABLE `answervote` DISABLE KEYS */;
+/*!40000 ALTER TABLE `answervote` ENABLE KEYS */;
+UNLOCK TABLES;
+
 --
 -- Table structure for table `question`
 --
