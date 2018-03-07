@@ -105,6 +105,34 @@ LOCK TABLES `favourite` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `vote`
+--
+
+DROP TABLE IF EXISTS `vote`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vote` (
+  `vote_ID` int(10) NOT NULL AUTO_INCREMENT,
+  `user_ID4` int(10) NOT NULL,
+  `question_ID3` int(10) NOT NULL,
+  `vote` tinyint(4) NOT NULL,
+  PRIMARY KEY (`vote_ID`),
+  KEY `question_ID3` (`question_ID3`),
+  KEY `user_ID4` (`user_ID4`),
+  CONSTRAINT `question_ID3` FOREIGN KEY (`question_ID3`) REFERENCES `question` (`question_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `user_ID4` FOREIGN KEY (`user_ID4`) REFERENCES `user` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `vote`
+--
+
+LOCK TABLES `vote` WRITE;
+/*!40000 ALTER TABLE `vote` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vote` ENABLE KEYS */;
+UNLOCK TABLES;
+--
 -- Table structure for table `question`
 --
 
