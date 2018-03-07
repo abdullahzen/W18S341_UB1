@@ -69,7 +69,7 @@ class ClientController extends Controller {
             return abort('400');
         }
     }
-  
+
     public function register(Request $request){
         $username = $request->Input('username');
         $email = $request->Input('email');
@@ -104,8 +104,8 @@ class ClientController extends Controller {
 
     public function getPostsByCategoryQuery($category) {
         $post = DB::select('
-            SELECT 
-                q.question_ID, 
+            SELECT
+                q.question_ID,
                 q.title,
                 q.content,
                 q.category_ID1,
@@ -126,8 +126,8 @@ class ClientController extends Controller {
 
     public function getFullPostById($id) {
         $post = DB::select('
-            SELECT 
-                q.question_ID, 
+            SELECT
+                q.question_ID,
                 q.title,
                 q.content,
                 q.category_ID1,
@@ -144,7 +144,7 @@ class ClientController extends Controller {
         ');
 
         $answer = DB::select('
-            SELECT 
+            SELECT
                 a.answer_ID,
                 a.answer,
                 a.user_ID2,
@@ -157,6 +157,8 @@ class ClientController extends Controller {
             INNER JOIN user u
                 ON a.user_ID2 = u.user_ID AND a.question_ID1 = ' . $id . '
         ');
+
+        ClientControllerHelper::setQuestionID($id);
 
         return view('pages.post', ['post' => $post[0], 'answer' => $answer]);
     }
@@ -235,7 +237,7 @@ class ClientController extends Controller {
     public function getFavourites(){
         $favourites = DB::select('
             SELECT
-                q.question_ID, 
+                q.question_ID,
                 q.title,
                 q.content,
                 q.category_ID1,
@@ -256,8 +258,9 @@ class ClientController extends Controller {
         $title = $request->input('title');
         $content = $request->input('content');
         $category = $request->input('category');
-        $user_ID = session()->get('id');
+        $id = $request->input('hiddenID');
         $result = DB::select('select category from category');
+        //check for current category
         $exists = false;
         foreach ($result as $key => $value){
             if ($category == $value->category){
@@ -267,11 +270,14 @@ class ClientController extends Controller {
         if (!$exists){
             DB::table('category')->insert(array("category" => $category));
         }
+
         $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;
-        if(DB::table('question')->udpate(
-            array("title" => $title, "content" => $content, "category_ID1" => $category_ID, "user_ID1" => $user_ID)
-        )) {
-            return redirect('/');
+
+        if(DB::table('question')->where('question_ID', $id)->update(
+            array('title' => $title, 'content' => $content, 'category_ID1' => $category_ID)
+        ))
+        {
+            return redirect('/post/' . $id . '');
         } else {
             return abort('400');
         }
