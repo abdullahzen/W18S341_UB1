@@ -260,7 +260,6 @@ class ClientController extends Controller {
     }
 	
 	public function getSearch($id) {
-        $seachstring = 'Test';
 
             $post = DB::select('
             SELECT 
@@ -275,7 +274,7 @@ class ClientController extends Controller {
                 q.views,
                 u.username
             FROM question q
-            INNER JOIN user u
+            INNER JOIN user u WHERE q.title LIKE \'% ' . $id . '%\'
         ');
 
         
