@@ -271,7 +271,7 @@ class ClientController extends Controller {
             WHERE u.username = \'' . session()->get('username') . '\' AND v.question_ID3 = \'' . $id . '\'');
             $voteId = DB::select('
                     SELECT 
-                        vote_ID
+                        questionvote_ID
                     FROM questionvote v
                     INNER JOIN user u
                     INNER JOIN question q

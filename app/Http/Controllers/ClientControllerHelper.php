@@ -14,8 +14,6 @@ use DB;
 
 class ClientControllerHelper extends Controller {
 
-    static $canVote = -1;
-
     public static function getUserDataFromDB($arg)
     {
         if (session()->has('username')){

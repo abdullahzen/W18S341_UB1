@@ -34,7 +34,7 @@ CREATE TABLE `answer` (
   `is_bestanswer` tinyint(4) DEFAULT '0',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`answer_ID`),
-  KEY `user_ID_idx` (`user_ID2`),
+  KEY `user_ID2` (`user_ID2`),
   KEY `question_ID1` (`question_ID1`),
   CONSTRAINT `question_ID1` FOREIGN KEY (`question_ID1`) REFERENCES `question` (`question_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `user_ID2` FOREIGN KEY (`user_ID2`) REFERENCES `user` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -114,7 +114,7 @@ DROP TABLE IF EXISTS `questionvote`;
 CREATE TABLE `questionvote` (
   `questionvote_ID` int(10) NOT NULL AUTO_INCREMENT,
   `user_ID4` int(10) NOT NULL,
-  `question_ID3` int(10) NOT NULL DEFAULT '0',
+  `question_ID3` int(10) NOT NULL,
   `vote` tinyint(4) NOT NULL,
   PRIMARY KEY (`questionvote_ID`),
   KEY `question_ID3` (`question_ID3`),
@@ -143,12 +143,12 @@ DROP TABLE IF EXISTS `answervote`;
 CREATE TABLE `answervote` (
   `answervote_ID` int(10) NOT NULL AUTO_INCREMENT,
   `user_ID5` int(10) NOT NULL,
-  `question_ID4` int(10) NOT NULL DEFAULT '0',
+  `answer_ID1` int(10) NOT NULL,
   `vote` tinyint(4) NOT NULL,
   PRIMARY KEY (`answervote_ID`),
-  KEY `question_ID4` (`question_ID4`),
+  KEY `answer_ID1` (`answer_ID1`),
   KEY `user_ID5` (`user_ID5`),
-  CONSTRAINT `question_ID4` FOREIGN KEY (`question_ID4`) REFERENCES `question` (`question_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `answer_ID1` FOREIGN KEY (`answer_ID1`) REFERENCES `answer` (`answer_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `user_ID5` FOREIGN KEY (`user_ID5`) REFERENCES `user` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 /*!40101 SET character_set_client = @saved_cs_client */;
