@@ -69,7 +69,7 @@ class ClientController extends Controller {
             return abort('400');
         }
     }
-  
+
     public function register(Request $request){
         $username = $request->Input('username');
         $email = $request->Input('email');
@@ -104,8 +104,8 @@ class ClientController extends Controller {
 
     public function getPostsByCategoryQuery($category) {
         $post = DB::select('
-            SELECT 
-                q.question_ID, 
+            SELECT
+                q.question_ID,
                 q.title,
                 q.content,
                 q.category_ID1,
@@ -126,9 +126,10 @@ class ClientController extends Controller {
 
     public function getFullPostById($id) {
         if ($this->incrementView($id)) {
+            ClientControllerHelper::setQuestionID($id);
             $post = DB::select('
-            SELECT 
-                q.question_ID, 
+            SELECT
+                q.question_ID,
                 q.title,
                 q.content,
                 q.category_ID1,
@@ -145,7 +146,7 @@ class ClientController extends Controller {
         ');
 
             $answer = DB::select('
-            SELECT 
+            SELECT
                 a.answer_ID,
                 a.answer,
                 a.user_ID2,
@@ -242,7 +243,7 @@ class ClientController extends Controller {
     public function getFavourites(){
         $favourites = DB::select('
             SELECT
-                q.question_ID, 
+                q.question_ID,
                 q.title,
                 q.content,
                 q.category_ID1,
@@ -258,7 +259,33 @@ class ClientController extends Controller {
 
         return view('pages.favourites', ['favourites' => $favourites]);
     }
-	
+  
+    public function editQuestion(Request $request) {
+        $title = $request->input('title');
+        $content = $request->input('content');
+        $category = $request->input('category');
+        $id = $request->input('hiddenID');
+        $result = DB::select('select category from category');
+        //check for current category
+        $exists = false;
+        foreach ($result as $key => $value){
+            if ($category == $value->category){
+                $exists = true;
+            }
+        }
+        if (!$exists){
+            DB::table('category')->insert(array("category" => $category));
+        }
+
+        $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;
+
+        if(DB::table('question')->where('question_ID', $id)->update(
+            array('title' => $title == null ? ' ' : $title, 'content' => $content == null ? ' ' : $content , 'category_ID1' => $category_ID == null ? '1' : $category_ID)
+        )){}
+        return redirect('/post/' . $id . '');
+    }
+}
+
 	public function getSearch($id) {
 
             $post = DB::select('

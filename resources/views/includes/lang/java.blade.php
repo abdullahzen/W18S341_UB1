@@ -26,13 +26,13 @@ $language = 'Java';
 
         <ul class="slds-has-dividers_around slds-has-block-links_space" style="background: white;">
             <?php
-                $i = 0;
-                foreach($java as $data) {
-                    echo '<li class="slds-item"><a href="./post/' . $data->question_ID . '">' . $data->title . '</a></li>';
-                    $i++;
-                    if ($i == 3)
-                        break;
-                }
+            $i = 0;
+            foreach ($java as $data) {
+                echo '<li class="slds-item"><a href="./post/' . $data->question_ID . '">' . $data->title . '</a></li>';
+                $i++;
+                if ($i == 3)
+                    break;
+            }
 
             ?>
         </ul>
@@ -69,7 +69,7 @@ $language = 'Java';
                                     <div class="slds-media__figure">
                                         <a href="javascript:void(0);"
                                            class="slds-avatar slds-avatar_circle slds-avatar_large">
-                                            <img src="/assets/images/avatar1.jpg" />
+                                            <img src="/assets/images/avatar1.jpg"/>
                                         </a>
                                     </div>
                                     <div class="slds-media__body">
@@ -79,19 +79,12 @@ $language = 'Java';
                                                 <br/>
                                                 <a href="javascript:void(0);">{{$data->username}}</a>
                                             </p>
-                                            <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
-                                                    aria-haspopup="true" title="More Options">
-                                                <svg class="slds-button__icon" aria-hidden="true">
-                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                         xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"/>
-                                                </svg>
-                                                <span class="slds-assistive-text">More Options</span>
-                                            </button>
-                                        </div>
+
                                         <p class="slds-text-body_small"><a href="javascript:void(0);"
                                                                            title="Click for single-item view of this post"
                                                                            class="slds-text-link_reset">{{$data->create_time}}</a>
                                         </p>
+                                        </div>
                                     </div>
                                 </header>
                                 <div class="slds-post__content slds-text-longform">

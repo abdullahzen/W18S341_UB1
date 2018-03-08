@@ -10,13 +10,15 @@ $(document).ready(function () {
 
     var userProfile = document.getElementById("userProfileButton");
     var userProfileModal = document.getElementById("userProfileModal");
+    // var moreOptionsContainer = document.getElementById("More-Options-Container");
 
     var span = document.getElementsByClassName("close")[0];
     var spanR = document.getElementsByClassName("closeR")[0];
     //var spanP = document.getElementsByClassName("closeP")[0];
     var spanU = document.getElementsByClassName("closeU")[0];
+    // var spanM = document.getElementsByClassName("More-Options")[0];
 
-    
+
     showJava();
 
     if(login != null) {
@@ -37,6 +39,7 @@ $(document).ready(function () {
         }
     }
 
+
     /*post.onclick = function(){
         postModal.style.display = "block";
     }*/
@@ -56,6 +59,10 @@ $(document).ready(function () {
     spanU.onclick = function () {
         userProfileModal.style.display = "none";
     }
+
+    // spanM.onclick = function() {
+    //     moreOptionsContainer.style.display = "block";
+    // }
 
     // Fix this if you want
     window.onclick = function(event) {
