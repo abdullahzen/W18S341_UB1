@@ -110,7 +110,8 @@ class ClientControllerHelper extends Controller {
         }
     }
 
-    public static function checkDownvotesA($id){
+    public static function checkDownvotesA($id)
+    {
         $vote = DB::select('
             SELECT 
                 vote
@@ -119,13 +120,14 @@ class ClientControllerHelper extends Controller {
             INNER JOIN answer a
                 ON v.user_ID5 = u.user_ID AND v.answer_ID1 = a.answer_ID
             WHERE u.username = \'' . session()->get('username') . '\' AND v.answer_ID1 = \'' . $id . '\'');
-        if ($vote == null){
+        if ($vote == null) {
             return 'default';
         } else if ($vote[0]->vote == 0) {
             return 'error';
         } else {
             return 'light';
         }
+    }
       
     public static function getQuestionDataFromDBForCurrentQuestion($arg, $id)
     {

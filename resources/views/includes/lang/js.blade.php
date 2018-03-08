@@ -93,17 +93,7 @@
                                 <footer class="slds-post__footer">
                                     <ul class="slds-post__footer-actions-list slds-list_horizontal">
                                         <li class="slds-col slds-item slds-m-right_medium">
-                                            <button title="Upvote this item"
-                                                    class="slds-button_reset slds-post__footer-action"
-                                                    aria-pressed="false">
-                                                {{$data->upvotes}}
-                                                <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle"
-                                                     aria-hidden="true">
-                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                         xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#share_mobile"/>
-                                                </svg>
-                                                Upvote
-                                            </button>
+                                            {{$data->upvotes}} upvotes
                                         </li>
                                     </ul>
                                     <ul class="slds-post__footer-meta-list slds-list_horizontal slds-has-dividers_right slds-text-title">

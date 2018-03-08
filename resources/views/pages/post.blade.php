@@ -178,21 +178,6 @@
                                         </p>
                                     </div>
                                     <footer class="slds-post__footer">
-                                        <ul class="slds-post__footer-actions-list slds-list_horizontal">
-                                            <li class="slds-col slds-item slds-m-right_medium">
-                                                <button title="Upvote this item"
-                                                        class="slds-button_reset slds-post__footer-action"
-                                                        aria-pressed="false">
-                                                    {{$post->upvotes}}
-                                                    <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle"
-                                                         aria-hidden="true">
-                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                             xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#share_mobile"/>
-                                                    </svg>
-                                                    Upvote
-                                                </button>
-                                            </li>
-                                        </ul>
                                         <ul class="slds-post__footer-meta-list slds-list_horizontal slds-has-dividers_right slds-text-title">
                                             <li class="slds-item">{{$post->comments}} answers</li>
                                             <li class="slds-item">{{$post->views}} views</li>
@@ -238,8 +223,8 @@
                                                         {{$a->answer}}
                                                     </div>
                                                     <footer>
-                                                        <ul class="slds-post__footer-actions-list slds-list_horizontal slds-list">
-                                                            <li class="slds-col slds-item slds-m-right_medium">
+                                                        <ul class="slds-post__footer-actions-list slds-list_horizontal" style="align-items: left;">
+                                                            <li class="slds-item">
                                                                 <button title="Upvote" class="slds-button_reset slds-post__footer-action" aria-pressed="true" onclick="window.location.href = '/post/' + {{$a->answer_ID}} + '/' + {{$post->question_ID}} + '/upvoteA'">
                                                                     <svg class="slds-icon slds-icon-text-default slds-icon-text-{{\App\Http\Controllers\ClientControllerHelper::checkUpvotesA($a->answer_ID)}} slds-icon_x-small slds-align-middle"
                                                                          aria-hidden="false">
@@ -247,16 +232,30 @@
                                                                     </svg>
                                                                 </button>
                                                             </li>
-                                                            <li class="slds-col slds-item slds-m-left--card-wrapper-spacing">
+                                                            <li class="slds-item">
                                                                 {{$a->upvotes}}
                                                             </li>
-                                                            <li class="slds-col slds-item slds-m-right_medium">
+                                                            <li class="slds-item">
                                                                 <button title="Downvote" class="slds-button_reset slds-post__footer-action" aria-pressed="false" onclick="window.location.href = '/post/' + {{$a->answer_ID}} + '/' + {{$post->question_ID}} +  '/downvoteA'">
                                                                     <svg class="slds-icon slds-icon-text-{{\App\Http\Controllers\ClientControllerHelper::checkDownvotesA($a->answer_ID)}} slds-icon_x-small slds-align-middle"
                                                                          aria-hidden="true">
                                                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"/>
                                                                     </svg>
                                                                 </button>
+                                                            </li>
+                                                            <li class="slds-item">
+                                                            </li>
+                                                            <li class="slds-item">
+                                                            </li>
+                                                            <li class="slds-item">
+                                                            </li>
+                                                            <li class="slds-item">
+                                                            </li>
+                                                            <li class="slds-item">
+                                                            </li>
+                                                            <li class="slds-item">
+                                                            </li>
+                                                            <li class="slds-item">
                                                             </li>
                                                             <li class="slds-item">{{$a->create_time}}</li>
                                                         </ul>
