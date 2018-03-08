@@ -348,7 +348,7 @@ class ClientController extends Controller {
                 DB::table('answervote')->where('vote_ID', $voteId[0]->vote_ID)->delete();
             } else if ($vote[0]->vote == 0){ // downvoted before
                 DB::table('answer')->where('answer_ID', $id)->increment('upvotes', 2);
-                DB::table('answervote')->where('vote_ID', $voteId[0]->vote_ID)->update(array('vote' => 1));
+                DB::table('answervote')->where('vote_ID', $voteId[0]->vote_ID)->update(array('vote' => 1)); 
             }
         }
         return redirect('/post/' . $id2 . '');
