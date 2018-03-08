@@ -77,11 +77,14 @@ class ClientControllerHelper extends Controller {
 
     public static function getCategoryName($id){
         if (session()->has('username')){
-            if ($id == '0'){
+            if ($id == '0' || $id == null){
                 return;
             }
-            $idd = ClientControllerHelper::getQuestionDataFromDBForCurrentQuestion('category_ID1', $id);
-            return DB::select('select category from category where category.category_ID = \'' . $idd . '\'')[0]->category;
+            $id2 = ClientControllerHelper::getQuestionDataFromDBForCurrentQuestion('category_ID1', $id);
+            $result = DB::select('select category from category where category.category_ID = \'' . $id2 . '\'');
+            if ($result != null){
+                return $result[0]->category;
+            }
         }
         return;
     }
