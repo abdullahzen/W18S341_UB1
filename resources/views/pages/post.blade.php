@@ -73,7 +73,6 @@
                                                         {{--</span>--}}
                                                     {{--<span class="slds-assistive-text">More Options</span>--}}
                                                 {{--</button>--}}
-                                                <div style="padding: 0.5rem; background-color: rgb(244, 246, 249); padding-left: 9cm;">
                                                     @if (session()->get('username') == $post->username)
                                                     <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
                                                             aria-haspopup="true" title="More-Options" id="More-Options"
@@ -116,7 +115,6 @@
                                                         </footer>
                                                     </section>
                                                     @endif
-                                                </div>
                                                 {{--<section class="slds-popover slds-nubbin_top-left slds-dynamic-menu" id="More-Options-Container"--}}
                                                          {{--role="dialog" aria-label="More-Options"--}}
                                                          {{--aria-describedby="More-Options-Container"--}}
@@ -296,4 +294,5 @@
 @include('modals.register')
 @include('modals.userProfile')
 @include('modals.edit')
+@include('modals.editProfile')
 <script src="{{ URL::asset('js/answer.js') }}" type="text/javascript"></script>
