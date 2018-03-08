@@ -12,6 +12,9 @@ $(document).ready(function () {
     var userProfileModal = document.getElementById("userProfileModal");
     // var moreOptionsContainer = document.getElementById("More-Options-Container");
 
+    var editProfileModal = document.getElementById('editProfileModal');
+    var editProfile = document.getElementById('editProfileModalButton');
+
     var span = document.getElementsByClassName("close")[0];
     var spanR = document.getElementsByClassName("closeR")[0];
     //var spanP = document.getElementsByClassName("closeP")[0];
@@ -39,6 +42,11 @@ $(document).ready(function () {
         }
     }
 
+    if(editProfile != null){
+        editProfile.onclick = function() {
+            editProfileModal.style.display = "block";
+        }
+    }
 
     /*post.onclick = function(){
         postModal.style.display = "block";
@@ -75,6 +83,9 @@ $(document).ready(function () {
         }
         if (event.target == userProfileModal) {
             userProfileModal.style.display = "none";
+        }
+        if (event.target == editProfileModal) {
+            editProfileModal.style.display = "none";
         }
     }
 
