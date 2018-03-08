@@ -69,15 +69,17 @@
                               </svg>
                               <span class="slds-assistive-text">Toggle Favorite</span>
                            </button>
+                           </a>&nbsp;
+						   </li>
+						   <li class="slds-grid">
+                           <a href="/favourites">
+                           <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon-favorites" aria-pressed="false" title="Toggle Favorites">
+                              <svg class="slds-button__icon slds-global-header__icon" aria-hidden="true">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#spinner" />
+                              </svg>
+                              <span class="slds-assistive-text">Toggle Favorite</span>
+                           </button>
                            </a>
-                           <span class="slds-dropdown-trigger slds-dropdown-trigger_click">
-                              <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon slds-m-left_none" title="View Favorites">
-                                 <svg class="slds-button__icon" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown" />
-                                 </svg>
-                                 <span class="slds-assistive-text">View Favorites</span>
-                              </button>
-                           </span>
                         </li>
                         <li class="slds-dropdown-trigger slds-dropdown-trigger_click slds-p-horizontal_xxx-small">
                            <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-small slds-button_icon-container slds-button_icon-x-small slds-global-header__button_icon-actions slds-m-horizontal_xx-small" title="Global Actions">
