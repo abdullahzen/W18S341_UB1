@@ -79,10 +79,10 @@ $language = 'Java';
                                                 <br/>
                                                 <a href="javascript:void(0);">{{$data->username}}</a>
                                             </p>
-
-                                        <p class="slds-text-body_small"><a href="javascript:void(0);"
-                                                                           title="Click for single-item view of this post"
-                                                                           class="slds-text-link_reset">{{$data->create_time}}</a>
+                                        </div>
+                                    <p class="slds-text-body_small"><a href="javascript:void(0);"
+                                                   title="Click for single-item view of this post"
+                                                   class="slds-text-link_reset">{{$data->create_time}}</a>
                                         </p>
                                         </div>
                                     </div>

@@ -1,5 +1,17 @@
 language: php
 php:
   - '7.1'
+
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
+
 before_script:
-  - composer install
+   - composer install
+   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('') where User='root'; update user set plugin='';FLUSH PRIVILEGES;"
+   - sudo mysql_upgrade
+   - sudo service mysql restart
