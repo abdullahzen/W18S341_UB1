@@ -11,8 +11,7 @@ addons:
       - mysql-client
 
 before_script:
-  - composer install
-  before_script:
+   - composer install
    - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('') where User='root'; update user set plugin='';FLUSH PRIVILEGES;"
    - sudo mysql_upgrade
    - sudo service mysql restart
