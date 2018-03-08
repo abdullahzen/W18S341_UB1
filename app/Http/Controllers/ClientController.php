@@ -117,7 +117,7 @@ class ClientController extends Controller {
                 u.username
             FROM question q
             INNER JOIN user u
-                ON q.user_ID1 = u.user_ID AND q.category_ID1 = ' . $category . '
+                ON q.user_ID1 = u.user_ID AND q.category_ID1 = ' . $category . ' AND q.is_hidden = 0
             ORDER BY q.question_ID DESC
         ');
 
@@ -141,7 +141,7 @@ class ClientController extends Controller {
                 u.username
             FROM question q
             INNER JOIN user u
-                ON q.user_ID1 = u.user_ID AND q.question_ID = ' . $id . '
+                ON q.user_ID1 = u.user_ID AND q.question_ID = ' . $id . ' AND q.is_hidden = 0
             ORDER BY q.question_ID DESC
         ');
 
@@ -157,7 +157,7 @@ class ClientController extends Controller {
                 u.username
             FROM answer a
             INNER JOIN user u
-                ON a.user_ID2 = u.user_ID AND a.question_ID1 = ' . $id . '
+                ON a.user_ID2 = u.user_ID AND a.question_ID1 = ' . $id . ' AND a.is_hidden = 0
         ');
             return view('pages.post', ['post' => $post[0], 'answer' => $answer]);
         } else {
@@ -253,7 +253,7 @@ class ClientController extends Controller {
                 q.comments,
                 q.views
             FROM question q
-            INNER JOIN favourite ON q.question_ID = favourite.question_ID2
+            INNER JOIN favourite ON q.question_ID = favourite.question_ID2 AND q.is_hidden = 0
             WHERE user_ID3 = ' . session()->get('id') . ';'
         );
 
@@ -411,6 +411,7 @@ class ClientController extends Controller {
         )){}
         return redirect('/post/' . $id . '');
     }
+
     public function updateUserProfile(Request $request) {
         if (session()->has('username')) {
             $newUserName = $request->input('userName');
@@ -442,7 +443,7 @@ class ClientController extends Controller {
                 q.views,
                 u.username
             FROM question q
-            INNER JOIN user u WHERE q.title LIKE \'%' . $id . '%\'
+            INNER JOIN user u WHERE q.title LIKE \'%' . $id . '%\' AND q.is_hidden = 0
         ');
 
         return view('pages.search', ['post' => $post]);

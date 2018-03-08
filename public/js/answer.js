@@ -5,6 +5,14 @@ function checkForm() {
         canSubmit = true;
     }
 
+    if (document.getElementById('content').value.length > 250){
+        canSubmit = false;
+    }
+
+    if (!canSubmit){
+        document.getElementById('newAnswerButton').disabled = true;
+    }
+
     if (canSubmit){
         document.getElementById('newAnswerButton').disabled = false;
     }
