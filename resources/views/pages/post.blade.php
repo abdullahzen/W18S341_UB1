@@ -328,5 +328,6 @@
 @include('modals.register')
 @include('modals.userProfile')
 @include('modals.edit')
+@include('modals.editProfile')
 <script src="{{ URL::asset('js/answer.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/postStats.js') }}" type="text/javascript"></script>
