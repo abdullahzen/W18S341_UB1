@@ -13,7 +13,7 @@ function checkForm() {
 $(function(){
     $("#newpostButton").click(function () {
         $(". ").hide();
-        var request = $.get('./post/{id}/newanswer', $('#answerForm').serialize());
+        var request = $.post('./post/{id}/newanswer', $('#answerForm').serialize());
         request.done(function () {
             window.location = './post/{id}';
         });
