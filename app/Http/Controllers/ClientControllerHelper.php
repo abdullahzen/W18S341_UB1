@@ -56,6 +56,79 @@ class ClientControllerHelper extends Controller {
         return 'N/A';
     }
 
+    public static function checkUpvotes($id){
+        $vote = DB::select('
+            SELECT 
+                vote
+            FROM questionvote v
+            INNER JOIN user u
+            INNER JOIN question q
+                ON v.user_ID4 = u.user_ID AND v.question_ID3 = q.question_ID
+            WHERE u.username = \'' . session()->get('username') . '\' AND v.question_ID3 = \'' . $id . '\'');
+        if ($vote == null){
+            return 'default';
+        } else if ($vote[0]->vote == 1) {
+            return 'warning';
+        } else {
+            return 'light';
+        }
+    }
+
+    public static function checkDownvotes($id){
+        $vote = DB::select('
+            SELECT 
+                vote
+            FROM questionvote v
+            INNER JOIN user u
+            INNER JOIN question q
+                ON v.user_ID4 = u.user_ID AND v.question_ID3 = q.question_ID
+            WHERE u.username = \'' . session()->get('username') . '\' AND v.question_ID3 = \'' . $id . '\'');
+        if ($vote == null){
+            return 'default';
+        } else if ($vote[0]->vote == 0) {
+            return 'error';
+        } else {
+            return 'light';
+        }
+    }
+
+    public static function checkUpvotesA($id){
+        $vote = DB::select('
+            SELECT 
+                vote
+            FROM answervote v
+            INNER JOIN user u
+            INNER JOIN answer a
+                ON v.user_ID5 = u.user_ID AND v.answer_ID1 = a.answer_ID
+            WHERE u.username = \'' . session()->get('username') . '\' AND v.answer_ID1 = \'' . $id . '\'');
+        if ($vote == null){
+            return 'default';
+        } else if ($vote[0]->vote == 1) {
+            return 'warning';
+        } else {
+            return 'light';
+        }
+    }
+
+    public static function checkDownvotesA($id)
+    {
+        $vote = DB::select('
+            SELECT 
+                vote
+            FROM answervote v
+            INNER JOIN user u
+            INNER JOIN answer a
+                ON v.user_ID5 = u.user_ID AND v.answer_ID1 = a.answer_ID
+            WHERE u.username = \'' . session()->get('username') . '\' AND v.answer_ID1 = \'' . $id . '\'');
+        if ($vote == null) {
+            return 'default';
+        } else if ($vote[0]->vote == 0) {
+            return 'error';
+        } else {
+            return 'light';
+        }
+    }
+      
     public static function getQuestionDataFromDBForCurrentQuestion($arg, $id)
     {
         if (session()->has('username')){
