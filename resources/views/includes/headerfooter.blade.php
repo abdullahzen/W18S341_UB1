@@ -7,10 +7,10 @@
                   <a href="javascript:void(0);" class="slds-assistive-text slds-assistive-text_focus">Skip to Navigation</a><a href="javascript:void(0);" class="slds-assistive-text slds-assistive-text_focus">Skip to Main Content</a>
                   <div class="slds-global-header slds-grid slds-grid_align-spread">
                      <div class="slds-global-header__item">
-                        <ul class="slds-global-header__item slds-grid slds-grid_vertical-align-center">
+                        <ul class="slds-global-header__item slds-grid slds-grid_vertical-align-center" style="width: 112%;">
                            <li class="slds-grid">
                               <div class="slds-context-bar__icon-action">
-                                 <button class="slds-button slds-icon-waffle_container slds-context-bar__button" title="Description of the icon when needed" {{--onclick="displaycategories();"--}}>
+                                 <button class="slds-button slds-icon-waffle_container slds-context-bar__button" title="Description of the icon when needed" onclick="displaycategories();">
                                  <span class="slds-icon-waffle">
                                  <span class="slds-r1"></span>
                                  <span class="slds-r2"></span>
@@ -55,11 +55,11 @@
                               <svg class="slds-input__icon slds-input__icon_left" aria-hidden="true">
                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#search" />
                               </svg>
-                              <input type="text" aria-autocomplete="list" aria-controls="global-search-list-01" autocomplete="off" class="slds-input slds-lookup__search-input" id="global-search-01" placeholder="Search" role="textbox" />
+                              <input type="text" aria-autocomplete="list" aria-controls="global-search-list-01" autocomplete="off" class="slds-input slds-lookup__search-input" id="global-search-01" placeholder="Search" role="textbox" onkeypress="javascript:Search($(this).val(),event);"/>
                            </div>
                         </div>
                      </div>
-                     @if(session()->has('id'))
+                    @if(session()->has('id'))
                      <ul class="slds-global-header__item slds-grid slds-grid_vertical-align-center">
                         <li class="slds-grid">
                            <a href="/favourites">
