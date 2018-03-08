@@ -44,11 +44,18 @@ Route::get('/favourites', array(
     'uses' => 'ClientController@getFavourites'
 ))->middleware('checkLoggedIn');
 
+Route::get('/search/{id}', array(
+    'uses' => 'ClientController@getSearch'
+));
 
 
 //POST
-
 Route::post('/login', 'ClientController@authenticate');
 Route::post('/newpost/do', 'ClientController@postQuestion');
 Route::post('/register', 'ClientController@register');
 Route::post('/post/{id}/newanswer', 'ClientController@postAnswer');
+Route::get('/post/{id}/upvote', 'ClientController@upvote');
+Route::get('/post/{id}/downvote', 'ClientController@downvote');
+Route::get('/post/{id}/{id2}/upvoteA', 'ClientController@upvoteA');
+Route::get('/post/{id}/{id2}/downvoteA', 'ClientController@downvoteA');
+Route::get('/edit', 'ClientController@editQuestion');

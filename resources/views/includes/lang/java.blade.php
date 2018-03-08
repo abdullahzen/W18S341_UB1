@@ -26,13 +26,13 @@ $language = 'Java';
 
         <ul class="slds-has-dividers_around slds-has-block-links_space" style="background: white;">
             <?php
-                $i = 0;
-                foreach($java as $data) {
-                    echo '<li class="slds-item"><a href="./post/' . $data->question_ID . '">' . $data->title . '</a></li>';
-                    $i++;
-                    if ($i == 3)
-                        break;
-                }
+            $i = 0;
+            foreach ($java as $data) {
+                echo '<li class="slds-item"><a href="./post/' . $data->question_ID . '">' . $data->title . '</a></li>';
+                $i++;
+                if ($i == 3)
+                    break;
+            }
 
             ?>
         </ul>
@@ -61,7 +61,7 @@ $language = 'Java';
         {{--POSTS--}}
         @foreach ($java as $data)
             <div class="slds-card__header slds-grid">
-                <div class="slds-feed">
+                <div class="slds-feed" style="    width: 100%;">
                     <ul class="slds-feed__list">
                         <li class="slds-feed__item">
                             <article class="slds-post">
@@ -69,7 +69,7 @@ $language = 'Java';
                                     <div class="slds-media__figure">
                                         <a href="javascript:void(0);"
                                            class="slds-avatar slds-avatar_circle slds-avatar_large">
-                                            <img src="/assets/images/avatar1.jpg" />
+                                            <img src="/assets/images/avatar1.jpg"/>
                                         </a>
                                     </div>
                                     <div class="slds-media__body">
@@ -79,18 +79,10 @@ $language = 'Java';
                                                 <br/>
                                                 <a href="javascript:void(0);">{{$data->username}}</a>
                                             </p>
-                                            <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
-                                                    aria-haspopup="true" title="More Options">
-                                                <svg class="slds-button__icon" aria-hidden="true">
-                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                         xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"/>
-                                                </svg>
-                                                <span class="slds-assistive-text">More Options</span>
-                                            </button>
                                         </div>
                                         <p class="slds-text-body_small"><a href="javascript:void(0);"
-                                                                           title="Click for single-item view of this post"
-                                                                           class="slds-text-link_reset">{{$data->create_time}}</a>
+                                                   title="Click for single-item view of this post"
+                                                   class="slds-text-link_reset">{{$data->create_time}}</a>
                                         </p>
                                     </div>
                                 </header>
@@ -102,17 +94,7 @@ $language = 'Java';
                                 <footer class="slds-post__footer">
                                     <ul class="slds-post__footer-actions-list slds-list_horizontal">
                                         <li class="slds-col slds-item slds-m-right_medium">
-                                            <button title="Upvote this item"
-                                                    class="slds-button_reset slds-post__footer-action"
-                                                    aria-pressed="false">
-                                                {{$data->upvotes}}
-                                                <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle"
-                                                     aria-hidden="true">
-                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                         xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#share_mobile"/>
-                                                </svg>
-                                                Upvote
-                                            </button>
+                                            {{$data->upvotes}} upvotes
                                         </li>
                                     </ul>
                                     <ul class="slds-post__footer-meta-list slds-list_horizontal slds-has-dividers_right slds-text-title">
