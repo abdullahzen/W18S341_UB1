@@ -259,7 +259,7 @@ class ClientController extends Controller {
 
         return view('pages.favourites', ['favourites' => $favourites]);
     }
-
+  
     public function editQuestion(Request $request) {
         $title = $request->input('title');
         $content = $request->input('content');
@@ -283,5 +283,28 @@ class ClientController extends Controller {
             array('title' => $title == null ? ' ' : $title, 'content' => $content == null ? ' ' : $content , 'category_ID1' => $category_ID == null ? '1' : $category_ID)
         )){}
         return redirect('/post/' . $id . '');
+    }
+}
+
+	public function getSearch($id) {
+
+            $post = DB::select('
+            SELECT 
+                q.question_ID, 
+                q.title,
+                q.content,
+                q.category_ID1,
+                q.user_ID1 as userID,
+                q.create_time,
+                q.upvotes,
+                q.comments,
+                q.views,
+                u.username
+            FROM question q
+            INNER JOIN user u WHERE q.title LIKE \'%' . $id . '%\'
+        ');
+
+        
+        return view('pages.search', ['post' => $post]);
     }
 }

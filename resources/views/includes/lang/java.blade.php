@@ -61,7 +61,7 @@ $language = 'Java';
         {{--POSTS--}}
         @foreach ($java as $data)
             <div class="slds-card__header slds-grid">
-                <div class="slds-feed">
+                <div class="slds-feed" style="    width: 100%;">
                     <ul class="slds-feed__list">
                         <li class="slds-feed__item">
                             <article class="slds-post">
