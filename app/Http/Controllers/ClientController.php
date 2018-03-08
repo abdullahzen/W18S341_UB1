@@ -430,7 +430,6 @@ class ClientController extends Controller {
             INNER JOIN user u WHERE q.title LIKE \'%' . $id . '%\'
         ');
 
-
         return view('pages.search', ['post' => $post]);
     }
 }
