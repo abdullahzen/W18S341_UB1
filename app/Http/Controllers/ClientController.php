@@ -284,11 +284,10 @@ class ClientController extends Controller {
         )){}
         return redirect('/post/' . $id . '');
     }
-}
 
-	public function getSearch($id) {
+    public function getSearch($id) {
 
-            $post = DB::select('
+        $post = DB::select('
             SELECT 
                 q.question_ID, 
                 q.title,
@@ -304,7 +303,8 @@ class ClientController extends Controller {
             INNER JOIN user u WHERE q.title LIKE \'%' . $id . '%\'
         ');
 
-        
+
         return view('pages.search', ['post' => $post]);
     }
 }
+
