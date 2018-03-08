@@ -274,7 +274,7 @@ class ClientController extends Controller {
                 q.views,
                 u.username
             FROM question q
-            INNER JOIN user u WHERE q.title LIKE \'% ' . $id . '%\'
+            INNER JOIN user u WHERE q.title LIKE \'%' . $id . '%\'
         ');
 
         
