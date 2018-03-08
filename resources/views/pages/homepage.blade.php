@@ -211,15 +211,15 @@
             {{--LEFT MENU--}}
 			<div>
 				
-               @include('includes.leftmenu')
+
 			
                {{--CATEGORY 1: JAVA--}}
                   @include('includes.lang.java')
-               {{--CATEGORY 1: JAVASCRIPT--}}
+               {{--CATEGORY 2: JAVASCRIPT--}}
                   @include('includes.lang.js')
-               {{--CATEGORY 1: PHP--}}
+               {{--CATEGORY 3: PHP--}}
                   @include('includes.lang.php')
-               {{--CATEGORY 1: C--}}
+               {{--CATEGORY 4: C--}}
                   @include('includes.lang.c')
             </div>
   </div>

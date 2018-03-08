@@ -255,3 +255,5 @@
       </div>
    </body>
 </html>
+
+   @include('includes.leftmenu')
