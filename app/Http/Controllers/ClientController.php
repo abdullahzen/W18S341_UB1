@@ -282,10 +282,10 @@ class ClientController extends Controller {
                 DB::table('vote')->insert(array('user_ID4' => session()->get('id'), 'question_ID3' => $id, 'vote' => 1));
             } else if ($vote[0]->vote == 1){ //already upvoted
                 DB::table('question')->where('question_ID', $id)->increment('upvotes', -1);
-                DB::table('vote')->where('vote_ID', $voteId[0]->vote_ID)->delete();
+                DB::table('vote')->where('questionvote_ID', $voteId[0]->questionvote_ID)->delete();
             } else if ($vote[0]->vote == 0){ // downvoted before
                 DB::table('question')->where('question_ID', $id)->increment('upvotes', 2);
-                DB::table('vote')->where('vote_ID', $voteId[0]->vote_ID)->update(array('vote' => 1));
+                DB::table('vote')->where('questionvote_ID', $voteId[0]->questionvote_ID)->update(array('vote' => 1));
             }
         }
         return redirect('/post/' . $id . '');
@@ -303,7 +303,7 @@ class ClientController extends Controller {
             WHERE u.username = \'' . session()->get('username') . '\' AND v.question_ID3 = \'' . $id . '\'');
             $voteId = DB::select('
                     SELECT 
-                        vote_ID
+                        questionvote_ID
                     FROM questionvote v
                     INNER JOIN user u
                     INNER JOIN question q
@@ -314,10 +314,10 @@ class ClientController extends Controller {
                 DB::table('questionvote')->insert(array('user_ID4' => session()->get('id'), 'question_ID3' => $id, 'vote' => 0));
             } else if ($vote[0]->vote == 0){ //already downvoted
                 DB::table('question')->where('question_ID', $id)->increment('upvotes', 1);
-                DB::table('questionvote')->where('vote_ID', $voteId[0]->vote_ID)->delete();
+                DB::table('questionvote')->where('questionvote_ID', $voteId[0]->questionvote_ID)->delete();
             } else if ($vote[0]->vote == 1){ // upvoted before
                 DB::table('question')->where('question_ID', $id)->increment('upvotes', -2);
-                DB::table('questionvote')->where('vote_ID', $voteId[0]->vote_ID)->update(array('vote' => 0));
+                DB::table('questionvote')->where('questionvote_ID', $voteId[0]->questionvote_ID)->update(array('vote' => 0));
             }
         }
         return redirect('/post/' . $id . '');
@@ -334,7 +334,7 @@ class ClientController extends Controller {
             WHERE u.username = \'' . session()->get('username') . '\' AND v.answer_ID1 = \'' . $id . '\'');
             $voteId = DB::select('
             SELECT 
-                vote_ID
+                answervote_ID
             FROM answervote v
             INNER JOIN user u
             INNER JOIN answer a
@@ -345,10 +345,10 @@ class ClientController extends Controller {
                 DB::table('answervote')->insert(array('user_ID5' => session()->get('id'), 'answer_ID1' => $id, 'vote' => 1));
             } else if ($vote[0]->vote == 1){ //already upvoted
                 DB::table('answer')->where('answer_ID', $id)->increment('upvotes', -1);
-                DB::table('answervote')->where('vote_ID', $voteId[0]->vote_ID)->delete();
+                DB::table('answervote')->where('answervote_ID', $voteId[0]->answervote_ID)->delete();
             } else if ($vote[0]->vote == 0){ // downvoted before
                 DB::table('answer')->where('answer_ID', $id)->increment('upvotes', 2);
-                DB::table('answervote')->where('vote_ID', $voteId[0]->vote_ID)->update(array('vote' => 1));
+                DB::table('answervote')->where('answervote_ID', $voteId[0]->answervote_ID)->update(array('vote' => 1));
             }
         }
         return redirect('/post/' . $id2 . '');
@@ -366,7 +366,7 @@ class ClientController extends Controller {
             WHERE u.username = \'' . session()->get('username') . '\' AND v.answer_ID1 = \'' . $id . '\'');
             $voteId = DB::select('
             SELECT 
-                vote_ID
+                answervote_ID
             FROM answervote v
             INNER JOIN user u
             INNER JOIN answer a
@@ -377,10 +377,10 @@ class ClientController extends Controller {
                 DB::table('answervote')->insert(array('user_ID5' => session()->get('id'), 'answer_ID1' => $id, 'vote' => 0));
             } else if ($vote[0]->vote == 0){ //already downvoted
                 DB::table('answer')->where('answer_ID', $id)->increment('upvotes', 1);
-                DB::table('answervote')->where('vote_ID', $voteId[0]->vote_ID)->delete();
+                DB::table('answervote')->where('answervote_ID', $voteId[0]->answervote_ID)->delete();
             } else if ($vote[0]->vote == 1){ // upvoted before
                 DB::table('answer')->where('answer_ID', $id)->increment('upvotes', -2);
-                DB::table('answervote')->where('vote_ID', $voteId[0]->vote_ID)->update(array('vote' => 0));
+                DB::table('answervote')->where('answervote_ID', $voteId[0]->answervote_ID)->update(array('vote' => 0));
             }
         }
         return redirect('/post/' . $id2 . '');
