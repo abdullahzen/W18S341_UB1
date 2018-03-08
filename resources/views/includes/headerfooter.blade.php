@@ -7,10 +7,10 @@
                   <a href="javascript:void(0);" class="slds-assistive-text slds-assistive-text_focus">Skip to Navigation</a><a href="javascript:void(0);" class="slds-assistive-text slds-assistive-text_focus">Skip to Main Content</a>
                   <div class="slds-global-header slds-grid slds-grid_align-spread">
                      <div class="slds-global-header__item">
-                        <ul class="slds-global-header__item slds-grid slds-grid_vertical-align-center">
+                        <ul class="slds-global-header__item slds-grid slds-grid_vertical-align-center" style="width: 112%;">
                            <li class="slds-grid">
                               <div class="slds-context-bar__icon-action">
-                                 <button class="slds-button slds-icon-waffle_container slds-context-bar__button" title="Description of the icon when needed" {{--onclick="displaycategories();"--}}>
+                                 <button class="slds-button slds-icon-waffle_container slds-context-bar__button" title="Description of the icon when needed" onclick="displaycategories();">
                                  <span class="slds-icon-waffle">
                                  <span class="slds-r1"></span>
                                  <span class="slds-r2"></span>
@@ -55,11 +55,11 @@
                               <svg class="slds-input__icon slds-input__icon_left" aria-hidden="true">
                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#search" />
                               </svg>
-                              <input type="text" aria-autocomplete="list" aria-controls="global-search-list-01" autocomplete="off" class="slds-input slds-lookup__search-input" id="global-search-01" placeholder="Search" role="textbox" />
+                              <input type="text" aria-autocomplete="list" aria-controls="global-search-list-01" autocomplete="off" class="slds-input slds-lookup__search-input" id="global-search-01" placeholder="Search" role="textbox" onkeypress="javascript:Search($(this).val(),event);"/>
                            </div>
                         </div>
                      </div>
-                     @if(session()->has('id'))
+                    @if(session()->has('id'))
                      <ul class="slds-global-header__item slds-grid slds-grid_vertical-align-center">
                         <li class="slds-grid">
                            <a href="/favourites">
@@ -69,15 +69,17 @@
                               </svg>
                               <span class="slds-assistive-text">Toggle Favorite</span>
                            </button>
+                           </a>&nbsp;
+						   </li>
+						   <li class="slds-grid">
+                           <a href="/favourites">
+                           <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon-favorites" aria-pressed="false" title="Toggle Favorites">
+                              <svg class="slds-button__icon slds-global-header__icon" aria-hidden="true">
+                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#spinner" />
+                              </svg>
+                              <span class="slds-assistive-text">Toggle Favorite</span>
+                           </button>
                            </a>
-                           <span class="slds-dropdown-trigger slds-dropdown-trigger_click">
-                              <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon slds-m-left_none" title="View Favorites">
-                                 <svg class="slds-button__icon" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown" />
-                                 </svg>
-                                 <span class="slds-assistive-text">View Favorites</span>
-                              </button>
-                           </span>
                         </li>
                         <li class="slds-dropdown-trigger slds-dropdown-trigger_click slds-p-horizontal_xxx-small">
                            <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-small slds-button_icon-container slds-button_icon-x-small slds-global-header__button_icon-actions slds-m-horizontal_xx-small" title="Global Actions">

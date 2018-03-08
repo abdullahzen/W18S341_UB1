@@ -354,7 +354,8 @@ class ClientController extends Controller {
         return redirect('/post/' . $id2 . '');
     }
 
-    public function downvoteA($id, $id2) {
+    public function downvoteA($id, $id2)
+    {
         if (session()->has('username')) {
             $vote = DB::select('
             SELECT 
@@ -372,17 +373,39 @@ class ClientController extends Controller {
             INNER JOIN answer a
                 ON v.user_ID5 = u.user_ID AND v.answer_ID1 = a.answer_ID
             WHERE u.username = \'' . session()->get('username') . '\' AND v.answer_ID1 = \'' . $id . '\'');
-            if($vote == null){ //not voted, first vote
+            if ($vote == null) { //not voted, first vote
                 DB::table('answer')->where('answer_ID', $id)->increment('upvotes', -1);
                 DB::table('answervote')->insert(array('user_ID5' => session()->get('id'), 'answer_ID1' => $id, 'vote' => 0));
-            } else if ($vote[0]->vote == 0){ //already downvoted
+            } else if ($vote[0]->vote == 0) { //already downvoted
                 DB::table('answer')->where('answer_ID', $id)->increment('upvotes', 1);
                 DB::table('answervote')->where('vote_ID', $voteId[0]->vote_ID)->delete();
-            } else if ($vote[0]->vote == 1){ // upvoted before
+            } else if ($vote[0]->vote == 1) { // upvoted before
                 DB::table('answer')->where('answer_ID', $id)->increment('upvotes', -2);
                 DB::table('answervote')->where('vote_ID', $voteId[0]->vote_ID)->update(array('vote' => 0));
             }
         }
         return redirect('/post/' . $id2 . '');
+    }
+
+	public function getSearch($id) {
+
+            $post = DB::select('
+            SELECT 
+                q.question_ID, 
+                q.title,
+                q.content,
+                q.category_ID1,
+                q.user_ID1 as userID,
+                q.create_time,
+                q.upvotes,
+                q.comments,
+                q.views,
+                u.username
+            FROM question q
+            INNER JOIN user u WHERE q.title LIKE \'%' . $id . '%\'
+        ');
+
+        
+        return view('pages.search', ['post' => $post]);
     }
 }

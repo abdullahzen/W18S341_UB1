@@ -3,7 +3,7 @@
 <body>
 <div class="slds-scope">
     <div>
-        <div id="post" class="questions" style="">
+        <div id="post" class="questions" style="    width: 100%;">
             <article class="slds-card">
                 <div class="slds-page-header">
                     <div class="slds-media">
@@ -46,7 +46,7 @@
                 </div>
                 {{--POSTS--}}
                 <div class="slds-card__header slds-grid">
-                    <div class="slds-feed">
+                    <div class="slds-feed" style="    width: 100%;">
                         <ul class="slds-feed__list">
                             <li class="slds-feed__item">
                                     <article class="slds-post">
@@ -231,6 +231,7 @@
             </article>
         </div>
     </div>
+	
 </div>
 </body>
 {{--Modal Inclusion--}}
