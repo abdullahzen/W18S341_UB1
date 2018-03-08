@@ -171,16 +171,29 @@ function showpostquestion() {
 function displaycategories() {
    if ($('#categories').css('display') == 'none') {
 		$("#categories").css('display', 'block');
+		$("#favourites").css('display', 'block');
+		
 		$("#Java").css('width', '78%');
 		$("#C").css('width', '78%');
 		$("#Javascript").css('width', '78%');
 		$("#Php").css('width', '78%');
+		$("#Java").css('float', 'left');
+		$("#C").css('float', 'left');
+		$("#Javascript").css('float', 'left');
+		$("#Php").css('float', 'left');
 	}
 	else {
             $("#categories").css('display', 'none');
+			$("#favourites").css('display', 'none');
 			$("#Java").css('width', '100%');
 			$("#C").css('width', '100%');
 			$("#Javascript").css('width', '100%');
 			$("#Php").css('width', '100%');
         }
+}
+
+function Search(searchstring, event) {
+	if (event.keyCode == 13 || event.which == 13){
+    window.open("/search/" + searchstring, "_self");
+	}
 }
