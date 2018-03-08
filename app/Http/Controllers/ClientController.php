@@ -77,4 +77,16 @@ class ClientController extends Controller {
             array("username" => $username, "email" => $email, "password" => $password, "is_Solver" => $solve)
         );
     }
+
+    public function deleteQuestion($id){
+        DB::table('question')
+            ->where('question_ID',$id)
+            ->update(['is_hidden'=>1]);
+    }
+
+    public function deleteAnswer($id){
+        DB::table('answer')
+            ->where('answer_ID',$id)
+            ->update(['is_hidden'=>1]);
+    }
 }
