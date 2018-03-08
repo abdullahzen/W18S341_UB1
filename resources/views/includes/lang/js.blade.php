@@ -60,7 +60,7 @@
         {{--POSTS--}}
         @foreach ($js as $data)
             <div class="slds-card__header slds-grid">
-                <div class="slds-feed">
+                <div class="slds-feed" style="    width: 100%;">
                     <ul class="slds-feed__list">
                         <li class="slds-feed__item">
                             <article class="slds-post">
@@ -77,7 +77,7 @@
                                                 <a href="./post/{{$data->question_ID}}">{{$data->title}}</a>
                                                 <br/>
                                                 <a href="javascript:void(0);">{{$data->username}}</a>
-                                            </p> 
+                                            </p>
                                         </div>
                                         <p class="slds-text-body_small"><a href="javascript:void(0);"
                                                                            title="Click for single-item view of this post"

@@ -1,64 +1,12 @@
-<?php
-$language = 'C';
-?>
-<div id="C" class="questions" style="width : 100%">
-    <div class="slds-card">
-        <div class="slds-page-header">
-            <div class="slds-media">
-                <div class="slds-media__figure">
-                           <span class="slds-icon_container slds-icon-standard-opportunity" title="Top Questions">
-                              <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
-                                 <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                      xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"/>
-                              </svg>
-                           </span>
-                </div>
-                <div class="slds-media__body">
-                    <h1 class="slds-page-header__title slds-truncate slds-align-middle" title="Top Questions">
-                        Top 3 {{$language}} Questions
-                    </h1>
-                    <p class="slds-text-body_small slds-line-height_reset">
-                        Most upvoted {{$language}} related questions of all time.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <ul class="slds-has-dividers_around slds-has-block-links_space" style="background: white;">
-            <?php
-            $i = 0;
-            foreach($c as $data) {
-                echo '<li class="slds-item"><a href="./post/' . $data->question_ID . '">' . $data->title . '</a></li>';                $i++;
-                if ($i == 3)
-                    break;
-            }
-
-            ?>
-        </ul>
-    </div>
-    <article class="slds-card">
-        <div class="slds-page-header">
-            <div class="slds-media">
-                <div class="slds-media__figure">
-                           <span class="slds-icon_container slds-icon-standard-opportunity" title="All Questions">
-                              <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
-                                 <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                      xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#question_best"/>
-                              </svg>
-                           </span>
-                </div>
-                <div class="slds-media__body">
-                    <h1 class="slds-page-header__title slds-truncate slds-align-middle" title="All Questions">
-                        {{$language}} Question Subsection
-                    </h1>
-                    <p class="slds-text-body_small slds-line-height_reset">
-                        All {{$language}} related questions can be found here.
-                    </p>
-                </div>
-            </div>
-        </div>
-        {{--POSTS--}}
-        @foreach ($c as $data)
+@include('includes.head')
+@include('includes.headerfooter')
+<body>
+<div class="slds-scope">
+    <div>
+        <div id="post" class="questions" style="    width: 100%;">
+            
+			{{--POSTS--}}
+        @foreach ($post as $data)
             <div class="slds-card__header slds-grid">
                 <div class="slds-feed" style="    width: 100%;">
                     <ul class="slds-feed__list">
@@ -74,10 +22,18 @@ $language = 'C';
                                     <div class="slds-media__body">
                                         <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
                                             <p>
-                                                <a href="./post/{{$data->question_ID}}">{{$data->title}}</a>
+                                                <a href="../post/{{$data->question_ID}}">{{$data->title}}</a>
                                                 <br/>
                                                 <a href="javascript:void(0);">{{$data->username}}</a>
                                             </p>
+                                            <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
+                                                    aria-haspopup="true" title="More Options">
+                                                <svg class="slds-button__icon" aria-hidden="true">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                         xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"/>
+                                                </svg>
+                                                <span class="slds-assistive-text">More Options</span>
+                                            </button>
                                         </div>
                                         <p class="slds-text-body_small"><a href="javascript:void(0);"
                                                                            title="Click for single-item view of this post"
@@ -117,6 +73,14 @@ $language = 'C';
                 </div>
             </div>
         @endforeach
-        <br/>
-    </article>
+			
+        </div>
+    </div>
+	
 </div>
+</body>
+{{--Modal Inclusion--}}
+@include('modals.login')
+@include('modals.register')
+@include('modals.userProfile')
+<script src="{{ URL::asset('js/answer.js') }}" type="text/javascript"></script>
