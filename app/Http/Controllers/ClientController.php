@@ -284,4 +284,20 @@ class ClientController extends Controller {
         )){}
         return redirect('/post/' . $id . '');
     }
+
+    public function updateUserProfile(Request $request) {
+        if (session()->has('username')) {
+            $newUserName = $request->input('userName');
+            $newEmail = $request->input('email');
+
+
+            if ($newUserName == null || $newEmail == null) {
+                return redirect('/');
+            }
+
+            DB::table('user')->where('username', session()->get('username'))->update(
+                array('username' => $newUserName, 'email' => $newEmail));
+                return redirect('/');
+        }
+    }
 }
