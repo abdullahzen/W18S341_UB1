@@ -51,6 +51,27 @@
                             <li class="slds-feed__item">
                                 <article class="slds-post">
                                     <header class="slds-post__header slds-media">
+                                        <ul class="slds-post__footer-actions-list slds-list_vertical slds-list">
+                                                <li class="slds-col slds-item slds-m-right_medium">
+                                                    <button title="Upvote" class="slds-button_reset slds-post__footer-action" aria-pressed="true" onclick="window.location.href = '/post/' + {{$post->question_ID}} + '/upvote'" id="upvote">
+                                                        <svg class="slds-icon slds-icon-text-default slds-icon-text-{{\App\Http\Controllers\ClientControllerHelper::checkUpvotes($post->question_ID)}} slds-icon_x-small slds-align-middle"
+                                                             aria-hidden="false">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"/>
+                                                        </svg>
+                                                    </button>
+                                                </li>
+                                                <li class="slds-col slds-item slds-m-left--card-wrapper-spacing">
+                                                    {{$post->upvotes}}
+                                                </li>
+                                                <li class="slds-col slds-item slds-m-right_medium">
+                                                    <button title="Downvote" class="slds-button_reset slds-post__footer-action" aria-pressed="false" onclick="window.location.href = '/post/' + {{$post->question_ID}} + '/downvote'" id="downvote">
+                                                        <svg class="slds-icon slds-icon-text-{{\App\Http\Controllers\ClientControllerHelper::checkDownvotes($post->question_ID)}} slds-icon_x-small slds-align-middle"
+                                                             aria-hidden="true">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"/>
+                                                        </svg>
+                                                    </button>
+                                                </li>
+                                            </ul>
                                         <div class="slds-media__figure">
                                             <a href="javascript:void(0);"
                                                class="slds-avatar slds-avatar_circle slds-avatar_large">
@@ -89,7 +110,7 @@
                                                              id="More-Options-Container"
                                                              role="dialog" aria-label="More-Options"
                                                              aria-describedby="More-Options-Container"
-                                                             style="position: absolute; right: 0px; top: 55px; width: 23%; height: 1.5cm; display: none;">
+                                                             style="position: absolute; right: 0px; top: 55px; width: 23%; height: 2cm; display: none;">
                                                         <footer class="slds-popover__footer">
                                                             <ul>
                                                                 <li>
@@ -100,6 +121,7 @@
                                                                             <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"
                                                                                  xmlns:xlink="http://www.w3.org/1999/xlink"/>
                                                                         </svg>
+                                                                        Edit
                                                                     </button>
                                                                 </li>
                                                                 <li>
@@ -109,11 +131,52 @@
                                                                             <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
                                                                                  xmlns:xlink="http://www.w3.org/1999/xlink"/>
                                                                         </svg>
+                                                                        Delete
                                                                     </button>
                                                                 </li>
                                                             </ul>
                                                         </footer>
                                                     </section>
+                                                    @endif
+                                                    @if (session()->has('id') && session()->get('username') != $post->username)
+                                                        <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
+                                                                aria-haspopup="true" title="More-Options" id="More-Options"
+                                                                name="More-Options">
+                                                        <span class="More-Options">
+                                                        <svg class="slds-button__icon" aria-hidden="false">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                             xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"/>
+                                                        </svg>
+                                                        </span>
+                                                            <span class="slds-assistive-text">More Options</span>
+                                                        </button>
+                                                        <section class="slds-popover slds-nubbin_top-right slds-dynamic-menu"
+                                                                 id="More-Options-Container"
+                                                                 role="dialog" aria-label="More-Options"
+                                                                 aria-describedby="More-Options-Container"
+                                                                 style="position: absolute; right: 0px; top: 55px; width: 23%; height: 1cm; display: none;">
+                                                            <footer class="slds-popover__footer">
+                                                                <ul>
+                                                                    <li>
+                                                                        <button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1"
+                                                                                id="favouriteButton"
+                                                                                onclick="window.location.href = '/post/' + {{$post->question_ID}} + '/favourite'">
+                                                                            <svg class="slds-button__icon slds-button__icon_left"
+                                                                                 aria-hidden="true">
+                                                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
+                                                                                     xmlns:xlink="http://www.w3.org/1999/xlink"/>
+                                                                            </svg>
+                                                                            @if(\App\Http\Controllers\ClientController::isFavourite($post->question_ID) == false)
+                                                                                Favourite
+                                                                            @endif
+                                                                            @if(\App\Http\Controllers\ClientController::isFavourite($post->question_ID))
+                                                                                Unfavourite
+                                                                            @endif
+                                                                        </button>
+                                                                    </li>
+                                                                </ul>
+                                                            </footer>
+                                                        </section>
                                                     @endif
                                                 {{--<section class="slds-popover slds-nubbin_top-left slds-dynamic-menu" id="More-Options-Container"--}}
                                                          {{--role="dialog" aria-label="More-Options"--}}
@@ -147,7 +210,11 @@
                                             </div>
                                             <p class="slds-text-body_small"><a href="javascript:void(0);"
                                                                                title="Click for single-item view of this post"
-                                                                               class="slds-text-link_reset">{{$post->create_time}}</a>
+                                                                               class="slds-text-link_reset">
+                                                    <?php
+                                                    echo \Carbon\Carbon::createFromTimeStamp(strtotime($post->create_time))->diffForHumans();
+                                                    ?>
+                                                </a>
                                             </p>
                                         </div>
                                     </header>
@@ -157,21 +224,6 @@
                                         </p>
                                     </div>
                                     <footer class="slds-post__footer">
-                                        <ul class="slds-post__footer-actions-list slds-list_horizontal">
-                                            <li class="slds-col slds-item slds-m-right_medium">
-                                                <button title="Upvote this item"
-                                                        class="slds-button_reset slds-post__footer-action"
-                                                        aria-pressed="false">
-                                                    {{$post->upvotes}}
-                                                    <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle"
-                                                         aria-hidden="true">
-                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                             xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#share_mobile"/>
-                                                    </svg>
-                                                    Upvote
-                                                </button>
-                                            </li>
-                                        </ul>
                                         <ul class="slds-post__footer-meta-list slds-list_horizontal slds-has-dividers_right slds-text-title">
                                             <li class="slds-item">{{$post->comments}} answers</li>
                                             <li class="slds-item">{{$post->views}} views</li>
@@ -202,29 +254,74 @@
                                                                 <a href="javascript:void(0);">
                                                                     {{$a->username}}
                                                                 </a>
+                                                                @if($a->answer_ID == $post->best_answer_ID)
+                                                                    <svg class="slds-icon slds-icon-text-warning slds-icon-text-warning slds-icon_x-small slds-align-middle"
+                                                                         aria-hidden="false">
+                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"/>
+                                                                    </svg>
+                                                                @endif
                                                             </p>
-                                                            <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
-                                                                    aria-haspopup="true" title="More Options">
-                                                                <svg class="slds-button__icon" aria-hidden="true">
-                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                         xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"/>
+                                                            @if($a->answer_ID == $post->best_answer_ID)
+                                                                <button title="Revoke Best Answer" class="slds-button_reset slds-post__footer-action" aria-pressed="false" onclick="window.location.href = '/post/unbestanswer/' + {{$post->question_ID}} + '/' + {{$a->answer_ID}} +  '/'">
+                                                                    <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle"
+                                                                         aria-hidden="true">
+                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"/>
+                                                                    </svg>
+                                                                </button>
+                                                            @endif
+                                                            @if(!$a->answer_ID == $post->best_answer_ID)
+                                                            <button title="Mark as Best Answer" class="slds-button_reset slds-post__footer-action" aria-pressed="false" onclick="window.location.href = '/post/bestanswer/' + {{$post->question_ID}} + '/' + {{$a->answer_ID}} +  '/'">
+                                                                <svg class="slds-icon slds-icon-text-warning slds-icon_x-small slds-align-middle"
+                                                                     aria-hidden="true">
+                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"/>
                                                                 </svg>
-                                                                <span class="slds-assistive-text">More Options</span>
                                                             </button>
+                                                            @endif
                                                         </div>
                                                     </header>
                                                     <div class="slds-comment__content slds-text-longform">
                                                         {{$a->answer}}
                                                     </div>
                                                     <footer>
-                                                        <ul class="slds-list_horizontal slds-has-dividers_right slds-text-body_small">
+                                                        <ul class="slds-post__footer-actions-list slds-list_horizontal" style="align-items: left;">
                                                             <li class="slds-item">
-                                                                <button class="slds-button_reset slds-text-color_weak"
-                                                                        title="Upvote this item"
-                                                                        aria-pressed="false">Upvote {{$a->upvotes}}
+                                                                <button title="Upvote" class="slds-button_reset slds-post__footer-action" aria-pressed="true" onclick="window.location.href = '/post/' + {{$a->answer_ID}} + '/' + {{$post->question_ID}} + '/upvoteA'">
+                                                                    <svg class="slds-icon slds-icon-text-default slds-icon-text-{{\App\Http\Controllers\ClientControllerHelper::checkUpvotesA($a->answer_ID)}} slds-icon_x-small slds-align-middle"
+                                                                         aria-hidden="false">
+                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"/>
+                                                                    </svg>
                                                                 </button>
                                                             </li>
-                                                            <li class="slds-item">{{$a->create_time}}</li>
+                                                            <li class="slds-item">
+                                                                {{$a->upvotes}}
+                                                            </li>
+                                                            <li class="slds-item">
+                                                                <button title="Downvote" class="slds-button_reset slds-post__footer-action" aria-pressed="false" onclick="window.location.href = '/post/' + {{$a->answer_ID}} + '/' + {{$post->question_ID}} +  '/downvoteA'">
+                                                                    <svg class="slds-icon slds-icon-text-{{\App\Http\Controllers\ClientControllerHelper::checkDownvotesA($a->answer_ID)}} slds-icon_x-small slds-align-middle"
+                                                                         aria-hidden="true">
+                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"/>
+                                                                    </svg>
+                                                                </button>
+                                                            </li>
+                                                            <li class="slds-item">
+                                                            </li>
+                                                            <li class="slds-item">
+                                                            </li>
+                                                            <li class="slds-item">
+                                                            </li>
+                                                            <li class="slds-item">
+                                                            </li>
+                                                            <li class="slds-item">
+                                                            </li>
+                                                            <li class="slds-item">
+                                                            </li>
+                                                            <li class="slds-item">
+                                                            </li>
+                                                            <li class="slds-item">
+                                                                <?php
+                                                                echo \Carbon\Carbon::createFromTimeStamp(strtotime($a->create_time))->diffForHumans();
+                                                                ?>
+                                                            </li>
                                                         </ul>
                                                     </footer>
                                                 </div>
@@ -244,7 +341,8 @@
                                             </div>
                                                 <div class="slds-media__body">
                                                     {{--ANSWER FIELD--}}
-                                                    <form class="form-horizontal" action="/post/{{$post->question_ID}}/newanswer" method="get" id="answerForm" onKeyup="checkForm()">
+                                                    <form class="form-horizontal" action="/post/{{$post->question_ID}}/newanswer" method="post" id="answerForm" onKeyup="checkForm()">
+                                                        {{csrf_field()}}
                                                         <div class="slds-publisher slds-publisher_comment slds-is-active slds-has-focus">
                                                             <label for="comment-text-input-01" class="slds-assistive-text">Write a answer</label>
                                                             <input type="text" id="content" name="content" class="slds-publisher__input slds-input_bare slds-text-longform" placeholder="Post your answer here"></input>
@@ -297,3 +395,4 @@
 @include('modals.edit')
 @include('modals.editProfile')
 <script src="{{ URL::asset('js/answer.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('js/postStats.js') }}" type="text/javascript"></script>

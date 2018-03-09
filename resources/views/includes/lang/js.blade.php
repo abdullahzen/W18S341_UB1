@@ -27,8 +27,11 @@
         <ul class="slds-has-dividers_around slds-has-block-links_space" style="background: white;">
             <?php
             $i = 0;
-            foreach($js as $data) {
-                echo '<li class="slds-item"><a href="./post/' . $data->question_ID . '">' . $data->title . '</a></li>';                $i++;
+            $posts = \App\Http\Controllers\ClientControllerHelper::getTopQuestionsByUpvotes($language);
+            foreach ($posts as $key=>$value) {
+
+                echo '<li class="slds-item"><a href="./post/' . $value->question_ID . '">' . $value->title . '</a></li>';
+                $i++;
                 if ($i == 3)
                     break;
             }
@@ -78,11 +81,14 @@
                                                 <br/>
                                                 <a href="javascript:void(0);">{{$data->username}}</a>
                                             </p>
-
                                         </div>
                                         <p class="slds-text-body_small"><a href="javascript:void(0);"
                                                                            title="Click for single-item view of this post"
-                                                                           class="slds-text-link_reset">{{$data->create_time}}</a>
+                                                                           class="slds-text-link_reset">
+                                                <?php
+                                                echo \Carbon\Carbon::createFromTimeStamp(strtotime($data->create_time))->diffForHumans();
+                                                ?>
+                                            </a>
                                         </p>
                                     </div>
                                 </header>
@@ -94,17 +100,7 @@
                                 <footer class="slds-post__footer">
                                     <ul class="slds-post__footer-actions-list slds-list_horizontal">
                                         <li class="slds-col slds-item slds-m-right_medium">
-                                            <button title="Upvote this item"
-                                                    class="slds-button_reset slds-post__footer-action"
-                                                    aria-pressed="false">
-                                                {{$data->upvotes}}
-                                                <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle"
-                                                     aria-hidden="true">
-                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                         xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#share_mobile"/>
-                                                </svg>
-                                                Upvote
-                                            </button>
+                                            {{$data->upvotes}} upvotes
                                         </li>
                                     </ul>
                                     <ul class="slds-post__footer-meta-list slds-list_horizontal slds-has-dividers_right slds-text-title">
