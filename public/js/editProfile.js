@@ -1,7 +1,7 @@
 $(function(){
     $("#editProfileButton").click(function () {
         $(". ").hide();
-        var request = $.get('/editProfile', $('#editProfileForm').serialize());
+        var request = $.post('/editProfile', $('#editProfileForm').serialize());
         request.done(function () {
             window.location = '/';
 
@@ -17,9 +17,3 @@ $(function(){
         });
     });
 });
-
-
-
-
-
-

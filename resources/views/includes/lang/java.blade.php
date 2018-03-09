@@ -27,8 +27,10 @@ $language = 'Java';
         <ul class="slds-has-dividers_around slds-has-block-links_space" style="background: white;">
             <?php
             $i = 0;
-            foreach ($java as $data) {
-                echo '<li class="slds-item"><a href="./post/' . $data->question_ID . '">' . $data->title . '</a></li>';
+            $posts = \App\Http\Controllers\ClientControllerHelper::getTopQuestionsByUpvotes($language);
+            foreach ($posts as $key=>$value) {
+
+                echo '<li class="slds-item"><a href="./post/' . $value->question_ID . '">' . $value->title . '</a></li>';
                 $i++;
                 if ($i == 3)
                     break;
@@ -82,7 +84,11 @@ $language = 'Java';
                                         </div>
                                         <p class="slds-text-body_small"><a href="javascript:void(0);"
                                                    title="Click for single-item view of this post"
-                                                   class="slds-text-link_reset">{{$data->create_time}}</a>
+                                                   class="slds-text-link_reset">
+                                                <?php
+                                                echo \Carbon\Carbon::createFromTimeStamp(strtotime($data->create_time))->diffForHumans();
+                                                ?>
+                                            </a>
                                         </p>
                                     </div>
                                 </header>
