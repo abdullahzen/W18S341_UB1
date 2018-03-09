@@ -125,7 +125,7 @@
                                                                     </button>
                                                                 </li>
                                                                 <li>
-                                                                    <button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1">
+                                                                    <button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1" onclick="window.location.href = '/post/' + {{$post->question_ID}} + '/delete'" id="deleteQuestion">
                                                                         <svg class="slds-button__icon slds-button__icon_left"
                                                                              aria-hidden="true">
                                                                             <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
