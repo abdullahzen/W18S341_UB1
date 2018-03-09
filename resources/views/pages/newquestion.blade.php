@@ -48,14 +48,14 @@
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="textarea-id-01">Title</label>
                                 <div class="slds-form-element__control">
-                                    <input type="text" class="form-control input-md slds-input" placeholder="title" name="title" style="Width:50%"/>
+                                    <input type="text" class="form-control input-md slds-input" placeholder="title" name="title" style="Width:30%"/>
                                 </div>
                             </div>
                             <!-- Textarea -->
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="textarea-id-01">Question</label>
                                 <div class="slds-form-element__control">
-                                    <input type="text" class="form-control input-md slds-input" style="width:50%" class="slds-textarea" placeholder="Write your question here..."
+                                    <input type="text" class="form-control input-md slds-input" style="width:50%; height: 72px;" class="slds-textarea" placeholder="Write your question here..."
                                            name="content"/>
                                 </div>
                             </div>
