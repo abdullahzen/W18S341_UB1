@@ -205,10 +205,10 @@ class ClientController extends Controller {
 
     //Favourites stuff
 
-    public function favourite($id, $questionId) {
-        if (session()->get('id') == $id && isFavourite($questionId) == false) {
+    public function favourite($questionId) {
+        if (session()->has('id') && !$this->isFavourite($questionId)) {
             $favourite = DB::table('favourite')->insert(
-                array("user_ID3" => $id, "question_ID2" => $questionId, "favourite" => 1)
+                array("user_ID3" => session()->get('id'), "question_ID2" => $questionId, "favourite" => 1)
             );
             if ($favourite) {
                 return redirect('/post/' . $questionId . '');
@@ -216,7 +216,7 @@ class ClientController extends Controller {
                 return abort('400', 'A problem occurred during the favourite process!');
             }
         } else {
-            $unfavorite = DB::table('favourites')->where([
+            $unfavorite = DB::table('favourite')->where([
                 ['question_ID2', $questionId],
                 ['user_ID3', session()->get('id')]
             ])->delete();
@@ -229,14 +229,14 @@ class ClientController extends Controller {
     }
 
     public static function isFavourite($questionId) {
-        $result = DB::table('favourites')->where([
+        $result = DB::table('favourite')->where([
             ['question_ID2', $questionId],
             ['user_ID3', session()->get('id')]
         ])->first();
         if(empty($result)) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 

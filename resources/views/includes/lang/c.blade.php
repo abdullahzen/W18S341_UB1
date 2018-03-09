@@ -81,7 +81,11 @@ $language = 'C';
                                         </div>
                                         <p class="slds-text-body_small"><a href="javascript:void(0);"
                                                                            title="Click for single-item view of this post"
-                                                                           class="slds-text-link_reset">{{$data->create_time}}</a>
+                                                                           class="slds-text-link_reset">
+                                                <?php
+                                                echo \Carbon\Carbon::createFromTimeStamp(strtotime($data->create_time))->diffForHumans();
+                                                ?>
+                                            </a>
                                         </p>
                                     </div>
                                 </header>
