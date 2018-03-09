@@ -451,23 +451,23 @@ class ClientController extends Controller {
 
     public function setBestAnswer($qid, $aid) {
         if (session()->has('id')) {
-            $query = DB::table('question')->where('question_ID', $qid)->update(array('best_answer_ID' => $aid));
-            if ($query) {
+            try {
+                DB::table('question')->where('question_ID', $qid)->update(array('best_answer_ID' => $aid));
                 return redirect('/post/' . $qid);
-            } else {
-                return abort('400', 'A problem occurred during the +bestQuestion process!');
+            } catch(\Illuminate\Database\QueryException $ex){
+                return redirect('/post/' . $qid);
             }
         }
     }
 
     public function unsetBestAnswer($qid, $aid) {
-        if (session()->has('id')) {
-            $query = DB::table('question')->where('question_ID', $qid)->update(array('best_answer_ID' => '0'));
-            if ($query) {
+        try {
+            if (session()->has('id')) {
+                DB::table('question')->where('question_ID', $qid)->update(array('best_answer_ID' => '0'));
                 return redirect('/post/' . $qid);
-            } else {
-                return abort('400', 'A problem occurred during the -bestQuestion process!');
             }
+        } catch(\Illuminate\Database\QueryException $ex){
+            return redirect('/post/' . $qid);
         }
     }
 }
