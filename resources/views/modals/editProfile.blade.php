@@ -51,19 +51,19 @@
                                     title="Second Label" style="padding-top: 2.6mm;"><strong>Password:</strong>
                                 </dt>
                                 <dd class="slds-text-align_left slds-text-heading_small slds-item_detail slds-truncate" style="padding-left: 1cm;">
-                                    <input type="text" class="form-control input-md" style="width:60%;" name="password" id="password" value="" placeholder="**********"/>
+                                    <input type="password" class="form-control input-md" style="width:60%;" name="password" id="password" value="" placeholder="**********"/>
                                 </dd>
                                 <dt class="slds-text-align_center slds-text-heading_small slds-item_label slds-text-color_weak"
                                     title="Second Label" style="font-size-adjust: inherit"><strong>Enter New Password:</strong>
                                 </dt>
                                 <dd class="slds-text-align_left slds-text-heading_small slds-item_detail slds-truncate" style="padding-left: 1cm;">
-                                    <input type="text" class="form-control input-md" style="width:60%;" name="newPassword" id="newPassword" value="" placeholder="Enter new password"/>
+                                    <input type="password" class="form-control input-md" style="width:60%;" name="newPassword" id="newPassword" value="" placeholder="Enter new password"/>
                                 </dd>
                                 <dt class="slds-text-align_center slds-text-heading_small slds-item_label slds-text-color_weak"
                                     title="Second Label" style="font-size-adjust: inherit"><strong>Re-enter New Password:</strong>
                                 </dt>
                                 <dd class="slds-text-align_left slds-text-heading_small slds-item_detail slds-truncate" style="padding-left: 1cm;">
-                                    <input type="text" class="form-control input-md" style="width:60%;" name="newPasswordConfirmation" id="newPasswordConfirmation" value="" placeholder="Re-enter new password"/>
+                                    <input type="password" class="form-control input-md" style="width:60%;" name="newPasswordConfirmation" id="newPasswordConfirmation" value="" placeholder="Re-enter new password"/>
                                 </dd>
                             </dl>
                             <div style="padding: 0.5rem; background-color: rgb(244, 246, 249); padding-left: 11cm;">
