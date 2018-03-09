@@ -48,6 +48,10 @@ Route::get('/search/{id}', array(
     'uses' => 'ClientController@getSearch'
 ));
 
+Route::get('/rank/{rank}', array(
+    'uses' => 'ClientController@getRanks'
+));
+
 
 //POST
 Route::get('/login', 'ClientController@authenticate');
