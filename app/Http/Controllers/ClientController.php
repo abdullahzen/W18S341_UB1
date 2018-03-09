@@ -476,7 +476,7 @@ class ClientController extends Controller
     }
 
 
-  public function getRanks($rank){
+  public static function getRanks($rank){
         $rank = DB::select('
             SELECT
                 q.upvotes,
@@ -484,10 +484,9 @@ class ClientController extends Controller
                 u.username
             FROM question q
             inner join user u on q.user_ID1 = u.user_ID 
-                     where u.user = \'' . $rank  .'\' order by q . upvotes DESC');
+                     where u.user = \'' . $rank  .'\' order by q.upvotes DESC');
                 return $rank;
   }
-
   }
 
 
