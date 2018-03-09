@@ -1,5 +1,7 @@
 <div id="rankModal" class="modal">
     <div class="modal-content">
+        <form action="/rank" id="rank" method="get">
+
         <body>
         <br/>
         <br/>
