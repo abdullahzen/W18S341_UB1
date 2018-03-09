@@ -138,6 +138,7 @@ class ClientController extends Controller {
                 q.upvotes,
                 q.comments,
                 q.views,
+                q.best_answer_ID,
                 u.username
             FROM question q
             INNER JOIN user u
@@ -446,5 +447,27 @@ class ClientController extends Controller {
         ');
 
         return view('pages.search', ['post' => $post]);
+    }
+
+    public function setBestAnswer($qid, $aid) {
+        if (session()->get('id') == DB::table('question')->where('question_ID', $qid)->get('user_ID1')) {
+            if (!$aid == DB::table('question')->where('question_ID', $qid)->get('best_answer_ID')) {
+                $query = DB::table('question')->where('question_ID', $qid)->update('best_answer_ID', $aid);
+                if ($query) {
+                    return redirect('/post/' . $qid);
+                } else {
+                    return abort('400', 'A problem occurred during the bestQuestion process!');
+                }
+            } else {
+                $query = DB::table('question')->where('question_ID', $qid)->update('best_answer_ID', 0);
+                if ($query) {
+                    return redirect('/post/' . $qid);
+                } else {
+                    return abort('400', 'A problem occurred during the bestQuestion process!');
+                }
+            }
+        } else {
+            return redirect('/post/' . $qid);
+        }
     }
 }

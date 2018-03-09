@@ -48,6 +48,12 @@ Route::get('/search/{id}', array(
     'uses' => 'ClientController@getSearch'
 ));
 
+Route::get('/post/{id}/upvote', 'ClientController@upvote');
+Route::get('/post/{id}/downvote', 'ClientController@downvote');
+Route::get('/post/{id}/{id2}/upvoteA', 'ClientController@upvoteA');
+Route::get('/post/{id}/{id2}/downvoteA', 'ClientController@downvoteA');
+Route::get('/post/bestanswer/{qid}/{aid}/', 'ClientController@setBestAnswer');
+
 
 //POST
 Route::post('/login', 'ClientController@authenticate');
@@ -56,7 +62,3 @@ Route::post('/register', 'ClientController@register');
 Route::post('/post/{id}/newanswer', 'ClientController@postAnswer');
 Route::post('/edit', 'ClientController@editQuestion');
 Route::post('/editProfile', 'ClientController@updateUserProfile');
-Route::post('/post/{id}/upvote', 'ClientController@upvote');
-Route::post('/post/{id}/downvote', 'ClientController@downvote');
-Route::post('/post/{id}/{id2}/upvoteA', 'ClientController@upvoteA');
-Route::post('/post/{id}/{id2}/downvoteA', 'ClientController@downvoteA');

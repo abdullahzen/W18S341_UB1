@@ -254,15 +254,29 @@
                                                                 <a href="javascript:void(0);">
                                                                     {{$a->username}}
                                                                 </a>
+                                                                @if($a->answer_ID == $post->best_answer_ID)
+                                                                    <svg class="slds-icon slds-icon-text-warning slds-icon-text-warning slds-icon_x-small slds-align-middle"
+                                                                         aria-hidden="false">
+                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"/>
+                                                                    </svg>
+                                                                @endif
                                                             </p>
-                                                            <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
-                                                                    aria-haspopup="true" title="More Options">
-                                                                <svg class="slds-button__icon" aria-hidden="true">
-                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                         xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"/>
+                                                            @if($a->answer_ID == $post->best_answer_ID)
+                                                                <button title="Revoke Best Answer" class="slds-button_reset slds-post__footer-action" aria-pressed="false" onclick="window.location.href = '/post/bestanswer/' + {{$post->question_ID}} + '/' + {{$a->answer_ID}} +  ''">
+                                                                    <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle"
+                                                                         aria-hidden="true">
+                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"/>
+                                                                    </svg>
+                                                                </button>
+                                                            @endif
+                                                            @if(!$a->answer_ID == $post->best_answer_ID)
+                                                            <button title="Mark as Best Answer" class="slds-button_reset slds-post__footer-action" aria-pressed="false" onclick="window.location.href = '/post/bestanswer/' + {{$post->question_ID}} + '/' + {{$a->answer_ID}} +  ''">
+                                                                <svg class="slds-icon slds-icon-text-warning slds-icon_x-small slds-align-middle"
+                                                                     aria-hidden="true">
+                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"/>
                                                                 </svg>
-                                                                <span class="slds-assistive-text">More Options</span>
                                                             </button>
+                                                            @endif
                                                         </div>
                                                     </header>
                                                     <div class="slds-comment__content slds-text-longform">
