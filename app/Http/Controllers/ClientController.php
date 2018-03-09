@@ -437,11 +437,11 @@ class ClientController extends Controller {
                 }
             }
             if ($changePass){
-                DB::table('user')->where('username', session()->get('username'))->update(
+                DB::table('user')->where('user_ID', session()->get('id'))->update(
                     array('username' => $newUserName, 'email' => $newEmail, 'password' => $newPassword));
                 return redirect('/');
             } else{
-                DB::table('user')->where('username', session()->get('username'))->update(
+                DB::table('user')->where('user_ID', session()->get('id'))->update(
                     array('username' => $newUserName, 'email' => $newEmail));
                 return redirect('/');
             }
