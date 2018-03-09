@@ -450,24 +450,24 @@ class ClientController extends Controller {
     }
 
     public function setBestAnswer($qid, $aid) {
-        if (session()->get('id') == DB::table('question')->where('question_ID', $qid)->get('user_ID1')) {
-            if (!$aid == DB::table('question')->where('question_ID', $qid)->get('best_answer_ID')) {
-                $query = DB::table('question')->where('question_ID', $qid)->update('best_answer_ID', $aid);
-                if ($query) {
-                    return redirect('/post/' . $qid);
-                } else {
-                    return abort('400', 'A problem occurred during the bestQuestion process!');
-                }
+        if (session()->has('id')) {
+            $query = DB::table('question')->where('question_ID', $qid)->update(array('best_answer_ID' => $aid));
+            if ($query) {
+                return redirect('/post/' . $qid);
             } else {
-                $query = DB::table('question')->where('question_ID', $qid)->update('best_answer_ID', 0);
-                if ($query) {
-                    return redirect('/post/' . $qid);
-                } else {
-                    return abort('400', 'A problem occurred during the bestQuestion process!');
-                }
+                return abort('400', 'A problem occurred during the +bestQuestion process!');
             }
-        } else {
-            return redirect('/post/' . $qid);
+        }
+    }
+
+    public function unsetBestAnswer($qid, $aid) {
+        if (session()->has('id')) {
+            $query = DB::table('question')->where('question_ID', $qid)->update(array('best_answer_ID' => '0'));
+            if ($query) {
+                return redirect('/post/' . $qid);
+            } else {
+                return abort('400', 'A problem occurred during the -bestQuestion process!');
+            }
         }
     }
 }
