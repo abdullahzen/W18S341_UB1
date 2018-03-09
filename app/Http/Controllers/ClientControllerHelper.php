@@ -161,4 +161,10 @@ class ClientControllerHelper extends Controller {
         }
         return;
     }
+
+    public static function getTopQuestionsByUpvotes($language){
+        $post = DB::select('select * from question q inner join category t on q.category_ID1 = t.category_ID 
+                      where t.category = \'' . $language  .'\' order by q.upvotes DESC');
+        return $post;
+    }
 }

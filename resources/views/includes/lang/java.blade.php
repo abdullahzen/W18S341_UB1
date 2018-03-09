@@ -27,8 +27,10 @@ $language = 'Java';
         <ul class="slds-has-dividers_around slds-has-block-links_space" style="background: white;">
             <?php
             $i = 0;
-            foreach ($java as $data) {
-                echo '<li class="slds-item"><a href="./post/' . $data->question_ID . '">' . $data->title . '</a></li>';
+            $posts = \App\Http\Controllers\ClientControllerHelper::getTopQuestionsByUpvotes($language);
+            foreach ($posts as $key=>$value) {
+
+                echo '<li class="slds-item"><a href="./post/' . $value->question_ID . '">' . $value->title . '</a></li>';
                 $i++;
                 if ($i == 3)
                     break;

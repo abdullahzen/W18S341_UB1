@@ -36,8 +36,8 @@
                     <div class="container" id="postquestion" {{--style="display : none;"--}}>
                         <fieldset>
                             <div class="slds-form-element">
-                                <label class="slds-form-element__label" for="textarea-id-01">Language</label>
-                                <select name="category">
+                                <label class="slds-form-element__label" for="textarea-id-01">Language</label><br/>
+                                <select name="category" class="slds-select" style="Width:30%">
                                     <option class="form-control" value="Java">Java</option>
                                     <option class="form-control" value="JavaScript">JavaScript</option>
                                     <option class="form-control" value="Php">Php</option>
