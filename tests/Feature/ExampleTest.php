@@ -18,6 +18,6 @@ class ExampleTest extends TestCase
             'uses' => 'ClientController@getHomepage'
         ));
 
-        $response->assertStatus(200);
+        $response->assertStatus(true);
     }
 }
