@@ -1,9 +1,10 @@
 $(function(){
-    $("#newpostButton").click(function () {
+    $("#editProfileButton").click(function () {
         $(". ").hide();
-        var request = $.get('./newpost/do', $('#postForm').serialize());
+        var request = $.get('/editProfile', $('#editProfileForm').serialize());
         request.done(function () {
             window.location = '/';
+
         });
 
         request.fail(function (jqXHR) {
@@ -12,7 +13,13 @@ $(function(){
 
             var errMsg = '<div class=\"col-md-12 showErr\">' + err + '</div>';
 
-            $("#postError").empty().append(errMsg);
+            $("#editProfileError").empty().append(errMsg);
         });
     });
 });
+
+
+
+
+
+
