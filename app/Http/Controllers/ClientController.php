@@ -447,4 +447,15 @@ class ClientController extends Controller {
 
         return view('pages.search', ['post' => $post]);
     }
+    public function deleteQuestion($id){
+        DB::table('question')
+            ->where('question_ID',$id)
+            ->update(['is_hidden'=>1]);
+    }
+
+    public function deleteAnswer($id){
+        DB::table('answer')
+            ->where('answer_ID',$id)
+            ->update(['is_hidden'=>1]);
+    }
 }
