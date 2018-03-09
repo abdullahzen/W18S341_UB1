@@ -6,7 +6,7 @@
     <div>
         <article id="postquestions" class="slds-card"
                  style="        width: 98%;float: right;margin-right: 12px;margin-top: 10px;">
-            <form class="form-horizontal" action="/newpost/do" id="postForm" method="post">
+            <form class="form-horizontal" action="/newpost/do" id="postForm" method="post" onkeyup="checkForm()">
                 {{ csrf_field() }}
                 <div class="slds-card__header slds-grid">
                     <header class="slds-media slds-media_center slds-has-flexi-truncate">
@@ -49,14 +49,14 @@
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="textarea-id-01">Title</label>
                                 <div class="slds-form-element__control">
-                                    <input type="text" class="form-control input-md slds-input" placeholder="title" name="title" style="Width:30%"/>
+                                    <input id="title" type="text" class="form-control input-md" name="title" placeholder="Min 6 chars. Max 250 chars." style="width: 30%"/>
                                 </div>
                             </div>
                             <!-- Textarea -->
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="textarea-id-01">Question</label>
                                 <div class="slds-form-element__control">
-                                    <input type="text" class="form-control input-md slds-input" style="width:50%; height: 72px;" class="slds-textarea" placeholder="Write your question here..."
+                                    <input id="content" type="text" class="form-control input-md" style="width:50%" class="slds-textarea" placeholder="Min 6 chars. Max 250 chars."
                                            name="content"/>
                                 </div>
                             </div>
@@ -95,8 +95,8 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="button1id"></label>
                                 <div class="col-md-8">
-                                    <input type="submit" id="newpostButton" class="slds-button slds-button_brand"
-                                           value="Post"/>
+                                    <input type="submit" id="newQuestionButton" class="slds-button slds-button_brand"
+                                           value="Post" disabled/>
                                     <input type="reset" id="resetButton" class="slds-button slds-button_destructive"
                                            value="Reset"/>
                                 </div>
