@@ -451,11 +451,13 @@ class ClientController extends Controller {
         DB::table('question')
             ->where('question_ID',$id)
             ->update(['is_hidden'=>1]);
+            return redirect ('/');
     }
 
     public function deleteAnswer($id){
         DB::table('answer')
             ->where('answer_ID',$id)
             ->update(['is_hidden'=>1]);
+            return redirect('/post' . $id);
     }
 }
