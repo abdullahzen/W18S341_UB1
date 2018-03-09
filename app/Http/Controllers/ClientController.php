@@ -289,18 +289,37 @@ class ClientController extends Controller {
         if (session()->has('username')) {
             $newUserName = $request->input('userName');
             $newEmail = $request->input('email');
-
+            $pw = $request->input('password');
+            $newPassword = $request->input('newPassword');
+            $rePassword = $request->input('newPasswordConfirmation');
+            $changePass = false;
 
             if ($newUserName == null || $newEmail == null) {
                 return redirect('/');
             }
 
-            DB::table('user')->where('username', session()->get('username'))->update(
-                array('username' => $newUserName, 'email' => $newEmail));
+            $user = DB::table('user')
+                ->where('username', session()->get('username'))
+                ->first();
+
+            if(!empty($user) && Hash::check($pw, $user->password)){
+
+                if($rePassword == $newPassword){
+                    $changePass = true;
+                    $newPassword = Hash :: make($newPassword);
+                }
+            }
+            if ($changePass){
+                DB::table('user')->where('username', session()->get('username'))->update(
+                    array('username' => $newUserName, 'email' => $newEmail, 'password' => $newPassword));
                 return redirect('/');
+            } else{
+                DB::table('user')->where('username', session()->get('username'))->update(
+                    array('username' => $newUserName, 'email' => $newEmail));
+                return redirect('/');
+            }
         }
     }
-}
 
 	public function getSearch($id) {
 
