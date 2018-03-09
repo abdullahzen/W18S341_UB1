@@ -2,7 +2,7 @@ $(function(){
     $("#editButton").click(function () {
         $(". ").hide();
         var id = document.getElementById('hiddenID').value;
-        var request = $.get('/edit', $('#editForm').serialize());
+        var request = $.post('/edit', $('#editForm').serialize());
         request.done(function () {
             window.location = './post/' + id;
 

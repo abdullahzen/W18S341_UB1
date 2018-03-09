@@ -1,6 +1,6 @@
 <div id="editModal" class="modal">
     <div class="modal-content">
-        <form action="/edit" id="editForm" method="get">
+        <form action="/edit" id="editForm" method="post">
             {{ csrf_field() }}
             <div class="slds-scope">
                 <div class="demo-only" style="height: 640px;">
