@@ -261,15 +261,15 @@
                                                                     </svg>
                                                                 @endif
                                                             </p>
-                                                            @if($a->answer_ID == $post->best_answer_ID)
+                                                            @if($a->answer_ID == $post->best_answer_ID && session()->get('username') == $post->username)
                                                                 <button title="Revoke Best Answer" class="slds-button_reset slds-post__footer-action" aria-pressed="false" onclick="window.location.href = '/post/unbestanswer/' + {{$post->question_ID}} + '/' + {{$a->answer_ID}} +  '/'">
-                                                                    <svg class="slds-icon slds-icon-text-default slds-icon_x-small slds-align-middle"
+                                                                    <svg class="slds-icon slds-icon-text-error slds-icon_x-small slds-align-middle"
                                                                          aria-hidden="true">
-                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"/>
+                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#redo"/>
                                                                     </svg>
                                                                 </button>
                                                             @endif
-                                                            @if(!$a->answer_ID == $post->best_answer_ID)
+                                                            @if($a->answer_ID != $post->best_answer_ID && session()->get('username') == $post->username)
                                                             <button title="Mark as Best Answer" class="slds-button_reset slds-post__footer-action" aria-pressed="false" onclick="window.location.href = '/post/bestanswer/' + {{$post->question_ID}} + '/' + {{$a->answer_ID}} +  '/'">
                                                                 <svg class="slds-icon slds-icon-text-warning slds-icon_x-small slds-align-middle"
                                                                      aria-hidden="true">

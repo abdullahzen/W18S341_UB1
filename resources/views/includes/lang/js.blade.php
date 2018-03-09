@@ -97,7 +97,14 @@
                                 <footer class="slds-post__footer">
                                     <ul class="slds-post__footer-actions-list slds-list_horizontal">
                                         <li class="slds-col slds-item slds-m-right_medium">
-                                            {{$data->upvotes}} upvotes
+                                            {{$data->upvotes}}
+                                            <?php
+                                            if ($data->upvotes == 0 || $data->upvotes == 1) {
+                                                echo ' point';
+                                            } else {
+                                                echo ' points';
+                                            }
+                                            ?>
                                         </li>
                                     </ul>
                                     <ul class="slds-post__footer-meta-list slds-list_horizontal slds-has-dividers_right slds-text-title">
