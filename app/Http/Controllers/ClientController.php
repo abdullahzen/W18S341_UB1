@@ -205,10 +205,10 @@ class ClientController extends Controller {
 
     //Favourites stuff
 
-    public function favourite($questionId) {
-        if (session()->has('id')) {
+    public function favourite($id, $questionId) {
+        if (session()->get('id') == $id && isFavourite($questionId) == false) {
             $favourite = DB::table('favourite')->insert(
-                array("user_ID3" => session()->get('id'), "question_ID2" => $questionId, "favourite" => 1)
+                array("user_ID3" => $id, "question_ID2" => $questionId, "favourite" => 1)
             );
             if ($favourite) {
                 return redirect('/post/' . $questionId . '');

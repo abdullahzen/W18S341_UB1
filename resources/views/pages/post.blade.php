@@ -59,24 +59,6 @@
                                                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"/>
                                                         </svg>
                                                     </button>
-                                                </div>
-                                                <p class="slds-text-body_small"><a href="javascript:void(0);"
-                                                                                   title="Click for single-item view of this post"
-                                                                                   class="slds-text-link_reset">
-                                                        <?php
-                                                            echo \Carbon\Carbon::createFromTimeStamp(strtotime($post->create_time))->toDayDateTimeString()
-                                                        ?>
-                                                    </a>
-                                                </p>
-                                            </div>
-                                        </header>
-                                        <div class="slds-post__content slds-text-longform">
-                                            <p>
-                                                {{ $post->content }}
-                                            </p>
-                                        </div>
-                                        <footer class="slds-post__footer">
-                                            <ul class="slds-post__footer-actions-list slds-list_horizontal">
                                                 </li>
                                                 <li class="slds-col slds-item slds-m-left--card-wrapper-spacing">
                                                     {{$post->upvotes}}
@@ -238,7 +220,7 @@
                                                         </div>
                                                     </header>
                                                     <div class="slds-comment__content slds-text-longform">
-                                                        {!! $a->answer !!}
+                                                        {{$a->answer}}
                                                     </div>
                                                     <footer>
                                                         <ul class="slds-post__footer-actions-list slds-list_horizontal" style="align-items: left;">
@@ -262,10 +244,6 @@
                                                                 </button>
                                                             </li>
                                                             <li class="slds-item">
-                                                                <?php
-                                                                echo \Carbon\Carbon::createFromTimeStamp(strtotime($a->create_time))->toDayDateTimeString()
-                                                                ?>
-                                                            </li>
                                                             </li>
                                                             <li class="slds-item">
                                                             </li>
@@ -299,8 +277,7 @@
                                             </div>
                                                 <div class="slds-media__body">
                                                     {{--ANSWER FIELD--}}
-                                                    <form class="form-horizontal" method="POST" action="/post/{{$post->question_ID}}/newanswer" id="answerForm" onKeyup="checkForm()">
-                                                        {{csrf_field()}}
+                                                    <form class="form-horizontal" action="/post/{{$post->question_ID}}/newanswer" method="get" id="answerForm" onKeyup="checkForm()">
                                                         <div class="slds-publisher slds-publisher_comment slds-is-active slds-has-focus">
                                                             <label for="comment-text-input-01" class="slds-assistive-text">Write a answer</label>
                                                             <input type="text" id="content" name="content" class="slds-publisher__input slds-input_bare slds-text-longform" placeholder="Post your answer here"></input>
