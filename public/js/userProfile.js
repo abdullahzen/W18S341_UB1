@@ -1,10 +1,9 @@
 $(function(){
-    $("#editProfileButton").click(function () {
-        $(". ").hide();
-        var request = $.post('/editProfile', $('#editProfileForm').serialize());
+    $("#submitButton").click(function () {
+        /*$(". ").hide();*/
+        var request = $.post('./register', $('#registrationForm').serialize());
         request.done(function () {
             window.location = '/';
-
         });
 
         request.fail(function (jqXHR) {
@@ -13,7 +12,7 @@ $(function(){
 
             var errMsg = '<div class=\"col-md-12 showErr\">' + err + '</div>';
 
-            $("#editProfileError").empty().append(errMsg);
+            $("#registerError").empty().append(errMsg);
         });
     });
 });

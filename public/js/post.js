@@ -1,3 +1,19 @@
+function checkForm() {
+    var canSubmit = false;
+
+    if (document.getElementById('title').value.length > 5 && document.getElementById('title').value.length < 251 && document.getElementById('content').value.length < 251 && document.getElementById('content').value.length > 5){
+        canSubmit = true;
+    } else {
+        canSubmit = false;
+    }
+
+    if (canSubmit){
+        document.getElementById('newQuestionButton').disabled = false;
+    } else {
+        document.getElementById('newQuestionButton').disabled = true;
+    }
+}
+
 $(function(){
     $("#newpostButton").click(function () {
         $(". ").hide();

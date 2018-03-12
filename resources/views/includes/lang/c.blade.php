@@ -84,7 +84,11 @@ $language = 'C';
                                         </div>
                                         <p class="slds-text-body_small"><a href="javascript:void(0);"
                                                                            title="Click for single-item view of this post"
-                                                                           class="slds-text-link_reset">{{$data->create_time}}</a>
+                                                                           class="slds-text-link_reset">
+                                                <?php
+                                                echo \Carbon\Carbon::createFromTimeStamp(strtotime($data->create_time))->diffForHumans();
+                                                ?>
+                                            </a>
                                         </p>
                                     </div>
                                 </header>
@@ -96,7 +100,14 @@ $language = 'C';
                                 <footer class="slds-post__footer">
                                     <ul class="slds-post__footer-actions-list slds-list_horizontal">
                                         <li class="slds-col slds-item slds-m-right_medium">
-                                                {{$data->upvotes}} upvotes
+                                            {{$data->upvotes}}
+                                            <?php
+                                            if ($data->upvotes == 0 || $data->upvotes == 1) {
+                                                echo ' point';
+                                            } else {
+                                                echo ' points';
+                                            }
+                                            ?>
                                         </li>
                                     </ul>
                                     <ul class="slds-post__footer-meta-list slds-list_horizontal slds-has-dividers_right slds-text-title">

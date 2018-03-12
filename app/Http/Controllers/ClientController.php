@@ -64,7 +64,9 @@ class ClientController extends Controller {
         if(DB::table('question')->insert(
             array("title" => $title, "content" => $content, "category_ID1" => $category_ID, "user_ID1" => $user_ID)
         )) {
-            return redirect('/');
+            $newQ = $id = DB::getPdo()->lastInsertId();
+            $this->upvote($newQ);
+            return redirect('/post/' . $newQ);
         } else {
             return abort('400');
         }
@@ -117,7 +119,7 @@ class ClientController extends Controller {
                 u.username
             FROM question q
             INNER JOIN user u
-                ON q.user_ID1 = u.user_ID AND q.category_ID1 = ' . $category . '
+                ON q.user_ID1 = u.user_ID AND q.category_ID1 = ' . $category . ' AND q.is_hidden = 0
             ORDER BY q.question_ID DESC
         ');
 
@@ -138,10 +140,11 @@ class ClientController extends Controller {
                 q.upvotes,
                 q.comments,
                 q.views,
+                q.best_answer_ID,
                 u.username
             FROM question q
             INNER JOIN user u
-                ON q.user_ID1 = u.user_ID AND q.question_ID = ' . $id . '
+                ON q.user_ID1 = u.user_ID AND q.question_ID = ' . $id . ' AND q.is_hidden = 0
             ORDER BY q.question_ID DESC
         ');
 
@@ -157,7 +160,7 @@ class ClientController extends Controller {
                 u.username
             FROM answer a
             INNER JOIN user u
-                ON a.user_ID2 = u.user_ID AND a.question_ID1 = ' . $id . '
+                ON a.user_ID2 = u.user_ID AND a.question_ID1 = ' . $id . ' AND a.is_hidden = 0
         ');
             return view('pages.post', ['post' => $post[0], 'answer' => $answer]);
         } else {
@@ -180,7 +183,9 @@ class ClientController extends Controller {
         }
 
         if($this->insertAnswerToDB($content, $userId, $questionId)){
-            return redirect('/post/' . $id . '');
+            $newQ = DB::select('SELECT answer_ID FROM answer ORDER BY answer_ID DESC LIMIT 1')[0]->answer_ID;
+            $this->upvoteA($newQ, $id);
+            return redirect('./post/' . $id . '');
         } else{
             return abort('400', 'A problem occurred during the answer posting process!');
         }
@@ -205,10 +210,10 @@ class ClientController extends Controller {
 
     //Favourites stuff
 
-    public function favourite($id, $questionId) {
-        if (session()->get('id') == $id && isFavourite($questionId) == false) {
+    public function favourite($questionId) {
+        if (session()->has('id') && !$this->isFavourite($questionId)) {
             $favourite = DB::table('favourite')->insert(
-                array("user_ID3" => $id, "question_ID2" => $questionId, "favourite" => 1)
+                array("user_ID3" => session()->get('id'), "question_ID2" => $questionId, "favourite" => 1)
             );
             if ($favourite) {
                 return redirect('/post/' . $questionId . '');
@@ -216,7 +221,7 @@ class ClientController extends Controller {
                 return abort('400', 'A problem occurred during the favourite process!');
             }
         } else {
-            $unfavorite = DB::table('favourites')->where([
+            $unfavorite = DB::table('favourite')->where([
                 ['question_ID2', $questionId],
                 ['user_ID3', session()->get('id')]
             ])->delete();
@@ -229,14 +234,14 @@ class ClientController extends Controller {
     }
 
     public static function isFavourite($questionId) {
-        $result = DB::table('favourites')->where([
+        $result = DB::table('favourite')->where([
             ['question_ID2', $questionId],
             ['user_ID3', session()->get('id')]
         ])->first();
         if(empty($result)) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 
@@ -253,7 +258,7 @@ class ClientController extends Controller {
                 q.comments,
                 q.views
             FROM question q
-            INNER JOIN favourite ON q.question_ID = favourite.question_ID2
+            INNER JOIN favourite ON q.question_ID = favourite.question_ID2 AND q.is_hidden = 0
             WHERE user_ID3 = ' . session()->get('id') . ';'
         );
 
@@ -415,15 +420,35 @@ class ClientController extends Controller {
         if (session()->has('username')) {
             $newUserName = $request->input('userName');
             $newEmail = $request->input('email');
-
+            $pw = $request->input('password');
+            $newPassword = $request->input('newPassword');
+            $rePassword = $request->input('newPasswordConfirmation');
+            $changePass = false;
 
             if ($newUserName == null || $newEmail == null) {
                 return redirect('/');
             }
 
-            DB::table('user')->where('username', session()->get('username'))->update(
-                array('username' => $newUserName, 'email' => $newEmail));
+            $user = DB::table('user')
+                ->where('username', session()->get('username'))
+                ->first();
+
+            if(!empty($user) && Hash::check($pw, $user->password)){
+
+                if($rePassword == $newPassword){
+                    $changePass = true;
+                    $newPassword = Hash :: make($newPassword);
+                }
+            }
+            if ($changePass){
+                DB::table('user')->where('user_ID', session()->get('id'))->update(
+                    array('username' => $newUserName, 'email' => $newEmail, 'password' => $newPassword));
                 return redirect('/');
+            } else{
+                DB::table('user')->where('user_ID', session()->get('id'))->update(
+                    array('username' => $newUserName, 'email' => $newEmail));
+                return redirect('/');
+            }
         }
     }
 
@@ -442,9 +467,44 @@ class ClientController extends Controller {
                 q.views,
                 u.username
             FROM question q
-            INNER JOIN user u WHERE q.title LIKE \'%' . $id . '%\'
+            INNER JOIN user u WHERE q.title LIKE \'%' . $id . '%\' AND q.is_hidden = 0
         ');
 
         return view('pages.search', ['post' => $post]);
+    }
+    public function deleteQuestion($id){
+        DB::table('question')
+            ->where('question_ID',$id)
+            ->update(['is_hidden'=>1]);
+            return redirect ('/');
+    }
+
+    public function deleteAnswer($id){
+        DB::table('answer')
+            ->where('answer_ID',$id)
+            ->update(['is_hidden'=>1]);
+            return redirect('/post' . $id);
+    }
+  
+    public function setBestAnswer($qid, $aid) {
+        if (session()->has('id')) {
+            try {
+                DB::table('question')->where('question_ID', $qid)->update(array('best_answer_ID' => $aid));
+                return redirect('/post/' . $qid);
+            } catch(\Illuminate\Database\QueryException $ex){
+                return redirect('/post/' . $qid);
+            }
+        }
+    }
+
+    public function unsetBestAnswer($qid, $aid) {
+        try {
+            if (session()->has('id')) {
+                DB::table('question')->where('question_ID', $qid)->update(array('best_answer_ID' => '0'));
+                return redirect('/post/' . $qid);
+            }
+        } catch(\Illuminate\Database\QueryException $ex){
+            return redirect('/post/' . $qid);
+        }
     }
 }

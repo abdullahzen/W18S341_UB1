@@ -6,7 +6,8 @@
     <div>
         <article id="postquestions" class="slds-card"
                  style="        width: 98%;float: right;margin-right: 12px;margin-top: 10px;">
-            <form class="form-horizontal" action="/newpost/do" id="postForm">
+            <form class="form-horizontal" action="/newpost/do" id="postForm" method="post" onkeyup="checkForm()">
+                {{ csrf_field() }}
                 <div class="slds-card__header slds-grid">
                     <header class="slds-media slds-media_center slds-has-flexi-truncate">
                         <div class="slds-media__figure">
@@ -48,54 +49,54 @@
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="textarea-id-01">Title</label>
                                 <div class="slds-form-element__control">
-                                    <input type="text" class="form-control input-md slds-input" placeholder="title" name="title" style="Width:30%"/>
+                                    <input id="title" type="text" class="form-control input-md slds-input" placeholder="Min 6 chars. Max 250 chars." name="title" style="Width:30%"/>
                                 </div>
                             </div>
                             <!-- Textarea -->
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="textarea-id-01">Question</label>
                                 <div class="slds-form-element__control">
-                                    <input type="text" class="form-control input-md slds-input" style="width:50%; height: 72px;" class="slds-textarea" placeholder="Write your question here..."
+                                    <input id="content" type="text" class="form-control input-md slds-input" style="width:50%; height: 72px;" class="slds-textarea" placeholder="Min 6 chars. Max 250 chars."
                                            name="content"/>
                                 </div>
                             </div>
                             </br>
                             <!-- File Button -->
-                            {{--<div class="form-group">
-                                <div class="slds-form-element">
-                                    <span class="slds-form-element__label"
-                                          id="file-selector-primary-label">Attachment</span>
-                                    <div class="slds-form-element__control">
-                                        <div class="slds-file-selector slds-file-selector_files">
-                                            <div class="slds-file-selector__dropzone">
-                                                <input type="file"
-                                                       class="slds-file-selector__input slds-assistive-text"
-                                                       accept="image/png" id="file-upload-input-01"
-                                                       aria-labelledby="file-selector-primary-label file-selector-secondary-label"/>
-                                                <label class="slds-file-selector__body" for="file-upload-input-01"
-                                                       id="file-selector-secondary-label">
-                                                   <span class="slds-file-selector__button slds-button slds-button_neutral">
-                                                      <svg class="slds-button__icon slds-button__icon_left"
-                                                           aria-hidden="true">
-                                                         <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                              xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#upload"/>
-                                                      </svg>
-                                                      Upload Files
-                                                   </span>
-                                                    <span class="slds-file-selector__text slds-medium-show">or Drop Files</span>
-                                                </label>
-                                            </div>
+                        {{--<div class="form-group">
+                            <div class="slds-form-element">
+                                <span class="slds-form-element__label"
+                                      id="file-selector-primary-label">Attachment</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-file-selector slds-file-selector_files">
+                                        <div class="slds-file-selector__dropzone">
+                                            <input type="file"
+                                                   class="slds-file-selector__input slds-assistive-text"
+                                                   accept="image/png" id="file-upload-input-01"
+                                                   aria-labelledby="file-selector-primary-label file-selector-secondary-label"/>
+                                            <label class="slds-file-selector__body" for="file-upload-input-01"
+                                                   id="file-selector-secondary-label">
+                                               <span class="slds-file-selector__button slds-button slds-button_neutral">
+                                                  <svg class="slds-button__icon slds-button__icon_left"
+                                                       aria-hidden="true">
+                                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                          xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#upload"/>
+                                                  </svg>
+                                                  Upload Files
+                                               </span>
+                                                <span class="slds-file-selector__text slds-medium-show">or Drop Files</span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            </br>--}}
-                            <!-- Button (Double) -->
+                        </div>
+                        </br>--}}
+                        <!-- Button (Double) -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="button1id"></label>
                                 <div class="col-md-8">
-                                    <input type="submit" id="newpostButton" class="slds-button slds-button_brand"
-                                           value="Post"/>
+                                    <input type="submit" id="newQuestionButton" class="slds-button slds-button_brand"
+                                           value="Post" disabled/>
                                     <input type="reset" id="resetButton" class="slds-button slds-button_destructive"
                                            value="Reset"/>
                                 </div>
