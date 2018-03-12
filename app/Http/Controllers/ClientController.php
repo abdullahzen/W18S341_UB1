@@ -180,7 +180,7 @@ class ClientController extends Controller {
         }
 
         if($this->insertAnswerToDB($content, $userId, $questionId)){
-            return redirect('./post/' . $id . '');
+            return redirect('/post/' . $id . '');
         } else{
             return abort('400', 'A problem occurred during the answer posting process!');
         }
