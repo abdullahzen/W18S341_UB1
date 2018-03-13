@@ -4,7 +4,6 @@ php:
 
 env:
   global:
-    - setup=basic
     - APP_ENV=testing
     - APP_DEBUG=true
     - APP_KEY=base64:SeofiwFYw/63WrsyKyqkGj2+cR5SmNLpYKN4LdOAsIQ=
@@ -23,13 +22,5 @@ addons:
 
 before_script:
    - composer install
-   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('') where User='root'; update user set plugin='';FLUSH PRIVILEGES;"
-   - sudo mysql_upgrade
-   - sudo service mysql restart
-
-install:
-- if [[ $setup = 'basic' ]]; then travis_retry composer install --no-interaction --prefer-source; fi
-- if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-source --no-interaction --prefer-stable; fi
-- if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-source --no-interaction --prefer-lowest --prefer-stable; fi
 
 script: vendor/bin/phpunit
