@@ -465,7 +465,7 @@ class ClientController extends Controller {
                 q.views,
                 u.username
             FROM question q
-            INNER JOIN user u WHERE q.title LIKE \'%' . $id . '%\' AND q.is_hidden = 0
+            INNER JOIN user u ON u.user_ID = q.user_ID1 WHERE q.title LIKE \'%' . $id . '%\' AND q.is_hidden = 0
         ');
 
         return view('pages.search', ['post' => $post]);

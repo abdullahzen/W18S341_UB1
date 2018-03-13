@@ -21,7 +21,7 @@
                                         <div class="slds-media__body">
                                             <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
                                                 <p>
-                                                    <a href="./post/{{$data->question_ID}}">{{$data->title}}</a>
+                                                    <a href="/post/{{$data->question_ID}}">{{$data->title}}</a>
                                                     <br/>
                                                     <a href="javascript:void(0);">{{$data->username}}</a>
                                                 </p>
