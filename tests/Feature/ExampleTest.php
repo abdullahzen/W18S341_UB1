@@ -15,6 +15,11 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
+        try {
+            DB::connection()->getPdo();
+        } catch (\Exception $e) {
+            die("Could not connect to the database.  Please check your configuration.");
+        }
         $response = $this->get('/');
         $response->assertStatus(200);
     }
