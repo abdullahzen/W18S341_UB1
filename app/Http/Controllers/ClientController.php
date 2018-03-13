@@ -91,41 +91,6 @@ class ClientController extends Controller {
         );
     }
 
-    //Display homepage stuff
-
-
-    public function getHomepage() {
-        //Get posts stuff
-        $java = $this->getPostsByCategoryQuery(1);
-        $js = $this->getPostsByCategoryQuery(2);
-        $php = $this->getPostsByCategoryQuery(3);
-        $c = $this->getPostsByCategoryQuery(4);
-
-        return view('pages.homepage', ['java' => $java, 'js' => $js, 'php' => $php, 'c' => $c]);
-    }
-
-    public function getPostsByCategoryQuery($category) {
-        $post = DB::select('
-            SELECT
-                q.question_ID,
-                q.title,
-                q.content,
-                q.category_ID1,
-                q.user_ID1 as userID,
-                q.create_time,
-                q.upvotes,
-                q.comments,
-                q.views,
-                u.username
-            FROM question q
-            INNER JOIN user u
-                ON q.user_ID1 = u.user_ID AND q.category_ID1 = ' . $category . ' AND q.is_hidden = 0
-            ORDER BY q.question_ID DESC
-        ');
-
-        return $post;
-    }
-
     public function getFullPostById($id) {
         if ($this->incrementView($id)) {
             ClientControllerHelper::setQuestionID($id);
