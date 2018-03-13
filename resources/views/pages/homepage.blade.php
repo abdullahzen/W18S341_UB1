@@ -1,4 +1,3 @@
-@include('includes.head')
 <body>
   <div class="slds-scope">
 			{{--<div>
@@ -210,8 +209,8 @@
             {{--LEFT MENU--}}
 			<div>
 				
-               @include('includes.leftmenu')
-                {{--Categories--}}
+            {{--   @include('includes.leftmenu')
+                --}}{{--Categories--}}{{--
                 <?php $categoriesNames = \App\Http\Controllers\ClientControllerHelper::getCategories();
                         $categories = array();
                         foreach ($categoriesNames as $key=>$value){
@@ -222,7 +221,7 @@
                 @foreach($categories as $language=>$posts)
                     @include('pages.category', ['language'=>$language, 'posts'=>$posts])
 
-                @endforeach
+                @endforeach--}}
             </div>
   </div>
 </body>
