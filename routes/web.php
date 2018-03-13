@@ -42,7 +42,7 @@ Route::get('/post/{id}/favourite', array(
 
 Route::get('/favourites', array(
     'uses' => 'ClientController@getFavourites'
-))->middleware('checkLoggedIn');
+));
 
 Route::get('/search/{id}', array(
     'uses' => 'ClientController@getSearch'
