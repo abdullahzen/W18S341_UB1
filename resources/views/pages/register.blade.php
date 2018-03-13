@@ -50,7 +50,9 @@
                      class="slds-modal slds-fade-in-open" role="dialog" tabindex="-1">
                 <div class="slds-modal__container">
                     <header class="slds-modal__header">
-                        <span class="closeR">&times;</span>
+                        <a href="/">
+                            <span class="close">&times;</span>
+                        </a>
                         <h2 class="slds-text-heading_medium slds-hyphenate" id="modal-heading-01"><b>Registration
                                 Details</b></h2>
                     </header>
