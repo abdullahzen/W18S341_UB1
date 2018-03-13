@@ -6,7 +6,7 @@
     <div>
         <article id="postquestions" class="slds-card"
                  style="        width: 98%;float: right;margin-right: 12px;margin-top: 10px;">
-            <form class="form-horizontal" action="/newpost/do" id="postForm" method="post" onkeyup="checkForm()">
+            <form class="form-horizontal" action="/newpost/do" id="postForm" method="get" onkeyup="checkForm()">
                 {{ csrf_field() }}
                 <div class="slds-card__header slds-grid">
                     <header class="slds-media slds-media_center slds-has-flexi-truncate">

@@ -58,9 +58,9 @@ Route::get('/post/unbestanswer/{qid}/{aid}/', 'ClientController@unsetBestAnswer'
 
 
 //POST
-Route::post('/login', 'ClientController@authenticate');
-Route::post('/newpost/do', 'ClientController@postQuestion');
-Route::post('/register', 'ClientController@register');
-Route::post('/post/{id}/newanswer', 'ClientController@postAnswer');
-Route::post('/edit', 'ClientController@editQuestion');
-Route::post('/editProfile', 'ClientController@updateUserProfile');
+Route::get('/login', 'ClientController@authenticate');
+Route::get('/newpost/do', 'ClientController@postQuestion');
+Route::get('/register', 'ClientController@register');
+Route::get('/post/{id}/newanswer', 'ClientController@postAnswer');
+Route::get('/edit', 'ClientController@editQuestion');
+Route::get('/editProfile', 'ClientController@updateUserProfile');

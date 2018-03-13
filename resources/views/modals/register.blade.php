@@ -36,7 +36,7 @@
         </head>
 <div id="registerModal" class="modal">
     <div class="modal-content">
-        <form action="/register" id="registrationForm" method="post">
+        <form action="/register" id="registrationForm" method="get">
             {{ csrf_field() }}
             <div class="slds-scope">
                 <div class="demo-only" style="height: 640px;">
