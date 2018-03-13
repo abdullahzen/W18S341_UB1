@@ -32,22 +32,6 @@ Route::get('/userProfile', function() {
     return view('pages.userProfile');
 });
 
-Route::get('/post/{id}', array(
-    'uses' => 'ClientController@getFullPostById'
-));
-
-Route::get('/post/{id}/favourite', array(
-    'uses' => 'ClientController@favourite'
-));
-
-Route::get('/favourites', array(
-    'uses' => 'ClientController@getFavourites'
-));
-
-Route::get('/search/{id}', array(
-    'uses' => 'ClientController@getSearch'
-));
-
 Route::get('/post/{id}/upvote', 'ClientController@upvote');
 Route::get('/post/{id}/downvote', 'ClientController@downvote');
 Route::get('/post/{id}/{id2}/upvoteA', 'ClientController@upvoteA');
