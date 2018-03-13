@@ -1,8 +1,8 @@
 $(function(){
-    $("#loginButton").click(function (e) {
-        e.preventDefault();
-        /*$(". ").hide();*/
-        var request = $.get('/login', $('#loginForm').serialize());
+    $("#loginButton").click(function () {
+        $(". ").hide();
+        var request = $.post('/login', $('#loginForm').serialize());
+
         request.done(function () {
             window.location = '/';
         });
@@ -14,6 +14,8 @@ $(function(){
             var errMsg = '<div class=\"col-md-12 showErr\">' + err + '</div>';
 
             $("#loginError").empty().append(errMsg);
+            /*alert('Error while logging in.');
+            window.location = '/';*/
         });
     });
 });

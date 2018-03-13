@@ -10,11 +10,19 @@ $(document).ready(function () {
 
     var userProfile = document.getElementById("userProfileButton");
     var userProfileModal = document.getElementById("userProfileModal");
+    // var moreOptionsContainer = document.getElementById("More-Options-Container");
+
+    var editProfileModal = document.getElementById('editProfileModal');
+    var editProfile = document.getElementById('editProfileModalButton');
 
     var span = document.getElementsByClassName("close")[0];
     var spanR = document.getElementsByClassName("closeR")[0];
     //var spanP = document.getElementsByClassName("closeP")[0];
     var spanU = document.getElementsByClassName("closeU")[0];
+    // var spanM = document.getElementsByClassName("More-Options")[0];
+
+
+    showCategory('C');
 
     if(login != null) {
         login.onclick = function () {
@@ -31,6 +39,12 @@ $(document).ready(function () {
     if(userProfile != null) {
         userProfile.onclick = function () {
             userProfileModal.style.display = "block";
+        }
+    }
+
+    if(editProfile != null){
+        editProfile.onclick = function() {
+            editProfileModal.style.display = "block";
         }
     }
 
@@ -54,6 +68,10 @@ $(document).ready(function () {
         userProfileModal.style.display = "none";
     }
 
+    // spanM.onclick = function() {
+    //     moreOptionsContainer.style.display = "block";
+    // }
+
     // Fix this if you want
     window.onclick = function(event) {
         if (event.target == loginModal) {
@@ -65,6 +83,9 @@ $(document).ready(function () {
         }
         if (event.target == userProfileModal) {
             userProfileModal.style.display = "none";
+        }
+        if (event.target == editProfileModal) {
+            editProfileModal.style.display = "none";
         }
     }
 
@@ -112,52 +133,12 @@ $(document).ready(function () {
 
 });
 
-function showJavaScript() {
-    $("#JavaScriptli").addClass("slds-is-active");
-    $("#Javali").removeClass("slds-is-active");
-    $("#Phpli").removeClass("slds-is-active");
-    $("#Cli").removeClass("slds-is-active");
+function showCategory(category){
+    $(".languageItem").removeClass("slds-is-active");
+    $(".language").css('display', 'none');
 
-    $("#Java").css('display', 'none');
-    $("#Php").css('display', 'none');
-    $("#C").css('display', 'none');
-    $("#Javascript").css('display', 'block');
-}
-
-function showJava() {
-    $("#Javali").addClass("slds-is-active");
-    $("#JavaScriptli").removeClass("slds-is-active");
-    $("#Phpli").removeClass("slds-is-active");
-    $("#Cli").removeClass("slds-is-active");
-
-    $("#Javascript").css('display', 'none');
-    $("#Php").css('display', 'none');
-    $("#C").css('display', 'none');
-    $("#Java").css('display', 'block');
-}
-
-function showC() {
-    $("#Cli").addClass("slds-is-active");
-    $("#JavaScriptli").removeClass("slds-is-active");
-    $("#Phpli").removeClass("slds-is-active");
-    $("#Javali").removeClass("slds-is-active");
-
-    $("#Javascript").css('display', 'none');
-    $("#Php").css('display', 'none');
-    $("#Java").css('display', 'none');
-    $("#C").css('display', 'block');
-}
-
-function showPhp() {
-    $("#Phpli").addClass("slds-is-active");
-    $("#JavaScriptli").removeClass("slds-is-active");
-    $("#Cli").removeClass("slds-is-active");
-    $("#Javali").removeClass("slds-is-active");
-
-    $("#Javascript").css('display', 'none');
-    $("#C").css('display', 'none');
-    $("#Java").css('display', 'none');
-    $("#Php").css('display', 'block');
+    $("#" + category + "li").addClass("slds-is-active");
+    $("#" + category).css('display', 'block');
 }
 
 function showpostquestion() {
@@ -166,7 +147,21 @@ function showpostquestion() {
 
 
 function displaycategories() {
-    $("#categories").css('display', 'block');
-	showJava();
-	$("#postquestions").css('width', '77%');
+   if ($('#categories').css('display') == 'none') {
+		$("#categories").css('display', 'block');
+		$("#favourites").css('display', 'block');
+       $(".language").css('width', '78%');
+       $(".language").css('float', 'left');
+	}
+	else {
+            $("#categories").css('display', 'none');
+			$("#favourites").css('display', 'none');
+			$(".language").css('width', '100%');
+        }
+}
+
+function Search(searchstring, event) {
+	if (event.keyCode == 13 || event.which == 13){
+    window.open("/search/" + searchstring, "_self");
+	}
 }
