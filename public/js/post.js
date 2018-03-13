@@ -16,7 +16,6 @@ function checkForm() {
 
 $(function(){
     $("#newpostButton").click(function () {
-        $(". ").hide();
         var request = $.get('/newpost/do', $('#postForm').serialize());
         request.done(function () {
             window.location = '/';

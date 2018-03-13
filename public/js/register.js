@@ -1,7 +1,6 @@
 $(function(){
     $("#submitButton").click(function () {
-        /*$(". ").hide();*/
-        var request = $.post('/register', $('#registrationForm').serialize());
+        var request = $.get('/register', $('#registrationForm').serialize());
         request.done(function () {
             window.location = '/';
         });
