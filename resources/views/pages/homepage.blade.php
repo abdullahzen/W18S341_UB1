@@ -5,7 +5,8 @@
 
 			<div>
 				
-
+               @include('includes.leftmenu')
+                
             </div>
   </div>
 </body>
