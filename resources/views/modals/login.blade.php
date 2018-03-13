@@ -76,7 +76,7 @@ button:hover {
                                     </div>
                                 </br>
                                     <div class="form-group">
-                                        <input type="submit" id="loginButton" class="button" value="LOGIN"/>
+                                        <input type="submit" id="loginButton" class="slds-button slds-button_brand" value="LOGIN"/>
                                     </div>
                                     </center>
                                 </div>

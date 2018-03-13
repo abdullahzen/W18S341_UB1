@@ -22,6 +22,14 @@ Route::get('/newpost', function () {
     return view('pages.newquestion');
 });
 
+Route::get('/login/page', function () {
+    return view('pages.login');
+});
+
+Route::get('/register/page', function () {
+    return view('pages.register');
+});
+
 Route::get('/logout', function() {
     session()->flush();
     return redirect('/');

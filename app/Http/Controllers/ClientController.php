@@ -27,10 +27,10 @@ class ClientController extends Controller {
         /*if(!empty($user) && $pw == $user->password) {*/
         if(!empty($user) && Hash::check($pw, $user->password)) {
             $this->createSession($user);
+            return redirect('/');
         } else {
-            abort(400, "Invalid username or password.");
+            return redirect('/login/page');
         }
-        return redirect('/');
     }
 
     public function hash($password) {
@@ -38,6 +38,7 @@ class ClientController extends Controller {
     }
 
     //Register Stuff
+
     public function createSession($user) {
         session()->flush();
         session(['id' => $user->user_ID]);
@@ -77,18 +78,15 @@ class ClientController extends Controller {
         $email = $request->Input('email');
         $password = $request->Input('password');
         $newPassword = $this->hash($password);
-        if($this->insertRegisterToDB($username, $email, $newPassword)){
-            return redirect('/');
-        } else{
-            return abort('400', 'A problem occurred during the registration process!');
+        try {
+            if(DB::table('user')->insert(array("username" => $username, "email" => $email, "password" => $newPassword))){
+                return redirect('/');
+            } else{
+                return redirect('register/page');
+            }
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect('register/page');
         }
-    }
-
-    public function insertRegisterToDB($username, $email, $password) {
-        /*$solve = '0';*/
-        return DB::table('user')->insert(
-            array("username" => $username, "email" => $email, "password" => $password /*"is_Solver" => $solve*/)
-        );
     }
 
     //Display homepage stuff
