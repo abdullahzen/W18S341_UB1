@@ -1,5 +1,4 @@
 @include('includes.head')
-@include('includes.headerfooter')
 <body>
   <div class="slds-scope">
 			{{--<div>
@@ -228,8 +227,3 @@
   </div>
 </body>
 {{--Modal Inclusion--}}
-@include('modals.login')
-@include('modals.register')
-@include('modals.userProfile')
-@include('modals.edit')
-@include('modals.editProfile')
