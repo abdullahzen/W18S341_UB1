@@ -21,9 +21,7 @@ class ExampleTest extends TestCase
             die("Could not connect to the database.  Please check your configuration.");
         }
 
-        $response = $this->get('/', function(){
-            return view('pages.homepage');
-        });
+        $response = $this->get('/');
         $response->assertStatus(200);
     }
 }
