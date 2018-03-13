@@ -1,7 +1,6 @@
 <div id="editProfileModal" class="modal">
     <div class="modal-content">
         <form action="/editProfile" id="editProfileForm" method="get">
-            {{ csrf_field() }}
         <body>
         <br/>
         <br/>

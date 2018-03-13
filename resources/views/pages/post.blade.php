@@ -342,7 +342,6 @@
                                                 <div class="slds-media__body">
                                                     {{--ANSWER FIELD--}}
                                                     <form class="form-horizontal" action="/post/{{$post->question_ID}}/newanswer" method="get" id="answerForm" onKeyup="checkForm()">
-                                                        {{csrf_field()}}
                                                         <div class="slds-publisher slds-publisher_comment slds-is-active slds-has-focus">
                                                             <label for="comment-text-input-01" class="slds-assistive-text">Write a answer</label>
                                                             <input type="text" id="content" name="content" class="slds-publisher__input slds-input_bare slds-text-longform" placeholder="Post your answer here"></input>
