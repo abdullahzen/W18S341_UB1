@@ -35,12 +35,9 @@
                               <div class="slds-button-group" role="group">
                                  <button class="slds-button slds-button_neutral" onclick="location.href='..'">Home</button>
 
-                                  @if(session()->has('username'))
                                     <button class="slds-button slds-button_neutral" onclick="window.location.href='/newpost'">New Post</button>
-                                  @else
                                     <button class="slds-button slds-button_neutral" id="registerButton">Register</button>
                                     <button class="slds-button slds-button_neutral" id="loginButton">Login</button>
-                                  @endif
                               </div>
                            </li>
                         </ul>
@@ -59,7 +56,6 @@
                            </div>
                         </div>
                      </div>
-                    @if(session()->has('id'))
                      <ul class="slds-global-header__item slds-grid slds-grid_vertical-align-center">
                         <li class="slds-grid">
                            <a href="/favourites">
@@ -230,7 +226,6 @@
                         </ul>
                      </div>
                   </section>
-                    @endif
                </header>
             </div>
          </div>
