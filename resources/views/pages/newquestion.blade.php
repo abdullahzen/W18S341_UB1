@@ -49,15 +49,19 @@
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="textarea-id-01">Title</label>
                                 <div class="slds-form-element__control">
-                                    <input id="title" type="text" class="form-control input-md slds-input" placeholder="Min 6 chars. Max 250 chars." name="title" style="Width:30%"/>
+                                    <input id="title" type="text"
+                                           class="form-control input-md slds-input"
+                                           placeholder="Min 6 chars. Max 250 chars." name="title" style="Width:30%" autocomplete="off"/>
                                 </div>
                             </div>
                             <!-- Textarea -->
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="textarea-id-01">Question</label>
                                 <div class="slds-form-element__control">
-                                    <input id="content" type="text" class="form-control input-md slds-input" style="width:50%; height: 72px;" class="slds-textarea" placeholder="Min 6 chars. Max 250 chars."
-                                           name="content"/>
+                                    <input id="content" type="text" class="form-control input-md slds-input"
+                                           style="width:50%; height: 72px;" class="slds-textarea"
+                                           placeholder="Min 6 chars. Max 250 chars."
+                                           name="content" autocomplete="off"/>
                                 </div>
                             </div>
                             </br>

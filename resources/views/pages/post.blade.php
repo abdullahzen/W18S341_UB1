@@ -345,30 +345,9 @@
                                                         {{csrf_field()}}
                                                         <div class="slds-publisher slds-publisher_comment slds-is-active slds-has-focus">
                                                             <label for="comment-text-input-01" class="slds-assistive-text">Write a answer</label>
-                                                            <input type="text" id="content" name="content" class="slds-publisher__input slds-input_bare slds-text-longform" placeholder="Post your answer here"></input>
+                                                            <input type="text" id="content" name="content" class="slds-publisher__input slds-input_bare slds-text-longform" placeholder="Post your answer here" autocomplete="off"></input>
                                                             <div class="slds-publisher__actions slds-grid slds-grid_align-spread">
                                                                 <ul class="slds-grid">
-                                                                    {{--ICONS LEFT SIDE OF ANSWER BUTTON--}}
-                                                                    {{--<li>
-                                                                        <button class="slds-button slds-button_icon slds-button_icon-container"
-                                                                                title="Add User">
-                                                                            <svg class="slds-button__icon" aria-hidden="true">
-                                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                     xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#adduser"/>
-                                                                            </svg>
-                                                                            <span class="slds-assistive-text">Add User</span>
-                                                                        </button>
-                                                                    </li>
-                                                                    <li>
-                                                                        <button class="slds-button slds-button_icon slds-button_icon-container"
-                                                                                title="Attach a file">
-                                                                            <svg class="slds-button__icon" aria-hidden="true">
-                                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                     xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#attach"/>
-                                                                            </svg>
-                                                                            <span class="slds-assistive-text">Attach a file</span>
-                                                                        </button>
-                                                                    </li>--}}
                                                                 </ul>
                                                                 <input type="submit" id="newAnswerButton" class="slds-button slds-button_brand" value="Post" disabled />
                                                             </div>
