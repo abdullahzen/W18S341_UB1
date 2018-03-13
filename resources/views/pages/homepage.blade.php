@@ -212,15 +212,18 @@
 			<div>
 				
                @include('includes.leftmenu')
-			
-               {{--CATEGORY 1: JAVA--}}
-                  @include('includes.lang.java')
-               {{--CATEGORY 1: JAVASCRIPT--}}
-                  @include('includes.lang.js')
-               {{--CATEGORY 1: PHP--}}
-                  @include('includes.lang.php')
-               {{--CATEGORY 1: C--}}
-                  @include('includes.lang.c')
+                {{--Categories--}}
+                <?php $categoriesNames = \App\Http\Controllers\ClientControllerHelper::getCategories();
+                        $categories = array();
+                        foreach ($categoriesNames as $key=>$value){
+                            $categories = array_add($categories, $value->category, \App\Http\Controllers\ClientControllerHelper::getPostsByCategoryNameQuery($value->category));
+                        }
+                ?>
+
+                @foreach($categories as $language=>$posts)
+                    @include('pages.category', ['language'=>$language, 'posts'=>$posts])
+
+                @endforeach
             </div>
   </div>
 </body>
