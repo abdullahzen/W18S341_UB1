@@ -1,6 +1,17 @@
 language: php
 php:
-  - '7.1'
+  - 7.1
+
+env:
+  global:
+    - setup=basic
+    - APP_ENV=testing
+    - APP_DEBUG=true
+    - APP_KEY=base64:SeofiwFYw/63WrsyKyqkGj2+cR5SmNLpYKN4LdOAsIQ=
+    - DB_CONNECTION=mysql
+    - CACHE_DRIVER=array
+    - SESSION_DRIVER=array
+    - QUEUE_DRIVER=sync
 
 addons:
   apt:
@@ -15,3 +26,10 @@ before_script:
    - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('') where User='root'; update user set plugin='';FLUSH PRIVILEGES;"
    - sudo mysql_upgrade
    - sudo service mysql restart
+
+install:
+- if [[ $setup = 'basic' ]]; then travis_retry composer install --no-interaction --prefer-source; fi
+- if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-source --no-interaction --prefer-stable; fi
+- if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-source --no-interaction --prefer-lowest --prefer-stable; fi
+
+script: vendor/bin/phpunit
