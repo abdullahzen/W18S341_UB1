@@ -13,9 +13,9 @@
 
 //GET
 
-Route::get('/', array(
-    'uses' => 'ClientController@getHomepage'
-));
+Route::get('/', function(){
+    return view('pages.homepage');
+});
 
 
 Route::get('/newpost', function () {
