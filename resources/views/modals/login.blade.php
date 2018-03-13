@@ -52,7 +52,6 @@ button:hover {
 <div id="loginModal" class="modal">
     <div class="modal-content">
         <form action="/login" method="post" id="loginForm">
-            {{csrf_field()}}
             <div class="slds-scope">
                 <div class="demo-only" style="height: 640px;">
                     <section aria-describedby="modal-content-id-1" aria-labelledby="modal-heading-01" aria-modal="true" class="slds-modal slds-fade-in-open" role="dialog" tabindex="-1">
