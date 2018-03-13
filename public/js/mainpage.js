@@ -22,7 +22,7 @@ $(document).ready(function () {
     // var spanM = document.getElementsByClassName("More-Options")[0];
 
 
-    showJava();
+    showCategory('C');
 
     if(login != null) {
         login.onclick = function () {
@@ -133,52 +133,12 @@ $(document).ready(function () {
 
 });
 
-function showJavaScript() {
-    $("#JavaScriptli").addClass("slds-is-active");
-    $("#Javali").removeClass("slds-is-active");
-    $("#Phpli").removeClass("slds-is-active");
-    $("#Cli").removeClass("slds-is-active");
+function showCategory(category){
+    $(".languageItem").removeClass("slds-is-active");
+    $(".language").css('display', 'none');
 
-    $("#Java").css('display', 'none');
-    $("#Php").css('display', 'none');
-    $("#C").css('display', 'none');
-    $("#Javascript").css('display', 'block');
-}
-
-function showJava() {
-    $("#Javali").addClass("slds-is-active");
-    $("#JavaScriptli").removeClass("slds-is-active");
-    $("#Phpli").removeClass("slds-is-active");
-    $("#Cli").removeClass("slds-is-active");
-
-    $("#Javascript").css('display', 'none');
-    $("#Php").css('display', 'none');
-    $("#C").css('display', 'none');
-    $("#Java").css('display', 'block');
-}
-
-function showC() {
-    $("#Cli").addClass("slds-is-active");
-    $("#JavaScriptli").removeClass("slds-is-active");
-    $("#Phpli").removeClass("slds-is-active");
-    $("#Javali").removeClass("slds-is-active");
-
-    $("#Javascript").css('display', 'none');
-    $("#Php").css('display', 'none');
-    $("#Java").css('display', 'none');
-    $("#C").css('display', 'block');
-}
-
-function showPhp() {
-    $("#Phpli").addClass("slds-is-active");
-    $("#JavaScriptli").removeClass("slds-is-active");
-    $("#Cli").removeClass("slds-is-active");
-    $("#Javali").removeClass("slds-is-active");
-
-    $("#Javascript").css('display', 'none');
-    $("#C").css('display', 'none');
-    $("#Java").css('display', 'none');
-    $("#Php").css('display', 'block');
+    $("#" + category + "li").addClass("slds-is-active");
+    $("#" + category).css('display', 'block');
 }
 
 function showpostquestion() {
@@ -190,23 +150,13 @@ function displaycategories() {
    if ($('#categories').css('display') == 'none') {
 		$("#categories").css('display', 'block');
 		$("#favourites").css('display', 'block');
-		
-		$("#Java").css('width', '78%');
-		$("#C").css('width', '78%');
-		$("#Javascript").css('width', '78%');
-		$("#Php").css('width', '78%');
-		$("#Java").css('float', 'left');
-		$("#C").css('float', 'left');
-		$("#Javascript").css('float', 'left');
-		$("#Php").css('float', 'left');
+       $(".language").css('width', '78%');
+       $(".language").css('float', 'left');
 	}
 	else {
             $("#categories").css('display', 'none');
 			$("#favourites").css('display', 'none');
-			$("#Java").css('width', '100%');
-			$("#C").css('width', '100%');
-			$("#Javascript").css('width', '100%');
-			$("#Php").css('width', '100%');
+			$(".language").css('width', '100%');
         }
 }
 
