@@ -43,7 +43,7 @@ button:hover {
 
 <div id="loginModal" class="modal">
     <div class="modal-content">
-        <form action="/login" method="post" id="loginForm">
+        <form action="/login" method="get" id="loginForm">
             {{csrf_field()}}
             <div class="slds-scope">
                 <div class="demo-only" style="height: 640px;">

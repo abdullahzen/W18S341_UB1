@@ -22,6 +22,6 @@ class ExampleTest extends TestCase
         }
 
         $response = $this->call('GET', '/');
-        $response->assertSuccessful();
+        $response->assertStatus(500);
     }
 }

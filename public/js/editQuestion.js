@@ -1,8 +1,7 @@
 $(function(){
     $("#editButton").click(function () {
-        $(". ").hide();
         var id = document.getElementById('hiddenID').value;
-        var request = $.post('/edit', $('#editForm').serialize());
+        var request = $.get('/edit', $('#editForm').serialize());
         request.done(function () {
             window.location = './post/' + id;
 
