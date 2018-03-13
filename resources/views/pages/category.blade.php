@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-        {{--POSTS--}}
+        <!--POSTS-->
         @foreach ($posts as $data)
             <div class="slds-card__header slds-grid">
                 <div class="slds-feed" style="    width: 100%;">
@@ -119,7 +119,7 @@
             </div>
         @endforeach
         <br>
-        <br>{{--to make it float above the border--}}
+        <br>
         <br>
     </article>
 </div>

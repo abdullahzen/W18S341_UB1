@@ -1,39 +1,36 @@
-<html>
-        <head>
-                <style>                    
-                /* Full-width input fields */
-                input[type=text], input[type=password] {
-                    width: 100%;
-                    padding: 12px 20px;
-                    margin: 8px 0;
-                    display: inline-block;
-                    border: 1px solid #ccc;
-                    box-sizing: border-box;
-                }
-                /* Set a style for all buttons */
-                .button {
-                    background-color: #5BDB41;
-                    color: white;
-                    padding: 14px 20px;
-                    margin: 8px 0;
-                    border: none;
-                    cursor: pointer;
-                    width: 100%;
-                }
-                button:hover {
-                    opacity: 0.8;
-                }
-                .container {
-                    padding: 16px;
-                }
-                .modal-content {
-                    background-color: #fefefe;
-                    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-                    border: 1px solid #888;
-                    width: 80%; /* Could be more or less, depending on screen size */
-                }
-                </style>
-        </head>
+<style>
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+/* Set a style for all buttons */
+.button {
+    background-color: #5BDB41;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+button:hover {
+    opacity: 0.8;
+}
+.container {
+    padding: 16px;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+</style>
 <div id="registerModal" class="modal">
     <div class="modal-content">
         <form action="/register" id="registrationForm" method="post">
@@ -48,7 +45,6 @@
                             </header>
                             <div class="modal-body">
                                     <div class="container">
-                                {{--<div id="loginError"></div>--}}
                                 <div class="slds-form-element">
                                     <label class="slds-form-element__label" for="input-id-01"><b>Username</b></label>
                                     <div class="slds-form-element__control">
@@ -81,21 +77,9 @@
                                 <div class="form-group">
                                     <input type="submit" id="submitButton" class="button" value="REGISTER"/>
                                 </div>
-                                {{--<fieldset class="slds-form-element">
-                                    <div class="slds-form-element__control">
-                                      <span class="slds-checkbox">
-                                      <input id="checkbox-48" name="default" type="checkbox" value="on">
-                                      <label class="slds-checkbox__label" for="checkbox-48">
-                                      <span class="slds-checkbox_faux"></span>
-                                      <span class="slds-form-element__label">I agree to terms and conditions</span>
-                                      </label>
-                                      </span>
-                                    </div>
-                                </fieldset>--}}
                                 </div>
                             </div>
                             <footer class="slds-modal__footer">
-                                {{--<button class="slds-button slds-button_brand" id="loginButton">Log in</button>--}}
                             </footer>
                         </div>
                     </section>
@@ -112,4 +96,3 @@
 <script src="{{URL::asset('https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')}}"></script>
 <script src="{{URL::asset('js/mainpage.js')}}"></script>
 <script src="{{ URL::asset('js/register.js') }}" type="text/javascript"></script>
-</html>

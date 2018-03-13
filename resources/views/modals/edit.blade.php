@@ -49,7 +49,6 @@
                                 </div>
                             </div>
                             <footer class="slds-modal__footer">
-                                {{--<button class="slds-button slds-button_brand" id="loginButton">Log in</button>--}}
                             </footer>
                         </div>
                     </section>

@@ -1,6 +1,5 @@
 @include('includes.head')
 @include('includes.headerfooter')
-{{--REMAKE THE CSS--}}
 <body>
 <div class="slds-scope">
     <div>
@@ -23,17 +22,14 @@
                             <h2>
                                 <a href="javascript:void(0);" class="slds-card__header-link slds-truncate"
                                    title="new question">
-                                    <span class="slds-text-heading_small">Post a new question</span>{{--header--}}
+                                    <span class="slds-text-heading_small">Post a new question</span>
                                 </a>
                             </h2>
                         </div>
                     </header>
-                    {{--<div class="slds-no-flex">
-                       <button class="slds-button slds-button_neutral" onclick="showpostquestion();">New</button>
-                    </div>--}}
                 </div>
                 <div class="slds-card__body slds-card__body_inner">
-                    <div class="container" id="postquestion" {{--style="display : none;"--}}>
+                    <div class="container" id="postquestion">
                         <fieldset>
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="textarea-id-01">Language</label><br/>
@@ -62,7 +58,7 @@
                             </div>
                             </br>
                             <!-- File Button -->
-                        {{--<div class="form-group">
+                        <!--<div class="form-group">
                             <div class="slds-form-element">
                                 <span class="slds-form-element__label"
                                       id="file-selector-primary-label">Attachment</span>
@@ -90,7 +86,7 @@
                                 </div>
                             </div>
                         </div>
-                        </br>--}}
+                        </br>-->
                         <!-- Button (Double) -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="button1id"></label>
