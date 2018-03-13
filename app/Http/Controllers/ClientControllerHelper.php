@@ -167,4 +167,34 @@ class ClientControllerHelper extends Controller {
                       where t.category = \'' . $language  .'\' order by q.upvotes DESC');
         return $post;
     }
+
+
+    public static function getCategories(){
+        $categories = DB::select('select category from category');
+        return $categories;
+
+    }
+
+    public static function getPostsByCategoryNameQuery($category) {
+        $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\' order by category.category_ID ASC')[0]->category_ID;
+        $post = DB::select('
+            SELECT
+                q.question_ID,
+                q.title,
+                q.content,
+                q.category_ID1,
+                q.user_ID1 as userID,
+                q.create_time,
+                q.upvotes,
+                q.comments,
+                q.views,
+                u.username
+            FROM question q
+            INNER JOIN user u
+                ON q.user_ID1 = u.user_ID AND q.category_ID1 = \'' . $category_ID . '\' AND q.is_hidden = 0
+            ORDER BY q.question_ID DESC
+        ');
+
+        return $post;
+    }
 }
