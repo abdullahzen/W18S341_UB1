@@ -20,7 +20,8 @@ $(document).ready(function () {
     //var spanP = document.getElementsByClassName("closeP")[0];
     var spanU = document.getElementsByClassName("closeU")[0];
     // var spanM = document.getElementsByClassName("More-Options")[0];
-
+	
+	
 
     showJava();
 
@@ -89,14 +90,7 @@ $(document).ready(function () {
         }
     }
 
-    $("#Notifications").click(function () {
-        if ($('#notifications-container').css('display') == 'none') {
-            $("#notifications-container").css('display', 'block');
-        }
-        else {
-            $("#notifications-container").css('display', 'none');
-        }
-    });
+   
 
 
     /*	$(".comment_button1").click(function(){
@@ -133,6 +127,15 @@ $(document).ready(function () {
 
 });
 
+function shownotifications(){
+        if ($('#notifications-container').css('display') == 'none') {
+            $("#notifications-container").css('display', 'block');
+        }
+        else {
+            $("#notifications-container").css('display', 'none');
+        }
+
+}
 function showJavaScript() {
     $("#JavaScriptli").addClass("slds-is-active");
     $("#Javali").removeClass("slds-is-active");
