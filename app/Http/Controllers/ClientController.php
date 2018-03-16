@@ -49,17 +49,29 @@ class ClientController extends Controller {
         $title = $request->input('title');
         $content = $request->input('content');
         $category = $request->input('category');
+        $newCategory = $request->input('newOther2');
         $user_ID = session()->get('id');
         $result = DB::select('select category from category');
         $exists = false;
+        if($category == 'other2'){
+            if ($newCategory != null){
+                $category = $newCategory;
+            } else {
+                $category = 'Java';
+            }
+        }
+
         foreach ($result as $key => $value){
-            if ($category == $value->category){
+            if (strcasecmp($category,$value->category) == 0){
                 $exists = true;
             }
         }
         if (!$exists){
-            DB::table('category')->insert(array("category" => $category));
+            if ($category != null){
+                DB::table('category')->insert(array("category" => $category));
+            }
         }
+
         $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;
         if(DB::table('question')->insert(
             array("title" => $title, "content" => $content, "category_ID1" => $category_ID, "user_ID1" => $user_ID)
@@ -361,17 +373,29 @@ class ClientController extends Controller {
         $title = $request->input('title');
         $content = $request->input('content');
         $category = $request->input('category');
+        $newCategory = $request->input('newOther');
         $id = $request->input('hiddenID');
         $result = DB::select('select category from category');
         //check for current category
         $exists = false;
+
+        if($category == 'other'){
+            if ($newCategory != null){
+                $category = $newCategory;
+            } else {
+                $category = 'Java';
+            }
+        }
+
         foreach ($result as $key => $value){
-            if ($category == $value->category){
+            if (strcasecmp($category,$value->category) == 0){
                 $exists = true;
             }
         }
         if (!$exists){
-            DB::table('category')->insert(array("category" => $category));
+            if ($category != null){
+                DB::table('category')->insert(array("category" => $category));
+            }
         }
 
         $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;

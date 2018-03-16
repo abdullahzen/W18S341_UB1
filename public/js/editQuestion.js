@@ -17,6 +17,17 @@ $(function(){
             $("#editError").empty().append(errMsg);
         });
     });
+
+    $("#newOther").hide();
+
+    $("#select").change(function() {
+        var val = $("#select").val();
+        if(val=="other"){
+            $("#newOther").show();
+        } else {
+            $("#newOther").hide();
+        }
+    });
 });
 
 var spanE = document.getElementsByClassName("closeE")[0];
@@ -54,6 +65,12 @@ $("#More-Options").click(function () {
         $("#More-Options-Container").css('display' , 'none');
     }
 });
+
+function newCategory(){
+    var doc = document.getElementById('other');
+    doc.value = document.getElementById('newOther').value;
+    doc.id = doc.value;
+}
 
 
 

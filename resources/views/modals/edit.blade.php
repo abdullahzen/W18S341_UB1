@@ -18,13 +18,14 @@
                             <div class="modal-body">
                                 <div class="slds-form-element">
                                     <label class="slds-form-element__label slds-text-body_regular" style="padding: 5mm 5mm 1mm 5mm;" for="textarea-id-01"><strong>Language</strong></label>
-                                    <select name="category">
-                                        <option class="form-control" value="Php" id="Phpe">Php</option>
-                                        <option class="form-control" value="C" id="Ce">C</option>
-                                        <option class="form-control" value="Java" id="Javae">Java</option>
-                                        <option class="form-control" value="JavaScript" id="JavaScripte">JavaScript</option>
-
+                                    <select name="category" id="select">
+                                        <?php $categoriesNames = \App\Http\Controllers\ClientControllerHelper::getCategories(); ?>
+                                        @foreach ($categoriesNames as $key=>$value)
+                                            <option class="form-control" value="{{$value->category}}" id="{{$value->category}}e">{{$value->category}}</option>
+                                        @endforeach
+                                            <option class="form-control" value="other" id="other">other</option>
                                     </select>
+                                    <input type ="text" placeholder="Enter new category name..." name="newOther" id="newOther"/>
                                 </div>
 
                                 <!-- Textarea -->

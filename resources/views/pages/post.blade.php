@@ -22,23 +22,7 @@
                             <p class="slds-text-body_small slds-line-height_reset">
                                 Category
                                 <?php
-                                //Update this
-                                switch ($post->category_ID1) {
-                                    case 1:
-                                        echo 'Java';
-                                        break;
-                                    case 2:
-                                        echo 'Javascript';
-                                        break;
-                                    case 3:
-                                        echo 'PHP';
-                                        break;
-                                    case 4:
-                                        echo 'C';
-                                        break;
-                                    default:
-                                        break;
-                                }
+                                echo \App\Http\Controllers\ClientControllerHelper::getCategoryById($post->category_ID1)[0]->category;
                                 ?>
                             </p>
                         </div>

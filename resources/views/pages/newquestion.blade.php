@@ -33,12 +33,14 @@
                         <fieldset>
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="textarea-id-01">Language</label><br/>
-                                <select name="category" class="slds-select" style="Width:30%">
-                                    <option class="form-control" value="Java">Java</option>
-                                    <option class="form-control" value="JavaScript">JavaScript</option>
-                                    <option class="form-control" value="Php">Php</option>
-                                    <option class="form-control" value="C">C</option>
+                                <select name="category" id="select2" class="slds-select" style="Width:30%">
+                                    <?php $categoriesNames = \App\Http\Controllers\ClientControllerHelper::getCategories(); ?>
+                                    @foreach ($categoriesNames as $key=>$value)
+                                    <option class="form-control" value="{{$value->category}}">{{$value->category}}</option>
+                                    @endforeach
+                                        <option class="form-control" value="other2" id="other2">other</option>
                                 </select>
+                                <input type ="text" placeholder="Enter new category name..." name="newOther2" id="newOther2"/>
                             </div>
 
                             <!-- Textarea -->

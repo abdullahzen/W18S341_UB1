@@ -21,8 +21,7 @@ $(document).ready(function () {
     var spanU = document.getElementsByClassName("closeU")[0];
     // var spanM = document.getElementsByClassName("More-Options")[0];
 
-
-    showCategory('C');
+    showCategory('Java');
 
     if(login != null) {
         login.onclick = function () {

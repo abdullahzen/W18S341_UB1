@@ -31,4 +31,14 @@ $(function(){
             $("#postError").empty().append(errMsg);
         });
     });
+    $("#newOther2").hide();
+
+    $("#select2").change(function() {
+        var val = $("#select2").val();
+        if(val=="other2"){
+            $("#newOther2").show();
+        } else {
+            $("#newOther2").hide();
+        }
+    });
 });
