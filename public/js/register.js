@@ -11,8 +11,8 @@ function checkValidForm() {
     } else if (!emailCheck.test(email)) {
         msg = "E-Mail must be valid.";
         document.getElementById('registerError').innerText = msg;
-    } else if (document.getElementById('password').value != document.getElementById('passwordConfirmation').value) {
-        msg = "Password and Confirm Password must match.";
+    } else if (document.getElementById('password').value != document.getElementById('passwordConfirmation').value || document.getElementById('password').value.length < 6) {
+        msg = "Password and Confirm Password must match and be at least 6 char long.";
         document.getElementById('registerError').innerText = msg;
     } else {
         document.getElementById('registerError').innerText = "";

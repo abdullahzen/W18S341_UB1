@@ -1,3 +1,7 @@
+if ($msg != null) {
+    alert($msg);
+}
+
 $(function(){
     $("#loginButton").click(function (e) {
         e.preventDefault();
