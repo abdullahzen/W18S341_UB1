@@ -4,7 +4,6 @@
 <div class="slds-scope">
     <div>
         <div id="post" class="questions" style="    width: 100%;">
-
             @foreach ($post as $data)
                 <div class="slds-card__header slds-grid">
                     <div class="slds-feed" style="    width: 100%;">
@@ -71,7 +70,7 @@
 	
 </div>
 </body>
-{{--Modal Inclusion--}}
+<!--Modal inclusions-->
 @include('modals.login')
 @include('modals.register')
 @include('modals.userProfile')

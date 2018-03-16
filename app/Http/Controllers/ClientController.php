@@ -55,32 +55,40 @@ class ClientController extends Controller {
     }
 
     public function postQuestion(Request $request) {
-        try {
-            $title = $request->input('title');
-            $content = $request->input('content');
-            $category = $request->input('category');
-            $user_ID = session()->get('id');
-            $result = DB::select('select category from category');
-            $exists = false;
-            foreach ($result as $key => $value){
-                if ($category == $value->category){
-                    $exists = true;
-                }
+        $title = $request->input('title');
+        $content = $request->input('content');
+        $category = $request->input('category');
+        $newCategory = $request->input('newOther2');
+        $user_ID = session()->get('id');
+        $result = DB::select('select category from category');
+        $exists = false;
+        if($category == 'other2'){
+            if ($newCategory != null){
+                $category = $newCategory;
+            } else {
+                $category = 'Java';
             }
-            if (!$exists){
+        }
+
+        foreach ($result as $key => $value){
+            if (strcasecmp($category,$value->category) == 0){
+                $exists = true;
+            }
+        }
+        if (!$exists){
+            if ($category != null){
                 DB::table('category')->insert(array("category" => $category));
             }
-            $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;
-            if(DB::table('question')->insert(
-                array("title" => $title, "content" => $content, "category_ID1" => $category_ID, "user_ID1" => $user_ID)
-            )) {
-                $newQ = $id = DB::getPdo()->lastInsertId();
-                $this->upvote($newQ);
-                return redirect('/post/' . $newQ);
-            } else {
-                return back();
-            }
-        } catch (\Illuminate\Database\QueryException $ex) {
+        }
+
+        $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;
+        if(DB::table('question')->insert(
+            array("title" => $title, "content" => $content, "category_ID1" => $category_ID, "user_ID1" => $user_ID)
+        )) {
+            $newQ = $id = DB::getPdo()->lastInsertId();
+            $this->upvote($newQ);
+            return redirect('/post/' . $newQ);
+        } else {
             return back();
         }
     }
@@ -104,39 +112,11 @@ class ClientController extends Controller {
         }
     }
 
-    //Display homepage stuff
-
-
-    public function getHomepage() {
-        //Get posts stuff
-        $java = $this->getPostsByCategoryQuery(1);
-        $js = $this->getPostsByCategoryQuery(2);
-        $php = $this->getPostsByCategoryQuery(3);
-        $c = $this->getPostsByCategoryQuery(4);
-
-        return view('pages.homepage', ['java' => $java, 'js' => $js, 'php' => $php, 'c' => $c]);
-    }
-
-    public function getPostsByCategoryQuery($category) {
-        $post = DB::select('
-            SELECT
-                q.question_ID,
-                q.title,
-                q.content,
-                q.category_ID1,
-                q.user_ID1 as userID,
-                q.create_time,
-                q.upvotes,
-                q.comments,
-                q.views,
-                u.username
-            FROM question q
-            INNER JOIN user u
-                ON q.user_ID1 = u.user_ID AND q.category_ID1 = ' . $category . ' AND q.is_hidden = 0
-            ORDER BY q.question_ID DESC
-        ');
-
-        return $post;
+    public function insertRegisterToDB($username, $email, $password) {
+        /*$solve = '0';*/
+        return DB::table('user')->insert(
+            array("username" => $username, "email" => $email, "password" => $password /*"is_Solver" => $solve*/)
+        );
     }
 
     public function getFullPostById($id) {
@@ -409,17 +389,29 @@ class ClientController extends Controller {
         $title = $request->input('title');
         $content = $request->input('content');
         $category = $request->input('category');
+        $newCategory = $request->input('newOther');
         $id = $request->input('hiddenID');
         $result = DB::select('select category from category');
         //check for current category
         $exists = false;
+
+        if($category == 'other'){
+            if ($newCategory != null){
+                $category = $newCategory;
+            } else {
+                $category = 'Java';
+            }
+        }
+
         foreach ($result as $key => $value){
-            if ($category == $value->category){
+            if (strcasecmp($category,$value->category) == 0){
                 $exists = true;
             }
         }
         if (!$exists){
-            DB::table('category')->insert(array("category" => $category));
+            if ($category != null){
+                DB::table('category')->insert(array("category" => $category));
+            }
         }
 
         $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;
@@ -519,5 +511,22 @@ class ClientController extends Controller {
         } catch(\Illuminate\Database\QueryException $ex){
             return redirect('/post/' . $qid);
         }
+    }
+
+    public function saveCategory(Request $request){
+        $category = $request->Input('newCat');
+        $categoriesNames = ClientControllerHelper::getCategories();
+        $exists = false;
+        foreach ($categoriesNames as $key=>$value){
+            if (strcasecmp($value->category,$category) == 0){
+                $exists = true;
+            }
+        }
+        if(!$exists){
+            DB::table('category')->insert(
+                array("category" => $category)
+            );
+        }
+        return redirect('/');
     }
 }
