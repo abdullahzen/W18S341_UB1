@@ -1,7 +1,5 @@
 <div id="rankModal" class="modal">
     <div class="modal-content">
-        <form action="/rank" id="rank" method="get">
-
         <body>
         <br/>
         <br/>
@@ -26,6 +24,7 @@
                                     </svg>
                                 <span class="slds-assistive-text">Displaying rankings!</span>
                                 </span>
+                            </div>
 
                 <div class="slds-media__body">
                     <div class="slds-align_absolute-center">
@@ -58,11 +57,10 @@
                                 </tr>
                                 </tbody>
                             </table>
-                        </div>>
-
                         </div>
                     </div>
                 </div>
+
                 </article>
                 </section>
                 <div class="slds-backdrop slds-backdrop_open"></div>
@@ -72,8 +70,7 @@
     </body>
     </div>
 </div>
-</div>
-</div>
+
 
 <link class="user" href="{{URL::asset('css/salesforce-lightning-design-system-vf.min.css')}}" rel="stylesheet"
       type="text/css">
