@@ -17,7 +17,7 @@ function checkForm() {
 $(function(){
     $("#newpostButton").click(function () {
         $(". ").hide();
-        var request = $.post('./newpost/do', $('#postForm').serialize());
+        var request = $.get('/newpost/do', $('#postForm').serialize());
         request.done(function () {
             window.location = '/';
         });
@@ -30,5 +30,15 @@ $(function(){
 
             $("#postError").empty().append(errMsg);
         });
+    });
+    $("#newOther2").hide();
+
+    $("#select2").change(function() {
+        var val = $("#select2").val();
+        if(val=="other2"){
+            $("#newOther2").show();
+        } else {
+            $("#newOther2").hide();
+        }
     });
 });

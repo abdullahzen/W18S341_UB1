@@ -1,6 +1,5 @@
 @include('includes.head')
 @include('includes.headerfooter')
-{{--REMAKE THE CSS--}}
 <body>
 <div class="slds-scope">
     <div>
@@ -23,26 +22,25 @@
                             <h2>
                                 <a href="javascript:void(0);" class="slds-card__header-link slds-truncate"
                                    title="new question">
-                                    <span class="slds-text-heading_small">Post a new question</span>{{--header--}}
+                                    <span class="slds-text-heading_small">Post a new question</span>
                                 </a>
                             </h2>
                         </div>
                     </header>
-                    {{--<div class="slds-no-flex">
-                       <button class="slds-button slds-button_neutral" onclick="showpostquestion();">New</button>
-                    </div>--}}
                 </div>
                 <div class="slds-card__body slds-card__body_inner">
-                    <div class="container" id="postquestion" {{--style="display : none;"--}}>
+                    <div class="container" id="postquestion">
                         <fieldset>
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="textarea-id-01">Language</label><br/>
-                                <select name="category" class="slds-select" style="Width:30%">
-                                    <option class="form-control" value="Java">Java</option>
-                                    <option class="form-control" value="JavaScript">JavaScript</option>
-                                    <option class="form-control" value="Php">Php</option>
-                                    <option class="form-control" value="C">C</option>
+                                <select name="category" id="select2" class="slds-select" style="Width:30%">
+                                    <?php $categoriesNames = \App\Http\Controllers\ClientControllerHelper::getCategories(); ?>
+                                    @foreach ($categoriesNames as $key=>$value)
+                                    <option class="form-control" value="{{$value->category}}">{{$value->category}}</option>
+                                    @endforeach
+                                        <option class="form-control" value="other2" id="other2">other</option>
                                 </select>
+                                <input type ="text" placeholder="Enter new category name..." name="newOther2" id="newOther2"/>
                             </div>
 
                             <!-- Textarea -->
@@ -62,7 +60,7 @@
                             </div>
                             </br>
                             <!-- File Button -->
-                        {{--<div class="form-group">
+                        <!--<div class="form-group">
                             <div class="slds-form-element">
                                 <span class="slds-form-element__label"
                                       id="file-selector-primary-label">Attachment</span>
@@ -90,7 +88,7 @@
                                 </div>
                             </div>
                         </div>
-                        </br>--}}
+                        </br>-->
                         <!-- Button (Double) -->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="button1id"></label>

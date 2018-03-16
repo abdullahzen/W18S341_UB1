@@ -1,6 +1,16 @@
 language: php
 php:
-  - '7.1'
+  - 7.1
+
+env:
+  global:
+    - APP_ENV=testing
+    - APP_DEBUG=true
+    - APP_KEY=base64:SeofiwFYw/63WrsyKyqkGj2+cR5SmNLpYKN4LdOAsIQ=
+    - DB_CONNECTION=mysql
+    - CACHE_DRIVER=array
+    - SESSION_DRIVER=array
+    - QUEUE_DRIVER=sync
 
 addons:
   apt:
@@ -11,7 +21,13 @@ addons:
       - mysql-client
 
 before_script:
-   - composer install
-   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('') where User='root'; update user set plugin='';FLUSH PRIVILEGES;"
-   - sudo mysql_upgrade
-   - sudo service mysql restart
+   - composer self-update
+   - composer install --no-interaction
+   - cp .env.travis .env
+   - php artisan key:generate
+   - php artisan config:clear
+   - mysql -e 'create database soen341;'
+   - php artisan migrate
+
+
+script: vendor/bin/phpunit
