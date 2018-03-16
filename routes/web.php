@@ -32,7 +32,7 @@ Route::get('/register/page', function () {
 
 Route::get('/logout', function() {
     session()->flush();
-    return redirect('/');
+    return back();
 });
 
 Route::get('/userProfile', function() {

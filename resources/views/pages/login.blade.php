@@ -69,7 +69,7 @@
                     <div class="modal-body">
                         <div class="container">
                             <center>
-                                <div id="loginError"></div>
+                                <div id="loginError">{{$loginmsg}}</div>
                                 <div class="form-group">
                                     <label><b>Username</b></label>
                                     <input type="text" class="form-control input-md"

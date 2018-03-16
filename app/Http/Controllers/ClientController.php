@@ -18,6 +18,7 @@ class ClientController extends Controller {
 
     //Login Stuff
     public function authenticate(Request $request) {
+        $loginmsg = null;
         $username = $request->input('username');
         $pw = $request->input('password');
 
@@ -27,9 +28,16 @@ class ClientController extends Controller {
         /*if(!empty($user) && $pw == $user->password) {*/
         if(!empty($user) && Hash::check($pw, $user->password)) {
             $this->createSession($user);
-            return redirect('/');
+            return back();
         } else {
-            return redirect('/login/page');
+            if (empty($user)) {
+                $loginmsg  = 'Invalid username!';
+            } else if (!Hash::check($pw, $user->password)) {
+                $loginmsg  = 'Invalid password!';
+            } else {
+                $loginmsg  = 'Invalid user/password!';
+            }
+            return view('pages.login', ['loginmsg' => $loginmsg]);
         }
     }
 
@@ -47,29 +55,33 @@ class ClientController extends Controller {
     }
 
     public function postQuestion(Request $request) {
-        $title = $request->input('title');
-        $content = $request->input('content');
-        $category = $request->input('category');
-        $user_ID = session()->get('id');
-        $result = DB::select('select category from category');
-        $exists = false;
-        foreach ($result as $key => $value){
-            if ($category == $value->category){
-                $exists = true;
+        try {
+            $title = $request->input('title');
+            $content = $request->input('content');
+            $category = $request->input('category');
+            $user_ID = session()->get('id');
+            $result = DB::select('select category from category');
+            $exists = false;
+            foreach ($result as $key => $value){
+                if ($category == $value->category){
+                    $exists = true;
+                }
             }
-        }
-        if (!$exists){
-            DB::table('category')->insert(array("category" => $category));
-        }
-        $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;
-        if(DB::table('question')->insert(
-            array("title" => $title, "content" => $content, "category_ID1" => $category_ID, "user_ID1" => $user_ID)
-        )) {
-            $newQ = $id = DB::getPdo()->lastInsertId();
-            $this->upvote($newQ);
-            return redirect('/post/' . $newQ);
-        } else {
-            return abort('400');
+            if (!$exists){
+                DB::table('category')->insert(array("category" => $category));
+            }
+            $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;
+            if(DB::table('question')->insert(
+                array("title" => $title, "content" => $content, "category_ID1" => $category_ID, "user_ID1" => $user_ID)
+            )) {
+                $newQ = $id = DB::getPdo()->lastInsertId();
+                $this->upvote($newQ);
+                return redirect('/post/' . $newQ);
+            } else {
+                return back();
+            }
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return back();
         }
     }
 
@@ -78,14 +90,17 @@ class ClientController extends Controller {
         $email = $request->Input('email');
         $password = $request->Input('password');
         $newPassword = $this->hash($password);
+        $regmsg = null;
         try {
             if(DB::table('user')->insert(array("username" => $username, "email" => $email, "password" => $newPassword))){
-                return redirect('/');
+                return back();
             } else{
-                return redirect('register/page');
+                $regmsg = 'An error has occurred.';
+                return views('pages.register', ['regmsg' => $regmsg]);
             }
         } catch (\Illuminate\Database\QueryException $ex) {
-            return redirect('register/page');
+            $regmsg = $ex;
+            return view('pages.register', ['regmsg' => $regmsg]);
         }
     }
 
@@ -389,7 +404,7 @@ class ClientController extends Controller {
         }
         return redirect('/post/' . $id2 . '');
     }
-  
+
     public function editQuestion(Request $request) {
         $title = $request->input('title');
         $content = $request->input('content');
