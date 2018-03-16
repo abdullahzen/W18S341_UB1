@@ -170,7 +170,7 @@ class ClientControllerHelper extends Controller {
 
 
     public static function getCategories(){
-        $categories = DB::select('select category from category');
+        $categories = DB::select('select category from category order by category.category_ID ASC');
         return $categories;
 
     }
@@ -196,5 +196,11 @@ class ClientControllerHelper extends Controller {
         ');
 
         return $post;
+    }
+
+    public static function getCategoryById($id){
+        $category = DB::select('select category from category where category.category_ID = '. $id);
+        return $category;
+
     }
 }

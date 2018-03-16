@@ -472,4 +472,21 @@ class ClientController extends Controller {
             return redirect('/post/' . $qid);
         }
     }
+
+    public function saveCategory(Request $request){
+        $category = $request->Input('newCat');
+        $categoriesNames = ClientControllerHelper::getCategories();
+        $exists = false;
+        foreach ($categoriesNames as $key=>$value){
+            if (strcasecmp($value->category,$category) == 0){
+                $exists = true;
+            }
+        }
+        if(!$exists){
+            DB::table('category')->insert(
+                array("category" => $category)
+            );
+        }
+        return redirect('/');
+    }
 }
