@@ -14,6 +14,17 @@
                                                                                       aria-current="page">{{$value->category}}</a>
                     </li>
                     @endforeach
+                    <li class="slds-nav-vertical__item">
+                        <button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1"
+                                onclick="window.location.href='/newCat'">
+                            <svg class="slds-button__icon slds-button__icon"
+                                 aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink"/>
+                            </svg>
+                            Add new category
+                        </button>
+                    </li>
                 </ul>
             </div>
         </nav>
