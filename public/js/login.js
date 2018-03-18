@@ -1,7 +1,3 @@
-if ($msg != null) {
-    alert($msg);
-}
-
 $(function(){
     $("#loginButton").click(function () {
         $(". ").hide();

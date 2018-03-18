@@ -25,19 +25,18 @@ class ClientController extends Controller {
         $user = DB::table('user')
                     ->where('username', $username)
                     ->first();
-        /*if(!empty($user) && $pw == $user->password) {*/
         if(!empty($user) && Hash::check($pw, $user->password)) {
             $this->createSession($user);
             return back();
         } else {
             if (empty($user)) {
-                $loginmsg  = 'Invalid username!';
+                session(['loginmsg' => 'Invalid username!']);
             } else if (!Hash::check($pw, $user->password)) {
-                $loginmsg  = 'Invalid password!';
+                session(['loginmsg' => 'Invalid password!']);
             } else {
-                $loginmsg  = 'Invalid user/password!';
+                session(['loginmsg' => 'Invalid user/password!']);
             }
-            return view('pages.login', ['loginmsg' => $loginmsg]);
+            return back();
         }
     }
 
@@ -98,17 +97,16 @@ class ClientController extends Controller {
         $email = $request->Input('email');
         $password = $request->Input('password');
         $newPassword = $this->hash($password);
-        $regmsg = null;
         try {
             if(DB::table('user')->insert(array("username" => $username, "email" => $email, "password" => $newPassword))){
                 return back();
             } else{
-                $regmsg = 'An error has occurred.';
-                return views('pages.register', ['regmsg' => $regmsg]);
+                session(['regmsg' => 'An error has occurred.']);
+                return back();
             }
         } catch (\Illuminate\Database\QueryException $ex) {
-            $regmsg = $ex;
-            return view('pages.register', ['regmsg' => $regmsg]);
+            session(['regmsg' => 'An error has occurred.']);
+            return back();
         }
     }
 

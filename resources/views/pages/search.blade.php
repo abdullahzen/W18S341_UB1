@@ -71,7 +71,5 @@
 </div>
 </body>
 <!--Modal inclusions-->
-@include('modals.login')
-@include('modals.register')
-@include('modals.userProfile')
+@include('includes.modals');
 <script src="{{ URL::asset('js/answer.js') }}" type="text/javascript"></script>

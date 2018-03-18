@@ -17,17 +17,8 @@ Route::get('/', function(){
     return view('pages.homepage');
 });
 
-
 Route::get('/newpost', function () {
     return view('pages.newquestion');
-});
-
-Route::get('/login/page', function () {
-    return view('pages.login');
-});
-
-Route::get('/register/page', function () {
-    return view('pages.register');
 });
 
 Route::get('/newCat', function (){
@@ -68,8 +59,6 @@ Route::get('/post/{id}/delete', 'ClientController@deleteQuestion');
 Route::get('/post/bestanswer/{qid}/{aid}/', 'ClientController@setBestAnswer');
 Route::get('/post/unbestanswer/{qid}/{aid}/', 'ClientController@unsetBestAnswer');
 Route::get('/addNewCategory', 'ClientController@saveCategory');
-
-
 
 //POST
 Route::post('/login', 'ClientController@authenticate');
