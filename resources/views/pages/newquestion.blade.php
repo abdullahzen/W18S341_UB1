@@ -120,4 +120,3 @@
 <script src="{{URL::asset('https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')}}"></script>
 <script src="{{URL::asset('js/mainpage.js')}}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/post.js') }}" type="text/javascript"></script>
-@include('includes.modals');

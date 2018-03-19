@@ -124,5 +124,4 @@
     </article>
 </div>
 <script src="{{URL::asset('js/mainpage.js')}}"></script>
-@include('includes.modals');
 
