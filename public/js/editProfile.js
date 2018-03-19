@@ -3,8 +3,7 @@ $(function(){
         $(". ").hide();
         var request = $.post('/editProfile', $('#editProfileForm').serialize());
         request.done(function () {
-            window.location = '/';
-
+            window.history.back();
         });
 
         request.fail(function (jqXHR) {

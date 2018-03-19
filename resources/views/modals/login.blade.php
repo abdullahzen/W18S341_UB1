@@ -56,7 +56,11 @@ button:hover {
                             <div class="modal-body">
                                 <div class="container">
                                     <center>
-                                    <div id="loginError"></div>
+                                    <div id="loginError">
+                                        <input type="hidden" name="loginmsg" id="loginmsg" value="{{Session()->get('loginmsg')}}">
+                                        {{Session()->get('loginmsg')}}
+                                        {{--{{dd(Session()->get('loginmsg'))}}--}}
+                                    </div>
                                     <div class="form-group">
                                         <label><b>Username</b></label>
                                         <input type="text" class="form-control input-md" placeholder="Enter Username" name="username"/>
@@ -68,7 +72,7 @@ button:hover {
                                     </div>
                                 </br>
                                     <div class="form-group">
-                                        <input type="submit" id="loginButton" class="button" value="LOGIN"/>
+                                        <input type="submit" id="loginButton" class="slds-button slds-button_brand" value="LOGIN"/>
                                     </div>
                                     </center>
                                 </div>

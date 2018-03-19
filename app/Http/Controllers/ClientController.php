@@ -18,19 +18,26 @@ class ClientController extends Controller {
 
     //Login Stuff
     public function authenticate(Request $request) {
+        $loginmsg = null;
         $username = $request->input('username');
         $pw = $request->input('password');
 
         $user = DB::table('user')
                     ->where('username', $username)
                     ->first();
-        /*if(!empty($user) && $pw == $user->password) {*/
         if(!empty($user) && Hash::check($pw, $user->password)) {
             $this->createSession($user);
+            return back();
         } else {
-            abort(400, "Invalid username or password.");
+            if (empty($user)) {
+                session(['loginmsg' => 'Invalid username!']);
+            } else if (!Hash::check($pw, $user->password)) {
+                session(['loginmsg' => 'Invalid password!']);
+            } else {
+                session(['loginmsg' => 'Invalid user/password!']);
+            }
+            return back();
         }
-        return redirect('/');
     }
 
     public function hash($password) {
@@ -38,6 +45,7 @@ class ClientController extends Controller {
     }
 
     //Register Stuff
+
     public function createSession($user) {
         session()->flush();
         session(['id' => $user->user_ID]);
@@ -80,7 +88,7 @@ class ClientController extends Controller {
             $this->upvote($newQ);
             return redirect('/post/' . $newQ);
         } else {
-            return abort('400');
+            return back();
         }
     }
 
@@ -89,10 +97,16 @@ class ClientController extends Controller {
         $email = $request->Input('email');
         $password = $request->Input('password');
         $newPassword = $this->hash($password);
-        if($this->insertRegisterToDB($username, $email, $newPassword)){
-            return redirect('/');
-        } else{
-            return abort('400', 'A problem occurred during the registration process!');
+        try {
+            if(DB::table('user')->insert(array("username" => $username, "email" => $email, "password" => $newPassword))){
+                return back();
+            } else{
+                session(['regmsg' => 'An error has occurred.']);
+                return back();
+            }
+        } catch (\Illuminate\Database\QueryException $ex) {
+            session(['regmsg' => 'An error has occurred.']);
+            return back();
         }
     }
 
@@ -368,7 +382,7 @@ class ClientController extends Controller {
         }
         return redirect('/post/' . $id2 . '');
     }
-  
+
     public function editQuestion(Request $request) {
         $title = $request->input('title');
         $content = $request->input('content');
@@ -456,7 +470,7 @@ class ClientController extends Controller {
                 q.views,
                 u.username
             FROM question q
-            INNER JOIN user u WHERE q.title LIKE \'%' . $id . '%\' AND q.is_hidden = 0
+            INNER JOIN user u ON u.user_ID = q.user_ID1 WHERE q.title LIKE \'%' . $id . '%\' AND q.is_hidden = 0
         ');
 
         return view('pages.search', ['post' => $post]);

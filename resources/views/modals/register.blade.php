@@ -33,7 +33,7 @@ button:hover {
 </style>
 <div id="registerModal" class="modal">
     <div class="modal-content">
-        <form action="/register" id="registrationForm" method="post">
+        <form action="/register" id="registrationForm" method="post" onkeyup="checkValidForm()">
             {{ csrf_field() }}
             <div class="slds-scope">
                 <div class="demo-only" style="height: 640px;">
@@ -45,6 +45,7 @@ button:hover {
                             </header>
                             <div class="modal-body">
                                     <div class="container">
+                                <div id="registerError"></div>
                                 <div class="slds-form-element">
                                     <label class="slds-form-element__label" for="input-id-01"><b>Username</b></label>
                                     <div class="slds-form-element__control">
@@ -75,7 +76,7 @@ button:hover {
                                 </div>
                             </br>
                                 <div class="form-group">
-                                    <input type="submit" id="submitButton" class="button" value="REGISTER"/>
+                                    <input type="submit" id="submitButton" class="slds-button slds-button_brand" value="REGISTER" disabled/>
                                 </div>
                                 </div>
                             </div>

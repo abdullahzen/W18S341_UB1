@@ -20,7 +20,7 @@
                                         <div class="slds-media__body">
                                             <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
                                                 <p>
-                                                    <a href="./post/{{$data->question_ID}}">{{$data->title}}</a>
+                                                    <a href="/post/{{$data->question_ID}}">{{$data->title}}</a>
                                                     <br/>
                                                     <a href="javascript:void(0);">{{$data->username}}</a>
                                                 </p>
@@ -71,7 +71,5 @@
 </div>
 </body>
 <!--Modal inclusions-->
-@include('modals.login')
-@include('modals.register')
-@include('modals.userProfile')
+@include('includes.modals');
 <script src="{{ URL::asset('js/answer.js') }}" type="text/javascript"></script>

@@ -286,7 +286,7 @@
                                                         {{csrf_field()}}
                                                         <div class="slds-publisher slds-publisher_comment slds-is-active slds-has-focus">
                                                             <label for="comment-text-input-01" class="slds-assistive-text">Write a answer</label>
-                                                            <input type="text" id="content" name="content" class="slds-publisher__input slds-input_bare slds-text-longform" placeholder="Post your answer here"></input>
+                                                            <input type="text" id="content" name="content" class="slds-publisher__input slds-input_bare slds-text-longform" placeholder="Post your answer here" autocomplete="off"></input>
                                                             <div class="slds-publisher__actions slds-grid slds-grid_align-spread">
                                                                 <ul class="slds-grid">
                                                                 </ul>
@@ -308,11 +308,6 @@
 	
 </div>
 </body>
-<!--Modal inclusions-->
-@include('modals.login')
-@include('modals.register')
-@include('modals.userProfile')
-@include('modals.edit')
-@include('modals.editProfile')
+@include('includes.modals');
 <script src="{{ URL::asset('js/answer.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/postStats.js') }}" type="text/javascript"></script>
