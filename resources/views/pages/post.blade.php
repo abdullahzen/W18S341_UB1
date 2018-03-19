@@ -310,3 +310,4 @@
 </body>
 <script src="{{ URL::asset('js/answer.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/postStats.js') }}" type="text/javascript"></script>
+@include('includes.modals')

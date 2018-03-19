@@ -305,4 +305,3 @@
 </div>
 </body>
 </html>
-@include('include.modals')

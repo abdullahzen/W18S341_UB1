@@ -20,3 +20,4 @@
             </div>
   </div>
 </body>
+@include('includes.modals')

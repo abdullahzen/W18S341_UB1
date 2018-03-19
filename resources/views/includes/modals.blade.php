@@ -1,9 +1,14 @@
 <!--Modal inclusions-->
 @include('modals.login')
 @include('modals.register')
-@include('modals.userProfile')
-@include('modals.edit')
-@include('modals.editProfile')
+
+@if(Session()->has('id'))
+
+    @include('modals.userProfile')
+    @include('modals.edit')
+    @include('modals.editProfile')
+
+@endif
 
 @if(Session()->has('loginmsg'))
 <script>
