@@ -236,26 +236,6 @@ class ClientController extends Controller {
         }
     }
 
-    public function getFavourites(){
-        $favourites = DB::select('
-            SELECT
-                q.question_ID,
-                q.title,
-                q.content,
-                q.category_ID1,
-                q.user_ID1 as userID,
-                q.create_time,
-                q.upvotes,
-                q.comments,
-                q.views
-            FROM question q
-            INNER JOIN favourite ON q.question_ID = favourite.question_ID2 AND q.is_hidden = 0
-            WHERE user_ID3 = ' . session()->get('id') . ';'
-        );
-
-        return view('pages.favourites', ['favourites' => $favourites]);
-    }
-
     public function upvote($id) {
         if (session()->has('username')) {
             $vote = DB::select('

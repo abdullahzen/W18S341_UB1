@@ -7,6 +7,7 @@
     @include('modals.userProfile')
     @include('modals.edit')
     @include('modals.editProfile')
+    @include('modals.favourite')
 
 @endif
 

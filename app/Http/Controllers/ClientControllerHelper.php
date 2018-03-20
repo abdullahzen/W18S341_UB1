@@ -203,4 +203,26 @@ class ClientControllerHelper extends Controller {
         return $category;
 
     }
+
+    public static function getFavourites(){
+        $favourites = DB::select('
+            SELECT
+                q.question_ID,
+                q.title,
+                q.content,
+                q.category_ID1,
+                q.user_ID1 as userID,
+                q.create_time,
+                q.upvotes,
+                q.comments,
+                q.views,
+                u.username
+            FROM question q
+            INNER JOIN user u ON q.user_ID1 = u.user_ID
+            INNER JOIN favourite ON q.question_ID = favourite.question_ID2 AND q.is_hidden = 0
+            WHERE user_ID3 = ' . session()->get('id') . ';'
+        );
+
+        return $favourites;
+    }
 }
