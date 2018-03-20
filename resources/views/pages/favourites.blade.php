@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-                {{--POSTS--}}
+                <!--POSTS-->
                 @foreach ($favourites as $data)
                     <div class="slds-card__header slds-grid">
                         <div class="slds-feed" style="    width: 100%;">
@@ -54,7 +54,6 @@
                                                     <p>
                                                         <a href="./post/{{$data->question_ID}}">{{$data->title}}</a>
                                                         <br/>
-                                                        {{--<a href="javascript:void(0);">{{$data->username}}</a>--}}
                                                     </p>
                                                 </div>
                                                 <p class="slds-text-body_small"><a href="javascript:void(0);"
@@ -104,7 +103,7 @@
     </div>
 </div>
 </body>
-{{--Modal Inclusion--}}
+<!--Modal inclusions-->
 @include('modals.login')
 @include('modals.register')
 @include('modals.userProfile')

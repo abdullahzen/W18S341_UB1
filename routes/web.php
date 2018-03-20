@@ -13,18 +13,21 @@
 
 //GET
 
-Route::get('/', array(
-    'uses' => 'ClientController@getHomepage'
-));
-
+Route::get('/', function(){
+    return view('pages.homepage');
+});
 
 Route::get('/newpost', function () {
     return view('pages.newquestion');
 });
 
+Route::get('/newCat', function (){
+    return view('pages.newCategory');
+});
+
 Route::get('/logout', function() {
     session()->flush();
-    return redirect('/');
+    return back();
 });
 
 Route::get('/userProfile', function() {
@@ -55,7 +58,7 @@ Route::get('/post/{id}/{id2}/downvoteA', 'ClientController@downvoteA');
 Route::get('/post/{id}/delete', 'ClientController@deleteQuestion');
 Route::get('/post/bestanswer/{qid}/{aid}/', 'ClientController@setBestAnswer');
 Route::get('/post/unbestanswer/{qid}/{aid}/', 'ClientController@unsetBestAnswer');
-
+Route::get('/addNewCategory', 'ClientController@saveCategory');
 
 //POST
 Route::post('/login', 'ClientController@authenticate');
@@ -64,3 +67,4 @@ Route::post('/register', 'ClientController@register');
 Route::post('/post/{id}/newanswer', 'ClientController@postAnswer');
 Route::post('/edit', 'ClientController@editQuestion');
 Route::post('/editProfile', 'ClientController@updateUserProfile');
+

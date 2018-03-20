@@ -1,8 +1,3 @@
-<html>
-
-
-<head>
-
 <style>
 
     
@@ -46,9 +41,6 @@ button:hover {
 
 </style>
 
-
-</head>
-
 <div id="loginModal" class="modal">
     <div class="modal-content">
         <form action="/login" method="post" id="loginForm">
@@ -64,7 +56,11 @@ button:hover {
                             <div class="modal-body">
                                 <div class="container">
                                     <center>
-                                    <div id="loginError"></div>
+                                    <div id="loginError">
+                                        <input type="hidden" name="loginmsg" id="loginmsg" value="{{Session()->get('loginmsg')}}">
+                                        {{Session()->get('loginmsg')}}
+                                        {{--{{dd(Session()->get('loginmsg'))}}--}}
+                                    </div>
                                     <div class="form-group">
                                         <label><b>Username</b></label>
                                         <input type="text" class="form-control input-md" placeholder="Enter Username" name="username"/>
@@ -76,13 +72,12 @@ button:hover {
                                     </div>
                                 </br>
                                     <div class="form-group">
-                                        <input type="submit" id="loginButton" class="button" value="LOGIN"/>
+                                        <input type="submit" id="loginButton" class="slds-button slds-button_brand" value="LOGIN"/>
                                     </div>
                                     </center>
                                 </div>
                             </div>
                             <footer class="slds-modal__footer">
-                                {{--<button class="slds-button slds-button_brand" id="loginButton">Log in</button>--}}
                             </footer>
                         </div>
                     </section>
@@ -99,4 +94,3 @@ button:hover {
 <script src="{{URL::asset('https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')}}"></script>
 <script src="{{URL::asset('js/mainpage.js')}}"></script>
 <script src="{{ URL::asset('js/login.js') }}" type="text/javascript"></script>
-</html>
