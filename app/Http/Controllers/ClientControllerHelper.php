@@ -238,7 +238,29 @@ class ClientControllerHelper extends Controller {
         }
     }
 
-    public static function getNotifications() {
+    public static function getNotifications($limit) {
+        $notifications = DB::select('
+                SELECT
+                    n.id,
+                    n.uid,
+                    n.fromUID,
+                    n.url,
+                    n.notificationType,
+                    n.content,
+                    n.read,
+                    n.time,
+                    u.username
+                FROM notification n
+                INNER JOIN user u
+                    ON n.fromUID = u.user_ID
+                WHERE n.uid = ' . Session()->get('id') . '
+                ORDER BY n.id DESC
+                LIMIT ' . $limit . '
+            ');
+        return $notifications;
+    }
+
+    public static function getAllNotifications() {
         $notifications = DB::select('
                 SELECT
                     n.id,

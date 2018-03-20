@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </li>
-            <?php $notifications = (\App\Http\Controllers\ClientControllerHelper::getNotifications());?>
+            <?php $notifications = (\App\Http\Controllers\ClientControllerHelper::getNotifications(5));?>
             @foreach ($notifications as $data)
             {{--Single Notification--}}
                 @if($data->read == 1)
