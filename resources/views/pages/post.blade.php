@@ -280,21 +280,21 @@
                                                          title="User avatar"/>
                                                 </a>
                                             </div>
-                                                <div class="slds-media__body">
-                                                    <!--Answer field-->
-                                                    <form class="form-horizontal" action="/post/{{$post->question_ID}}/newanswer" method="post" id="answerForm" onKeyup="checkForm()">
-                                                        {{csrf_field()}}
-                                                        <div class="slds-publisher slds-publisher_comment slds-is-active slds-has-focus">
-                                                            <label for="comment-text-input-01" class="slds-assistive-text">Write a answer</label>
-                                                            <input type="text" id="content" name="content" class="slds-publisher__input slds-input_bare slds-text-longform" placeholder="Post your answer here" autocomplete="off"></input>
-                                                            <div class="slds-publisher__actions slds-grid slds-grid_align-spread">
-                                                                <ul class="slds-grid">
-                                                                </ul>
-                                                                <input type="submit" id="newAnswerButton" class="slds-button slds-button_brand" value="Post" disabled />
-                                                            </div>
+                                            <div class="slds-media__body">
+                                                <!--Answer field-->
+                                                <form class="form-horizontal" action="/post/{{$post->question_ID}}/newanswer" method="post" id="answerForm" onKeyup="checkForm()">
+                                                    {{csrf_field()}}
+                                                    <div class="slds-publisher slds-publisher_comment slds-is-active slds-has-focus">
+                                                        <label for="comment-text-input-01" class="slds-assistive-text">Write a answer</label>
+                                                        <input type="text" id="content" name="content" class="slds-publisher__input slds-input_bare slds-text-longform" placeholder="Post your answer here" autocomplete="off"></input>
+                                                        <div class="slds-publisher__actions slds-grid slds-grid_align-spread">
+                                                            <ul class="slds-grid">
+                                                            </ul>
+                                                            <input type="submit" id="newAnswerButton" class="slds-button slds-button_brand" value="Post" disabled />
                                                         </div>
-                                                    </form>
-                                                </div>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     @endif
                                 </div>

@@ -54,7 +54,7 @@
                             </div>
                             <!-- Textarea -->
                             <div class="slds-form-element">
-                                <label class="slds-form-element__label" for="textarea-id-01">Question</label>
+                                <label class="slds-form-element__label" for="textarea-id-01">Content</label>
                                 <div class="slds-form-element__control">
                                     <input id="content" type="text" class="form-control input-md slds-input"
                                            style="width:50%; height: 72px;" class="slds-textarea"

@@ -8,26 +8,17 @@
     padding-left: 360px;
     padding-top: 160px;">
                         <header class="slds-modal__header">
-                            <div class="slds-card__header slds-grid">
-                                <button class="closeF slds-button slds-button__icon_left">
-                                    <svg class="slds-button__icon" id="closeF" aria-hidden="true">
-                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink"/>
-                                    </svg>
-                                    <span class="slds-assistive-text">Exit Edit User Profile</span>
-                                </button>
-                            </div>
-                        </header>
-                        <article class="slds-card">
+                            <header class="slds-modal__header">
                             <div class="slds-page-header">
+                                <span class="closeF">&times;</span>
                                 <div class="slds-media">
                                     <div class="slds-media__figure">
-                           <span class="slds-icon_container slds-icon-standard-opportunity" title="All Questions">
-                              <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
-                                 <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                      xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#question_best"/>
-                              </svg>
-                           </span>
+                                       <span class="slds-icon_container slds-icon-standard-opportunity" title="All Questions">
+                                          <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                                             <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                  xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#question_best"/>
+                                          </svg>
+                                       </span>
                                     </div>
                                     <div class="slds-media__body">
                                         <h1 class="slds-page-header__title slds-truncate slds-align-middle"
@@ -40,6 +31,8 @@
                                     </div>
                                 </div>
                             </div>
+                        </header>
+                        <article class="slds-card">
                             <!--POSTS-->
                             <?php $favourites = (\App\Http\Controllers\ClientControllerHelper::getFavourites());?>
                             @foreach ($favourites as $data)
@@ -54,3 +47,5 @@
         </div>
     </div>
 </div>
+
+<link class="user" href="{{URL::asset('css/ourstyle.css')}}" rel="stylesheet" type="text/css">
