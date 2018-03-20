@@ -115,14 +115,12 @@
                                 </button>
                             </li>
                             <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
-                                <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon"
-                                        title="Notifications" id="Notifications">
-                                    <svg class="slds-button__icon slds-global-header__icon" aria-hidden="true">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                             xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#notification"/>
-                                    </svg>
-                                    <span class="slds-assistive-text">Notifications</span>
-                                </button>
+                               <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon" title="Notifications" id="Notifications" onclick="shownotifications();">
+                                  <svg class="slds-button__icon slds-global-header__icon" aria-hidden="true">
+                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#notification" />
+                                  </svg>
+                                  <span class="slds-assistive-text">Notifications</span>
+                               </button>
                             </li>
                             <li class="slds-dropdown-trigger slds-dropdown-trigger_click slds-m-left_x-small">
                                 <button class="slds-button" aria-haspopup="true">
@@ -143,12 +141,9 @@
                                 </a>
                             </li>
                         </ul>
-                </div>
-                <section class="slds-popover slds-popover_large slds-nubbin_top-right" role="dialog"
-                         aria-label="Notifications" id="notifications-container"
-                         aria-describedby="notifications-container"
-                         style="position: absolute; right: 5.125rem; display: none;">
-                    <div class="slds-popover__body slds-p-around_none">
+                     </div>
+                  <section class="slds-popover slds-popover_large slds-nubbin_top-right" role="dialog" aria-label="Notifications" id="notifications-container"  aria-describedby="notifications-container" style="position: absolute; right: 7.5rem; display: none;">
+                     <div  class="slds-popover__body slds-p-around_none">
                         <ul>
                             <li class="slds-global-header__notification slds-p-around_xx-small slds-global-header__notification_unread">
                                 <div class="slds-media slds-has-flexi-truncate slds-p-around_x-small">
