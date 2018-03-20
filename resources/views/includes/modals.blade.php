@@ -13,9 +13,9 @@
 @endif
 
 @if(Session()->has('loginmsg'))
-<script>
-    loginModal.style.display = "block";
-</script>
+    <script>
+        loginModal.style.display = "block";
+    </script>
     {{Session()->flush()}}
 @endif
 

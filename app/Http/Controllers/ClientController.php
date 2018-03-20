@@ -171,7 +171,9 @@ class ClientController extends Controller {
         if ($this->insertAnswerToDB($content, $userId, $questionId)) {
             $newQ = DB::select('SELECT answer_ID FROM answer ORDER BY answer_ID DESC LIMIT 1')[0]->answer_ID;
             $this->upvoteA($newQ, $id);
-            return redirect('./post/' . $id . '');
+            $questionAuthor = DB::table('question')->where('question_ID', $questionId)->value('user_ID1');
+            ClientControllerHelper::sendNotification($questionAuthor, Session()->get('id'), '/post/' . $questionId . '',1, $content, $questionId);
+            return redirect('/post/' . $id . '');
         } else {
             return abort('400', 'A problem occurred during the answer posting process!');
         }
@@ -197,9 +199,9 @@ class ClientController extends Controller {
     public function favourite($questionId) {
         if (session()->has('id') && !$this->isFavourite($questionId)) {
             $favourite = DB::table('favourite')->insert(array("user_ID3" => session()->get('id'), "question_ID2" => $questionId, "favourite" => 1));
+            $questionAuthor = DB::table('question')->where('question_ID', $questionId)->value('user_ID1');
+            ClientControllerHelper::sendNotification($questionAuthor, Session()->get('id'), '/post/' . $questionId . '',2, '', $questionId);
             if ($favourite) {
-                $questionAuthor = DB::table('question')->where('question_ID', $questionId)->value('user_ID1');
-                ClientControllerHelper::sendNotification($questionAuthor, Session()->get('id'), '/post/' . $questionId,2, '');
                 return redirect('/post/' . $questionId . '');
             } else {
                 return abort('400', 'A problem occurred during the favourite process!');
@@ -490,14 +492,19 @@ class ClientController extends Controller {
         return redirect('/notifications');
     }
 
-    public function clearNotification($id) {
-        try {
-            $url = DB::table('notification')->where('id', $id)->value('url');
-            if (DB::table('notification')->where('id', $id)->value('read') == 0)
-                DB::table('notification')->where('id', $id)->update(['read' => 1]);
-            return redirect($url);
-        } catch (\Illuminate\Database\QueryException $ex) {
-            return redirect('/')->withErrors($ex);
+    public function clearNotification($id)
+    {
+        if (Session()->get('id') == DB::table('notification')->where('id', $id)->value('uid')) {
+            try {
+                $url = DB::table('notification')->where('id', $id)->value('url');
+                if (DB::table('notification')->where('id', $id)->value('read') == 0)
+                    DB::table('notification')->where('id', $id)->update(['read' => 1]);
+                return redirect($url);
+            } catch (\Illuminate\Database\QueryException $ex) {
+                return redirect('/')->withErrors($ex);
+            }
+        } else {
+            return abort(404);
         }
     }
 }

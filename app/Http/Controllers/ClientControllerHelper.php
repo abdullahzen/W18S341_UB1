@@ -221,10 +221,10 @@ class ClientControllerHelper extends Controller {
         return $favourites;
     }
 
-    public static function sendNotification($uid, $fromUID, $url, $notificationType, $content) {
+    public static function sendNotification($uid, $fromUID, $url, $notificationType, $content, $pid) {
         try {
             if (session()->has('id')) {
-                DB::table('notification')->insert(
+                return DB::table('notification')->insert(
                     array(
                         "uid" => $uid,
                         "fromUID" => $fromUID,
@@ -265,7 +265,7 @@ class ClientControllerHelper extends Controller {
                 return 'commented on your post.';
                 break;
             case 2:
-                return 'added your post to his favorite list';
+                return 'added your post to his favorite list.';
                 break;
             case 3:
                 return "replied on a post you've commented on.";

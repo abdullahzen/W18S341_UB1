@@ -34,7 +34,7 @@
                         </div>
                         <div class="slds-media__body">
                             <div class="slds-grid slds-grid_align-spread">
-                                <a href="/clearNotification/{{$data->id}}"
+                                <a href="{{url('/clearNotification/' . $data->id)}}"
                                    class="slds-text-link_reset slds-has-flexi-truncate">
                                     <h3 class="slds-truncate">
                                         <strong>{{$data->username}} {{\App\Http\Controllers\ClientControllerHelper::getNotificationTitle($data->notificationType)}}
@@ -45,7 +45,7 @@
                                     </p>
                                     <p class="slds-m-top_x-small slds-text-color_weak">
                                         <?php
-                                            echo \Carbon\Carbon::createFromTimeStamp(strtotime($data->time))->diffForHumans();
+                                            echo \Carbon\Carbon::createFromTimestamp(strtotime($data->time))->diffForHumans();
                                         ?>
                                     </p>
                                 </a>

@@ -23,11 +23,8 @@
                                     <div class="slds-media__body">
                                         <h1 class="slds-page-header__title slds-truncate slds-align-middle"
                                             title="All Questions">
-                                            My Favourite Questions
+                                            My Favourites
                                         </h1>
-                                        <p class="slds-text-body_small slds-line-height_reset">
-                                            All the questions you've favourited.
-                                        </p>
                                     </div>
                                 </div>
                             </div>
