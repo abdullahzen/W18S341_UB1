@@ -12,6 +12,7 @@ use bar\baz\source_with_namespace;
 use Hash;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Session;
 use function Sodium\increment;
 
 class ClientController extends Controller {
@@ -115,38 +116,38 @@ class ClientController extends Controller {
         if ($this->incrementView($id)) {
             ClientControllerHelper::setQuestionID($id);
             $post = DB::select('
-            SELECT
-                q.question_ID,
-                q.title,
-                q.content,
-                q.category_ID1,
-                q.user_ID1 as userID,
-                q.create_time,
-                q.upvotes,
-                q.comments,
-                q.views,
-                q.best_answer_ID,
-                u.username
-            FROM question q
-            INNER JOIN user u
-                ON q.user_ID1 = u.user_ID AND q.question_ID = ' . $id . ' AND q.is_hidden = 0
-            ORDER BY q.question_ID DESC
-        ');
+                SELECT
+                    q.question_ID,
+                    q.title,
+                    q.content,
+                    q.category_ID1,
+                    q.user_ID1 as userID,
+                    q.create_time,
+                    q.upvotes,
+                    q.comments,
+                    q.views,
+                    q.best_answer_ID,
+                    u.username
+                FROM question q
+                INNER JOIN user u
+                    ON q.user_ID1 = u.user_ID AND q.question_ID = ' . $id . ' AND q.is_hidden = 0
+                ORDER BY q.question_ID DESC
+            ');
 
             $answer = DB::select('
-            SELECT
-                a.answer_ID,
-                a.answer,
-                a.user_ID2,
-                a.question_ID1,
-                a.upvotes,
-                a.is_hidden,
-                a.create_time,
-                u.username
-            FROM answer a
-            INNER JOIN user u
-                ON a.user_ID2 = u.user_ID AND a.question_ID1 = ' . $id . ' AND a.is_hidden = 0
-        ');
+                SELECT
+                    a.answer_ID,
+                    a.answer,
+                    a.user_ID2,
+                    a.question_ID1,
+                    a.upvotes,
+                    a.is_hidden,
+                    a.create_time,
+                    u.username
+                FROM answer a
+                INNER JOIN user u
+                    ON a.user_ID2 = u.user_ID AND a.question_ID1 = ' . $id . ' AND a.is_hidden = 0
+            ');
             return view('pages.post', ['post' => $post[0], 'answer' => $answer]);
         } else {
             return abort('400', 'A problem has occurred!');
@@ -197,6 +198,8 @@ class ClientController extends Controller {
         if (session()->has('id') && !$this->isFavourite($questionId)) {
             $favourite = DB::table('favourite')->insert(array("user_ID3" => session()->get('id'), "question_ID2" => $questionId, "favourite" => 1));
             if ($favourite) {
+                $questionAuthor = DB::table('question')->where('question_ID', $questionId)->value('user_ID1');
+                ClientControllerHelper::sendNotification($questionAuthor, Session()->get('id'), '/post/' . $questionId,2, '');
                 return redirect('/post/' . $questionId . '');
             } else {
                 return abort('400', 'A problem occurred during the favourite process!');
@@ -482,24 +485,19 @@ class ClientController extends Controller {
         return redirect('/');
     }
 
-    public static function getFavourites() {
-        $favourites = DB::select('
-            SELECT
-                q.question_ID,
-                q.title,
-                q.content,
-                q.category_ID1,
-                q.user_ID1 as userID,
-                q.create_time,
-                q.upvotes,
-                q.comments,
-                q.views,
-                u.username
-            FROM question q
-            INNER JOIN user u ON q.user_ID1 = u.user_ID
-            INNER JOIN favourite ON q.question_ID = favourite.question_ID2 AND q.is_hidden = 0
-            WHERE user_ID3 = ' . session()->get('id') . ';');
+    public function deleteNotification($id) {
+        DB::table('notification')->where('id', $id)->delete();
+        return redirect('/notifications');
+    }
 
-        return $favourites;
+    public function clearNotification($id) {
+        try {
+            $url = DB::table('notification')->where('id', $id)->value('url');
+            if (DB::table('notification')->where('id', $id)->value('read') == 0)
+                DB::table('notification')->where('id', $id)->update(['read' => 1]);
+            return redirect($url);
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect('/')->withErrors($ex);
+        }
     }
 }

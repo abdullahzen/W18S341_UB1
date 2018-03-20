@@ -51,6 +51,14 @@ Route::get('/search/{id}', array(
     'uses' => 'ClientController@getSearch'
 ));
 
+Route::get('/notifications', array(
+    'uses' => 'ClientController@getAllNotifications'
+));
+
+Route::get('/clearNotification/{id}', array(
+    'uses' => 'ClientController@clearNotification'
+));
+
 Route::get('/post/{id}/upvote', 'ClientController@upvote');
 Route::get('/post/{id}/downvote', 'ClientController@downvote');
 Route::get('/post/{id}/{id2}/upvoteA', 'ClientController@upvoteA');

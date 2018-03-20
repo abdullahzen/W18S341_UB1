@@ -220,4 +220,58 @@ class ClientControllerHelper extends Controller {
 
         return $favourites;
     }
+
+    public static function sendNotification($uid, $fromUID, $url, $notificationType, $content) {
+        try {
+            if (session()->has('id')) {
+                DB::table('notification')->insert(
+                    array(
+                        "uid" => $uid,
+                        "fromUID" => $fromUID,
+                        "url" => $url,
+                        "notificationType" => $notificationType,
+                        "content" => $content)
+                );
+            }
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect('/')->withErrors($ex);
+        }
+    }
+
+    public static function getNotifications() {
+        $notifications = DB::select('
+                SELECT
+                    n.id,
+                    n.uid,
+                    n.fromUID,
+                    n.url,
+                    n.notificationType,
+                    n.content,
+                    n.read,
+                    n.time,
+                    u.username
+                FROM notification n
+                INNER JOIN user u
+                    ON n.fromUID = u.user_ID
+                WHERE n.uid = ' . Session()->get('id') . '
+                ORDER BY n.id DESC
+            ');
+        return $notifications;
+    }
+
+    public static function getNotificationTitle($notificationType) {
+        switch($notificationType) {
+            case 1:
+                return 'commented on your post.';
+                break;
+            case 2:
+                return 'added your post to his favorite list';
+                break;
+            case 3:
+                return "replied on a post you've commented on.";
+                break;
+            default:
+                break;
+        }
+    }
 }

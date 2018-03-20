@@ -11,6 +11,9 @@ $(document).ready(function () {
     var favButton = document.getElementById("favButton");
     var favModal = document.getElementById('favModal');
 
+    var notificationButton = document.getElementById("notificationButton");
+    var notificationModal = document.getElementById('notificationModal');
+
     var userProfile = document.getElementById("userProfileButton");
     var userProfileModal = document.getElementById("userProfileModal");
     // var moreOptionsContainer = document.getElementById("More-Options-Container");
@@ -79,6 +82,10 @@ $(document).ready(function () {
 
     spanF.onclick = function () {
         favModal.style.display = "none";
+    }
+
+    spanN.onclick = function () {
+        notificationModal.style.display = "none";
     }
 
     // spanM.onclick = function() {
