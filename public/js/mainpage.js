@@ -8,6 +8,12 @@ $(document).ready(function () {
     var register = document.getElementById("registerButton");
     var registerModal = document.getElementById('registerModal');
 
+    var favButton = document.getElementById("favButton");
+    var favModal = document.getElementById('favModal');
+
+    var notificationButton = document.getElementById("notificationButton");
+    var notificationModal = document.getElementById('notificationModal');
+
     var userProfile = document.getElementById("userProfileButton");
     var userProfileModal = document.getElementById("userProfileModal");
     // var moreOptionsContainer = document.getElementById("More-Options-Container");
@@ -19,9 +25,16 @@ $(document).ready(function () {
     var spanR = document.getElementsByClassName("closeR")[0];
     //var spanP = document.getElementsByClassName("closeP")[0];
     var spanU = document.getElementsByClassName("closeU")[0];
+    var spanF = document.getElementsByClassName("closeF")[0];
     // var spanM = document.getElementsByClassName("More-Options")[0];
 
     showCategory('Java');
+
+    if(favButton != null) {
+        favButton.onclick = function () {
+            favModal.style.display = "block";
+        }
+    }
 
     if(login != null) {
         login.onclick = function () {
@@ -67,6 +80,14 @@ $(document).ready(function () {
         userProfileModal.style.display = "none";
     }
 
+    spanF.onclick = function () {
+        favModal.style.display = "none";
+    }
+
+    spanN.onclick = function () {
+        notificationModal.style.display = "none";
+    }
+
     // spanM.onclick = function() {
     //     moreOptionsContainer.style.display = "block";
     // }
@@ -85,6 +106,9 @@ $(document).ready(function () {
         }
         if (event.target == editProfileModal) {
             editProfileModal.style.display = "none";
+        }
+        if (event.target == favModal) {
+            favModal.style.display = "none";
         }
     }
 
@@ -163,6 +187,6 @@ function displaycategories() {
 
 function Search(searchstring, event) {
 	if (event.keyCode == 13 || event.which == 13){
-    window.open("/search/" + searchstring, "_self");
+        window.open("/search/" + searchstring, "_self");
 	}
 }

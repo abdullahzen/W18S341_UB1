@@ -64,12 +64,8 @@
                     </div>
                 </div>
             @endforeach
-			
         </div>
     </div>
-	
 </div>
 </body>
-<!--Modal inclusions-->
-@include('includes.modals');
 <script src="{{ URL::asset('js/answer.js') }}" type="text/javascript"></script>

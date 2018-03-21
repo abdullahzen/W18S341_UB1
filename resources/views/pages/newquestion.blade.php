@@ -54,7 +54,7 @@
                             </div>
                             <!-- Textarea -->
                             <div class="slds-form-element">
-                                <label class="slds-form-element__label" for="textarea-id-01">Question</label>
+                                <label class="slds-form-element__label" for="textarea-id-01">Content</label>
                                 <div class="slds-form-element__control">
                                     <input id="content" type="text" class="form-control input-md slds-input"
                                            style="width:50%; height: 72px;" class="slds-textarea"
@@ -112,12 +112,5 @@
     </div>
 </div>
 </body>
-<link class="user" href="{{URL::asset('css/salesforce-lightning-design-system-vf.min.css')}}" rel="stylesheet"
-      type="text/css">
-<link class="user" href="{{URL::asset('css/mainpage.css')}}" rel="stylesheet" type="text/css">
-<link class="user" href="{{URL::asset('css/ourstyle.css')}}" rel="stylesheet" type="text/css">
-<link rel="icon" type="image/x-icon">
-<script src="{{URL::asset('https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')}}"></script>
-<script src="{{URL::asset('js/mainpage.js')}}" type="text/javascript"></script>
 <script src="{{ URL::asset('js/post.js') }}" type="text/javascript"></script>
-@include('includes.modals');
+@include('includes.modals')

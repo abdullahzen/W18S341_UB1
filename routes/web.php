@@ -21,6 +21,10 @@ Route::get('/newpost', function () {
     return view('pages.newquestion');
 });
 
+Route::get('/favourites', function () {
+    return view('pages.favourites');
+});
+
 Route::get('/newCat', function (){
     return view('pages.newCategory');
 });
@@ -43,12 +47,16 @@ Route::get('/post/{id}/favourite', array(
     'uses' => 'ClientController@favourite'
 ));
 
-Route::get('/favourites', array(
-    'uses' => 'ClientController@getFavourites'
-))->middleware('checkLoggedIn');
-
 Route::get('/search/{id}', array(
     'uses' => 'ClientController@getSearch'
+));
+
+Route::get('/notifications', array(
+    'uses' => 'ClientController@getAllNotifications'
+));
+
+Route::get('/clearNotification/{id}', array(
+    'uses' => 'ClientController@clearNotification'
 ));
 
 Route::get('/post/{id}/upvote', 'ClientController@upvote');
