@@ -61,3 +61,31 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.closeF {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeF:hover,
+.closeF:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.closeN {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeN:hover,
+.closeN:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

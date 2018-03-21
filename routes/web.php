@@ -13,18 +13,25 @@
 
 //GET
 
-Route::get('/', array(
-    'uses' => 'ClientController@getHomepage'
-));
-
+Route::get('/', function(){
+    return view('pages.homepage');
+});
 
 Route::get('/newpost', function () {
     return view('pages.newquestion');
 });
 
+Route::get('/favourites', function () {
+    return view('pages.favourites');
+});
+
+Route::get('/newCat', function (){
+    return view('pages.newCategory');
+});
+
 Route::get('/logout', function() {
     session()->flush();
-    return redirect('/');
+    return back();
 });
 
 Route::get('/userProfile', function() {
@@ -40,10 +47,6 @@ Route::get('/post/{id}/favourite', array(
     'uses' => 'ClientController@favourite'
 ));
 
-Route::get('/favourites', array(
-    'uses' => 'ClientController@getFavourites'
-))->middleware('checkLoggedIn');
-
 Route::get('/search/{id}', array(
     'uses' => 'ClientController@getSearch'
 ));
@@ -52,15 +55,28 @@ Route::get('/rank/{rank}', array(
     'uses' => 'ClientController@getRanks'
 ));
 
+Route::get('/notifications', array(
+    'uses' => 'ClientController@getAllNotifications'
+));
 
-//POST
-Route::get('/login', 'ClientController@authenticate');
-Route::get('/newpost/do', 'ClientController@postQuestion');
-Route::get('/register', 'ClientController@register');
-Route::get('/post/{id}/newanswer', 'ClientController@postAnswer');
-Route::get('/edit', 'ClientController@editQuestion');
-Route::get('/editProfile', 'ClientController@updateUserProfile');
+Route::get('/clearNotification/{id}', array(
+    'uses' => 'ClientController@clearNotification'
+));
+
 Route::get('/post/{id}/upvote', 'ClientController@upvote');
 Route::get('/post/{id}/downvote', 'ClientController@downvote');
 Route::get('/post/{id}/{id2}/upvoteA', 'ClientController@upvoteA');
 Route::get('/post/{id}/{id2}/downvoteA', 'ClientController@downvoteA');
+Route::get('/post/{id}/delete', 'ClientController@deleteQuestion');
+Route::get('/post/bestanswer/{qid}/{aid}/', 'ClientController@setBestAnswer');
+Route::get('/post/unbestanswer/{qid}/{aid}/', 'ClientController@unsetBestAnswer');
+Route::get('/addNewCategory', 'ClientController@saveCategory');
+
+//POST
+Route::post('/login', 'ClientController@authenticate');
+Route::post('/newpost/do', 'ClientController@postQuestion');
+Route::post('/register', 'ClientController@register');
+Route::post('/post/{id}/newanswer', 'ClientController@postAnswer');
+Route::post('/edit', 'ClientController@editQuestion');
+Route::post('/editProfile', 'ClientController@updateUserProfile');
+

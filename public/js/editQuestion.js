@@ -2,7 +2,7 @@ $(function(){
     $("#editButton").click(function () {
         $(". ").hide();
         var id = document.getElementById('hiddenID').value;
-        var request = $.get('/edit', $('#editForm').serialize());
+        var request = $.post('/edit', $('#editForm').serialize());
         request.done(function () {
             window.location = './post/' + id;
 
@@ -16,6 +16,17 @@ $(function(){
 
             $("#editError").empty().append(errMsg);
         });
+    });
+
+    $("#newOther").hide();
+
+    $("#select").change(function() {
+        var val = $("#select").val();
+        if(val=="other"){
+            $("#newOther").show();
+        } else {
+            $("#newOther").hide();
+        }
     });
 });
 
@@ -54,6 +65,12 @@ $("#More-Options").click(function () {
         $("#More-Options-Container").css('display' , 'none');
     }
 });
+
+function newCategory(){
+    var doc = document.getElementById('other');
+    doc.value = document.getElementById('newOther').value;
+    doc.id = doc.value;
+}
 
 
 

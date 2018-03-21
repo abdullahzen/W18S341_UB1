@@ -1,8 +1,7 @@
 $(function(){
-    $("#loginButton").click(function (e) {
-        e.preventDefault();
+    $("#loginButton").click(function () {
         $(". ").hide();
-        var request = $.post('./login', $('#loginForm').serialize());
+        var request = $.post('/login', $('#loginForm').serialize());
 
         request.done(function () {
             window.location = '/';

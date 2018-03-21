@@ -1,7 +1,23 @@
+function checkForm() {
+    var canSubmit = false;
+
+    if (document.getElementById('title').value.length > 5 && document.getElementById('title').value.length < 251 && document.getElementById('content').value.length < 251 && document.getElementById('content').value.length > 5){
+        canSubmit = true;
+    } else {
+        canSubmit = false;
+    }
+
+    if (canSubmit){
+        document.getElementById('newQuestionButton').disabled = false;
+    } else {
+        document.getElementById('newQuestionButton').disabled = true;
+    }
+}
+
 $(function(){
     $("#newpostButton").click(function () {
         $(". ").hide();
-        var request = $.get('./newpost/do', $('#postForm').serialize());
+        var request = $.get('/newpost/do', $('#postForm').serialize());
         request.done(function () {
             window.location = '/';
         });
@@ -14,5 +30,15 @@ $(function(){
 
             $("#postError").empty().append(errMsg);
         });
+    });
+    $("#newOther2").hide();
+
+    $("#select2").change(function() {
+        var val = $("#select2").val();
+        if(val=="other2"){
+            $("#newOther2").show();
+        } else {
+            $("#newOther2").hide();
+        }
     });
 });
