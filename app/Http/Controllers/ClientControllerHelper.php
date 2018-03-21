@@ -167,7 +167,7 @@ class ClientControllerHelper extends Controller {
             FROM question q
             inner join user u on q.user_ID1 = u.user_ID 
                      where u.user_ID = \'' . $rank  .'\' order by q.upvotes DESC');
-        return view('modals.rank', ['rank' => $rank]);
+        return ;
   }
 
   public static function getTopQuestionsByUpvotes($language) {

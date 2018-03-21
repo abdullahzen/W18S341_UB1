@@ -52,7 +52,7 @@
                                         <div class="slds-truncate" title="username">{{\App\Http\Controllers\ClientControllerHelper::getUserDataFromDB('username')}}</div>
                                     </td>
                                     <td data-label="rank">
-                                        <div class="slds-truncate" title="rank">{{\App\Http\Controllers\ClientController::getRanks('rank')}}</div>
+                                        <div class="slds-truncate" title="rank"></div>
                                     </td>
                                 </tr>
                                 </tbody>
