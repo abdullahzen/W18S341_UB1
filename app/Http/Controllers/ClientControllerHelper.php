@@ -161,4 +161,16 @@ class ClientControllerHelper extends Controller {
         }
         return;
     }
+
+    public static function getRanks($rank){
+        $rank = DB::select('
+            SELECT
+                q.upvotes,
+                q.user_ID1,
+                u.username
+            FROM question q
+            inner join user u on q.user_ID1 = u.user_ID 
+                     where u.user_ID = \'' . $rank  .'\' order by q.upvotes DESC');
+        return view('modals.rank', ['rank' => $rank]);
+  }
 }
