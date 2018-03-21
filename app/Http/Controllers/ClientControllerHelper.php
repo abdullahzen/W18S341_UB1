@@ -158,7 +158,19 @@ class ClientControllerHelper extends Controller {
         return;
     }
 
-    public static function getTopQuestionsByUpvotes($language) {
+    public static function getRanks($rank){
+        $rank = DB::select('
+            SELECT
+                q.upvotes,
+                q.user_ID1,
+                u.username
+            FROM question q
+            inner join user u on q.user_ID1 = u.user_ID 
+                     where u.user_ID = \'' . $rank  .'\' order by q.upvotes DESC');
+        return view('modals.rank', ['rank' => $rank]);
+  }
+
+  public static function getTopQuestionsByUpvotes($language) {
         $post = DB::select('select * from question q inner join category t on q.category_ID1 = t.category_ID 
                       where t.category = \'' . $language . '\' order by q.upvotes DESC');
         return $post;

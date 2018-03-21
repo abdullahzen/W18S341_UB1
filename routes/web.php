@@ -51,6 +51,10 @@ Route::get('/search/{id}', array(
     'uses' => 'ClientController@getSearch'
 ));
 
+Route::get('/rank/{rank}', array(
+    'uses' => 'ClientController@getRanks'
+));
+
 Route::get('/notifications', array(
     'uses' => 'ClientController@getAllNotifications'
 ));
