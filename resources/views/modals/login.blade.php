@@ -1,46 +1,3 @@
-<style>
-
-    
-/* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-/* Set a style for all buttons */
-.button {
-    background-color: #5BDB41;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    font-weight: bold;
-}
-
-button:hover {
-    opacity: 0.8;
-}
-
-.container {
-    padding: 16px;
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
-
-
-</style>
-
 <div id="loginModal" class="modal">
     <div class="modal-content">
         <form action="/login" method="post" id="loginForm">
@@ -87,10 +44,8 @@ button:hover {
         </form>
     </div>
 </div>
-<link class="user" href="{{URL::asset('css/salesforce-lightning-design-system-vf.min.css')}}" rel="stylesheet" type="text/css">
-<link class="user" href="{{URL::asset('css/mainpage.css')}}" rel="stylesheet" type="text/css">
-<link class="user" href="{{URL::asset('css/ourstyle.css')}}" rel="stylesheet" type="text/css">
 <link rel="icon" type="image/x-icon">
+<link class="user" href="{{URL::asset('css/customRegisterLoginStyles.css')}}" rel="stylesheet" type="text/css">
 <script src="{{URL::asset('https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')}}"></script>
 <script src="{{URL::asset('js/mainpage.js')}}"></script>
 <script src="{{ URL::asset('js/login.js') }}" type="text/javascript"></script>
