@@ -158,16 +158,24 @@ class ClientControllerHelper extends Controller {
         return;
     }
 
-    public static function getRanks($rank){
-        $rank = DB::select('
+    public static function getRank($user){
+        if(session()->has('username')){
+            $rank = DB::select('
             SELECT
-                q.upvotes,
-                q.user_ID1,
-                u.username
-            FROM question q
-            inner join user u on q.user_ID1 = u.user_ID 
-                     where u.user_ID = \'' . $rank  .'\' order by q.upvotes DESC');
-        return ;
+                *
+            FROM user u order by u.rank DESC');
+            $myRank = 0;
+            foreach ($rank as $key=>$value){
+                $myRank++;
+                if ($value->username == $user){
+                    break;
+                }
+            }
+            return $myRank;
+        } else {
+            return '0';
+        }
+
   }
 
   public static function getTopQuestionsByUpvotes($language) {
