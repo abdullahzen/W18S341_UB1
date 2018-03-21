@@ -477,7 +477,7 @@ class ClientController extends Controller {
         if (session()->has('id')) {
             try {
                 DB::table('question')->where('question_ID', $qid)->update(array('best_answer_ID' => $aid));
-                ClientControllerHelper::sendNotification(DB::table('answer')->where('answer_ID', $aid)->value('user_ID2'), session()->get('id'), '/post/' . $qid, 4, '', $qid);
+                ClientControllerHelper::sendNotification(DB::table('answer')->where('answer_ID', $aid)->value('user_ID2'), session()->get('id'), '/post/' . $qid, 4, DB::table('answer')->where('answer_ID', $aid)->value('answer'), $qid);
                 return redirect('/post/' . $qid);
             } catch (\Illuminate\Database\QueryException $ex) {
                 return redirect('/post/' . $qid);
