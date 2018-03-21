@@ -31,7 +31,7 @@
                         </header>
                         <article class="slds-card">
                             <!--NOTIFICATIONS-->
-                            <?php $notifications = (\App\Http\Controllers\ClientControllerHelper::getNotifications());?>
+                            <?php $notifications = (\App\Http\Controllers\ClientControllerHelper::getAllNotifications());?>
                             @foreach ($notifications as $data)
                                 {{--Single Notification--}}
                                 @if($data->read == 1)

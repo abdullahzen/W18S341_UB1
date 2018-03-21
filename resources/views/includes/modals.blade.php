@@ -19,9 +19,9 @@
     {{Session()->flush()}}
 @endif
 
-@if(Session()->has('regmsg'))
+{{--@if(Session()->has('regmsg'))
     <script>
         registerModal.style.display = "block";
     </script>
     {{Session()->flush()}}
-@endif
+@endif--}}

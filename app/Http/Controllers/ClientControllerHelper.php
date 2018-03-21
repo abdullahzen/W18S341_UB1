@@ -230,7 +230,9 @@ class ClientControllerHelper extends Controller {
                         "fromUID" => $fromUID,
                         "url" => $url,
                         "notificationType" => $notificationType,
-                        "content" => $content)
+                        "content" => $content,
+                        "pid" => $pid
+                    )
                 );
             }
         } catch (\Illuminate\Database\QueryException $ex) {
@@ -291,6 +293,9 @@ class ClientControllerHelper extends Controller {
                 break;
             case 3:
                 return "replied on a post you've commented on.";
+                break;
+            case 4:
+                return "marked your answer as the best answer.";
                 break;
             default:
                 break;

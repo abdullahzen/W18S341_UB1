@@ -96,9 +96,7 @@ class ClientController extends Controller {
         $newPassword = $this->hash($password);
         try {
             if (DB::table('user')->insert(array("username" => $username, "email" => $email, "password" => $newPassword))) {
-                return back();
-            } else {
-                session(['regmsg' => 'An error has occurred.']);
+                session()->flush();
                 return back();
             }
         } catch (\Illuminate\Database\QueryException $ex) {
@@ -147,10 +145,33 @@ class ClientController extends Controller {
                 FROM answer a
                 INNER JOIN user u
                     ON a.user_ID2 = u.user_ID AND a.question_ID1 = ' . $id . ' AND a.is_hidden = 0
+                ORDER BY create_time ASC
             ');
             return view('pages.post', ['post' => $post[0], 'answer' => $answer]);
         } else {
             return abort('400', 'A problem has occurred!');
+        }
+    }
+
+    public function notifyDiscussion($qid, $content) {
+        $answers = DB::select('
+            SELECT
+                a.answer_ID,
+                a.user_ID2,
+                a.question_ID1,
+                a.is_hidden
+            FROM answer a
+            WHERE a.question_ID1 = ' . $qid . ' AND a.is_hidden = 0
+        ');
+
+        $notifyID[] = "";
+
+        foreach($answers as $data) {
+            // Checks: not your own post, cannot send to yourself, no duplication.
+            if ($data->user_ID2 != DB::table('question')->where('question_ID', $qid)->value('user_ID1') && Session()->get('id') != $data->user_ID2 && !in_array($data->user_ID2, $notifyID))
+                ClientControllerHelper::sendNotification($data->user_ID2, Session()->get('id'), '/post/' . $qid, 3, $content, $qid);
+            if (!in_array($data->user_ID2, $notifyID))
+                array_push($notifyID, $data->user_ID2);
         }
     }
 
@@ -172,7 +193,9 @@ class ClientController extends Controller {
             $newQ = DB::select('SELECT answer_ID FROM answer ORDER BY answer_ID DESC LIMIT 1')[0]->answer_ID;
             $this->upvoteA($newQ, $id);
             $questionAuthor = DB::table('question')->where('question_ID', $questionId)->value('user_ID1');
-            ClientControllerHelper::sendNotification($questionAuthor, Session()->get('id'), '/post/' . $questionId . '',1, $content, $questionId);
+            if (session()->get('id') != $questionAuthor)
+                ClientControllerHelper::sendNotification($questionAuthor, Session()->get('id'), '/post/' . $questionId . '', 1, $content, $questionId);
+            $this->notifyDiscussion($questionId, $content);
             return redirect('/post/' . $id . '');
         } else {
             return abort('400', 'A problem occurred during the answer posting process!');
@@ -200,7 +223,7 @@ class ClientController extends Controller {
         if (session()->has('id') && !$this->isFavourite($questionId)) {
             $favourite = DB::table('favourite')->insert(array("user_ID3" => session()->get('id'), "question_ID2" => $questionId, "favourite" => 1));
             $questionAuthor = DB::table('question')->where('question_ID', $questionId)->value('user_ID1');
-            ClientControllerHelper::sendNotification($questionAuthor, Session()->get('id'), '/post/' . $questionId . '',2, '', $questionId);
+            ClientControllerHelper::sendNotification($questionAuthor, Session()->get('id'), '/post/' . $questionId . '', 2, '', $questionId);
             if ($favourite) {
                 return redirect('/post/' . $questionId . '');
             } else {
@@ -454,6 +477,7 @@ class ClientController extends Controller {
         if (session()->has('id')) {
             try {
                 DB::table('question')->where('question_ID', $qid)->update(array('best_answer_ID' => $aid));
+                ClientControllerHelper::sendNotification(DB::table('answer')->where('answer_ID', $aid)->value('user_ID2'), session()->get('id'), '/post/' . $qid, 4, '', $qid);
                 return redirect('/post/' . $qid);
             } catch (\Illuminate\Database\QueryException $ex) {
                 return redirect('/post/' . $qid);
@@ -492,8 +516,7 @@ class ClientController extends Controller {
         return redirect('/notifications');
     }
 
-    public function clearNotification($id)
-    {
+    public function clearNotification($id) {
         if (Session()->get('id') == DB::table('notification')->where('id', $id)->value('uid')) {
             try {
                 $url = DB::table('notification')->where('id', $id)->value('url');
