@@ -35,7 +35,7 @@
                             <li class="slds-feed__item">
                                 <article class="slds-post">
                                     <header class="slds-post__header slds-media">
-                                        <ul class="slds-post__footer-actions-list slds-list_vertical slds-list">
+                                        <ul class="slds-post__footer-actions-list slds-list_vertical slds-list" style="padding-top: 5mm;">
                                                 <li class="slds-col slds-item slds-m-right_medium">
                                                     <button title="Upvote" class="slds-button_reset slds-post__footer-action" aria-pressed="true" onclick="window.location.href = '/post/' + {{$post->question_ID}} + '/upvote'" id="upvote">
                                                         <svg class="slds-icon slds-icon-text-default slds-icon-text-{{\App\Http\Controllers\ClientControllerHelper::checkUpvotes($post->question_ID)}} slds-icon_x-small slds-align-middle"
@@ -56,7 +56,7 @@
                                                     </button>
                                                 </li>
                                             </ul>
-                                        <div class="slds-media__figure">
+                                        <div class="slds-media__figure" style="padding-top: 5mm;">
                                             <a href="javascript:void(0);"
                                                class="slds-avatar slds-avatar_circle slds-avatar_large">
                                                 <img alt="Jason Rodgers" src="/assets/images/avatar1.jpg"
@@ -64,7 +64,7 @@
                                             </a>
                                         </div>
                                         <div class="slds-media__body">
-                                            <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+                                            <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate" style="padding-top: 5mm;">
                                                 <p>
                                                     <a href="javascript:void(0);">{{$post->username}}</a>
                                                 </p>
@@ -163,7 +163,7 @@
                                             </p>
                                         </div>
                                     </header>
-                                    <div class="slds-post__content slds-text-longform">
+                                    <div class="slds-post__content slds-text-longform" style="padding-left: 1.5cm;">
                                         <p>
                                             {{$post->content}}
                                         </p>
@@ -224,7 +224,7 @@
                                                         {{$a->answer}}
                                                     </div>
                                                     <footer>
-                                                        <ul class="slds-post__footer-actions-list slds-list_horizontal" style="align-items: left;">
+                                                        <ul class="slds-post__footer-actions-list slds-list_horizontal" style="align-items: left; float: left;">
                                                             <li class="slds-item">
                                                                 <button title="Upvote" class="slds-button_reset slds-post__footer-action" aria-pressed="true" onclick="window.location.href = '/post/' + {{$a->answer_ID}} + '/' + {{$post->question_ID}} + '/upvoteA'">
                                                                     <svg class="slds-icon slds-icon-text-default slds-icon-text-{{\App\Http\Controllers\ClientControllerHelper::checkUpvotesA($a->answer_ID)}} slds-icon_x-small slds-align-middle"
@@ -233,7 +233,7 @@
                                                                     </svg>
                                                                 </button>
                                                             </li>
-                                                            <li class="slds-item">
+                                                            <li class="slds-item" style="padding-right: 5mm;">
                                                                 {{$a->upvotes}}
                                                             </li>
                                                             <li class="slds-item">
@@ -280,12 +280,13 @@
                                                          title="User avatar"/>
                                                 </a>
                                             </div>
+                                    </div>
                                             <div class="slds-media__body">
                                                 <!--Answer field-->
                                                 <form class="form-horizontal" action="/post/{{$post->question_ID}}/newanswer" method="post" id="answerForm" onKeyup="checkForm()">
                                                     {{csrf_field()}}
                                                     <div class="slds-publisher slds-publisher_comment slds-is-active slds-has-focus">
-                                                        <label for="comment-text-input-01" class="slds-assistive-text">Write a answer</label>
+                                                        <label for="comment-text-input-01" class="slds-assistive-text">Write an answer</label>
                                                         <input type="text" id="content" name="content" class="slds-publisher__input slds-input_bare slds-text-longform" placeholder="Post your answer here" autocomplete="off"></input>
                                                         <div class="slds-publisher__actions slds-grid slds-grid_align-spread">
                                                             <ul class="slds-grid">
