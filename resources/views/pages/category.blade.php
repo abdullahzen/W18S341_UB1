@@ -66,4 +66,4 @@
         <br>
     </article>
 </div>
-@include('includes.modals')
+<script src="{{URL::asset('js/mainpage.js')}}"></script>
