@@ -51,7 +51,7 @@
                             <li class="slds-feed__item">
                                 <article class="slds-post">
                                     <header class="slds-post__header slds-media">
-                                        <ul class="slds-post__footer-actions-list slds-list_vertical slds-list">
+                                        <ul class="slds-post__footer-actions-list slds-list_vertical slds-list" style="padding-top: 5mm;">
                                                 <li class="slds-col slds-item slds-m-right_medium">
                                                     <button title="Upvote" class="slds-button_reset slds-post__footer-action" aria-pressed="true" onclick="window.location.href = '/post/' + {{$post->question_ID}} + '/upvote'" id="upvote">
                                                         <svg class="slds-icon slds-icon-text-default slds-icon-text-{{\App\Http\Controllers\ClientControllerHelper::checkUpvotes($post->question_ID)}} slds-icon_x-small slds-align-middle"
@@ -72,7 +72,7 @@
                                                     </button>
                                                 </li>
                                             </ul>
-                                        <div class="slds-media__figure">
+                                        <div class="slds-media__figure" style="padding-top: 5mm;">
                                             <a href="javascript:void(0);"
                                                class="slds-avatar slds-avatar_circle slds-avatar_large">
                                                 <img alt="Jason Rodgers" src="/assets/images/avatar1.jpg"
@@ -80,7 +80,7 @@
                                             </a>
                                         </div>
                                         <div class="slds-media__body">
-                                            <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+                                            <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate" style="padding-top: 5mm;">
                                                 <p>
                                                     <a href="javascript:void(0);">{{$post->username}}</a>
                                                 </p>
@@ -178,35 +178,6 @@
                                                             </footer>
                                                         </section>
                                                     @endif
-                                                {{--<section class="slds-popover slds-nubbin_top-left slds-dynamic-menu" id="More-Options-Container"--}}
-                                                         {{--role="dialog" aria-label="More-Options"--}}
-                                                         {{--aria-describedby="More-Options-Container"--}}
-                                                         {{--style="position: absolute; left: 0px; top: 55px;">--}}
-                                                    {{--<footer class="slds-popover__footer">--}}
-                                                        {{--<ul>--}}
-                                                            {{--<li>--}}
-                                                                {{--<button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1" id="editQuestionButton">--}}
-                                                                    {{--<svg class="slds-button__icon slds-button__icon_left"--}}
-                                                                         {{--aria-hidden="true">--}}
-                                                                        {{--<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"--}}
-                                                                             {{--xmlns:xlink="http://www.w3.org/1999/xlink"/>--}}
-                                                                    {{--</svg>--}}
-                                                                    {{--Edit--}}
-                                                                {{--</button>--}}
-                                                            {{--</li>--}}
-                                                            {{--<li>--}}
-                                                                {{--<button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1">--}}
-                                                                    {{--<svg class="slds-button__icon slds-button__icon_left"--}}
-                                                                         {{--aria-hidden="true">--}}
-                                                                        {{--<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"--}}
-                                                                             {{--xmlns:xlink="http://www.w3.org/1999/xlink"/>--}}
-                                                                    {{--</svg>--}}
-                                                                    {{--Delete--}}
-                                                                {{--</button>--}}
-                                                            {{--</li>--}}
-                                                        {{--</ul>--}}
-                                                    {{--</footer>--}}
-                                                {{--</section>--}}
                                             </div>
                                             <p class="slds-text-body_small"><a href="javascript:void(0);"
                                                                                title="Click for single-item view of this post"
@@ -218,7 +189,7 @@
                                             </p>
                                         </div>
                                     </header>
-                                    <div class="slds-post__content slds-text-longform">
+                                    <div class="slds-post__content slds-text-longform" style="padding-left: 1.5cm;">
                                         <p>
                                             {{$post->content}}
                                         </p>
@@ -233,10 +204,6 @@
                                 <br/>
                                 {{--Answers--}}
                                 <div class="slds-feed__item-comments">
-                                    {{--<div class="slds-p-horizontal_medium slds-p-vertical_x-small slds-grid">
-                                        <button class="slds-button_reset slds-text-link">More answers</button>
-                                        <span class="slds-text-body_small slds-col_bump-left">1 of 8</span>
-                                    </div>--}}
                                     <ul>
                                         <li>
                                             @foreach($answer as $a)
@@ -283,7 +250,7 @@
                                                         {{$a->answer}}
                                                     </div>
                                                     <footer>
-                                                        <ul class="slds-post__footer-actions-list slds-list_horizontal" style="align-items: left;">
+                                                        <ul class="slds-post__footer-actions-list slds-list_horizontal" style="align-items: left; float: left;">
                                                             <li class="slds-item">
                                                                 <button title="Upvote" class="slds-button_reset slds-post__footer-action" aria-pressed="true" onclick="window.location.href = '/post/' + {{$a->answer_ID}} + '/' + {{$post->question_ID}} + '/upvoteA'">
                                                                     <svg class="slds-icon slds-icon-text-default slds-icon-text-{{\App\Http\Controllers\ClientControllerHelper::checkUpvotesA($a->answer_ID)}} slds-icon_x-small slds-align-middle"
@@ -292,7 +259,7 @@
                                                                     </svg>
                                                                 </button>
                                                             </li>
-                                                            <li class="slds-item">
+                                                            <li class="slds-item" style="padding-right: 5mm;">
                                                                 {{$a->upvotes}}
                                                             </li>
                                                             <li class="slds-item">
@@ -348,27 +315,6 @@
                                                             <input type="text" id="content" name="content" class="slds-publisher__input slds-input_bare slds-text-longform" placeholder="Post your answer here"></input>
                                                             <div class="slds-publisher__actions slds-grid slds-grid_align-spread">
                                                                 <ul class="slds-grid">
-                                                                    {{--ICONS LEFT SIDE OF ANSWER BUTTON--}}
-                                                                    {{--<li>
-                                                                        <button class="slds-button slds-button_icon slds-button_icon-container"
-                                                                                title="Add User">
-                                                                            <svg class="slds-button__icon" aria-hidden="true">
-                                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                     xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#adduser"/>
-                                                                            </svg>
-                                                                            <span class="slds-assistive-text">Add User</span>
-                                                                        </button>
-                                                                    </li>
-                                                                    <li>
-                                                                        <button class="slds-button slds-button_icon slds-button_icon-container"
-                                                                                title="Attach a file">
-                                                                            <svg class="slds-button__icon" aria-hidden="true">
-                                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                     xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#attach"/>
-                                                                            </svg>
-                                                                            <span class="slds-assistive-text">Attach a file</span>
-                                                                        </button>
-                                                                    </li>--}}
                                                                 </ul>
                                                                 <input type="submit" id="newAnswerButton" class="slds-button slds-button_brand" value="Post" disabled />
                                                             </div>
