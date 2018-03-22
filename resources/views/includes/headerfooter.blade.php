@@ -111,7 +111,7 @@
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink"
                                              xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#setup"/>
                                     </svg>
-                                    <span class="slds-assistive-text">Setup</span>
+                                    <span class="slds-assistive-text">Edit Profile</span>
                                 </button>
                             </li>
                             <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
@@ -124,9 +124,9 @@
                             </li>
                             <li class="slds-dropdown-trigger slds-dropdown-trigger_click slds-m-left_x-small">
                                 <button class="slds-button" aria-haspopup="true">
-                           <span class="slds-avatar slds-avatar_circle slds-avatar_medium">
-                           <img alt="Person name" src="/assets/images/avatar2.jpg" title="User avatar"/>
-                           </span>
+                                    <span class="slds-avatar slds-avatar_circle slds-avatar_medium">
+                                        <img alt="Person name" src="/assets/images/avatar2.jpg" title="User avatar"/>
+                                    </span>
                                 </button>
                             </li>
                             {{session()->get('username')}}

@@ -82,4 +82,6 @@
     </div>
 </section>
 
+@include('modals.notifications')
+<script src="{{URL::asset('js/mainpage.js')}}"></script>
 <link class="user" href="{{URL::asset('css/mainpage.css')}}" rel="stylesheet" type="text/css">
