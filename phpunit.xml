@@ -16,8 +16,8 @@
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
-        <testsuite name="Selenium">
-            <directory suffix="Answer Test Suite.php">./UI Testing/Answer</directory>
+        <testsuite name="Browser">
+            <directory suffix="Test.php">./tests/Browser</directory>
         </testsuite>
     </testsuites>
     <filter>
