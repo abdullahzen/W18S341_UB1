@@ -54,6 +54,18 @@ class ClientControllerHelper extends Controller {
         return 'N/A';
     }
 
+    public static function getNumberOfQuestionsForUser($username) {
+        if (session()->has('username')) {
+
+            $result = DB::select('select * from question q inner join user u on q.user_ID1 = u.user_ID where u.username = \'' . $username . '\'');
+            $count = 0;
+            if (!empty($result))
+                $count = count($result);
+
+            return $count;
+        }
+    }
+
     public static function checkUpvotes($id) {
         $vote = DB::select('
             SELECT 
