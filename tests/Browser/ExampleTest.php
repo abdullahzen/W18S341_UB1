@@ -2,14 +2,15 @@
 
 namespace Tests\Browser;
 
+use Tests\Browser\Pages\homepage;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use DB;
 
+
 class ExampleTest extends DuskTestCase
 {
-
 
     public function testBasicExample()
     {
@@ -19,9 +20,13 @@ class ExampleTest extends DuskTestCase
             die("Could not connect to the database.  Please check your configuration.");
         }
 
+        $this->prepare();
+
         $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                    ->assertTitleContains('ProgramOverflew');
+            $browser->driver->takeScreenshot();
+            $browser->visit(new homepage());
+            $browser->assertSee('Java');
+
         });
     }
 }
