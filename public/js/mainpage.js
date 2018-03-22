@@ -2,17 +2,11 @@ $(document).ready(function () {
     var login = document.getElementById("loginButton");
     var loginModal = document.getElementById('loginModal');
 
-    /*var post = document.getElementById("newpostButton");
-    var postModal = document.getElementById('postModal');*/
-
     var register = document.getElementById("registerButton");
     var registerModal = document.getElementById('registerModal');
 
     var favButton = document.getElementById("favButton");
     var favModal = document.getElementById('favModal');
-
-    var notificationButton = document.getElementById("notificationButton");
-    var notificationModal = document.getElementById('notificationModal');
 
     var userProfile = document.getElementById("userProfileButton");
     var userProfileModal = document.getElementById("userProfileModal");
@@ -26,7 +20,6 @@ $(document).ready(function () {
     //var spanP = document.getElementsByClassName("closeP")[0];
     var spanU = document.getElementsByClassName("closeU")[0];
     var spanF = document.getElementsByClassName("closeF")[0];
-    var spanN = document.getElementsByClassName("closeN")[0];
 
     showCategory('Java');
 
@@ -193,6 +186,10 @@ function displaycategories() {
 
 function Search(searchstring, event) {
 	if (event.keyCode == 13 || event.which == 13){
-        window.open("/search/" + searchstring, "_self");
+        if (searchstring.trim() == "") {
+            alert("This field cannot be empty.");
+        } else {
+            window.open("/search=" + searchstring, "_self");
+        }
 	}
 }

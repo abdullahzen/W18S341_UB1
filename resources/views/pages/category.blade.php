@@ -25,7 +25,7 @@
             <?php
             $i = 0;
             $postsUpvoted = \App\Http\Controllers\ClientControllerHelper::getTopQuestionsByUpvotes($language);
-            foreach ($postsUpvoted as $key=>$value) {
+            foreach ($postsUpvoted as $key => $value) {
 
                 echo '<li class="slds-item"><a href="./post/' . $value->question_ID . '">' . $value->title . '</a></li>';
                 $i++;

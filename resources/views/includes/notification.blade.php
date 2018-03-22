@@ -1,6 +1,6 @@
-<section class="slds-popover slds-popover_large slds-nubbin_top-right" role="dialog" aria-label="Notifications"
+<section class="slds-popover slds-popover_large" role="dialog" aria-label="Notifications"
          id="notifications-container" aria-describedby="notifications-container"
-         style="position: absolute; right: 7.5rem; display: none;">
+         style="position: absolute; right: 0.0rem; display: none;">
     <div class="slds-popover__body slds-p-around_none">
         <ul>
             <li class="slds-global-header__notification slds-p-around_xx-small">
@@ -9,7 +9,20 @@
                         <div class="slds-grid slds-grid_align-spread">
                             <a class="slds-text-link_reset slds-has-flexi-truncate slds-text-align--center">
                                 <h3 class="slds-truncate"
-                                    title="All Notifications">Notifications</strong>
+                                    title="Notifications">Notifications</strong>
+                                </h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="slds-global-header__notification slds-p-around_xx-small">
+                <div class="slds-media slds-has-flexi-truncate slds-p-around_x-small">
+                    <div class="slds-media__body">
+                        <div class="slds-grid slds-grid_align-spread">
+                            <a href="/readAllNotifications" class="slds-text-link_reset slds-has-flexi-truncate slds-text-align--center">
+                                <h3 class="slds-truncate"
+                                    title="Mark all As Read">Mark all As Read</strong>
                                 </h3>
                             </a>
                         </div>
@@ -17,6 +30,20 @@
                 </div>
             </li>
             <?php $notifications = (\App\Http\Controllers\ClientControllerHelper::getNotifications(5));?>
+            @if(sizeof($notifications) == 0)
+                <li class="slds-global-header__notification slds-p-around_xx-small slds-global-header__notification_unread">
+                    <div class="slds-media slds-has-flexi-truncate slds-p-around_x-small slds-text-align--center">
+                        <div class="slds-media__body">
+                            <div class="slds-grid slds-grid_align-spread">
+                                <a class="slds-text-link_reset slds-has-flexi-truncate slds-text-align--center">
+                                    <h1 class="slds-truncate">You have no new notification</strong>
+                                    </h1>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            @endif
             @foreach ($notifications as $data)
             {{--Single Notification--}}
                 @if($data->read == 1)
@@ -68,7 +95,7 @@
                 <div class="slds-media slds-has-flexi-truncate slds-p-around_x-small">
                     <div class="slds-media__body">
                         <div class="slds-grid slds-grid_align-spread">
-                            <a id="notificationButton" class="slds-text-link_reset slds-has-flexi-truncate slds-text-align--center">
+                            <a href="/notifications" id="notificationButton" class="slds-text-link_reset slds-has-flexi-truncate slds-text-align--center">
                                 <h3 class="slds-truncate"
                                     title="All Notifications">
                                     <strong>View all notifications</strong>
@@ -82,6 +109,5 @@
     </div>
 </section>
 
-@include('modals.notifications')
 <script src="{{URL::asset('js/mainpage.js')}}"></script>
 <link class="user" href="{{URL::asset('css/mainpage.css')}}" rel="stylesheet" type="text/css">
