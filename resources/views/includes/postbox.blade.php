@@ -19,7 +19,7 @@
                                 </p>
                                 <p class="slds-text-body_small">
                                     <?php
-                                        echo 'post on ' . \Carbon\Carbon::createFromTimeStamp(strtotime($data->create_time))->toFormattedDateString();
+                                        echo 'submitted ' . \Carbon\Carbon::createFromTimeStamp(strtotime($data->create_time))->diffForHumans();
                                     ?>
                                 </p>
                             </div>

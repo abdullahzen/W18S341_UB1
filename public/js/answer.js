@@ -1,7 +1,7 @@
 function checkForm() {
     var canSubmit = false;
 
-    if (document.getElementById('content').value.length > 5 && document.getElementById('content').value.length < 251){
+    if (document.getElementById('content').value.length > 5 && document.getElementById('content').value.length < 1001){
         canSubmit = true;
     } else {
         canSubmit = false;

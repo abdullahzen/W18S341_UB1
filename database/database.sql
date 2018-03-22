@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `SOEN341` /*!40100 DEFAULT CHARACTER SET utf16 */;
-USE `SOEN341`;
+CREATE DATABASE  IF NOT EXISTS `soen341` /*!40100 DEFAULT CHARACTER SET utf16 */;
+USE `soen341`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: soen341
+-- Host: 127.0.0.1    Database: soen341
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.29-MariaDB
+-- Server version	5.5.5-10.1.31-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `answer`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `answer` (
   `answer_ID` int(10) NOT NULL AUTO_INCREMENT,
-  `answer` varchar(250) NOT NULL,
+  `answer` varchar(1000) NOT NULL,
   `user_ID2` int(10) NOT NULL,
   `question_ID1` int(10) NOT NULL,
   `upvotes` tinyint(4) DEFAULT '0',
@@ -38,7 +38,7 @@ CREATE TABLE `answer` (
   KEY `question_ID1` (`question_ID1`),
   CONSTRAINT `question_ID1` FOREIGN KEY (`question_ID1`) REFERENCES `question` (`question_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `user_ID2` FOREIGN KEY (`user_ID2`) REFERENCES `user` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf16;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,38 @@ CREATE TABLE `answer` (
 
 LOCK TABLES `answer` WRITE;
 /*!40000 ALTER TABLE `answer` DISABLE KEYS */;
+INSERT INTO `answer` VALUES (1,'Me too, I would like some help.',3,17,1,0,0,'2018-03-22 23:05:57'),(2,'Are you guys serious?',4,17,-2,0,0,'2018-03-22 23:07:09'),(3,'Please respect other users here thank you!',1,17,3,0,0,'2018-03-22 23:08:34'),(4,'Generally, the ability to appear in many forms. In object-oriented programming, polymorphism refers to a programming language\'s ability to process objects differently depending on their data type or class.',4,17,4,0,0,'2018-03-22 23:09:31'),(5,'Thank you!',2,17,1,0,0,'2018-03-22 23:11:49');
 /*!40000 ALTER TABLE `answer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `answervote`
+--
+
+DROP TABLE IF EXISTS `answervote`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `answervote` (
+  `answervote_ID` int(10) NOT NULL AUTO_INCREMENT,
+  `user_ID5` int(10) NOT NULL,
+  `answer_ID1` int(10) NOT NULL,
+  `vote` tinyint(4) NOT NULL,
+  PRIMARY KEY (`answervote_ID`),
+  KEY `answer_ID1` (`answer_ID1`),
+  KEY `user_ID5` (`user_ID5`),
+  CONSTRAINT `answer_ID1` FOREIGN KEY (`answer_ID1`) REFERENCES `answer` (`answer_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `user_ID5` FOREIGN KEY (`user_ID5`) REFERENCES `user` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf16;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `answervote`
+--
+
+LOCK TABLES `answervote` WRITE;
+/*!40000 ALTER TABLE `answervote` DISABLE KEYS */;
+INSERT INTO `answervote` VALUES (1,3,1,1),(2,4,1,0),(3,2,1,1),(4,4,2,1),(5,1,3,1),(6,3,3,1),(7,2,3,1),(8,4,4,1),(9,2,4,1),(10,3,4,1),(11,1,4,1),(12,2,5,1),(13,1,2,0),(14,3,2,0),(15,2,2,0);
+/*!40000 ALTER TABLE `answervote` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -105,6 +136,75 @@ LOCK TABLES `favourite` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `notification`
+--
+
+DROP TABLE IF EXISTS `notification`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `notification` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL,
+  `fromUID` int(11) NOT NULL,
+  `url` varchar(45) NOT NULL,
+  `notificationType` int(11) NOT NULL,
+  `content` varchar(1000) DEFAULT NULL,
+  `pid` int(11) DEFAULT NULL,
+  `read` int(11) DEFAULT '0',
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf16;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `notification`
+--
+
+LOCK TABLES `notification` WRITE;
+/*!40000 ALTER TABLE `notification` DISABLE KEYS */;
+INSERT INTO `notification` VALUES (1,2,3,'/post/17',1,'Me too, I would like some help.',17,1,'2018-03-22 23:05:57'),(2,2,4,'/post/17',1,'Are you guys serious?',17,1,'2018-03-22 23:07:09'),(3,3,4,'/post/17',3,'Are you guys serious?',17,0,'2018-03-22 23:07:09'),(4,2,1,'/post/17',1,'Please respect other users here thank you!',17,1,'2018-03-22 23:08:34'),(5,3,1,'/post/17',3,'Please respect other users here thank you!',17,1,'2018-03-22 23:08:34'),(6,4,1,'/post/17',3,'Please respect other users here thank you!',17,0,'2018-03-22 23:08:34'),(7,3,2,'/post/17',3,'Thank you!',17,0,'2018-03-22 23:11:49'),(8,4,2,'/post/17',3,'Thank you!',17,0,'2018-03-22 23:11:49'),(9,1,2,'/post/17',3,'Thank you!',17,1,'2018-03-22 23:11:49'),(10,4,2,'/post/17',4,'Generally, the ability to appear in many forms. In object-oriented programming, polymorphism refers to a programming language\'s ability to process objects differently depending on their data type or class.',17,1,'2018-03-22 23:15:06');
+/*!40000 ALTER TABLE `notification` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `question`
+--
+
+DROP TABLE IF EXISTS `question`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `question` (
+  `question_ID` int(10) NOT NULL AUTO_INCREMENT,
+  `user_ID1` int(10) NOT NULL,
+  `category_ID1` int(10) NOT NULL,
+  `best_answer_ID` int(10) DEFAULT '0',
+  `title` varchar(250) NOT NULL,
+  `content` varchar(1000) NOT NULL,
+  `upvotes` int(10) DEFAULT '0',
+  `comments` int(10) DEFAULT '0',
+  `favorites` int(10) DEFAULT '0',
+  `views` int(10) DEFAULT '0',
+  `is_hidden` tinyint(4) DEFAULT '0',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`question_ID`),
+  KEY `user_ID_idx` (`user_ID1`),
+  KEY `category_ID1` (`category_ID1`),
+  CONSTRAINT `category_ID1` FOREIGN KEY (`category_ID1`) REFERENCES `category` (`category_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `user_ID1` FOREIGN KEY (`user_ID1`) REFERENCES `user` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf16;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `question`
+--
+
+LOCK TABLES `question` WRITE;
+/*!40000 ALTER TABLE `question` DISABLE KEYS */;
+INSERT INTO `question` VALUES (1,1,1,0,'Java Test 1','',0,0,0,0,0,'2018-03-02 02:40:34'),(2,1,1,0,'Java Test 2','',0,0,0,0,0,'2018-03-02 02:40:34'),(3,1,2,0,'JS Test 1','',0,0,0,0,0,'2018-03-02 02:40:34'),(4,1,3,0,'PHP Test 1','',0,0,0,0,0,'2018-03-02 02:40:34'),(5,1,4,0,'C Test 1','',0,0,0,0,0,'2018-03-02 02:40:34'),(6,1,1,0,'Java Test 3','',0,0,0,1,0,'2018-03-02 02:40:34'),(7,1,1,0,'Java Test 4','',0,0,0,0,0,'2018-03-02 02:40:34'),(8,1,2,0,'JS Test 2','',0,0,0,0,0,'2018-03-02 02:40:34'),(9,1,2,0,'JS Test 3','',0,0,0,0,0,'2018-03-02 02:40:34'),(10,1,2,0,'JS Test 4','',0,0,0,0,0,'2018-03-02 02:40:34'),(11,1,3,0,'PHP Test 2','',0,0,0,0,0,'2018-03-02 02:40:34'),(12,1,3,0,'PHP Test 3','',0,0,0,0,0,'2018-03-02 02:40:34'),(13,1,3,0,'PHP Test 4','',0,0,0,0,0,'2018-03-02 02:40:34'),(14,1,4,0,'C Test 2','',0,0,0,0,0,'2018-03-02 02:40:34'),(15,1,4,0,'C Test 3','',0,0,0,0,0,'2018-03-02 02:40:34'),(16,1,4,0,'C Test 4','',0,0,0,0,0,'2018-03-02 02:40:34'),(17,2,1,4,'ELI6 Polymorphism','I\'m very confused.',1,5,0,52,0,'2018-03-22 23:05:06');
+/*!40000 ALTER TABLE `question` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `questionvote`
 --
 
@@ -121,7 +221,7 @@ CREATE TABLE `questionvote` (
   KEY `user_ID4` (`user_ID4`),
   CONSTRAINT `question_ID3` FOREIGN KEY (`question_ID3`) REFERENCES `question` (`question_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `user_ID4` FOREIGN KEY (`user_ID4`) REFERENCES `user` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,74 +230,8 @@ CREATE TABLE `questionvote` (
 
 LOCK TABLES `questionvote` WRITE;
 /*!40000 ALTER TABLE `questionvote` DISABLE KEYS */;
+INSERT INTO `questionvote` VALUES (1,2,17,1);
 /*!40000 ALTER TABLE `questionvote` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `answervote`
---
-
-DROP TABLE IF EXISTS `answervote`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `answervote` (
-  `answervote_ID` int(10) NOT NULL AUTO_INCREMENT,
-  `user_ID5` int(10) NOT NULL,
-  `answer_ID1` int(10) NOT NULL,
-  `vote` tinyint(4) NOT NULL,
-  PRIMARY KEY (`answervote_ID`),
-  KEY `answer_ID1` (`answer_ID1`),
-  KEY `user_ID5` (`user_ID5`),
-  CONSTRAINT `answer_ID1` FOREIGN KEY (`answer_ID1`) REFERENCES `answer` (`answer_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `user_ID5` FOREIGN KEY (`user_ID5`) REFERENCES `user` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `questionvote`
---
-
-LOCK TABLES `questionvote` WRITE;
-/*!40000 ALTER TABLE `questionvote` DISABLE KEYS */;
-/*!40000 ALTER TABLE `questionvote` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `question`
---
-
-DROP TABLE IF EXISTS `question`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `question` (
-  `question_ID` int(10) NOT NULL AUTO_INCREMENT,
-  `user_ID1` int(10) NOT NULL,
-  `category_ID1` int(10) NOT NULL,
-  `best_answer_ID` int(10) DEFAULT '0',
-  `title` varchar(250) NOT NULL,
-  `content` varchar(250) NOT NULL,
-  `upvotes` int(10) DEFAULT '0',
-  `comments` int(10) DEFAULT '0',
-  `favorites` int(10) DEFAULT '0',
-  `views` int(10) DEFAULT '0',
-  `is_hidden` tinyint(4) DEFAULT '0',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`question_ID`),
-  KEY `user_ID_idx` (`user_ID1`),
-  KEY `category_ID1` (`category_ID1`),
-  CONSTRAINT `category_ID1` FOREIGN KEY (`category_ID1`) REFERENCES `category` (`category_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `user_ID1` FOREIGN KEY (`user_ID1`) REFERENCES `user` (`user_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf16;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `question`
---
-
-LOCK TABLES `question` WRITE;
-/*!40000 ALTER TABLE `question` DISABLE KEYS */;
-INSERT INTO `question` VALUES (1,1,1,0,'Java Test 1','',0,0,0,0,0,'2018-03-02 02:40:34'),(2,1,1,0,'Java Test 2','',0,0,0,0,0,'2018-03-02 02:40:34'),(3,1,2,0,'JS Test 1','',0,0,0,0,0,'2018-03-02 02:40:34'),(4,1,3,0,'PHP Test 1','',0,0,0,0,0,'2018-03-02 02:40:34'),(5,1,4,0,'C Test 1','',0,0,0,0,0,'2018-03-02 02:40:34'),(6,1,1,0,'Java Test 3','',0,0,0,0,0,'2018-03-02 02:40:34'),(7,1,1,0,'Java Test 4','',0,0,0,0,0,'2018-03-02 02:40:34'),(8,1,2,0,'JS Test 2','',0,0,0,0,0,'2018-03-02 02:40:34'),(9,1,2,0,'JS Test 3','',0,0,0,0,0,'2018-03-02 02:40:34'),(10,1,2,0,'JS Test 4','',0,0,0,0,0,'2018-03-02 02:40:34'),(11,1,3,0,'PHP Test 2','',0,0,0,0,0,'2018-03-02 02:40:34'),(12,1,3,0,'PHP Test 3','',0,0,0,0,0,'2018-03-02 02:40:34'),(13,1,3,0,'PHP Test 4','',0,0,0,0,0,'2018-03-02 02:40:34'),(14,1,4,0,'C Test 2','',0,0,0,0,0,'2018-03-02 02:40:34'),(15,1,4,0,'C Test 3','',0,0,0,0,0,'2018-03-02 02:40:34'),(16,1,4,0,'C Test 4','',0,0,0,0,0,'2018-03-02 02:40:34');
-/*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -213,13 +247,13 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `rank` int(4) DEFAULT '0',
+  `rank` int(4) DEFAULT '1',
   `is_Solver` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`user_ID`),
   UNIQUE KEY `user_ID_UNIQUE` (`user_ID`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf16;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,7 +262,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','$2y$10$.MaT/HTRdOGU68ivMJrBdeozBl585rtSUhbSoxYcG4bXKxvqUZJ9u','admin@soen341.com','2018-03-02 02:10:12',1,0);
+INSERT INTO `user` VALUES (1,'admin','$2y$10$0QaKG8NNVHFkn4/cPDrCVOaD9/ASfNQRlIDcD3DPlSwhHfRGoeDUe','admin@soen341.com','2018-03-02 02:10:12',4,0),(2,'user00','$2y$10$X0JHHOes2NguHRVynLXjwe6kRy.wmq42E1K3oQRLxlQwiwGY4PjuW','user00@mail.com','2018-03-22 23:00:27',3,0),(3,'user01','$2y$10$ph407/E1FI44CuRPlqyNv.vZwkTVivDJFuZ6DqTUQoMFvUVAHbwF6','user01@mail.com','2018-03-22 23:00:41',2,0),(4,'user02','$2y$10$0QaKG8NNVHFkn4/cPDrCVOaD9/ASfNQRlIDcD3DPlSwhHfRGoeDUe','user02@mail.com','2018-03-22 23:00:54',3,0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -241,4 +275,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-01 21:41:43
+-- Dump completed on 2018-03-22 19:16:51
