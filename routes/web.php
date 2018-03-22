@@ -39,6 +39,10 @@ Route::get('/userProfile', function() {
     return view('pages.userProfile');
 });
 
+Route::get('/publicProfile', function () {
+    return view('pages.publicProfile');
+});
+
 Route::get('/post/{id}', array(
     'uses' => 'ClientController@getFullPostById'
 ));
