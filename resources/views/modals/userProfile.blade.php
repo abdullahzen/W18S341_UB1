@@ -11,21 +11,21 @@
                              class="slds-modal slds-fade-in-open" role="dialog" tabindex="-1">
                         <article class="slds-card" style="Width:40%; margin: 8% auto;">
                             <div class="slds-card__header slds-grid">
-                                <button class="closeU slds-button slds-button__icon_left">
+                                <button class="closeU slds-button slds-button__icon_left" style="margin-top: -8mm; margin-left: -2mm;">
                                     <svg class="slds-button__icon" aria-hidden="true">
                                         <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close" xmlns:xlink="http://www.w3.org/1999/xlink" />
                                     </svg>
                                     <span class="slds-assistive-text">Exit User Profile</span>
                                 </button>
                                 <div style="background-color: rgb(244, 246, 249);">
-                                    <div class="slds-text-heading_small slds-text-body_regular slds-text-align_center slds-m-top_medium slds-theme_alert-texture"">
-                                        <strong>Upvotes</strong><br>10<br></div>
+                                    <div class="slds-text-heading_small slds-text-body_regular slds-text-align_center slds-m-top_medium slds-theme_alert-texture">
+                                        <strong>Rank</strong><br/>{{\App\Http\Controllers\ClientControllerHelper::getRank(session()->get('username'))}}<br/></div>
                                 </div>
                                 <span class="slds-align_absolute-center slds-avatar slds-avatar_circle slds-avatar_large">
                                     <img alt="Person name" src="/assets/images/avatar2.jpg" title="User avatar"/>
                                 </span>
                                 <div class="slds-text-heading_small slds-text-body_regular slds-text-align_center slds-m-top_medium slds-theme_alert-texture">
-                                    <strong>Answers</strong><br>20<br></div>
+                                    <strong>Questions</strong><br/>{{\App\Http\Controllers\ClientControllerHelper::getNumberOfQuestionsForUser(session()->get('username'))}}</div>
                             </div>
                             <div class="slds-media__body">
                                 <div class="slds-align_absolute-center">
@@ -50,7 +50,7 @@
                                                 title="Description for second label">**********
                                             </dd>
                                         </dl>
-                                        <div style="padding: 0.5rem; background-color: rgb(244, 246, 249); padding-left: 9cm;">
+                                        <div style="padding: 0.5rem; background-color: rgb(244, 246, 249); padding-left: 10cm;">
                                             <button class="slds-button slds-button_icon slds-button_icon-border-filled" id="editProfileModalButton">
                                                 <svg class="slds-button__icon_small slds-button__icon"
                                                      aria-hidden="false">
