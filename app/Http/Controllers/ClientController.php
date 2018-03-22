@@ -153,6 +153,16 @@ class ClientController extends Controller {
         }
     }
 
+    public function getPublicUserProfile($username) {
+        $result = Db::select('select * from user where user.username = \'' . $username .'\'');
+        if (!empty($result)){
+            return view('pages.publicProfile', ['username' => $username]);
+
+        } else {
+            return abort('400', 'A problem has occurred!');
+        }
+    }
+
     public function notifyDiscussion($qid, $content) {
         $answers = DB::select('
             SELECT

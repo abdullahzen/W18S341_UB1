@@ -124,9 +124,9 @@
                             </li>
                             <li class="slds-dropdown-trigger slds-dropdown-trigger_click slds-m-left_x-small">
                                 <button class="slds-button" aria-haspopup="true">
-                                    <span class="slds-avatar slds-avatar_circle slds-avatar_medium">
-                                        <img alt="Person name" src="/assets/images/avatar2.jpg" title="User avatar"/>
-                                    </span>
+                           <span class="slds-avatar slds-avatar_circle slds-avatar_medium"><a href="/publicProfile/{{session()->get('username')}}">
+                           <img alt="Person name" src="/assets/images/avatar2.jpg" title="User avatar"/></a>
+                           </span>
                                 </button>
                             </li>
                             {{session()->get('username')}}

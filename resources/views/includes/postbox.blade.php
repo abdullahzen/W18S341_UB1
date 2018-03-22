@@ -5,7 +5,7 @@
                 <article class="slds-post">
                     <header class="slds-post__header slds-media">
                         <div class="slds-media__figure">
-                            <a href="javascript:void(0);"
+                            <a href="/publicProfile/{{$data->username}}"
                                class="slds-avatar slds-avatar_circle slds-avatar_large">
                                 <img src="/assets/images/avatar1.jpg"/>
                             </a>
@@ -15,7 +15,7 @@
                                 <p>
                                     <a href="/post/{{$data->question_ID}}">{{$data->title}}</a>
                                     <br/>
-                                    <a href="javascript:void(0);">{{$data->username}}</a>
+                                    <a href="/publicProfile/{{$data->username}}">{{$data->username}}</a>
                                 </p>
                                 <p class="slds-text-body_small">
                                     <?php
