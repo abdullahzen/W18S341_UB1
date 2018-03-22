@@ -57,7 +57,7 @@
                                                 </li>
                                             </ul>
                                         <div class="slds-media__figure" style="padding-top: 5mm;">
-                                            <a href="javascript:void(0);"
+                                            <a href="/publicProfile/{{$post->username}}"
                                                class="slds-avatar slds-avatar_circle slds-avatar_large">
                                                 <img alt="Jason Rodgers" src="/assets/images/avatar1.jpg"
                                                      title="Jason Rodgers avatar"/>
@@ -66,7 +66,7 @@
                                         <div class="slds-media__body">
                                             <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate" style="padding-top: 5mm;">
                                                 <p>
-                                                    <a href="javascript:void(0);">{{$post->username}}</a>
+                                                    <a href="/publicProfile/{{$post->username}}">{{$post->username}}</a>
                                                 </p>
                                                     @if (session()->get('username') == $post->username)
                                                     <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
@@ -183,7 +183,7 @@
                                             @foreach($answer as $a)
                                             <article class="slds-comment slds-media slds-hint-parent">
                                                 <div class="slds-media__figure">
-                                                    <a href="javascript:void(0);"
+                                                    <a href="/publicProfile/{{$a->username}}"
                                                        class="slds-avatar slds-avatar_circle slds-avatar_medium">
                                                         <img alt="Jenna Davis" src="/assets/images/avatar2.jpg" title="Jenna Davis avatar"/>
                                                     </a>
@@ -192,7 +192,7 @@
                                                     <header class="slds-media slds-media_center">
                                                         <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
                                                             <p class="slds-truncate">
-                                                                <a href="javascript:void(0);">
+                                                                <a href="/publicProfile/{{$a->username}}">
                                                                     {{$a->username}}
                                                                 </a>
                                                                 @if($a->answer_ID == $post->best_answer_ID)
@@ -280,7 +280,6 @@
                                                          title="User avatar"/>
                                                 </a>
                                             </div>
-                                    </div>
                                             <div class="slds-media__body">
                                                 <!--Answer field-->
                                                 <form class="form-horizontal" action="/post/{{$post->question_ID}}/newanswer" method="post" id="answerForm" onKeyup="checkForm()">
