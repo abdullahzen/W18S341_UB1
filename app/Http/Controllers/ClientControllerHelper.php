@@ -54,10 +54,42 @@ class ClientControllerHelper extends Controller {
         return 'N/A';
     }
 
+    public static function getAllPostsForUser($username) {
+        $result = DB::select('
+            SELECT
+                q.question_ID,
+                q.title,
+                q.content,
+                q.category_ID1,
+                q.user_ID1 as userID,
+                q.create_time,
+                q.upvotes,
+                q.comments,
+                q.views,
+                u.username
+            FROM question q
+            INNER JOIN user u ON q.user_ID1 = u.user_ID 
+            WHERE u.username = \'' . $username . '\' AND q.is_hidden = 0 order by q.create_time DESC');
+            return $result;
+    }
+
+
     public static function getNumberOfQuestionsForUser($username) {
         if (session()->has('username')) {
 
-            $result = DB::select('select * from question q inner join user u on q.user_ID1 = u.user_ID where u.username = \'' . $username . '\'');
+            $result = DB::select('select * from question q inner join user u on q.user_ID1 = u.user_ID where u.username = \'' . $username . '\' AND q.is_hidden = 0');
+            $count = 0;
+            if (!empty($result))
+                $count = count($result);
+
+            return $count;
+        }
+    }
+
+    public static function getNumberOfAnswersForUser($username) {
+        if (session()->has('username')) {
+
+            $result = DB::select('select * from answer a inner join user u on a.user_ID2 = u.user_ID where u.username = \'' . $username . '\' AND a.is_hidden = 0');
             $count = 0;
             if (!empty($result))
                 $count = count($result);
