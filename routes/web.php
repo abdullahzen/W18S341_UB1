@@ -51,7 +51,7 @@ Route::get('/post/{id}/favourite', array(
     'uses' => 'ClientController@favourite'
 ));
 
-Route::get('/search/{id}', array(
+Route::get('/search={search}', array(
     'uses' => 'ClientController@getSearch'
 ));
 
@@ -63,6 +63,10 @@ Route::get('/clearNotification/{id}', array(
     'uses' => 'ClientController@clearNotification'
 ));
 
+Route::get('/notifications', array(
+    'uses' => 'ClientController@getAllNotifications'
+));
+
 Route::get('/post/{id}/upvote', 'ClientController@upvote');
 Route::get('/post/{id}/downvote', 'ClientController@downvote');
 Route::get('/post/{id}/{id2}/upvoteA', 'ClientController@upvoteA');
@@ -71,6 +75,9 @@ Route::get('/post/{id}/delete', 'ClientController@deleteQuestion');
 Route::get('/post/bestanswer/{qid}/{aid}/', 'ClientController@setBestAnswer');
 Route::get('/post/unbestanswer/{qid}/{aid}/', 'ClientController@unsetBestAnswer');
 Route::get('/addNewCategory', 'ClientController@saveCategory');
+Route::get('/readAllNotifications', 'ClientController@readAllNotifications');
+Route::get('/deleteNotification/{id}', 'ClientController@deleteNotification');
+
 
 //POST
 Route::post('/login', 'ClientController@authenticate');

@@ -2,17 +2,11 @@ $(document).ready(function () {
     var login = document.getElementById("loginButton");
     var loginModal = document.getElementById('loginModal');
 
-    /*var post = document.getElementById("newpostButton");
-    var postModal = document.getElementById('postModal');*/
-
     var register = document.getElementById("registerButton");
     var registerModal = document.getElementById('registerModal');
 
     var favButton = document.getElementById("favButton");
     var favModal = document.getElementById('favModal');
-
-    var notificationButton = document.getElementById("notificationButton");
-    var notificationModal = document.getElementById('notificationModal');
 
     var userProfile = document.getElementById("userProfileButton");
     var userProfileModal = document.getElementById("userProfileModal");
@@ -26,37 +20,42 @@ $(document).ready(function () {
     //var spanP = document.getElementsByClassName("closeP")[0];
     var spanU = document.getElementsByClassName("closeU")[0];
     var spanF = document.getElementsByClassName("closeF")[0];
-    // var spanM = document.getElementsByClassName("More-Options")[0];
 
     showCategory('Java');
 
-    if(favButton != null) {
+    if (favButton != null) {
         favButton.onclick = function () {
             favModal.style.display = "block";
         }
     }
 
-    if(login != null) {
+    if (login != null) {
         login.onclick = function () {
             loginModal.style.display = "block";
         }
     }
 
-    if(register != null){
-        register.onclick = function() {
+    if (register != null) {
+        register.onclick = function () {
             registerModal.style.display = "block";
         }
     }
 
-    if(userProfile != null) {
+    if (userProfile != null) {
         userProfile.onclick = function () {
             userProfileModal.style.display = "block";
         }
     }
 
-    if(editProfile != null){
-        editProfile.onclick = function() {
+    if (editProfile != null) {
+        editProfile.onclick = function () {
             editProfileModal.style.display = "block";
+        }
+    }
+
+    if (notificationButton != null) {
+        notificationButton.onclick = function () {
+            notificationButton.style.display = "block";
         }
     }
 
@@ -64,13 +63,13 @@ $(document).ready(function () {
         postModal.style.display = "block";
     }*/
 
-    span.onclick = function() {
+    span.onclick = function () {
         loginModal.style.display = "none";
-    }
+    };
 
-    spanR.onclick = function() {
+    spanR.onclick = function () {
         registerModal.style.display = "none";
-    }
+    };
 
     /*spanP.onclick = function() {
         postModal.style.display = "none";
@@ -78,22 +77,22 @@ $(document).ready(function () {
 
     spanU.onclick = function () {
         userProfileModal.style.display = "none";
-    }
+    };
 
     spanF.onclick = function () {
         favModal.style.display = "none";
-    }
+    };
 
     spanN.onclick = function () {
         notificationModal.style.display = "none";
-    }
+    };
 
     // spanM.onclick = function() {
     //     moreOptionsContainer.style.display = "block";
     // }
 
     // Fix this if you want
-    window.onclick = function(event) {
+    /*window.onclick = function(event) {
         if (event.target == loginModal) {
             loginModal.style.display = "none";
         }
@@ -110,7 +109,7 @@ $(document).ready(function () {
         if (event.target == favModal) {
             favModal.style.display = "none";
         }
-    }
+    }*/
 
    
 
@@ -187,6 +186,10 @@ function displaycategories() {
 
 function Search(searchstring, event) {
 	if (event.keyCode == 13 || event.which == 13){
-        window.open("/search/" + searchstring, "_self");
+        if (searchstring.trim() == "") {
+            alert("This field cannot be empty.");
+        } else {
+            window.open("/search=" + searchstring, "_self");
+        }
 	}
 }

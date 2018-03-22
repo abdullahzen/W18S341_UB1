@@ -8,7 +8,6 @@
     @include('modals.edit')
     @include('modals.editProfile')
     @include('modals.favourite')
-    @include('modals.notifications')
 
 @endif
 

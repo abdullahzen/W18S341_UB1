@@ -18,11 +18,9 @@
                                     <a href="/publicProfile/{{$data->username}}">{{$data->username}}</a>
                                 </p>
                                 <p class="slds-text-body_small">
-                                    <a href="javascript:void(0);" title="Click for single-item view of this post" class="slds-text-link_reset">
-                                        <?php
-                                            echo \Carbon\Carbon::createFromTimeStamp(strtotime($data->create_time))->toFormattedDateString();
-                                        ?>
-                                    </a>
+                                    <?php
+                                        echo 'submitted ' . \Carbon\Carbon::createFromTimeStamp(strtotime($data->create_time))->diffForHumans();
+                                    ?>
                                 </p>
                             </div>
                         </div>
@@ -37,11 +35,11 @@
                             <li class="slds-col slds-item slds-m-right_medium">
                                 {{$data->upvotes}}
                                 <?php
-                                if ($data->upvotes == 0 || $data->upvotes == 1) {
-                                    echo ' point';
-                                } else {
-                                    echo ' points';
-                                }
+                                    if ($data->upvotes == 0 || $data->upvotes == 1) {
+                                        echo ' point';
+                                    } else {
+                                        echo ' points';
+                                    }
                                 ?>
                             </li>
                         </ul>
