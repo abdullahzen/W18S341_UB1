@@ -39,9 +39,9 @@
                                     @foreach ($categoriesNames as $key=>$value)
                                     <option class="form-control" value="{{$value->category}}">{{$value->category}}</option>
                                     @endforeach
-                                        <option class="form-control" value="other2" id="other2">other</option>
+                                        <option class="form-control input-md slds-input" value="other2" id="other2">Other</option>
                                 </select>
-                                <input type ="text" placeholder="Enter new category name..." name="newOther2" id="newOther2"/>
+                                    <input type ="text" class="form-control input-md slds-input" placeholder="Enter new category name..." name="newOther2" id="newOther2" style="Width:30%" autocomplete="off"/>
                             </div>
 
                             <!-- Textarea -->
@@ -50,17 +50,17 @@
                                 <div class="slds-form-element__control">
                                     <input id="title" type="text"
                                            class="form-control input-md slds-input"
-                                           placeholder="Min 6 chars. Max 250 chars." name="title" style="Width:30%" autocomplete="off"/>
+                                           placeholder="Min 6 chars. Max 1000 chars." name="title" style="Width:100%" autocomplete="off"/>
                                 </div>
                             </div>
                             <!-- Textarea -->
                             <div class="slds-form-element">
                                 <label class="slds-form-element__label" for="textarea-id-01">Content</label>
                                 <div class="slds-form-element__control">
-                                    <input id="content" type="text" class="form-control input-md slds-input"
-                                           style="width:50%; height: 72px;" class="slds-textarea"
-                                           placeholder="Min 6 chars. Max 250 chars."
-                                           name="content" autocomplete="off"/>
+                                    <textarea form ="postForm" id="content" type="text" class="form-control input-md slds-input"
+                                           style="width:100%; height: 200px;" class="slds-textarea"
+                                           placeholder="Min 6 chars. Max 1000 chars."
+                                              name="content" autocomplete="off"></textarea>
                                 </div>
                             </div>
                             </br>

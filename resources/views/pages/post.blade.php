@@ -85,7 +85,7 @@
                                                              id="More-Options-Container"
                                                              role="dialog" aria-label="More-Options"
                                                              aria-describedby="More-Options-Container"
-                                                             style="position: absolute; right: 0%; top: 8%; width: 20%; height: 10%; display: none;">
+                                                             style="position: absolute; right: 0%; top: 15%; width: 25%; height: 25%; display: none;">
                                                         <footer class="slds-popover__footer">
                                                             <ul>
                                                                 <li>

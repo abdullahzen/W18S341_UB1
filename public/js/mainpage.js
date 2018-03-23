@@ -53,12 +53,6 @@ $(document).ready(function () {
         }
     }
 
-    if (notificationButton != null) {
-        notificationButton.onclick = function () {
-            notificationButton.style.display = "block";
-        }
-    }
-
     /*post.onclick = function(){
         postModal.style.display = "block";
     }*/

@@ -4,9 +4,7 @@
             <div id="favModal" class="modal" style="display:block; height: 640px;">
                 <div id="favourite" class="questions" class="modal-content">
                     <section aria-describedby="modal-content-id-1" aria-labelledby="modal-heading-01" aria-modal="true"
-                             class="slds-modal slds-fade-in-open" role="dialog" tabindex="-1" style="    width: 75%;
-    padding-left: 360px;
-    padding-top: 160px;">
+                             class="slds-modal slds-fade-in-open" role="dialog" tabindex="-1" style="width: 75%; padding-left: 25%; padding-top: 3%;">
                         <header class="slds-modal__header">
                             <div class="slds-page-header">
                                 <span class="closeF">&times;</span>
