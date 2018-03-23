@@ -72,6 +72,7 @@ Route::get('/post/{id}/downvote', 'ClientController@downvote');
 Route::get('/post/{id}/{id2}/upvoteA', 'ClientController@upvoteA');
 Route::get('/post/{id}/{id2}/downvoteA', 'ClientController@downvoteA');
 Route::get('/post/{id}/delete', 'ClientController@deleteQuestion');
+Route::get('/post/{id}/delete', 'ClientController@deleteAnswer');
 Route::get('/post/bestanswer/{qid}/{aid}/', 'ClientController@setBestAnswer');
 Route::get('/post/unbestanswer/{qid}/{aid}/', 'ClientController@unsetBestAnswer');
 Route::get('/addNewCategory', 'ClientController@saveCategory');
