@@ -35,31 +35,19 @@ jobs:
       - checkout
 
       - run:
-          name: Install NVM
-          command: bash .circleci/nvm.sh
-
-      - run:
-          name: Install Composer
-          command: bash .circleci/composer.sh
-
-      - run:
           name: Install Composer Dependencies
           command: composer install --no-progress --no-suggest
 
       - run:
-          name: PHPCS
-          command: ./vendor/bin/phpcs --standard=PSR2 -p app config
-
-      - run:
           name: Setup Environment
           command: |
-            cp .env.dusk.testing .env
+            cp .env.dusk.local .env
             php artisan key:generate
             php artisan passport:keys
 
       - run:
           name: Unit Tests
-          command: APP_ENV=testing DB_DATABASE=circle_test ./vendor/bin/phpunit
+          command: APP_ENV=testing DB_DATABASE=soen341 ./vendor/bin/phpunit
 
       - run:
           name: Install Node Dependencies
@@ -85,7 +73,7 @@ jobs:
       - run:
           name: Serve Application
           background: true
-          command: APP_ENV=testing DB_DATABASE=circle_test php artisan serve
+          command: APP_ENV=testing DB_DATABASE=soen341 php artisan serve
 
       - run:
           name: e2e Tests
