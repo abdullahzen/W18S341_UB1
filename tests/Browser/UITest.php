@@ -52,7 +52,7 @@ class UITest extends DuskTestCase
         });
     }
 
-/*    public function testLogin(){
+    public function testLogin(){
         $this->checkDbConnection();
         $this->prepare();
         $this->browse(function (Browser $browser) {
@@ -88,5 +88,5 @@ class UITest extends DuskTestCase
             $browser->visit('/post/1');
             $browser->assertSee('Test');
         });
-    }*/
+    }
 }
