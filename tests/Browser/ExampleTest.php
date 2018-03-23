@@ -24,7 +24,7 @@ class ExampleTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) {
             $browser->visit(new homepage());
-            dd($browser->driver->getCurrentURL());
+            $browser->assertSee($browser->driver->getCurrentURL());
 
         });
     }
