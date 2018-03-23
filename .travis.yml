@@ -13,6 +13,8 @@ env:
     - QUEUE_DRIVER=sync
 
 addons:
+  chrome: stable
+
   apt:
     sources:
       - mysql-5.7-trusty
@@ -31,3 +33,4 @@ before_script:
    - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
    - sudo apt-get update
    - sudo apt-get install google-chrome-stable
+   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
