@@ -202,52 +202,6 @@
                                                                     </svg>
                                                                 @endif
                                                             </p>
-{{--  Delete answer  --}}
-                                                            @if (session()->get('username') == $a->username)
-                                                            <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
-                                                                    aria-haspopup="true" title="More-Options" id="More-Options"
-                                                                    name="More-Options">
-                                                                <span class="More-Options">
-                                                                <svg class="slds-button__icon" aria-hidden="false">
-                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                     xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"/>
-                                                                </svg>
-                                                                </span>
-                                                                <span class="slds-assistive-text">More Options</span>
-                                                            </button>
-                                                            <section class="slds-popover slds-nubbin_top-right slds-dynamic-menu"
-                                                                     id="More-Options-Container"
-                                                                     role="dialog" aria-label="More-Options"
-                                                                     aria-describedby="More-Options-Container"
-                                                                     style="position: absolute; right: 0px; top: 55px; width: 23%; height: 2cm; display: none;">
-                                                                <footer class="slds-popover__footer">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1"
-                                                                                    id="editAnswerButton">
-                                                                                <svg class="slds-button__icon slds-button__icon_left"
-                                                                                     aria-hidden="true">
-                                                                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#edit"
-                                                                                         xmlns:xlink="http://www.w3.org/1999/xlink"/>
-                                                                                </svg>
-                                                                                Edit
-                                                                            </button>
-                                                                        </li>
-                                                                        <li>
-                                                                            <button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1" onclick="window.location.href = '/post/' + {{$a->answer_ID}} + '/delete'" id="deleteAnswer">
-                                                                                <svg class="slds-button__icon slds-button__icon_left"
-                                                                                     aria-hidden="true">
-                                                                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
-                                                                                         xmlns:xlink="http://www.w3.org/1999/xlink"/>
-                                                                                </svg>
-                                                                                Delete
-                                                                            </button>
-                                                                        </li>
-                                                                    </ul>
-                                                                </footer>
-                                                            </section>
-                                                            @endif  
-                                                            {{--  end of delete answer            --}}
                                                             @if($a->answer_ID == $post->best_answer_ID && session()->get('username') == $post->username)
                                                                 <button title="Revoke Best Answer" class="slds-button_reset slds-post__footer-action" aria-pressed="false" onclick="window.location.href = '/post/unbestanswer/' + {{$post->question_ID}} + '/' + {{$a->answer_ID}} +  '/'">
                                                                     <svg class="slds-icon slds-icon-text-error slds-icon_x-small slds-align-middle"
@@ -290,6 +244,15 @@
                                                                     </svg>
                                                                 </button>
                                                             </li>
+                                                                @if (session()->get('username') == $post->username)
+                                                                    <button title="Delete" class="slds-button_reset slds-post__footer-action" onclick="window.location.href = '/post/' + {{$a->answer_ID}} + '/delete'" id="deleteAnswer">
+                                                                        <svg class="slds-button__icon slds-button__icon_left"
+                                                                            aria-hidden="true">
+                                                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                                                                                xmlns:xlink="http://www.w3.org/1999/xlink"/>
+                                                                        </svg>
+                                                                    </button>
+                                                                @endif
                                                             <li class="slds-item">
                                                             </li>
                                                             <li class="slds-item">
