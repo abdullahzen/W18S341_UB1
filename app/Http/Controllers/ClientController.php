@@ -494,7 +494,7 @@ class ClientController extends Controller {
                 q.create_time,
                 u.username
             FROM question q
-            INNER JOIN user u ON u.user_ID = q.user_ID1 WHERE q.title OR q.content OR u.username LIKE \'%' . $search . '%\' AND q.is_hidden = 0
+            INNER JOIN user u ON u.user_ID = q.user_ID1 WHERE q.title LIKE \'%' . $search . '%\' OR q.content LIKE \'%' . $search . '%\'  OR u.username LIKE \'%' . $search . '%\' AND q.is_hidden = 0
             ORDER BY q.create_time DESC
         ');
 

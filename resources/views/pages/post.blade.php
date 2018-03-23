@@ -3,7 +3,7 @@
 <body>
 <div class="slds-scope">
     <div>
-        <div id="post" class="questions" style="    width: 100%;">
+        <div id="post" class="questions" style="width: 100%;">
             <article class="slds-card">
                 <div class="slds-page-header">
                     <div class="slds-media">
@@ -22,7 +22,7 @@
                             <p class="slds-text-body_small slds-line-height_reset">
                                 Category
                                 <?php
-                                echo \App\Http\Controllers\ClientControllerHelper::getCategoryById($post->category_ID1)[0]->category;
+                                    echo \App\Http\Controllers\ClientControllerHelper::getCategoryById($post->category_ID1)[0]->category;
                                 ?>
                             </p>
                         </div>
