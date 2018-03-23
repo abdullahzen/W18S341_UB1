@@ -1,5 +1,3 @@
-sudo: required
-dist: trusty
 language: php
 php:
   - 7.1
@@ -7,8 +5,8 @@ php:
 env:
   global:
     - APP_ENV=testing
-    - APP_DEBUG=false
-    - APP_URL=http://96.21.224.83:8000
+    - APP_DEBUG=true
+    - APP_URL=http://96.21.224.83:8000:1234
     - APP_KEY=base64:SeofiwFYw/63WrsyKyqkGj2+cR5SmNLpYKN4LdOAsIQ=
     - DB_CONNECTION=mysql
     - CACHE_DRIVER=array
@@ -17,22 +15,27 @@ env:
 
 addons:
   chrome: stable
-  apt:
-      sources:
-        - mysql-5.7-trusty
-      packages:
-        - mysql-server
-        - mysql-client
 
-install:
-   - cp .env.testing .env
-   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
 
 before_script:
+   - composer self-update
+   - composer install --no-interaction
+   - cp .env.travis .env
+   - php artisan key:generate
+   - php artisan config:clear
    - mysql -e 'create database soen341;'
+   - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+   - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+   - sudo apt-get update
+   - sudo apt-get install google-chrome-stable
+   - "export DISPLAY=:99.0"
+   - "sh -e /etc/init.d/xvfb start"
+   - sleep 3 # give xvfb some time to start
    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://96.21.224.83 &
-   - php artisan serve &
-
-script:
    - php artisan dusk
-   - vendor/bin/phpunit
