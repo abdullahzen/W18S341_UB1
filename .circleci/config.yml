@@ -2,13 +2,14 @@
  jobs:
      build:
          steps:
+            - checkout
             - run: sudo apt-get install -y mysql
             - run: cp .env.testing .env
             - run: composer install -n --ignore-platform-reqs
             - run: npm install
             - run: npm run production
             - run: vendor/bin/phpunit
-
+      docker:
             - run:
                name: Start Chrome Driver
                command: ./vendor/laravel/dusk/bin/chromedriver-linux
