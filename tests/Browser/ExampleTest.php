@@ -24,7 +24,7 @@ class ExampleTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) {
             $browser->visit(new homepage());
-            $browser->waitForText('localhost');
+            $browser->assertSee('Java');
 
         });
     }
