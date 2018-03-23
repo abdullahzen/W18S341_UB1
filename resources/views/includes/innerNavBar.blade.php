@@ -13,7 +13,7 @@
                                         <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#back"
                                              xmlns:xlink="http://www.w3.org/1999/xlink"/>
                                     </svg>
-                                    Go back
+                                    Go Back
                                 </p>
                             </button>
                         </a>
