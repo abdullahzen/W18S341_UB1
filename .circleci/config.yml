@@ -19,3 +19,9 @@ machine:
         - php artisan serve:
               background: true
         - php artisan dusk
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
