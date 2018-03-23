@@ -27,6 +27,7 @@ before_script:
    - composer self-update
    - composer install --no-interaction
    - cp .env.travis .env
+   - mysql -e 'create database soen341;'
    - mysql -u root soen341 < database/database.sql
    - mysql -u root soen341 < database/notification.sql
    - php artisan key:generate
