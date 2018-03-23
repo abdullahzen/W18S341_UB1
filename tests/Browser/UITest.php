@@ -79,4 +79,14 @@ class UITest extends DuskTestCase
             $browser->assertSee('Java');
         });
     }
+
+    public function testDisplayPost(){
+        $this->checkDbConnection();
+        $this->prepare();
+        $this->browse(function (Browser $browser) {
+            $browser->visit(new homepage());
+            $browser->visit('/post/1');
+            $browser->assertSee('Test');
+        });
+    }
 }
