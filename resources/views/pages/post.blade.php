@@ -4,7 +4,7 @@
 <body>
 <div class="slds-scope">
     <div>
-        <div id="post" class="questions" style="position: absolute; left: 25%; width: 50%">
+        <div id="post" class="questions" style="position: absolute; top: 5%; left: 25%; width: 50%">
             <article class="slds-card">
                 <div class="slds-page-header">
                     <div class="slds-media">

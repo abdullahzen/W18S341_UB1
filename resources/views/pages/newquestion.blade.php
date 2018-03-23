@@ -1,10 +1,11 @@
 @include('includes.head')
 @include('includes.headerfooter')
+@include('includes.innerNavBar')
 <body>
 <div class="slds-scope">
     <div>
         <article id="postquestions" class="slds-card"
-                 style="        width: 98%;float: right;margin-right: 12px;margin-top: 10px;">
+                 style="position: absolute; top:10%; left: 25%; width: 50%">
             <form class="form-horizontal" action="/newpost/do" id="postForm" method="post" onkeyup="checkForm()">
                 {{ csrf_field() }}
                 <div class="slds-card__header slds-grid">
