@@ -22,8 +22,7 @@
                             style="width: 112%;">
                             <li class="slds-grid">
                                 <div class="slds-context-bar__icon-action">
-                                    <button class="slds-button slds-icon-waffle_container slds-context-bar__button"
-                                            title="Catergories" onclick="displaycategories();">
+                                   <button class="slds-button slds-icon-waffle_container slds-context-bar__button">
                                  <span class="slds-icon-waffle">
                                  <span class="slds-r1"></span>
                                  <span class="slds-r2"></span>

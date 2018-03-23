@@ -1,11 +1,12 @@
 @include('includes.head')
 @include('includes.headerfooter')
+@include('includes.innerNavBar')
 <body>
 <div class="slds-scope">
     <article class="slds-card">
         <section class="slds-popover slds-popover_large" role="dialog" aria-label="Notifications"
                  id="notifications-container" aria-describedby="notifications-container"
-                 style="position: center;">
+                 style="position: absolute; top:10%; left: 25%; width: 100%">
             <header>
                 <div class="slds-media slds-has-flexi-truncate slds-p-around_x-small slds-text-align--center">
                     <div class="slds-media__body">

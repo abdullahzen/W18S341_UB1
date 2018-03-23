@@ -1,9 +1,10 @@
 @include('includes.head')
 @include('includes.headerfooter')
+@include('includes.innerNavBar')
 <body>
 <div class="slds-scope">
     <div>
-        <div id="post" class="questions" style="    width: 100%;">
+        <div id="post" class="questions" style="position: absolute; top: 5%; left: 25%; width: 50%">
             <article class="slds-card">
                 <div class="slds-page-header">
                     <div class="slds-media">
@@ -22,7 +23,7 @@
                             <p class="slds-text-body_small slds-line-height_reset">
                                 Category
                                 <?php
-                                echo \App\Http\Controllers\ClientControllerHelper::getCategoryById($post->category_ID1)[0]->category;
+                                    echo \App\Http\Controllers\ClientControllerHelper::getCategoryById($post->category_ID1)[0]->category;
                                 ?>
                             </p>
                         </div>
@@ -30,9 +31,9 @@
                 </div>
                 <!--Posts-->
                 <div class="slds-card__header slds-grid">
-                    <div class="slds-feed" style="    width: 100%;">
+                    <div class="slds-feed" style="width: 100%;">
                         <ul class="slds-feed__list">
-                            <li class="slds-feed__item">
+                            <li class="slds-feed__item slds-box--border">
                                 <article class="slds-post">
                                     <header class="slds-post__header slds-media">
                                         <ul class="slds-post__footer-actions-list slds-list_vertical slds-list" style="padding-top: 5mm;">
@@ -80,11 +81,11 @@
                                                         </span>
                                                         <span class="slds-assistive-text">More Options</span>
                                                     </button>
-                                                    <section class="slds-popover slds-nubbin_top-right slds-dynamic-menu"
+                                                    <section class="slds-popover slds-dynamic-menu"
                                                              id="More-Options-Container"
                                                              role="dialog" aria-label="More-Options"
                                                              aria-describedby="More-Options-Container"
-                                                             style="position: absolute; right: 0px; top: 55px; width: 23%; height: 2cm; display: none;">
+                                                             style="position: absolute; right: 0%; top: 15%; width: 25%; height: 25%; display: none;">
                                                         <footer class="slds-popover__footer">
                                                             <ul>
                                                                 <li>
@@ -157,7 +158,7 @@
                                                                                title="Click for single-item view of this post"
                                                                                class="slds-text-link_reset">
                                                     <?php
-                                                    echo \Carbon\Carbon::createFromTimeStamp(strtotime($post->create_time))->diffForHumans();
+                                                        echo 'submitted ' . \Carbon\Carbon::createFromTimeStamp(strtotime($post->create_time))->diffForHumans();
                                                     ?>
                                                 </a>
                                             </p>

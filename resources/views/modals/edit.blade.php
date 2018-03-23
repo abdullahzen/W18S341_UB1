@@ -3,7 +3,7 @@
         <form action="/edit" id="editForm" method="post">
             {{ csrf_field() }}
             <div class="slds-scope">
-                <div class="demo-only" style="height: 640px;">
+                <div class="demo-only" style="height: 50%;">
                     <section aria-describedby="modal-content-id-1" aria-labelledby="modal-heading-01" aria-modal="true" class="slds-modal slds-fade-in-open" role="dialog" tabindex="-1">
                         <div class="slds-modal__container">
                             <header class="slds-modal__header">
