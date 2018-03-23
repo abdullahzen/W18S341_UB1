@@ -83,56 +83,6 @@ $(document).ready(function () {
         favModal.style.display = "none";
     };
 
-    spanN.onclick = function () {
-        notificationModal.style.display = "none";
-    };
-
-    // spanM.onclick = function() {
-    //     moreOptionsContainer.style.display = "block";
-    // }
-
-    // Fix this if you want
-    /*window.onclick = function(event) {
-        if (event.target == loginModal) {
-            loginModal.style.display = "none";
-        }
-
-        if (event.target == registerModal) {
-            registerModal.style.display = "none";
-        }
-        if (event.target == userProfileModal) {
-            userProfileModal.style.display = "none";
-        }
-        if (event.target == editProfileModal) {
-            editProfileModal.style.display = "none";
-        }
-        if (event.target == favModal) {
-            favModal.style.display = "none";
-        }
-    }*/
-
-
-    /*	$(".comment_button1").click(function(){
-            if($('#comments_section1').css('display') == 'none'){
-            $("#comments_section1").css('display','block');
-            }
-            else{
-                $("#comments_section1").css('display','none');
-            }
-        });
-
-        */
-
-    /*	$("[aria-controls='expando-unique-id-1']").click(function(){
-            if($( "#section1" ).hasClass( "slds-is-open" )){
-                $("#section1").removeClass("slds-is-open");
-            }
-            else{
-                $("#section1").addClass("slds-is-open");
-            }
-        }); */
-
-
     (function () {
         var cx = '017643444788069204610:4gvhea_mvga'; // Insert your own Custom Search Engine ID here
         var gcse = document.createElement('script');
@@ -165,21 +115,6 @@ function showCategory(category) {
 
 function showpostquestion() {
     $("#postquestion").css('display', 'block');
-}
-
-
-function displaycategories() {
-    if ($('#categories').css('display') == 'none') {
-        $("#categories").css('display', 'block');
-        $("#favourites").css('display', 'block');
-        $(".language").css('width', '78%');
-        $(".language").css('float', 'left');
-    }
-    else {
-        $("#categories").css('display', 'none');
-        $("#favourites").css('display', 'none');
-        $(".language").css('width', '100%');
-    }
 }
 
 function Search(searchstring, event) {

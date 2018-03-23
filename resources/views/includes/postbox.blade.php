@@ -1,5 +1,5 @@
 <div class="slds-card__header slds-grid">
-    <div class="slds-feed" style="    width: 100%;">
+    <div class="slds-feed" style="width: 100%; height: 100%">
         <ul class="slds-feed__list">
             <li class="slds-box_border">
                 <article class="slds-post">
