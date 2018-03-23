@@ -12,13 +12,17 @@ use DB;
 class ExampleTest extends DuskTestCase
 {
 
-    public function testBasicExample()
-    {
+    private function checkDbConnection(){
         try {
             DB::connection()->getPdo();
         } catch (\Exception $e) {
             die("Could not connect to the database.  Please check your configuration.");
         }
+    }
+    public function testHomePage()
+    {
+
+        $this->checkDbConnection();
 
         $this->prepare();
 
@@ -26,6 +30,16 @@ class ExampleTest extends DuskTestCase
             $browser->visit(new homepage());
             $browser->assertSee('Java');
 
+        });
+    }
+
+    public function testNewPost(){
+        $this->checkDbConnection();
+        $this->prepare();
+        $this->browse(function (Browser $browser){
+           $browser->visit(new homepage());
+           $browser->clickLink('/newPost');
+           $browser->for
         });
     }
 }
