@@ -19,9 +19,6 @@ addons:
     packages:
       - mysql-server
       - mysql-client
-  sauce_connect:
-      username: "abdullahzen"
-      access_key: "c766de42-6bdf-4f5c-ac38-4fb057a46edc"
 
 before_script:
    - composer self-update
