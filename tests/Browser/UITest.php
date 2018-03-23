@@ -48,6 +48,35 @@ class UITest extends DuskTestCase
            $browser->type('title', 'This is a test question');
            $browser->type('content', 'What are the possibilities of failing?');
            $browser->element('#newQuestionButton')->submit();
+           $browser->assertSee('This is a test question');
+        });
+    }
+
+    public function testLogin(){
+        $this->checkDbConnection();
+        $this->prepare();
+        $this->browse(function (Browser $browser) {
+            $browser->visit(new homepage());
+            $browser->click('#loginButton');
+            $browser->type('username', 'admin');
+            $browser->type('password', '123abc');
+            $browser->element('#loginSubmitButton')->submit();
+            $browser->assertSee('admin');
+        });
+    }
+
+    public function testRegister(){
+        $this->checkDbConnection();
+        $this->prepare();
+        $this->browse(function (Browser $browser) {
+            $browser->visit(new homepage());
+            $browser->click('#registerButton');
+            $browser->type('username', 'testuser');
+            $browser->type('email', 'testuser@gmail.com');
+            $browser->type('password', '123test');
+            $browser->type('passwordConfirmation', '123test');
+            $browser->element('#submitButton')->submit();
+            $browser->assertSee('Java');
         });
     }
 }
