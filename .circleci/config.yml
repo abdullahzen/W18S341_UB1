@@ -1,4 +1,5 @@
-# PHP CircleCI 2.0 configuration file
+# PHP CircleCI 2.0 configuration file for Laravel 5.5 and Laravel Dusk by Wes Mahler
+# Author wesmahler.com
 #
 # Check https://circleci.com/docs/2.0/language-php/ for more details
 #
@@ -6,38 +7,100 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: circleci/php:7.1.5-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mysql:9.4
-
-    working_directory: ~/repo
-
+      - image: circleci/php:7.1.3-browsers
+      - image: circleci/mysql:5.7.18
+            environment:
+              MYSQL_DATABASE: soen341
+              MYSQL_USER: root
+              MYSQL_PASSWORD:
+              MYSQL_ROOT_PASSWORD:
+    working_directory: ~/laravel
     steps:
-
       - checkout
 
-      # Download and cache dependencies
-    pre:
-        - sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-        - sudo apt-get update
-        - sudo apt-get install google-chrome-stable
-      services:
-        - mysql
-    dependencies:
-      override:
-        - composer install --prefer-dist --no-interaction
-      post:
-        - mv .env.testing .env
-    test:
-      override:
-        - mysql -e 'create database soen341;'
-        - vendor/bin/phpunit
-        - ./vendor/laravel/dusk/bin/chromedriver-linux:
-              background: true
-        - php artisan serve:
-              background: true
-        - php artisan dusk
+      #https://askubuntu.com/questions/594656/how-to-install-the-latest-versions-of-nodejs-and-npm
+      #We are using Node JS 6 because that's the current version on our local vagrant/homestead machines
+      - run:
+         name: Download NodeJS v6
+         command: curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+
+      #sqlite needed for laravel database
+      #nodejs6 needed to run `npm run watch` later
+      - run:
+         name: Install P nodejs 6
+         command: sudo apt-get install -y nodejs
+
+
+      # Leave this for future use if php-zip is ever required
+      # If you remove the flag 'composer install --ignore-platform-reqs`
+      # composer will require php-zip to be installed. It appers that
+      # this isn't currently needed, so we are removing this from CircleCI
+      # to save 30 seconds of build time. The php-zip package isn't currently
+      # used by anything. If it ever does need to be used again, this can be
+      # uncommented.
+
+      #- run:
+      #   name: Install PHP libzip-dev
+      #   command: sudo apt-get install -y libzip-dev
+
+      #- run:
+      #   name: Install zip package for PHP
+      #   command: sudo docker-php-ext-install zip
+
+      - run:
+         name: Setup Laravel testing environment variables for CircleCI test
+         command: cp .env.testing .env
+
+      - run:
+         name: Update composer to latest version
+         command: composer self-update
+
+      - restore_cache:
+          keys:
+            - composer-v1-{{ checksum "composer.json" }}
+            - composer-v1-
+      - run: composer install -n --prefer-dist --ignore-platform-reqs
+      - save_cache:
+          key: composer-v1-{{ checksum "composer.json" }}
+          paths:
+            - vendor
+
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install NodeJS Packages
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+
+      - run:
+         name: Create SQLite Database
+         command: mysql -e 'create database soen341;'
+
+      - run:
+         name: Migrate Laravel Database
+         command: php artisan migrate --env=testing --force
+
+      - run:
+         name: Compile Javascript & CSS for Browser Testing
+         command: npm run production
+
+      - run:
+         name: Start Chrome Driver
+         command: ./vendor/laravel/dusk/bin/chromedriver-linux
+         background: true
+
+      - run:
+         name: Run Laravel Server
+         command: php artisan serve
+         background: true
+
+      - run:
+         name: Test 1 - Run Phpunit for Server-Side HTTP Requests & PHP Unit Testing
+         command: vendor/bin/phpunit
+
+      - run:
+         name: Test 2 - Run Laravel Desk for Browser Testing
+         command: php artisan dusk
