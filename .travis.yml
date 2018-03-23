@@ -34,5 +34,6 @@ before_script:
    - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
    - sudo apt-get update
    - sudo apt-get install google-chrome-stable
+   - php artisan serve --env=testing --port=8000 --host=96.21.224.83 &
    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://96.21.224.83 &
    - php artisan dusk
