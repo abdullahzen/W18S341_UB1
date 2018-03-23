@@ -38,5 +38,5 @@ before_script:
    - "sh -e /etc/init.d/xvfb start"
    - sleep 3 # give xvfb some time to start
    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://127.0.0.1 &
-   - php artisan serve --host=127.0.0.1 &
+   - php artisan serve --port=8000 --host=96.21.224.83 &
    - php artisan dusk
