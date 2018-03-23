@@ -35,4 +35,4 @@ before_script:
    - sudo apt-get update
    - sudo apt-get install google-chrome-stable
    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost:8000 &
-
+   - php artisan serve --env=testing --port=8000 --host=localhost &
