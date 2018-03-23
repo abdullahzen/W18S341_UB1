@@ -21,7 +21,12 @@ $(document).ready(function () {
     var spanU = document.getElementsByClassName("closeU")[0];
     var spanF = document.getElementsByClassName("closeF")[0];
 
-    showCategory('Java');
+    if (window.location.pathname.split( '/' )[1] == 'top' || window.location.pathname.split( '/' )[1] == 'new') {
+        sessionStorage.setItem('language', window.location.pathname.split( '/' )[2]);
+        showActivePage();
+    } else {
+        showCategory('Java');
+    }
 
     if (favButton != null) {
         favButton.onclick = function () {
@@ -87,7 +92,6 @@ $(document).ready(function () {
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(gcse, s);
     })();
-
 });
 
 function shownotifications() {
@@ -119,4 +123,9 @@ function Search(searchstring, event) {
             window.open("/search=" + searchstring, "_self");
         }
     }
+}
+
+function showActivePage() {
+    if (sessionStorage.getItem('language') != null)
+        showCategory(sessionStorage.getItem('language'));
 }
