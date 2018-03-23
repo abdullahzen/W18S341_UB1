@@ -23,9 +23,8 @@ class ExampleTest extends DuskTestCase
         $this->prepare();
 
         $this->browse(function (Browser $browser) {
-            $browser->driver->takeScreenshot();
             $browser->visit(new homepage());
-            $browser->assertSee('Java');
+            dd($browser->driver->getCurrentURL());
 
         });
     }
