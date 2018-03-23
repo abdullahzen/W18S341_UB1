@@ -244,7 +244,7 @@
                                                                     </svg>
                                                                 </button>
                                                             </li>
-                                                                @if (session()->get('username') == $post->username)
+                                                                @if (session()->get('username') == $a->username)
                                                                     <button title="Delete" class="slds-button_reset slds-post__footer-action" onclick="window.location.href = '/post/' + {{$a->answer_ID}} + '/delete'" id="deleteAnswer">
                                                                         <svg class="slds-button__icon slds-button__icon_left"
                                                                             aria-hidden="true">
