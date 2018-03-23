@@ -111,8 +111,6 @@ $(document).ready(function () {
         }
     }*/
 
-   
-
 
     /*	$(".comment_button1").click(function(){
             if($('#comments_section1').css('display') == 'none'){
@@ -148,17 +146,17 @@ $(document).ready(function () {
 
 });
 
-function shownotifications(){
-        if ($('#notifications-container').css('display') == 'none') {
-            $("#notifications-container").css('display', 'block');
-        }
-        else {
-            $("#notifications-container").css('display', 'none');
-        }
+function shownotifications() {
+    if ($('#notifications-container').css('display') == 'none') {
+        $("#notifications-container").css('display', 'block');
+    }
+    else {
+        $("#notifications-container").css('display', 'none');
+    }
 
 }
 
-function showCategory(category){
+function showCategory(category) {
     $(".languageItem").removeClass("slds-is-active");
     $(".language").css('display', 'none');
     $("#" + category + "li").addClass("slds-is-active");
@@ -171,25 +169,25 @@ function showpostquestion() {
 
 
 function displaycategories() {
-   if ($('#categories').css('display') == 'none') {
-		$("#categories").css('display', 'block');
-		$("#favourites").css('display', 'block');
-       $(".language").css('width', '78%');
-       $(".language").css('float', 'left');
-	}
-	else {
-            $("#categories").css('display', 'none');
-			$("#favourites").css('display', 'none');
-			$(".language").css('width', '100%');
-        }
+    if ($('#categories').css('display') == 'none') {
+        $("#categories").css('display', 'block');
+        $("#favourites").css('display', 'block');
+        $(".language").css('width', '78%');
+        $(".language").css('float', 'left');
+    }
+    else {
+        $("#categories").css('display', 'none');
+        $("#favourites").css('display', 'none');
+        $(".language").css('width', '100%');
+    }
 }
 
 function Search(searchstring, event) {
-	if (event.keyCode == 13 || event.which == 13){
+    if (event.keyCode == 13 || event.which == 13) {
         if (searchstring.trim() == "") {
             alert("This field cannot be empty.");
         } else {
             window.open("/search=" + searchstring, "_self");
         }
-	}
+    }
 }
