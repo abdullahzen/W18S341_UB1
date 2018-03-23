@@ -245,6 +245,15 @@
                                                                     </svg>
                                                                 </button>
                                                             </li>
+                                                                @if (session()->get('username') == $a->username)
+                                                                    <button title="Delete" class="slds-button_reset slds-post__footer-action" onclick="window.location.href = '/post/' + {{$a->answer_ID}} + '/delete'" id="deleteAnswer">
+                                                                        <svg class="slds-button__icon slds-button__icon_left"
+                                                                            aria-hidden="true">
+                                                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                                                                                xmlns:xlink="http://www.w3.org/1999/xlink"/>
+                                                                        </svg>
+                                                                    </button>
+                                                                @endif
                                                             <li class="slds-item">
                                                             </li>
                                                             <li class="slds-item">

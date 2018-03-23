@@ -511,7 +511,7 @@ class ClientController extends Controller {
 
     public function deleteAnswer($id) {
         DB::table('answer')->where('answer_ID', $id)->update(['is_hidden' => 1]);
-        return redirect('/post' . $id);
+        return redirect('/post/' . $id);
     }
 
     public function setBestAnswer($qid, $aid) {
