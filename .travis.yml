@@ -34,4 +34,6 @@ before_script:
    - sudo apt-get update
    - sudo apt-get install google-chrome-stable
    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-   - php artisan serve --env=dusk.local
+
+script: xvfb-run --server-args="-screen 0 1024x768x24" make test
+
