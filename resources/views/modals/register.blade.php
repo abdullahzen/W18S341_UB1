@@ -19,7 +19,7 @@
                                         <input class="slds-input" name="username" id="username" placeholder="Enter Username"
                                                type="text">
                                     </div>
-                                </div> 
+                                </div>
                                 <div class="slds-form-element">
                                     <label class="slds-form-element__label" for="input-id-02"><b>E-mail</b></label>
                                     <div class="slds-form-element__control">
