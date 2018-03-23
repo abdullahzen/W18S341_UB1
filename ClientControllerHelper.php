@@ -236,7 +236,7 @@ class ClientControllerHelper extends Controller {
 
 
     public static function getAllQuestions($language){
-        $allQuestions = DB::select('select * from question q inner join category c o q.category_ID1= c.category_ID 
+        $allQuestions = DB::select('select * from question q inner join category c on q.category_ID1= c.category_ID 
                         where c.category = \'' . $language . '\' order by q.create_time DESC');
         return $allQuestions;
 
