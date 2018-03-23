@@ -1,5 +1,5 @@
 $(function(){
-    $("#loginButton").click(function () {
+    $("#loginSubmitButton").click(function () {
         $(". ").hide();
         var request = $.post('/login', $('#loginForm').serialize());
 

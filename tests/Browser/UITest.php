@@ -7,9 +7,10 @@ use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use DB;
+use Tests\Unit\ExampleTest;
 
 
-class ExampleTest extends DuskTestCase
+class UITest extends DuskTestCase
 {
 
     private function checkDbConnection(){
@@ -38,7 +39,15 @@ class ExampleTest extends DuskTestCase
         $this->prepare();
         $this->browse(function (Browser $browser){
            $browser->visit(new homepage());
-           $browser->clickLink('/newPost');
+           $browser->click('#loginButton');
+           $browser->type('username', 'admin');
+           $browser->type('password', '123abc');
+           $browser->element('#loginSubmitButton')->submit();
+           $browser->click('#newPostModalButton');
+           $browser->select('category', 'Php');
+           $browser->type('title', 'This is a test question');
+           $browser->type('content', 'What are the possibilities of failing?');
+           $browser->element('#newQuestionButton')->submit();
         });
     }
 }

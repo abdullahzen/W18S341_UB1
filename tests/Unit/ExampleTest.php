@@ -7,13 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTest()
-    {
-        $this->assertTrue(true);
+    public function testPostNewQuestion(){
+        $this->assertDatabaseHas('question', ['title' => 'This is a test question', 'content' => 'What are the possibilities of failing?']);
     }
 }

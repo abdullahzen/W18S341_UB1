@@ -41,7 +41,7 @@
                                     </button>
 
                                     @if(session()->has('username'))
-                                        <button class="slds-button slds-button_neutral"
+                                        <button id="newPostModalButton" class="slds-button slds-button_neutral"
                                                 onclick="window.location.href='/newpost'">New Post
                                         </button>
                                     @else

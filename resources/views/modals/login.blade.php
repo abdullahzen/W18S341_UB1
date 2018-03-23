@@ -29,7 +29,7 @@
                                     </div>
                                 </br>
                                     <div class="form-group">
-                                        <input type="submit" id="loginButton" class="slds-button slds-button_brand" value="LOGIN"/>
+                                        <input type="submit" id="loginSubmitButton" class="slds-button slds-button_brand" value="LOGIN"/>
                                     </div>
                                     </center>
                                 </div>
