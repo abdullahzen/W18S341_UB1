@@ -45,7 +45,7 @@ machine:
       services:
         - mysql
     dependencies:
-      override:
+      override: 
         - composer install --prefer-dist --no-interaction
       post:
         - mv .env.testing .env
