@@ -64,28 +64,38 @@ $(document).ready(function () {
         postModal.style.display = "block";
     }*/
 
-    span.onclick = function() {
-        loginModal.style.display = "none";
+    if(loginModal != null && loginModal.style.display !== "block"){
+        span.onclick = function() {
+            loginModal.style.display = "none";
+        }
     }
 
-    spanR.onclick = function() {
-        registerModal.style.display = "none";
+    if(registerModal != null && registerModal.style.display !== "block") {
+        spanR.onclick = function () {
+            registerModal.style.display = "none";
+        }
     }
 
     /*spanP.onclick = function() {
         postModal.style.display = "none";
     }*/
 
-    spanU.onclick = function () {
-        userProfileModal.style.display = "none";
+    if(userProfileModal != null && userProfileModal.style.display !== "block") {
+        spanU.onclick = function () {
+            userProfileModal.style.display = "none";
+        }
     }
 
-    spanF.onclick = function () {
-        favModal.style.display = "none";
+    if(favModal != null && favModal.style.display !== "block"){
+        spanF.onclick = function () {
+            favModal.style.display = "none";
+        }
     }
 
-    spanN.onclick = function () {
-        notificationModal.style.display = "none";
+    if(notificationModal != null && notificationModal.style.display !== "block") {
+        spanN.onclick = function () {
+            notificationModal.style.display = "none";
+        }
     }
 
     // spanM.onclick = function() {
@@ -95,20 +105,25 @@ $(document).ready(function () {
     // Fix this if you want
     window.onclick = function(event) {
         if (event.target == loginModal) {
-            loginModal.style.display = "none";
+            if (loginModal != null)
+                loginModal.style.display = "none";
         }
 
         if (event.target == registerModal) {
-            registerModal.style.display = "none";
+            if (registerModal != null)
+                registerModal.style.display = "none";
         }
         if (event.target == userProfileModal) {
-            userProfileModal.style.display = "none";
+            if (userProfileModal != null)
+                userProfileModal.style.display = "none";
         }
         if (event.target == editProfileModal) {
-            editProfileModal.style.display = "none";
+            if(editProfileModal != null)
+                editProfileModal.style.display = "none";
         }
         if (event.target == favModal) {
-            favModal.style.display = "none";
+            if (favModal != null)
+                favModal.style.display = "none";
         }
     }
 
@@ -136,7 +151,7 @@ $(document).ready(function () {
         }); */
 
 
-    (function () {
+/*    (function () {
         var cx = '017643444788069204610:4gvhea_mvga'; // Insert your own Custom Search Engine ID here
         var gcse = document.createElement('script');
         gcse.type = 'text/javascript';
@@ -145,7 +160,7 @@ $(document).ready(function () {
             '//www.google.com/cse/cse.js?cx=' + cx;
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(gcse, s);
-    })();
+    })();*/
 
 });
 
