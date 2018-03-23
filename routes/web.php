@@ -17,6 +17,14 @@ Route::get('/', function(){
     return view('pages.homepage');
 });
 
+Route::get('/new/{language}', function(){
+    return view('pages.homepage');
+});
+
+Route::get('/top/{language}', function(){
+    return view('pages.sortedHomepage');
+});
+
 Route::get('/newpost', function () {
     return view('pages.newquestion');
 });

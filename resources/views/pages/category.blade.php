@@ -18,6 +18,20 @@
                         All {{$language}} related questions can be found here.
                     </p>
                 </div>
+                <div class="slds-global-header__item">
+                    <ul class="slds-global-header__item slds-grid slds-grid_vertical-align-center"
+                        style="width: 112%;">
+                        <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
+                            <div class="slds-button-group" role="group">
+                                <button class="slds-button slds-button_neutral" onclick="location.href='/new/{{$language}}'">New
+                                </button>
+                                <button class="slds-button slds-button_neutral"
+                                        onclick="window.location.href='/top/{{$language}}'">Top
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <!--POSTS-->

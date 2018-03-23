@@ -235,7 +235,17 @@ class ClientControllerHelper extends Controller {
 
     }
 
-    public static function getPostsByCategoryNameQuery($category) {
+    public static function getPostsByCategoryNameQuery($category, $sort) {
+        switch ($sort) {
+            case 'top':
+                $sort = 'q.upvotes';
+                break;
+            case 'new':
+                $sort = 'q.create_time';
+                break;
+            default:
+                break;
+        }
         $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\' order by category.category_ID ASC')[0]->category_ID;
         $post = DB::select('
             SELECT
@@ -252,10 +262,15 @@ class ClientControllerHelper extends Controller {
             FROM question q
             INNER JOIN user u
                 ON q.user_ID1 = u.user_ID AND q.category_ID1 = \'' . $category_ID . '\' AND q.is_hidden = 0
-            ORDER BY q.question_ID DESC
+            ORDER BY ' . $sort . ' DESC
         ');
 
         return $post;
+    }
+
+    public static function getSortedQuestions($category, $sort, $language){
+        $post = getPostsByCategoryNameQuery($category, $sort);
+        return view('pages.sortedHomepage', ['post' => $post, 'language' => $language]);
     }
 
     public static function getCategoryById($id) {
@@ -343,19 +358,5 @@ class ClientControllerHelper extends Controller {
             default:
                 break;
         }
-        
-        public static function getnewQuestionsByTimeStamp($language){
-        $newQuestions = DB::select('select * from question q inner join category c on q.category_ID1 = c.category_ID
-                      where c.category = \'' . $language . '\' order by q.create_time ASC');
-        return $newQuestions;
-    }
-
-
-    public static function getAllQuestions($language){
-        $allQuestions = DB::select('select * from question q inner join category c on q.category_ID1= c.category_ID 
-                        where c.category = \'' . $language . '\' order by q.create_time DESC');
-        return $allQuestions;
-    }
-
     }
 }
