@@ -9,12 +9,12 @@ jobs:
     docker:
       - image: circleci/php:7.1-browsers
         environment:
-                MYSQL_HOST: 127.0.0.1
-                MYSQL_PORT: 3306
-                MYSQL_DB: soen341
-                MYSQL_USER: root
-                MYSQL_ALLOW_EMPTY_PASSWORD: true
-                MYSQL_PASSWORD:
+                DB_CONNECTION: mysql
+                DB_HOST: 127.0.0.1
+                DB_PORT: 3306
+                DB_DATABASE: soen341
+                DB_USERNAME: root
+                DB_PASSWORD:
       - image: mysql:5.7
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
         environment:
@@ -78,10 +78,6 @@ jobs:
       - run:
          name: Clear config
          command: php artisan config:clear
-
-      - run:
-         name: Migrate
-         command: php artisan migrate
 
       - run:
          name: Start Chrome Driver
