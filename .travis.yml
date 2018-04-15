@@ -27,6 +27,7 @@ addons:
 before_script:
    - composer self-update
    - composer install --no-interaction
+   - composer require symfony/process
    - cp .env.travis .env
    - mysql -e 'create database soen341;'
    - mysql -u root soen341 < database/database.sql
@@ -41,5 +42,7 @@ before_script:
    - "sh -e /etc/init.d/xvfb start"
    - sleep 3 # give xvfb some time to start
    - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
+   - php artisan serve --env=dusk.local &
+
 script:
    - php artisan dusk
