@@ -95,7 +95,7 @@ jobs:
 
       - run:
          name: Setup Laravel testing environment variables for CircleCI test
-         command: php artisan db:soen341
+         command: php artisan db:seed
 
       - run:
          name: Test 2 - Run Laravel Desk for Browser Testing
