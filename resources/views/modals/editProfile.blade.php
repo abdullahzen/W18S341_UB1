@@ -21,13 +21,13 @@
                                 </button>
                                 <div style="background-color: rgb(244, 246, 249);">
                                     <div class="slds-text-heading_small slds-text-body_regular slds-text-align_center slds-m-top_medium slds-theme_alert-texture"">
-                                    <strong>Upvotes</strong><br>10<br></div>
+                                    <strong>Rank</strong><br/>{{\App\Http\Controllers\ClientControllerHelper::getRank(session()->get('username'))}}<br/></div>
                             </div>
                             <span class="slds-align_absolute-center slds-avatar slds-avatar_circle slds-avatar_large">
                                     <img alt="Person name" src="/assets/images/avatar2.jpg" title="User avatar"/>
                                 </span>
                             <div class="slds-text-heading_small slds-text-body_regular slds-text-align_center slds-m-top_medium slds-theme_alert-texture">
-                                <strong>Answers</strong><br>20<br></div>
+                                <strong>Questions</strong><br/>{{\App\Http\Controllers\ClientControllerHelper::getNumberOfQuestionsForUser(session()->get('username'))}}</div>
                 </div>
                 <div class="slds-media__body">
                     <div class="slds-align_absolute-center">
