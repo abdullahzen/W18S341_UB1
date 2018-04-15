@@ -4,27 +4,26 @@ php:
 
 sudo: required
 dist: trusty
-
 addons:
-   chrome: stable
+  chrome: stable
 
-    apt:
-      sources:
-        - mysql-5.7-trusty
-      packages:
-        - mysql-server
-        - mysql-client
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
+
 install:
    - cp .env.travis .env
    - travis_retry composer install --no-interaction --prefer-dist --no-suggest
-
 
 before_script:
    - mysql -e 'create database soen341;'
    - mysql -u root soen341 < database/database.sql
    - mysql -u root soen341 < database/notification.sql
    - php artisan key:generate
-   - php artisan config:clear 
+   - php artisan config:clear
    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
    - php artisan serve &
 
