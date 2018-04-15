@@ -30,6 +30,10 @@ jobs:
          command: sudo apt-get install -y mysql-server
 
       - run:
+         name: Setup Laravel testing environment variables for CircleCI test
+         command: cp .env.circle .env
+
+      - run:
           name: Mysql database
           command: mysql -h 127.0.0.1 -u root -e "create database soen341;"
 
@@ -40,10 +44,6 @@ jobs:
       - run:
           name: Mysql database
           command: mysql -h 127.0.0.1 -u root soen341 < database/notification.sql
-
-      - run:
-         name: Setup Laravel testing environment variables for CircleCI test
-         command: cp .env.circle .env
 
       - run:
          name: Update composer to latest version
@@ -58,7 +58,7 @@ jobs:
           key: composer-v1-{{ checksum "composer.json" }}
           paths:
             - vendor
-            
+
       - run:
          name: Start Chrome Driver
          command: ./vendor/laravel/dusk/bin/chromedriver-linux
