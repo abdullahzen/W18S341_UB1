@@ -12,14 +12,14 @@ jobs:
                 MYSQL_HOST: 127.0.0.1
                 MYSQL_PORT: 3306
                 MYSQL_DB: circle_test
-                MYSQL_USER: ubuntu
+                MYSQL_USER: root
                 MYSQL_ALLOW_EMPTY_PASSWORD: true
                 MYSQL_PASSWORD:
-      - image: mysql:latest
+      - image: mysql:5.7
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_USER: ubuntu
+          MYSQL_USER: root
 
     working_directory: ~/laravel
     steps:
@@ -43,16 +43,20 @@ jobs:
           command: sudo apt-get install -y mysql-server
 
       - run:
+          name: install mysql
+          command: sudo apt-get install -y mysql-client
+
+      - run:
           name: Setup Laravel testing environment variables for CircleCI test
           command: cp .env.circle .env
 
       - run:
           name: Mysql database
-          command: sudo mysql -h 127.0.0.1 -u ubuntu circle_test < database/database.sql
+          command: sudo mysql -h 127.0.0.1 -u root circle_test < database/database.sql
 
       - run:
           name: Mysql database
-          command: sudo mysql -h 127.0.0.1 -u ubuntu circle_test < database/notification.sql
+          command: sudo mysql -h 127.0.0.1 -u root circle_test < database/notification.sql
 
       - run:
           name: Update composer to latest version
