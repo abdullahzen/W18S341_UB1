@@ -18,8 +18,8 @@ jobs:
       - image: mysql:latest
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
         environment:
-          MYSQL_ROOT_PASSWORD: ubuntu
-          MYSQL_DATABASE: circle_test
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_USER: ubuntu
 
     working_directory: ~/laravel
     steps:
@@ -48,11 +48,11 @@ jobs:
 
       - run:
           name: Mysql database
-          command: mysql -h 127.0.0.1 -u ubuntu circle_test < database/database.sql
+          command: sudo mysql -h 127.0.0.1 -u ubuntu circle_test < database/database.sql
 
       - run:
           name: Mysql database
-          command: mysql -h 127.0.0.1 -u ubuntu circle_test < database/notification.sql
+          command: sudo mysql -h 127.0.0.1 -u ubuntu circle_test < database/notification.sql
 
       - run:
           name: Update composer to latest version
