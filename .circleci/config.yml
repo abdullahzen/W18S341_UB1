@@ -12,9 +12,8 @@ jobs:
                 MYSQL_HOST: 127.0.0.1
                 MYSQL_PORT: 3306
                 MYSQL_DB: soen341
-                MYSQL_USER: root
-                MYSQL_ALLOW_EMPTY_PASSWORD: true
-                MYSQL_PASSWORD:
+                MYSQL_USER: test
+                MYSQL_PASSWORD: test
       - image: mysql:latest
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
         environment:
