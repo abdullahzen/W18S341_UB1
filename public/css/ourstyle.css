@@ -1,8 +1,3 @@
-body{
-    /*background-color: rgb(250, 250, 251);*/
-    background-color: white;
-}
-
 /* Modal forms */
 .modal {
     display : none;
@@ -18,7 +13,9 @@ body{
     color: #3284c4 !important;
     background: #ECEEF2;
 }
-
+.modalwidth{
+    width: 500px;
+}
 .modal-header{
     background: #3284C4;
 }
@@ -95,7 +92,7 @@ body{
 
 .vl {
     border-left: 5px solid lightgrey;
-    height: 5%;
-    margin-left: 60%;
-    margin-top: -25%;
+    height: 250px;
+    margin-left: 10cm;
+    margin-top: -35mm;
 }

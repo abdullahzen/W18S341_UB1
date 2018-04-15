@@ -1,8 +1,8 @@
 <div class="slds-card__header slds-grid">
-    <div class="slds-feed" style="width: 100%; height: 100%">
+    <div class="slds-feed" style="    width: 100%;">
         <ul class="slds-feed__list">
-            <li class="slds-box_border">
-                <article class="slds-post">
+            <li class="slds-feed__item">
+                <article class="slds-post" style="border: black; border-style: solid; border-width: 0.1px;">
                     <header class="slds-post__header slds-media">
                         <div class="slds-media__figure">
                             <a href="/publicProfile/{{$data->username}}"
@@ -18,9 +18,11 @@
                                     <a href="/publicProfile/{{$data->username}}">{{$data->username}}</a>
                                 </p>
                                 <p class="slds-text-body_small">
-                                    <?php
-                                        echo 'submitted ' . \Carbon\Carbon::createFromTimeStamp(strtotime($data->create_time))->diffForHumans();
-                                    ?>
+                                    <a href="javascript:void(0);" title="Click for single-item view of this post" class="slds-text-link_reset">
+                                        <?php
+                                        echo \Carbon\Carbon::createFromTimeStamp(strtotime($data->create_time))->toFormattedDateString();
+                                        ?>
+                                    </a>
                                 </p>
                             </div>
                         </div>
@@ -35,11 +37,11 @@
                             <li class="slds-col slds-item slds-m-right_medium">
                                 {{$data->upvotes}}
                                 <?php
-                                    if ($data->upvotes == 0 || $data->upvotes == 1) {
-                                        echo ' point';
-                                    } else {
-                                        echo ' points';
-                                    }
+                                if ($data->upvotes == 0 || $data->upvotes == 1) {
+                                    echo ' point';
+                                } else {
+                                    echo ' points';
+                                }
                                 ?>
                             </li>
                         </ul>

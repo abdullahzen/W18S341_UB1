@@ -75,27 +75,21 @@ class ClientControllerHelper extends Controller {
 
 
     public static function getNumberOfQuestionsForUser($username) {
-        if (session()->has('username')) {
+        $result = DB::select('select * from question q inner join user u on q.user_ID1 = u.user_ID where u.username = \'' . $username . '\' AND q.is_hidden = 0');
+        $count = 0;
+        if (!empty($result))
+            $count = count($result);
 
-            $result = DB::select('select * from question q inner join user u on q.user_ID1 = u.user_ID where u.username = \'' . $username . '\' AND q.is_hidden = 0');
-            $count = 0;
-            if (!empty($result))
-                $count = count($result);
-
-            return $count;
-        }
+        return $count;
     }
 
     public static function getNumberOfAnswersForUser($username) {
-        if (session()->has('username')) {
+        $result = DB::select('select * from answer a inner join user u on a.user_ID2 = u.user_ID where u.username = \'' . $username . '\' AND a.is_hidden = 0');
+        $count = 0;
+        if (!empty($result))
+            $count = count($result);
 
-            $result = DB::select('select * from answer a inner join user u on a.user_ID2 = u.user_ID where u.username = \'' . $username . '\' AND a.is_hidden = 0');
-            $count = 0;
-            if (!empty($result))
-                $count = count($result);
-
-            return $count;
-        }
+        return $count;
     }
 
     public static function checkUpvotes($id) {
@@ -203,23 +197,18 @@ class ClientControllerHelper extends Controller {
     }
 
     public static function getRank($user){
-        if(session()->has('username')){
-            $rank = DB::select('
-            SELECT
-                *
-            FROM user u order by u.rank DESC');
-            $myRank = 0;
-            foreach ($rank as $key=>$value){
-                $myRank++;
-                if ($value->username == $user){
-                    break;
-                }
+        $rank = DB::select('
+        SELECT
+            *
+        FROM user u order by u.rank DESC');
+        $myRank = 0;
+        foreach ($rank as $key=>$value){
+            $myRank++;
+            if ($value->username == $user){
+                break;
             }
-            return $myRank;
-        } else {
-            return '0';
         }
-
+        return $myRank;
   }
 
   public static function getTopQuestionsByUpvotes($language) {
