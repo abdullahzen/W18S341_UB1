@@ -40,7 +40,7 @@ jobs:
 
       - run:
           name: install mysql
-          command: sudo apt install mysql-client
+          command: sudo apt-get install mysql-server
 
       - run:
           name: Setup Laravel testing environment variables for CircleCI test
