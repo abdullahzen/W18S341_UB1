@@ -23,7 +23,6 @@ class UITest extends DuskTestCase
     public function testHomePage()
     {
 
-        dd($this->baseUrl());
         $this->checkDbConnection();
 
         $this->prepare();
