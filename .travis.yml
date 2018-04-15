@@ -6,6 +6,8 @@ sudo: required
 dist: trusty
 addons:
   chrome: stable
+  hosts:
+      - localhost:8080
 
   apt:
     sources:
@@ -29,7 +31,7 @@ before_script:
    - sleep 3 # give xvfb some time to start
    - php artisan serve --port=8080 &
    - sleep 3
-   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost:8080 &
+   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
    - sleep 3
 
 script:
