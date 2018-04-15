@@ -20,8 +20,5 @@ class ExampleTest extends TestCase
         } catch (\Exception $e) {
             die("Could not connect to the database.  Please check your configuration.");
         }
-
-        $response = $this->get('/');
-        $response->assertStatus(500);
     }
 }

@@ -6,7 +6,7 @@ env:
   global:
     - APP_ENV=testing
     - APP_DEBUG=true
-    - APP_URL=http://96.21.224.83:8000
+    - APP_URL=http://localhost:8000
     - APP_KEY=base64:SeofiwFYw/63WrsyKyqkGj2+cR5SmNLpYKN4LdOAsIQ=
     - DB_CONNECTION=mysql
     - CACHE_DRIVER=array
@@ -39,5 +39,5 @@ before_script:
    - "export DISPLAY=:99.0"
    - "sh -e /etc/init.d/xvfb start"
    - sleep 3 # give xvfb some time to start
-   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://96.21.224.83 &
+   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
    - php artisan dusk
