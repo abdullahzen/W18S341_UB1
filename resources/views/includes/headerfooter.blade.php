@@ -4,15 +4,6 @@
     <div class="demo-only" style="height: 0.001rem;">
         <div class="demo-only" style="height: 28.571rem;">
             <header class="slds-global-header_container">
-                    <link rel="apple-touch-icon" sizes="180x180" href="/public/assets/images/apple-touch-icon.png">
-                    <link rel="icon" type="image/png" sizes="32x32" href="/public/assets/images/favicon-32x32.png">
-                    <link rel="icon" type="image/png" sizes="16x16" href="/public/assets/images/favicon-16x16.png">
-                    <link rel="manifest" href="/public/assets/images/site.webmanifest">
-                    <link rel="mask-icon" href="/public/assets/images/safari-pinned-tab.svg" color="#5bbad5">
-                    <link rel="shortcut icon" href="/public/assets/images/favicon.ico">
-                    <meta name="msapplication-TileColor" content="#da532c">
-                    <meta name="msapplication-config" content="/public/assets/images/browserconfig.xml">
-                    <meta name="theme-color" content="#ffffff">
                 <a href="javascript:void(0);" class="slds-assistive-text slds-assistive-text_focus">Skip to
                     Navigation</a><a href="javascript:void(0);" class="slds-assistive-text slds-assistive-text_focus">Skip
                     to Main Content</a>
@@ -22,7 +13,8 @@
                             style="width: 112%;">
                             <li class="slds-grid">
                                 <div class="slds-context-bar__icon-action">
-                                   <button class="slds-button slds-icon-waffle_container slds-context-bar__button">
+                                    <button class="slds-button slds-icon-waffle_container slds-context-bar__button"
+                                            title="Description of the icon when needed" onclick="displaycategories();">
                                  <span class="slds-icon-waffle">
                                  <span class="slds-r1"></span>
                                  <span class="slds-r2"></span>
@@ -92,26 +84,6 @@
                                     <span class="slds-assistive-text">Toggle Favorite</span>
                                 </button>
                             </li>
-                            {{--<li class="slds-dropdown-trigger slds-dropdown-trigger_click slds-p-horizontal_xxx-small">
-                                <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-small slds-button_icon-container slds-button_icon-x-small slds-global-header__button_icon-actions slds-m-horizontal_xx-small"
-                                        title="Global Actions">
-                                    <svg class="slds-button__icon" aria-hidden="true">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                             xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#add"/>
-                                    </svg>
-                                    <span class="slds-assistive-text">Global Actions</span>
-                                </button>
-                            </li>
-                            <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
-                                <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon"
-                                        title="Help and Training">
-                                    <svg class="slds-button__icon slds-global-header__icon" aria-hidden="true">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                             xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#question"/>
-                                    </svg>
-                                    <span class="slds-assistive-text">Help and Training</span>
-                                </button>
-                            </li>--}}
                             <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
                                 <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon"
                                         id="userProfileButton" title="Setup">
@@ -119,16 +91,16 @@
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink"
                                              xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#setup"/>
                                     </svg>
-                                    <span class="slds-assistive-text">Edit Profile</span>
+                                    <span class="slds-assistive-text">Setup</span>
                                 </button>
                             </li>
                             <li class="slds-dropdown-trigger slds-dropdown-trigger_click">
-                               <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon" title="Notifications" id="Notifications" onclick="shownotifications();">
-                                  <svg class="slds-button__icon slds-global-header__icon" aria-hidden="true">
-                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#notification" />
-                                  </svg>
-                                  <span class="slds-assistive-text">Notifications</span>
-                               </button>
+                                <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-container slds-button_icon-small slds-global-header__button_icon" title="Notifications" id="Notifications" onclick="shownotifications();">
+                                    <svg class="slds-button__icon slds-global-header__icon" aria-hidden="true">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#notification" />
+                                    </svg>
+                                    <span class="slds-assistive-text">Notifications</span>
+                                </button>
                             </li>
                             <li class="slds-dropdown-trigger slds-dropdown-trigger_click slds-m-left_x-small">
                                 <button class="slds-button" aria-haspopup="true">
@@ -149,8 +121,8 @@
                                 </a>
                             </li>
                         </ul>
-                     </div>
-                    @include('includes.notification')
+                </div>
+                @include('includes.notification')
                 @endif
             </header>
         </div>

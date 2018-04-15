@@ -15,7 +15,6 @@
 
                 @foreach($categories as $language=>$posts)
                     @include('pages.category', ['language'=>$language, 'posts'=>$posts])
-
                 @endforeach
             </div>
         </div>
