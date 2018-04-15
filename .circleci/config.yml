@@ -33,7 +33,7 @@ jobs:
 
       - run:
           name: install mysql
-          command: sudo apt-get install -y mysql-server
+          command: sudo apt-get install -y mysql-server --fix-missing
 
       - run:
           name: Setup Laravel testing environment variables for CircleCI test
