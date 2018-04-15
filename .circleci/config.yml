@@ -90,9 +90,9 @@ jobs:
 
       - run:
          name: Run Laravel Server
-         command: php artisan serve
+         command: php artisan serve --port=9234
          background: true
 
       - run:
          name: Test 2 - Run Laravel Desk for Browser Testing
-         command: php artisan dusk -env=
+         command: php artisan dusk
