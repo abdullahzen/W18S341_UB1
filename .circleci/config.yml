@@ -34,7 +34,7 @@ jobs:
           name: Setup Laravel testing environment variables for CircleCI test
           command: cp .env.circle .env
 
-      -run:
+      - run:
           name: Start mysql
           command: sudo service mysql start
 
