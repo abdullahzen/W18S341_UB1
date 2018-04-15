@@ -39,16 +39,16 @@ jobs:
       #   command: sudo apt-get install -y libzip-dev
 
       - run:
-         name: install mysql
-         command: sudo apt-get install -y mysql-server
+          name: install mysql
+          command: sudo apt-get install -y mysql-server
 
       - run:
-         name: Setup Laravel testing environment variables for CircleCI test
-         command: cp .env.circle .env
+          name: Setup Laravel testing environment variables for CircleCI test
+          command: cp .env.circle .env
 
       - run:
-         name: Starting sql server
-         command: sudo service mysql start
+          name: Starting sql server
+          command: sudo service mysql start
 
       - run:
           name: Mysql database
@@ -63,8 +63,8 @@ jobs:
           command: mysql -h 127.0.0.1:3306 -u root soen341 < database/notification.sql
 
       - run:
-         name: Update composer to latest version
-         command: composer self-update
+          name: Update composer to latest version
+          command: composer self-update
 
       - restore_cache:
           keys:
