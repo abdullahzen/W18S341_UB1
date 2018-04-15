@@ -43,6 +43,10 @@ jobs:
           command: sudo apt-get install -y mysql-server
 
       - run:
+          name: restart mysql
+          command: sudo service mysql restart
+
+      - run:
           name: Setup Laravel testing environment variables for CircleCI test
           command: cp .env.circle .env
 
