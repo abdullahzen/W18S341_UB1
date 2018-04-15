@@ -94,5 +94,9 @@ jobs:
          background: true
 
       - run:
+         name: Setup Laravel testing environment variables for CircleCI test
+         command: cp .env.circle .env
+
+      - run:
          name: Test 2 - Run Laravel Desk for Browser Testing
          command: php artisan dusk
