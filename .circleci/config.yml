@@ -48,11 +48,11 @@ jobs:
 
       - run:
           name: Mysql database
-          command: mysql -h 127.0.0.1 -u ubuntu -p ubuntu circle_test < database/database.sql
+          command: mysql -h 127.0.0.1 -u ubuntu circle_test < database/database.sql
 
       - run:
           name: Mysql database
-          command: mysql -h 127.0.0.1 -u ubuntu -p ubuntu circle_test < database/notification.sql
+          command: mysql -h 127.0.0.1 -u ubuntu circle_test < database/notification.sql
 
       - run:
           name: Update composer to latest version
