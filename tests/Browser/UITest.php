@@ -14,11 +14,11 @@ class UITest extends DuskTestCase
 {
 
     private function checkDbConnection(){
-        try {
+      /*  try {
             DB::connection()->getPdo();
         } catch (\Exception $e) {
             die("Could not connect to the database.  Please check your configuration.");
-        }
+        }*/
     }
     public function testHomePage()
     {
