@@ -24,7 +24,7 @@ before_script:
    - mysql -u root soen341 < database/database.sql
    - mysql -u root soen341 < database/notification.sql
    - php artisan key:generate
-   - php artisan config:clear
+   - php artisan config:clear 
    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
    - php artisan serve &
 
