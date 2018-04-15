@@ -80,6 +80,10 @@ jobs:
          command: php artisan config:clear
 
       - run:
+         name: Migrate
+         command: php artisan migrate
+
+      - run:
          name: Start Chrome Driver
          command: ./vendor/laravel/dusk/bin/chromedriver-linux
          background: true
