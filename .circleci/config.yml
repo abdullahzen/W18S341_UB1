@@ -34,6 +34,10 @@ jobs:
          command: cp .env.circle .env
 
       - run:
+         name: Starting sql server
+         command: sudo service mysql start
+
+      - run:
           name: Mysql database
           command: mysql -h 127.0.0.1 -u root -e "create database soen341;"
 
