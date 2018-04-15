@@ -37,11 +37,15 @@ jobs:
          name: Update composer to latest version
          command: composer self-update
 
+      - run:
+         name: Update composer to latest version
+         command: composer update
+
       - restore_cache:
           keys:
             - composer-v1-{{ checksum "composer.json" }}
             - composer-v1-
-      - run: sudo composer install -n --prefer-dist --ignore-platform-reqs --no-interaction
+      - run: composer install --ignore-platform-reqs --no-interaction
       - save_cache:
           key: composer-v1-{{ checksum "composer.json" }}
           paths:
