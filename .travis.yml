@@ -13,6 +13,7 @@ env:
     - SESSION_DRIVER=array
     - QUEUE_DRIVER=sync
 
+sudo: required
 addons:
   chrome: stable
 
@@ -39,6 +40,6 @@ before_script:
    - "export DISPLAY=:99.0"
    - "sh -e /etc/init.d/xvfb start"
    - sleep 3 # give xvfb some time to start
-   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+   - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
 script:
    - php artisan dusk
