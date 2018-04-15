@@ -16,7 +16,7 @@ jobs:
                 MYSQL_ALLOW_EMPTY_PASSWORD: true
                 MYSQL_PASSWORD:
       - image: mysql:5.7
-        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --innodb-large-prefix=true
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
         environment:
           MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: true
@@ -40,15 +40,11 @@ jobs:
 
       - run:
           name: install mysql
-          command: sudo apt-get install -y mysql-server
+          command: sudo apt install mysql-client
 
       - run:
           name: Setup Laravel testing environment variables for CircleCI test
           command: cp .env.circle .env
-
-      - run:
-          name: Mysql database
-          command: mysql -h 127.0.0.1 -u root -e "create database soen341;"
 
       - run:
           name: Mysql database
@@ -71,6 +67,15 @@ jobs:
           key: composer-v1-{{ checksum "composer.json" }}
           paths:
             - vendor
+      - run:
+         name: Generate key
+         command: php artisan key:generate
+         background: true
+
+      - run:
+         name: Clear config
+         command: php artisan config:clear
+         background: true
 
       - run:
          name: Start Chrome Driver
