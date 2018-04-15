@@ -8,6 +8,22 @@ jobs:
   build:
     docker:
       - image: circleci/php:7.1-browsers
+        environment:
+                MYSQL_HOST: 127.0.0.1
+                MYSQL_PORT: 3306
+                MYSQL_DB: soen341
+                MYSQL_USER: root
+                MYSQL_ALLOW_EMPTY_PASSWORD: true
+                MYSQL_PASSWORD:
+      - image: mysql:5.7
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        environment:
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_PORT: 3306
+          MYSQL_DB: soen341
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_PASSWORD:
 
     working_directory: ~/laravel
     steps:
@@ -35,20 +51,16 @@ jobs:
           command: cp .env.circle .env
 
       - run:
-          name: Start mysql
-          command: sudo service mysql start
+          name: Mysql database
+          command: mysql -h 127.0.0.1 -u root -e "create database soen341;"
 
       - run:
           name: Mysql database
-          command: mysql -h 127.0.0.1 -P 3306 -u root -e "create database soen341;"
+          command: mysql -h 127.0.0.1 -u root soen341 < database/database.sql
 
       - run:
           name: Mysql database
-          command: mysql -h 127.0.0.1 -P 3306 -u root soen341 < database/database.sql
-
-      - run:
-          name: Mysql database
-          command: mysql -h 127.0.0.1 -P 3306 -u root soen341 < database/notification.sql
+          command: mysql -h 127.0.0.1 -u root soen341 < database/notification.sql
 
       - run:
           name: Update composer to latest version
