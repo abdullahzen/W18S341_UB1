@@ -4,10 +4,6 @@
 # Check https://circleci.com/docs/2.0/language-php/ for more details
 #
 version: 2
-machine:
-  hosts:
-    dev.circleci.com: 127.0.0.1
-    foobar: 1.2.3.4
 jobs:
   build:
     docker:
@@ -94,7 +90,7 @@ jobs:
 
       - run:
          name: Run Laravel Server
-         command: php artisan serve --port=8080
+         command: php artisan serve --port=8080 --env=dusk.local
          background: true
 
       - run:
