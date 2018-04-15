@@ -40,11 +40,15 @@ jobs:
 
       - run:
           name: install mysql
-          command: sudo apt-get install mysql-server
+          command: sudo apt-get install -y mysql-server
 
       - run:
           name: Setup Laravel testing environment variables for CircleCI test
           command: cp .env.circle .env
+
+      - run:
+          name: Mysql database
+          command: mysql -h 127.0.0.1 -u root -e "create database soen341;"
 
       - run:
           name: Mysql database
@@ -70,12 +74,10 @@ jobs:
       - run:
          name: Generate key
          command: php artisan key:generate
-         background: true
 
       - run:
          name: Clear config
          command: php artisan config:clear
-         background: true
 
       - run:
          name: Start Chrome Driver
