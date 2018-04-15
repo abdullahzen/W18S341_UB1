@@ -55,7 +55,7 @@ jobs:
           name: Create sql Database
           command: mysql -u root soen341 < database/database.sql
 
-       - run:
+      - run:
           name: Create sql Database
           command: mysql -u root soen341 < database/notification.sql
 
