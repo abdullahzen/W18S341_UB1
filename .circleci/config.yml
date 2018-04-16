@@ -121,7 +121,7 @@ jobs:
 
       - run:
           name: run chrome
-          command: sudo google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost:8080
+          command: google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
           background: true
 
       - run:
