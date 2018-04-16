@@ -84,6 +84,10 @@ jobs:
       - run:
           name: Mysql database notif
           command: sudo mysql -h 127.0.0.1 -u root soen341 < database/notification.sql
+          
+      - run:
+          name: Migrate Laravel Database
+          command: php artisan migrate --env=dusk.local --force
 
       - run:
          name: Start Chrome Driver
