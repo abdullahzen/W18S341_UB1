@@ -44,6 +44,7 @@ jobs:
       - run:
           name: install mysql
           command: sudo apt install -y mysql-server
+          command: sudo apt-get install php5.6-mysql/php7.2-mysql
 
       - run:
           name: install mysql
