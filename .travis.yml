@@ -15,17 +15,16 @@ addons:
       - mysql-server
       - mysql-client
 
-install:
-   - cp .env.travis .env
-   - composer self-update
-   - composer install --no-interaction
-
 before_script:
-   - mysql -e 'create database soen341;'
-   - php artisan migrate --seed
-   - sudo mysql -h 127.0.0.1 -u root soen341 < database/database.sql
-   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-   - php artisan serve &
+  - cp .env.travis .env
+  - mysql -e 'create database soen341;'
+  - composer self-update
+  - composer install --no-interaction
+  - php artisan migrate --seed
+  - sudo mysql -h 127.0.0.1 -u root soen341 < database/database.sql
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  - php artisan serve &
 
 script:
-   - php artisan dusk
+  - vendor/bin/phpunit
+  - php artisan dusk
