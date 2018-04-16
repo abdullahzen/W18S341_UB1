@@ -92,9 +92,9 @@ jobs:
 
       - run:
          name: Run Laravel Server
-         command: php artisan serve --port=8080 --env=dusk.local
+         command: sudo php artisan serve --port=8080 --env=dusk.local
          background: true
 
       - run:
          name: Test 2 - Run Laravel Desk for Browser Testing
-         command: php artisan dusk
+         command: sudo php artisan dusk
