@@ -1,5 +1,4 @@
 <div id="favModal" class="modal">
-    <div class="modal-content">
         <div class="slds-scope">
             <div id="favModal" class="modal" style="display:block; height: 640px;">
                 <div id="favourite" class="questions" class="modal-content">
@@ -40,7 +39,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 
 <link class="user" href="{{URL::asset('css/ourstyle.css')}}" rel="stylesheet" type="text/css">

@@ -2,7 +2,7 @@
     <div class="slds-feed" style="    width: 100%;">
         <ul class="slds-feed__list">
             <li class="slds-feed__item">
-                <article class="slds-post" style="border: black; border-style: solid; border-width: 0.1px;">
+                <article class="slds-post">
                     <header class="slds-post__header slds-media">
                         <div class="slds-media__figure">
                             <a href="/publicProfile/{{$data->username}}"
