@@ -31,5 +31,4 @@ before_script:
    - php artisan serve --port=8080 --env=dusk.local &
 
 script:
-   - vendor/bin/phpunit
    - php artisan dusk
