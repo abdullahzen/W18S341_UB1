@@ -112,11 +112,6 @@ jobs:
           command: sudo apt-get install -y xvfb
 
       - run:
-          name: run chrome
-          command: sudo google-chrome-stable --headless --disable-gpu --no-sandbox http://localhost:8080
-          background: true
-
-      - run:
           name: Start Chrome Driver
           command: ./vendor/laravel/dusk/bin/chromedriver-linux --headless
           background: true
@@ -125,6 +120,11 @@ jobs:
          name: Run Laravel Server
          command: sudo php artisan serve --port=8080 --env=dusk.local
          background: true
+
+      - run:
+          name: run chrome
+          command: sudo google-chrome-stable --headless --disable-gpu --no-sandbox http://localhost:8080
+          background: true
 
       - run:
          name: Test 2 - Run Laravel Desk for Browser Testing
