@@ -18,6 +18,7 @@ class CreateNotificationTable extends Migration
             $table->integer('uid');
             $table->integer('fromUID');
             $table->string('url');
+            $table->integer('notificationType');
             $table->longText('content')->nullable();
             $table->integer('pid')->nullable();
             $table->integer('read')->default('0');
