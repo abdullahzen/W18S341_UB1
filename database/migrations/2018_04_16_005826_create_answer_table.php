@@ -15,7 +15,7 @@ class CreateAnswerTable extends Migration
     {
         Schema::create('answer', function (Blueprint $table) {
             $table->increments('answer_ID')->autoIncrement();
-            $table->string('answer');
+            $table->longText('answer');
             $table->integer('user_ID2');
             $table->integer('question_ID1');
             $table->integer('upvotes')->default('0');

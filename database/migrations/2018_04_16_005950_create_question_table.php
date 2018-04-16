@@ -19,8 +19,8 @@ class CreateQuestionTable extends Migration
             $table->integer('user_ID1');
             $table->integer('category_ID1');
             $table->integer('best_answer_ID')->default('0');
-            $table->string('title');
-            $table->string('content');
+            $table->longText('title');
+            $table->longText('content');
             $table->integer('upvotes')->default('0');
             $table->integer('comments')->default('0');
             $table->integer('favorites')->default('0');

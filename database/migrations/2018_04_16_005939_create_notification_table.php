@@ -18,7 +18,7 @@ class CreateNotificationTable extends Migration
             $table->integer('uid');
             $table->integer('fromUID');
             $table->string('url');
-            $table->string('content')->nullable();
+            $table->longText('content')->nullable();
             $table->integer('pid')->nullable();
             $table->integer('read')->default('0');
             $table->timestamp('time')->useCurrent();

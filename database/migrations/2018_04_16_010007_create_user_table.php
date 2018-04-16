@@ -15,9 +15,9 @@ class CreateUserTable extends Migration
     {
         Schema::create('user', function (Blueprint $table) {
             $table->increments('user_ID')->autoIncrement();
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->string('email')->unique();
+            $table->longText('username');
+            $table->longText('password');
+            $table->longText('email');
             $table->timestamp('create_time')->useCurrent();
             $table->integer('rank')->default('0');
             $table->integer('is_Solver')->default('0');
