@@ -95,25 +95,25 @@ jobs:
       # Install Chrome
       - run:
           name: install chrome
-          command: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+          command: sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
       - run:
           name: install chrome
-          command: sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+          command: sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
       - run:
           name: install chrome
-          command: apt-get update
+          command: sudo apt-get update
       - run:
           name: install chrome
-          command: apt-get install -y google-chrome-stable
+          command: sudo apt-get install -y google-chrome-stable
 
       # Install Xvfb
       - run:
           name: install xvfb
-          command: apt-get install -y xvfb
+          command: sudo apt-get install -y xvfb
 
       - run:
           name: run chrome
-          command: google-chrome-stable --headless --disable-gpu http://localhost:8080
+          command: sudo google-chrome-stable --headless --disable-gpu http://localhost:8080
           background: true
 
       - run:
