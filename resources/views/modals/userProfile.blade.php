@@ -1,5 +1,4 @@
 <div id="userProfileModal" class="modal">
-    <div class="modal-content">
         <body>
         <br/>
         <br/>
@@ -70,7 +69,6 @@
             </div>
         </div>
         </body>
-    </div>
 </div>
 <link class="user" href="{{URL::asset('css/salesforce-lightning-design-system-vf.min.css')}}" rel="stylesheet"
       type="text/css">

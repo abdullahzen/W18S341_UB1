@@ -1,4 +1,4 @@
-<div id="{{$language}}" class="questions language" style="position: absolute; left: 25%; width: 50%;">
+<div id="{{$language}}" class="questions language" style="position: absolute; left: 25%; width: 70%;">
     <article class="slds-card">
         <div class="slds-page-header">
             <div class="slds-media">
