@@ -41,13 +41,13 @@ jobs:
       #   name: Install PHP libzip-dev
       #   command: sudo apt-get install -y libzip-dev
 
-      - run:
-          name: install mysql
-          command: sudo apt install -y mysql-server
+      #- run:
+      #    name: install mysql
+      #    command: sudo apt install -y mysql-server
 
-      - run:
-          name: install mysql
-          command: sudo apt install -y mysql-client
+      #- run:
+      #    name: install mysql
+      #    command: sudo apt install -y mysql-client
 
       - run:
           name: Setup Laravel testing environment variables for CircleCI test
