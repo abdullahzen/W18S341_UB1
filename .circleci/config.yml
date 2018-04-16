@@ -9,6 +9,7 @@ jobs:
     docker:
       - image: circleci/php:7.1-browsers
         environment:
+                MYSQL_DATABASE: soen341
                 MYSQL_HOST: 127.0.0.1
                 MYSQL_PORT: 3306
                 MYSQL_DB: soen341
