@@ -94,7 +94,7 @@ jobs:
 
       - run:
          name: Start Chrome Driver
-         command: ./vendor/laravel/dusk/bin/chromedriver-linux
+         command: ./vendor/laravel/dusk/bin/chromedriver-linux --headless
          background: true
 
       - run:
