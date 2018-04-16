@@ -22,13 +22,16 @@ class UITest extends DuskTestCase
     }
     public function testHomePage()
     {
+
         $this->checkDbConnection();
 
         $this->prepare();
+        $this->startChromeDriver();
 
         $this->browse(function (Browser $browser) {
             $browser->visit('http://localhost:8080/');
             $browser->waitForText('Java',20);
+            $browser->screenshot('sd');
             $browser->assertSee('Java');
 
         });
