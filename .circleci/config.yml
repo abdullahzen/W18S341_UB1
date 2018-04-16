@@ -87,12 +87,10 @@ jobs:
       - run:
          name: Start Chrome Driver
          command: ./vendor/laravel/dusk/bin/chromedriver-linux
-         background: true
 
       - run:
          name: Run Laravel Server
          command: php artisan serve --port=8080 --env=dusk.local
-         background: true
 
       - run:
          name: Setup Laravel testing environment variables for CircleCI test
@@ -101,4 +99,3 @@ jobs:
       - run:
          name: Test 2 - Run Laravel Desk for Browser Testing
          command: php artisan dusk
-         background: true
