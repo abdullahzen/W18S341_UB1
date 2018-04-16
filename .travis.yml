@@ -24,8 +24,6 @@ before_script:
    - mysql -e 'create database soen341;'
    - mysql -u root soen341 < database/database.sql
    - mysql -u root soen341 < database/notification.sql
-   - php artisan key:generate
-   - php artisan config:clear
    - export DISPLAY=:99.0
    - sh -e /etc/init.d/xvfb start
    - sleep 3 # give xvfb some time to start
