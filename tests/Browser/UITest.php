@@ -21,7 +21,7 @@ class UITest extends DuskTestCase
         $this->startChromeDriver();
 
         $this->browse(function (Browser $browser) {
-            $browser->visit('http://localhost:8080/');
+            $browser->visit('http://localhost:8000/');
             $browser->waitForText('Java',20);
             $browser->assertSee('Java');
 
