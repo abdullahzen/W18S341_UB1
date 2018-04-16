@@ -117,6 +117,11 @@ jobs:
           background: true
 
       - run:
+          name: Start Chrome Driver
+          command: ./vendor/laravel/dusk/bin/chromedriver-linux --headless
+          background: true
+
+      - run:
          name: Run Laravel Server
          command: sudo php artisan serve --port=8080 --env=dusk.local
          background: true
