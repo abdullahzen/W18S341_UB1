@@ -79,6 +79,8 @@ jobs:
       - run:
           name: Setup Laravel testing environment variables for CircleCI test
           command: sudo mysql -h 127.0.0.1 -u root -e 'create database soen341;'
+          
+      - run: php artisan migrate --seed
 
       - run:
           name: Mysql database
@@ -87,8 +89,6 @@ jobs:
       - run:
           name: Mysql database notif
           command: sudo mysql -h 127.0.0.1 -u root soen341 < database/notification.sql
-
-      - run: php artisan migrate --seed
 
       # Install Chrome
       - run:
