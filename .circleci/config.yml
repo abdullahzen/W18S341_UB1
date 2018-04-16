@@ -47,7 +47,7 @@ jobs:
 
       - run:
           name: install apt-get mysql
-          command: sudo apt-get install php7.1-mysql
+          command: sudo apt-get install php-mysql
 
       - run:
           name: install mysql
