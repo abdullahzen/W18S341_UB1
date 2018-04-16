@@ -10,7 +10,9 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="Browser Test Suite">
+<!--
             <directory suffix="Test.php">./tests/Browser</directory>
+-->
         </testsuite>
     </testsuites>
     <filter>
