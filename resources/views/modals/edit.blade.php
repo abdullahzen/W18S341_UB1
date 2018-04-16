@@ -1,5 +1,4 @@
 <div id="editModal" class="modal">
-    <div class="modal-content">
         <form action="/edit" id="editForm" method="post">
             {{ csrf_field() }}
             <div class="slds-scope">
@@ -57,7 +56,6 @@
                 </div>
             </div>
         </form>
-    </div>
 </div>
 <link class="user" href="{{URL::asset('css/salesforce-lightning-design-system-vf.min.css')}}" rel="stylesheet" type="text/css">
 <link class="user" href="{{URL::asset('css/mainpage.css')}}" rel="stylesheet" type="text/css">
