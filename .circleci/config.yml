@@ -88,9 +88,7 @@ jobs:
       #    name: Mysql database notif
       #    command: sudo mysql -h 127.0.0.1 -u root soen341 < database/notification.sql
 
-      - run: php artisan migrate
-
-      - run: php artisan db:seed
+      - run: php artisan migrate --seed
 
       # Install Chrome
       - run:
@@ -125,6 +123,8 @@ jobs:
           name: run chrome
           command: sudo google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost:8080
           background: true
+      
+      - run: vendor/bin/phpunit
 
       - run:
          name: Test 2 - Run Laravel Desk for Browser Testing
