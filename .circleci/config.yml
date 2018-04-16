@@ -113,7 +113,7 @@ jobs:
 
       - run:
           name: run chrome
-          command: sudo google-chrome-stable --headless --disable-gpu http://localhost:8080
+          command: sudo google-chrome-stable --headless --disable-gpu --no-sandbox http://localhost:8080
           background: true
 
       - run:
