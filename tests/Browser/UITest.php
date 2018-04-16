@@ -13,16 +13,8 @@ use Tests\Unit\ExampleTest;
 class UITest extends DuskTestCase
 {
 
-    private function checkDbConnection(){
-        try {
-            DB::connection()->getPdo();
-        } catch (\Exception $e) {
-            die("Could not connect to the database.  Please check your configuration.");
-        }
-    }
-    /*public function testHomePage()
+    public function testHomePage()
     {
-
         $this->checkDbConnection();
 
         $this->prepare();
@@ -35,8 +27,8 @@ class UITest extends DuskTestCase
 
         });
     }
-    */
-    /*public function testRegister(){
+
+    public function testRegister(){
         $this->checkDbConnection();
         $this->prepare();
         $this->browse(function (Browser $browser) {
@@ -64,8 +56,15 @@ class UITest extends DuskTestCase
             $browser->element('#loginSubmitButton')->submit();
             $browser->assertSee('admin');
         });
-    }*/
-    /*
+    }
+    private function checkDbConnection(){
+        try {
+            DB::connection()->getPdo();
+        } catch (\Exception $e) {
+            die("Could not connect to the database.  Please check your configuration.");
+        }
+    }
+
     public function testNewPost(){
         $this->checkDbConnection();
         $this->prepare();
@@ -92,5 +91,5 @@ class UITest extends DuskTestCase
             $browser->visit('/post/1');
             $browser->assertSee('Test');
         });
-    }*/
+    }
 }
