@@ -19,5 +19,7 @@
             </div>
         </div>
     </body>
-    @include('includes.modals')
 </div>
+<footer>
+    @include('includes.modals')
+</footer>
