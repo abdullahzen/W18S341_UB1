@@ -2,19 +2,25 @@
 
 namespace Tests\Unit;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Hash;
 
 class ExampleTest extends TestCase
 {
-    public function testPostNewQuestion(){
-        $this->assertDatabaseHas('question', ['title' => 'This is a test question', 'content' => 'What are the possibilities of failing?']);
+    use DatabaseMigrations;
+
+
+
+    public function testRegister(){
+        $this->post('/register', ['username' => 'testUser', 'password' => 'myPassword', 'email' => 'myemail@gmail.com']);
+        $this->assertDatabaseHas('user', ['username' => 'testUser']);
     }
 
-    public function testLogin(){
-        $this->assertDatabaseHas('user', ['username' => 'admin', 'password' => Hash::make('123abc')]);
-    }
+
 
 /*    public function testRegister(){
         $this->assertDatabaseHas('user', ['username' => 'testuser', 'password' => Hash::make('123test')]);
