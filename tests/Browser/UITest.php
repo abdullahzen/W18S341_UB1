@@ -20,7 +20,7 @@ class UITest extends DuskTestCase
             die("Could not connect to the database.  Please check your configuration.");
         }
     }
-    public function testHomePage()
+    /*public function testHomePage()
     {
 
         $this->checkDbConnection();
@@ -35,7 +35,7 @@ class UITest extends DuskTestCase
 
         });
     }
-
+    */
     /*public function testRegister(){
         $this->checkDbConnection();
         $this->prepare();
@@ -65,7 +65,7 @@ class UITest extends DuskTestCase
             $browser->assertSee('admin');
         });
     }*/
-
+    /*
     public function testNewPost(){
         $this->checkDbConnection();
         $this->prepare();
@@ -92,5 +92,5 @@ class UITest extends DuskTestCase
             $browser->visit('/post/1');
             $browser->assertSee('Test');
         });
-    }
+    }*/
 }
