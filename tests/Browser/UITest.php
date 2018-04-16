@@ -29,7 +29,6 @@ class UITest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('http://localhost:8080/');
             $browser->waitForText('Java',20);
-            $browser->waitForText('no', 10);
             $browser->assertSee('Java');
 
         });
