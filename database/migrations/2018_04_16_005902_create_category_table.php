@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTables extends Migration
+class CreateCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateTables extends Migration
      */
     public function up()
     {
-        Schema::create('soen341', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('category', function (Blueprint $table) {
+            $table->increments('category_ID')->autoIncrement();
+            $table->string('category')->unique();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('soen341');
+        Schema::dropIfExists('category');
     }
 }
