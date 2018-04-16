@@ -49,6 +49,8 @@ jobs:
           name: install mysql
           command: sudo apt install -y mysql-client
 
+      - run: sudo docker-php-ext-install pdo_mysql
+
       - run:
           name: Setup Laravel testing environment variables for CircleCI test
           command: cp .env.circle .env
