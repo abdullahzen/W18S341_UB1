@@ -1,5 +1,4 @@
 <div id="registerModal" class="modal">
-    <div class="modal-content">
         <form action="/register" id="registrationForm" method="post" onkeyup="checkValidForm()">
             {{ csrf_field() }}
             <div class="slds-scope">
@@ -55,7 +54,6 @@
                 </div>
             </div>
         </form>
-    </div>
 </div>
 <link class="user" href="{{URL::asset('css/customRegisterLoginStyles.css')}}" rel="stylesheet" type="text/css">
 <link rel="icon" type="image/x-icon">

@@ -153,6 +153,16 @@ class ClientController extends Controller {
         }
     }
 
+    public function getPublicUserProfile($username) {
+        $result = Db::select('select * from user where user.username = \'' . $username .'\'');
+        if (!empty($result)){
+            return view('pages.publicProfile', ['username' => $username]);
+
+        } else {
+            return abort('400', 'A problem has occurred!');
+        }
+    }
+
     public function notifyDiscussion($qid, $content) {
         $answers = DB::select('
             SELECT
@@ -468,8 +478,9 @@ class ClientController extends Controller {
         }
     }
 
-    public function getSearch($id) {
-        $post = DB::select('
+    public function getSearch($search) {
+        try {
+            $post = DB::select('
             SELECT 
                 q.question_ID, 
                 q.title,
@@ -480,11 +491,17 @@ class ClientController extends Controller {
                 q.upvotes,
                 q.comments,
                 q.views,
+                q.create_time,
                 u.username
             FROM question q
-            INNER JOIN user u ON u.user_ID = q.user_ID1 WHERE q.title LIKE \'%' . $id . '%\' AND q.is_hidden = 0
+            INNER JOIN user u ON u.user_ID = q.user_ID1 WHERE q.title LIKE \'%' . $search . '%\' OR q.content LIKE \'%' . $search . '%\'  OR u.username LIKE \'%' . $search . '%\' AND q.is_hidden = 0
+            ORDER BY q.create_time DESC
         ');
-        return view('pages.search', ['post' => $post]);
+
+            return view('pages.search', ['post' => $post, 'search' => $search]);
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect('/')->withErrors($ex);
+        }
     }
 
     public function deleteQuestion($id) {
@@ -494,7 +511,7 @@ class ClientController extends Controller {
 
     public function deleteAnswer($id) {
         DB::table('answer')->where('answer_ID', $id)->update(['is_hidden' => 1]);
-        return redirect('/post' . $id);
+        return redirect('/post/' . $id);
     }
 
     public function setBestAnswer($qid, $aid) {
@@ -537,7 +554,7 @@ class ClientController extends Controller {
 
     public function deleteNotification($id) {
         DB::table('notification')->where('id', $id)->delete();
-        return redirect('/notifications');
+        return back();
     }
 
     public function clearNotification($id) {
@@ -552,6 +569,36 @@ class ClientController extends Controller {
             }
         } else {
             return abort(404);
+        }
+    }
+
+    public function getAllNotifications() {
+        $notifications = DB::select('
+                SELECT
+                    n.id,
+                    n.uid,
+                    n.fromUID,
+                    n.url,
+                    n.notificationType,
+                    n.content,
+                    n.read,
+                    n.time,
+                    u.username
+                FROM notification n
+                INNER JOIN user u
+                    ON n.fromUID = u.user_ID
+                WHERE n.uid = ' . Session()->get('id') . '
+                ORDER BY n.id DESC
+            ');
+        return view('pages.notifications', ["notifications" => $notifications]);
+    }
+
+    public function readAllNotifications() {
+        try {
+            if (DB::table('notification')->where('uid', session()->get('id'))->update(['read' => 1]));
+                return back();
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect('/')->withErrors($ex);
         }
     }
 }

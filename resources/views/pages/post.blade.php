@@ -1,9 +1,10 @@
 @include('includes.head')
 @include('includes.headerfooter')
+@include('includes.innerNavBar')
 <body>
 <div class="slds-scope">
     <div>
-        <div id="post" class="questions" style="    width: 100%;">
+        <div id="post" class="questions" style="position: absolute; top: 5%; left: 25%; width: 50%">
             <article class="slds-card">
                 <div class="slds-page-header">
                     <div class="slds-media">
@@ -22,7 +23,7 @@
                             <p class="slds-text-body_small slds-line-height_reset">
                                 Category
                                 <?php
-                                echo \App\Http\Controllers\ClientControllerHelper::getCategoryById($post->category_ID1)[0]->category;
+                                    echo \App\Http\Controllers\ClientControllerHelper::getCategoryById($post->category_ID1)[0]->category;
                                 ?>
                             </p>
                         </div>
@@ -30,9 +31,9 @@
                 </div>
                 <!--Posts-->
                 <div class="slds-card__header slds-grid">
-                    <div class="slds-feed" style="    width: 100%;">
+                    <div class="slds-feed" style="width: 100%;">
                         <ul class="slds-feed__list">
-                            <li class="slds-feed__item">
+                            <li class="slds-feed__item slds-box--border">
                                 <article class="slds-post">
                                     <header class="slds-post__header slds-media">
                                         <ul class="slds-post__footer-actions-list slds-list_vertical slds-list" style="padding-top: 5mm;">
@@ -57,7 +58,7 @@
                                                 </li>
                                             </ul>
                                         <div class="slds-media__figure" style="padding-top: 5mm;">
-                                            <a href="javascript:void(0);"
+                                            <a href="/publicProfile/{{$post->username}}"
                                                class="slds-avatar slds-avatar_circle slds-avatar_large">
                                                 <img alt="Jason Rodgers" src="/assets/images/avatar1.jpg"
                                                      title="Jason Rodgers avatar"/>
@@ -66,7 +67,7 @@
                                         <div class="slds-media__body">
                                             <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate" style="padding-top: 5mm;">
                                                 <p>
-                                                    <a href="javascript:void(0);">{{$post->username}}</a>
+                                                    <a href="/publicProfile/{{$post->username}}">{{$post->username}}</a>
                                                 </p>
                                                     @if (session()->get('username') == $post->username)
                                                     <button class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
@@ -80,11 +81,11 @@
                                                         </span>
                                                         <span class="slds-assistive-text">More Options</span>
                                                     </button>
-                                                    <section class="slds-popover slds-nubbin_top-right slds-dynamic-menu"
+                                                    <section class="slds-popover slds-dynamic-menu"
                                                              id="More-Options-Container"
                                                              role="dialog" aria-label="More-Options"
                                                              aria-describedby="More-Options-Container"
-                                                             style="position: absolute; right: 0px; top: 55px; width: 23%; height: 2cm; display: none;">
+                                                             style="position: absolute; right: 0%; top: 15%; width: 25%; height: 25%; display: none;">
                                                         <footer class="slds-popover__footer">
                                                             <ul>
                                                                 <li>
@@ -157,7 +158,7 @@
                                                                                title="Click for single-item view of this post"
                                                                                class="slds-text-link_reset">
                                                     <?php
-                                                    echo \Carbon\Carbon::createFromTimeStamp(strtotime($post->create_time))->diffForHumans();
+                                                        echo 'submitted ' . \Carbon\Carbon::createFromTimeStamp(strtotime($post->create_time))->diffForHumans();
                                                     ?>
                                                 </a>
                                             </p>
@@ -183,7 +184,7 @@
                                             @foreach($answer as $a)
                                             <article class="slds-comment slds-media slds-hint-parent">
                                                 <div class="slds-media__figure">
-                                                    <a href="javascript:void(0);"
+                                                    <a href="/publicProfile/{{$a->username}}"
                                                        class="slds-avatar slds-avatar_circle slds-avatar_medium">
                                                         <img alt="Jenna Davis" src="/assets/images/avatar2.jpg" title="Jenna Davis avatar"/>
                                                     </a>
@@ -192,7 +193,7 @@
                                                     <header class="slds-media slds-media_center">
                                                         <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
                                                             <p class="slds-truncate">
-                                                                <a href="javascript:void(0);">
+                                                                <a href="/publicProfile/{{$a->username}}">
                                                                     {{$a->username}}
                                                                 </a>
                                                                 @if($a->answer_ID == $post->best_answer_ID)
@@ -244,6 +245,15 @@
                                                                     </svg>
                                                                 </button>
                                                             </li>
+                                                                @if (session()->get('username') == $a->username)
+                                                                    <button title="Delete" class="slds-button_reset slds-post__footer-action" onclick="window.location.href = '/post/' + {{$a->answer_ID}} + '/delete'" id="deleteAnswer">
+                                                                        <svg class="slds-button__icon slds-button__icon_left"
+                                                                            aria-hidden="true">
+                                                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                                                                                xmlns:xlink="http://www.w3.org/1999/xlink"/>
+                                                                        </svg>
+                                                                    </button>
+                                                                @endif
                                                             <li class="slds-item">
                                                             </li>
                                                             <li class="slds-item">
@@ -280,7 +290,6 @@
                                                          title="User avatar"/>
                                                 </a>
                                             </div>
-                                    </div>
                                             <div class="slds-media__body">
                                                 <!--Answer field-->
                                                 <form class="form-horizontal" action="/post/{{$post->question_ID}}/newanswer" method="post" id="answerForm" onKeyup="checkForm()">

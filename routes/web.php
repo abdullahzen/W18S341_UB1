@@ -17,6 +17,14 @@ Route::get('/', function(){
     return view('pages.homepage');
 });
 
+Route::get('/new/{language}', function(){
+    return view('pages.homepage');
+});
+
+Route::get('/top/{language}', function(){
+    return view('pages.sortedHomepage');
+});
+
 Route::get('/newpost', function () {
     return view('pages.newquestion');
 });
@@ -39,6 +47,10 @@ Route::get('/userProfile', function() {
     return view('pages.userProfile');
 });
 
+Route::get('/publicProfile/{username}', array(
+    'uses' => 'ClientController@getPublicUserProfile'
+));
+
 Route::get('/post/{id}', array(
     'uses' => 'ClientController@getFullPostById'
 ));
@@ -47,7 +59,7 @@ Route::get('/post/{id}/favourite', array(
     'uses' => 'ClientController@favourite'
 ));
 
-Route::get('/search/{id}', array(
+Route::get('/search={search}', array(
     'uses' => 'ClientController@getSearch'
 ));
 
@@ -59,14 +71,22 @@ Route::get('/clearNotification/{id}', array(
     'uses' => 'ClientController@clearNotification'
 ));
 
+Route::get('/notifications', array(
+    'uses' => 'ClientController@getAllNotifications'
+));
+
 Route::get('/post/{id}/upvote', 'ClientController@upvote');
 Route::get('/post/{id}/downvote', 'ClientController@downvote');
 Route::get('/post/{id}/{id2}/upvoteA', 'ClientController@upvoteA');
 Route::get('/post/{id}/{id2}/downvoteA', 'ClientController@downvoteA');
 Route::get('/post/{id}/delete', 'ClientController@deleteQuestion');
+Route::get('/post/{id}/delete', 'ClientController@deleteAnswer');
 Route::get('/post/bestanswer/{qid}/{aid}/', 'ClientController@setBestAnswer');
 Route::get('/post/unbestanswer/{qid}/{aid}/', 'ClientController@unsetBestAnswer');
 Route::get('/addNewCategory', 'ClientController@saveCategory');
+Route::get('/readAllNotifications', 'ClientController@readAllNotifications');
+Route::get('/deleteNotification/{id}', 'ClientController@deleteNotification');
+
 
 //POST
 Route::post('/login', 'ClientController@authenticate');

@@ -89,3 +89,10 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.vl {
+    border-left: 5px solid lightgrey;
+    height: 250px;
+    margin-left: 10cm;
+    margin-top: -35mm;
+}
