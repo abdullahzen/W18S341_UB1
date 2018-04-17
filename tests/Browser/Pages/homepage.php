@@ -13,7 +13,7 @@ class homepage extends Page
      */
     public function url()
     {
-        return '/';
+        return 'http://localhost:8000/';
     }
 
     /**

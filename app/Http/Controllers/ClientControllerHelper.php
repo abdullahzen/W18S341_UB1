@@ -348,4 +348,41 @@ class ClientControllerHelper extends Controller {
                 break;
         }
     }
+
+    //alias to post question in clientcontroller
+    public static function postQuestion($request) {
+        $title = $request['title'];
+        $content = $request['content'];
+        $category = $request['category'];
+        $newCategory = $request['newOther2'];
+        $user_ID = session()->get('id');
+        $result = DB::select('select category from category');
+        $exists = false;
+        if ($category == 'other2') {
+            if ($newCategory != null) {
+                $category = $newCategory;
+            } else {
+                $category = 'Java';
+            }
+        }
+
+        foreach ($result as $key => $value) {
+            if (strcasecmp($category, $value->category) == 0) {
+                $exists = true;
+            }
+        }
+        if (!$exists) {
+            if ($category != null) {
+                DB::table('category')->insert(array("category" => $category));
+            }
+        }
+
+        $category_ID = DB::select('select category_ID from category where category.category = \'' . $category . '\'')[0]->category_ID;
+        if (DB::table('question')->insert(array("title" => $title, "content" => $content, "category_ID1" => $category_ID, "user_ID1" => $user_ID))) {
+            $newQ = $id = DB::getPdo()->lastInsertId();
+            return redirect('/post/' . $newQ);
+        } else {
+            return back();
+        }
+    }
 }

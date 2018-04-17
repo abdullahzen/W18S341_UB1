@@ -91,6 +91,7 @@ Route::get('/deleteNotification/{id}', 'ClientController@deleteNotification');
 //POST
 Route::post('/login', 'ClientController@authenticate');
 Route::post('/newpost/do', 'ClientController@postQuestion');
+Route::get('/newpost/doTest', 'ClientController@postQuestion');
 Route::post('/register', 'ClientController@register');
 Route::post('/post/{id}/newanswer', 'ClientController@postAnswer');
 Route::post('/edit', 'ClientController@editQuestion');

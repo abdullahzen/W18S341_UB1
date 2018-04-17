@@ -7,7 +7,7 @@ use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use DB;
-use Tests\Unit\ExampleTest;
+use Tests\Unit\RegistrationUnitTests;
 
 
 class UITest extends DuskTestCase
@@ -38,13 +38,13 @@ class UITest extends DuskTestCase
         $this->checkDbConnection();
         $this->prepare();
         $this->browse(function (Browser $browser) {
-            $browser->visit(new homepage());
+            $browser->visit('http://localhost:8000/');
             $browser->refresh();
             $browser->click('#registerButton');
-            $browser->type('username', 'testuser');
-            $browser->type('email', 'testuser@gmail.com');
-            $browser->type('password', '123test');
-            $browser->type('passwordConfirmation', '123test');
+            $browser->element('#username')->sendKeys('testuser');
+            $browser->element('#email')->sendKeys('\'testuser@gmail.com\'');
+            $browser->element('#password')->sendKeys('123test');
+            $browser->element('#passwordConfirmation')->sendKeys('123test');
             $browser->element('#submitButton')->submit();
             $browser->assertSee('Java');
         });
@@ -69,15 +69,11 @@ class UITest extends DuskTestCase
         $this->prepare();
         $this->browse(function (Browser $browser){
            $browser->visit(new homepage());
-           $browser->click('#loginButton');
-           $browser->type('username', 'admin');
-           $browser->type('password', '123abc');
-           $browser->element('#loginSubmitButton')->submit();
            $browser->click('#newPostModalButton');
            $browser->select('category', 'Php');
-           $browser->type('title', 'This is a test question');
-           $browser->type('content', 'What are the possibilities of failing?');
-           $browser->element('#newQuestionButton')->submit();
+            $browser->type('title', 'This is a test question');
+            $browser->element('#content')->sendKeys('What are the possibilities of failing?');
+            $browser->element('#newQuestionButton')->submit();
            $browser->assertSee('This is a test question');
         });
     }
@@ -89,6 +85,52 @@ class UITest extends DuskTestCase
             $browser->visit(new homepage());
             $browser->visit('/post/1');
             $browser->assertSee('Test');
+        });
+    }
+
+    public function testAnswerQuestion(){
+        $this->checkDbConnection();
+        $this->prepare();
+        $this->browse(function (Browser $browser) {
+            $browser->visit(new homepage());
+            $browser->visit('/post/1');
+            $browser->element('#content')->sendKeys('This is an answer');
+            $browser->element('#newAnswerButton')->submit();
+            $browser->assertSee('This is an answer');
+        });
+    }
+
+    public function testDisplayPublicProfile(){
+        $this->checkDbConnection();
+        $this->prepare();
+        $this->browse(function (Browser $browser) {
+            $browser->visit(new homepage());
+            $browser->visit('/publicProfile/admin');
+            $browser->assertSee('Admin\'s Questions');
+        });
+    }
+
+    public function testUserProfile(){
+        $this->checkDbConnection();
+        $this->prepare();
+        $this->browse(function (Browser $browser){
+            $browser->visit(new homepage());
+            $browser->click('#userProfileButton');
+            $browser->assertSee('Username:');
+        });
+    }
+
+
+    public function testAddCategory(){
+        $this->checkDbConnection();
+        $this->prepare();
+        $this->browse(function (Browser $browser){
+            $browser->visit(new homepage());
+            $browser->click('#addCat');
+            $browser->element('#newCat')->sendKeys('testL');
+            $browser->element('#saveNewCategory')->submit();
+            $browser->refresh();
+            $browser->assertSee('testL');
         });
     }
 }
