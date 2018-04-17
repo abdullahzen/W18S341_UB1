@@ -42,7 +42,7 @@ class UITest extends DuskTestCase
             $browser->refresh();
             $browser->click('#registerButton');
             $browser->element('#username')->sendKeys('testuser');
-            $browser->element('#email')->sendKeys('\'testuser@gmail.com\'');
+            $browser->element('#email')->sendKeys('testuser@gmail.com');
             $browser->element('#password')->sendKeys('123test');
             $browser->element('#passwordConfirmation')->sendKeys('123test');
             $browser->element('#submitButton')->submit();
