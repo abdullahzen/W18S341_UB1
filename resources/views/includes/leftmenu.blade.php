@@ -18,7 +18,7 @@ $categoriesNames = \App\Http\Controllers\ClientControllerHelper::getCategories()
                     @endforeach
                     <li class="slds-nav-vertical__item">
                         <button class="slds-button slds-button_reset slds-p-vertical_xx-small slds-size_1-of-1"
-                                onclick="window.location.href='/newCat'">
+                                onclick="window.location.href='/newCat'" id="addCat">
                             <svg class="slds-button__icon slds-button__icon"
                                  aria-hidden="true">
                                 <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#add"

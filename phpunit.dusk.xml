@@ -9,8 +9,8 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Unit">
-            <directory suffix="Tests.php">./tests/Unit</directory>
+        <testsuite name="Browser Test Suite">
+            <directory suffix="Test.php">./tests/Browser</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -19,7 +19,7 @@
         </whitelist>
     </filter>
     <php>
-        <env name="APP_ENV" value="testing"/>
+        <env name="APP_ENV" value="local"/>
         <env name="DB_CONNECTION" value="mysql"/>
         <env name="DB_DATABASE" value="soen341"/>
         <env name="CACHE_DRIVER" value="array"/>

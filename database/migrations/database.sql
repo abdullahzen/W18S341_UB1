@@ -213,7 +213,7 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `rank` int(4) DEFAULT '1',
+  `rank` int(4) DEFAULT '0',
   `is_Solver` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`user_ID`),
   UNIQUE KEY `user_ID_UNIQUE` (`user_ID`),
