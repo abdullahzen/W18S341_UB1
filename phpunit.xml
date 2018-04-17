@@ -16,9 +16,9 @@
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
-        <testsuite name="Browser">
+<!--        <testsuite name="Browser">
             <directory suffix="Test.php">./tests/Browser</directory>
-        </testsuite>
+        </testsuite>-->
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
@@ -26,8 +26,9 @@
         </whitelist>
     </filter>
     <php>
-        <env name="APP_ENV" value="testing"/>
+        <env name="APP_ENV" value="local"/>
         <env name="DB_CONNECTION" value="mysql"/>
+        <env name="DB_DATABASE" value="soen341"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
