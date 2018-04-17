@@ -27,7 +27,7 @@ class UITest extends DuskTestCase
 
         $this->prepare();
         $this->browse(function (Browser $browser) {
-            $browser->visit('http://localhost:8000/');
+            $browser->visit(new homepage());
             $browser->waitForText('Java',20);
             $browser->assertSee('Java');
 
@@ -38,7 +38,7 @@ class UITest extends DuskTestCase
         $this->checkDbConnection();
         $this->prepare();
         $this->browse(function (Browser $browser) {
-            $browser->visit('http://localhost:8000/');
+            $browser->visit(new homepage());
             $browser->refresh();
             $browser->click('#registerButton');
             $browser->element('#username')->sendKeys('testuser');
